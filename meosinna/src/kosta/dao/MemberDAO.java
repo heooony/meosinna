@@ -1,8 +1,11 @@
 package kosta.dao;
 
+import java.sql.SQLException;
+
+import kosta.dto.Member;
+import kosta.exception.*;
+
 public interface MemberDAO {
-	/**
-	 * sample 입니다. (빈 패키지 커밋 안되는 현상 방지)
-	 */
-	
+	public int insert(Member member) throws SQLException;
+	public Member loginCheck(Member member) throws SQLException, AuthenticationException;
 }
