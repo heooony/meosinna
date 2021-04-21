@@ -14,9 +14,9 @@ public interface GoodsDAO {
 	List<GoodsDTO> selectAll() throws SQLException;
 	
 	/**
-	 * 키워드 검색
+	 * 상품명 검색
 	 * */
-	List<GoodsDTO> selectByKeyword(String keyword) throws SQLException;
+	List<GoodsDTO> selectByGdName(String gdName) throws SQLException;
 	
 	/**
 	 * 좋아요 증가 기능???
