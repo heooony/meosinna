@@ -80,15 +80,18 @@ public class MemberController implements Controller {
 		return new ModelAndView("index.jsp", true);
 	}
 	
-	public ModelAndView selectById(HttpServletRequest request, HttpServletResponse response)
+	/*public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
-		//Member member = MemberService.selectById();
-		//request.setAttribute("member", member); //${requestScope.list} ��밡��
+		
+		HttpSession session = request.getSession();
+		session.
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("myPage.jsp");
 		
+		
 		return mv;
 	}
-
+*/
 	
 }

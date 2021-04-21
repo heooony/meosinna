@@ -26,9 +26,6 @@ public class MemberService {
 		}
 		return dbMember;
 	}
-	public Member selectById() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 		
 }

@@ -61,5 +61,7 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return dbMember;
 	}
+
+
 	
 }
