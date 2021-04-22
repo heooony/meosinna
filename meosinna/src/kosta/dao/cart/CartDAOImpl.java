@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kosta.dto.CartDTO;
-import kosta.dto.GoodsDTO;
-import kosta.dto.SizeDTO;
+import kosta.dto.Goods;
 import kosta.util.DbUtil;
 
 public class CartDAOImpl implements CartDAO {
@@ -46,7 +45,7 @@ public class CartDAOImpl implements CartDAO {
 	 * 
 	 */
 	@Override
-	public int addToCart(GoodsDTO goods , int qty, int mbCode) throws SQLException {
+	public int addToCart(Goods goods , int qty, int mbCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql="INSERT INTO CART VALUES(?,?,?,?,?,?)";

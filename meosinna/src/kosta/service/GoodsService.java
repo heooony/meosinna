@@ -3,51 +3,51 @@ package kosta.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import kosta.dao.GoodsDAO;
-import kosta.dao.GoodsDAOImpl;
 import kosta.dto.Goods;
 
-public class GoodsService {
-	private static GoodsDAO goodsDao = new GoodsDAOImpl();
+public interface GoodsService {
+	
 
 
 	/**
 	 *전체검색
 	 * */
-	public List<Goods> selectAll() throws SQLException{
+	List<Goods> selectAll() throws SQLException;
+	/*public List<Goods> selectAll() throws SQLException{
 		List<Goods> list = goodsDao.selectAll();
 		if(list.size()==0)throw new SQLException("ERROR : 등록된 상품정보가 없습니다.");
 		return list;
-	}
+	}*/
 
 	/**
 	 * 상품검색 - 상품명 별 검색
 	 * */
-
-	public List<Goods> selectByGdName() throws SQLException{
+	Goods selectByGdName(String gdName) throws SQLException;
+	/*public List<Goods> selectByGdName() throws SQLException{
 		List<Goods> list = goodsDao.selectByGdName();
 		if(list.size()==0)throw new SQLException("ERROR : 해당하는 이름에 대한 상품정보가 없습니다.");
 		return list;
-	}
+	}*/
 
 	/**
 	 * 상품검색 - 브랜드 별 검색
 	 * */
-
-	public List<Goods> selectByGdBrand() throws SQLException{
+	Goods selectByBrand(String brand) throws SQLException;
+	/*public List<Goods> selectByGdBrand() throws SQLException{
 		List<Goods> list = goodsDao.selectByGdBrand();
 		if(list.size()==0)throw new SQLException("ERROR : 해당하는 브랜드에 대한 상품정보가 없습니다.");
 		return list;
-	}
+	}*/
 
    /**
     * 상품검색 - 가격대 별 검색
     * */
-	public List<Goods> selectByGdPrice() throws SQLException{
+	Goods selectByPrice(int price) throws SQLException;
+	/*public List<Goods> selectByGdPrice() throws SQLException{
 		List<Goods> list = goodsDao.selectByGdPrice();
 		if(list.size()==0)throw new SQLException("ERROR : 해당하는 가격대에 대한 상품정보가 없습니다.");
 		return list;
-	}
+	}*/
 
 
    /**
@@ -57,16 +57,17 @@ public class GoodsService {
 	/**
 	 * 등록
 	 * */
-	public void insert(GoodsDTO goodsDTO) throws SQLException;
+	public void insert(Goods goods) throws SQLException;
 
 	/**
 	 * 삭제
 	 * */
 	public void delete(String gdCode) throws SQLException;
+	
 	/**
 	 * 수정
 	 * */
-	public void update(GoodsDTO dto) throws SQLException;
+	public void update(Goods goods) throws SQLException;
 
 
 

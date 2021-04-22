@@ -16,13 +16,13 @@ public interface GoodsDAO {
 	/**
 	 * 상품명 검색
 	 * */
-	Goods selectByGdName(String gdName) throws SQLException;
+	 Goods selectByGdName(String gdName) throws SQLException;
 
 
 	/**
 	 * 브랜드 검색
 	 * */
-	 Goods selectByGdBrand(String GdBrand) throws SQLException;
+	 Goods selectByBrand(String GdBrand) throws SQLException;
 
 
 	/**
@@ -55,5 +55,6 @@ public interface GoodsDAO {
 	* @return : 1-수정성공 , 0 - 수정실패
 	* */
 	int update(Goods goods) throws SQLException;
+
 
 }

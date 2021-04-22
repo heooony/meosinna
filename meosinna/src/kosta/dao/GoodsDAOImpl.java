@@ -95,7 +95,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	/**
 	 * 브랜드 검색
 	 * */
-	    public Goods selectByGdBrand(String GdBrand) throws SQLException{
+	    public Goods selectByBrand(String GdBrand) throws SQLException{
 	    	Connection con = null; 
 			PreparedStatement ps = null;
 			ResultSet rs = null;
