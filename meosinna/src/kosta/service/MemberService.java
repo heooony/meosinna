@@ -18,11 +18,21 @@ public class MemberService {
 
 		}
 	}
+	
 	public Member loginCheck(Member member) throws SQLException{
 		Member dbMember = dao.loginCheck(member);
 		if(dbMember == null) {
 			throw new SQLException("아이디와 비밀번호를 확인해주세요");
 		}
 		return dbMember;
+	}
+	
+	public void update(Member dbMember) throws SQLException{
+		int result = dao.update(dbMember);
+		
+		if(result==0) {
+			throw new SQLException("변경되지 않았습니다.");
+		}
+		
 	}
 }

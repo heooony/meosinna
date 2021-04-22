@@ -61,6 +61,28 @@ public class MemberDAOImpl implements MemberDAO{
 		return dbMember;
 	}
 
+	@Override
+	public int update(Member dbMember) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "update member set pwd=?, email=? addr=?, tel=? where id=?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dbMember.getPwd());
+			ps.setString(2, dbMember.getEmail());
+			ps.setString(3, dbMember.getAddr());
+			ps.setString(4, dbMember.getTel());
+			ps.setString(5, dbMember.getId());
+			
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
+
 
 	
 }

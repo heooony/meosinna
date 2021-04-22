@@ -67,14 +67,7 @@ public class MemberController implements Controller {
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();
-		session.setAttribute("loginUser", dbMember.getId());
-		session.setAttribute("loginUserName", dbMember.getMbName());
-		session.setAttribute("loginPwd", dbMember.getPwd());
-		session.setAttribute("loginEmail", dbMember.getEmail());
-		session.setAttribute("loginTel", dbMember.getTel());
-		session.setAttribute("loginAddr", dbMember.getAddr());
-		session.setAttribute("loginJumin", dbMember.getJumin());
-		session.setAttribute("loginSignUpDate", dbMember.getSignUpDate());
+		session.setAttribute("dbMember", dbMember);
 		
 		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
@@ -92,13 +85,21 @@ public class MemberController implements Controller {
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
 		
-		HttpSession session = request.getSession();
-		String pwd = (String)session.getAttribute("loginPwd");
+		String name=request.getParameter("ps-info-name");
+		String id=request.getParameter("ps-info-id");
+		String pwd=request.getParameter("ps-info-pwd");
+		String email=request.getParameter("ps-info-email");
+		String addr=request.getParameter("ps-info-addr");
+		String tel= request.getParameter("ps-info-tel");
+		String jumin=request.getParameter("ps-info-jumin");
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("myPage.jsp");
+		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
+		memberService.update(dbMember);
 		
+		request.setAttribute("dbMember", dbMember);
 		
-		return mv;
+		return new ModelAndView("personalInfo.jsp", true);
 	}
+	
+	
 }
