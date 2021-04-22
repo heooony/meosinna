@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kosta.dao.MemberDAO;
 import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
 import kosta.controller.ModelAndView;
@@ -37,7 +38,7 @@ public class MemberController implements Controller {
 		String id =  (String)request.getParameter("id");
 		String pwd =  (String)request.getParameter("password");
 		String confimrPwd = (String)request.getParameter("confirmPassword");
-		String email =  (String)request.getParameter("confirmPassword");
+		String email =  (String)request.getParameter("email");
 		String addr1 =  (String)request.getParameter("address");
 		String addr2 =  (String)request.getParameter("addressDetail");		
 		String jumin =  (String)request.getParameter("jumin");
@@ -66,7 +67,14 @@ public class MemberController implements Controller {
 		//세션에정보저장
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbMember.getId());
-		session.setAttribute("loginName", dbMember.getMbName());
+		session.setAttribute("loginPwd", dbMember.getPwd());
+		session.setAttribute("loginEmail", dbMember.getEmail());
+		session.setAttribute("loginTel", dbMember.getTel());
+		session.setAttribute("loginAddr", dbMember.getAddr());
+		session.setAttribute("loginJumin", dbMember.getJumin());
+		session.setAttribute("loginSignUpDate", dbMember.getSignUpDate());
+		
+		
 		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
@@ -93,5 +101,4 @@ public class MemberController implements Controller {
 		return mv;
 	}
 */
-	
 }

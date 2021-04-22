@@ -189,81 +189,18 @@
         </div>
         
         <div class="col-xl-9 col-lg-8 col-md-7">
-          <section class="mypage">
-          <header class="first-info-view-area"><h5>기본회원정보</h5></header><hr>
-          
-          <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
-          	<tr>
-          		<th scope="row">아이디</th>
-          		<td colspan="2"><%=session.getAttribute("loginName")%></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">비밀번호</th>
-          		<td colspan="2"><%=session.getAttribute("loginPwd")%></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이름</th>
-          		<td colspan="2"><%=session.getAttribute("loginUser")%></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이메일</th>
-          		<td colspan="2"><%=session.getAttribute("loginEmail")%></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주소</th>
-          		<td colspan="2"><%=session.getAttribute("loginAddr")%></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주민등록번호</th>
-          		<td colspan="2"><%=session.getAttribute("loginJumin")%></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">전화번호</th>
-          		<td colspan="2"><%=session.getAttribute("loginTel")%></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">가입일</th>
-          		<td colspan="2"><%=session.getAttribute("loginSignUpDate")%></td>
-          	</tr>
-          </table>
-        	</section>
-        	<section>
-        		<header class="sample"><h5>샘플</h5></header><hr>
-        		<table>
-        			<tr>
-          		<th scope="row">아이디</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">비밀번호</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이름</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이메일</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주소</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주민등록번호</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">전화번호</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">가입일</th>
-          		<td colspan="2">**</td>
-          	</tr>
-        		</table>
-        	</section>  
+          <section>
+         	<header class="first-info-view-area"><h5>좋아요</h5></header><hr>
+         		<ul class="like-list" id="product_list">
+         			<li class="product-row">
+         				<img>
+         				<a href="#">나이키</a>
+         				<a href="#">조던시리즈</a>
+         				<span>20000원</span>
+         				<div>좋아요개수</div> 
+         			</li>
+         		</ul>
+          </section>
         </div>
         
       </div>

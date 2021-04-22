@@ -4781,12 +4781,16 @@ a {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-top: 20px;
-	padding-bottom: 20px;
 }
 
 .sample{
 	padding-top: 80px;
-	padding-bottom: 20px;
 }
+
+.table-my-info{
+	
+}
+
+
 
 }
