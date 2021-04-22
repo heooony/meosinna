@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -76,7 +77,6 @@ public class MemberController implements Controller {
 		session.setAttribute("loginSignUpDate", dbMember.getSignUpDate());
 		
 		
-		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
 		return mv;
@@ -89,11 +89,11 @@ public class MemberController implements Controller {
 		return new ModelAndView("index.jsp", true);
 	}
 	
-	/*public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
 		
 		HttpSession session = request.getSession();
-		session.
+		String pwd = (String)session.getAttribute("loginPwd");
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("myPage.jsp");
@@ -101,5 +101,4 @@ public class MemberController implements Controller {
 		
 		return mv;
 	}
-*/
 }

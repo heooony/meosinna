@@ -190,7 +190,9 @@
         
         <div class="col-xl-9 col-lg-8 col-md-7">
           <section class="mypage">
-          <header class="first-info-view-area"><h5>기본회원정보</h5></header><hr>
+          <header class="first-info-view-area"><span>기본회원정보<span>
+          <input type="button" value="수정"  id="btn">
+          </header><hr>
           
           <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
           	<tr>
