@@ -1,38 +1,59 @@
 package kosta.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import kosta.dao.GoodsDAO;
 import kosta.dao.GoodsDAOImpl;
-import kosta.dto.GoodsDTO;
+import kosta.dto.Goods;
 
-public interface GoodsService {
+public class GoodsService {
+	private static GoodsDAO goodsDao = new GoodsDAOImpl();
 
-	
-	
+
+	/**
+	 *전체검색
+	 * */
+	public List<Goods> selectAll() throws SQLException{
+		List<Goods> list = goodsDao.selectAll();
+		if(list.size()==0)throw new SQLException("ERROR : 등록된 상품정보가 없습니다.");
+		return list;
+	}
+
 	/**
 	 * 상품검색 - 상품명 별 검색
 	 * */
-	
-	
-	
-	
+
+	public List<Goods> selectByGdName() throws SQLException{
+		List<Goods> list = goodsDao.selectByGdName();
+		if(list.size()==0)throw new SQLException("ERROR : 해당하는 이름에 대한 상품정보가 없습니다.");
+		return list;
+	}
+
 	/**
-	 * 상품검색 - 제조사 별 검색
+	 * 상품검색 - 브랜드 별 검색
 	 * */
 
-
+	public List<Goods> selectByGdBrand() throws SQLException{
+		List<Goods> list = goodsDao.selectByGdBrand();
+		if(list.size()==0)throw new SQLException("ERROR : 해당하는 브랜드에 대한 상품정보가 없습니다.");
+		return list;
+	}
 
    /**
     * 상품검색 - 가격대 별 검색
     * */
-
+	public List<Goods> selectByGdPrice() throws SQLException{
+		List<Goods> list = goodsDao.selectByGdPrice();
+		if(list.size()==0)throw new SQLException("ERROR : 해당하는 가격대에 대한 상품정보가 없습니다.");
+		return list;
+	}
 
 
    /**
     * 상품검색 - 시간제한 할인 상품  배너에 출력
     * */
-	
+
 	/**
 	 * 등록
 	 * */
@@ -59,15 +80,7 @@ public interface GoodsService {
     * 자주 검색한 상품과 같은 태그 달고있는 상품 우선순위로 보이기
     * */
 
-	
-	
-	/**
-	 * 상품 주문 -상세 페이지에서 바로 구매 
-	 * */
-	
-	
-	/**
-	 * 상품 주문 - 장바구니 내 상품들 일괄/선택 구매 
-	 * */
+
+
 
 }

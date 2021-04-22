@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import kosta.dto.GoodsDTO;
+import kosta.dto.Goods;
 import kosta.util.DbUtil;
 
 public class GoodsDAOImpl implements GoodsDAO {
@@ -26,12 +26,16 @@ public class GoodsDAOImpl implements GoodsDAO {
 		}
 	}
 	
+	
+	/**
+	 * 상품 전체검색 
+	 * */
 	@Override
-	public List<GoodsDTO> selectAll() throws SQLException {
+	public List<Goods> selectAll() throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<GoodsDTO> list = new ArrayList<GoodsDTO>();
+		List<Goods> list = new ArrayList<Goods>();
 		
 		String sql = "select * from goods" ;
 		
@@ -41,7 +45,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				GoodsDTO dto = new GoodsDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
 						rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
 				
 				list.add(dto);
@@ -54,23 +58,27 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return list;
 	}
 
+	
+	/**
+	 * 상품명 검색 
+	 * */
 	@Override
-	public GoodsDTO selectByGdName(String gdName) throws SQLException {
+	public Goods selectByGdName(String gdName) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		GoodsDTO dto = null;
+		Goods dto = null;
 		
-		String sql = "select * from Electronics where gd_name=?";
+		String sql = "select * from goods where gd_name=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, gdName);
 			
-			rs = ps.executeQuery();
+			rs = ps.executeQuery(); 
 			
 			if(rs.next()) {
-				dto = new GoodsDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
+				dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
 						rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
 			}
 			
@@ -81,14 +89,67 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return dto;
 	}
 
+	
+	
+	
+	/**
+	 * 브랜드 검색
+	 * */
+	    public Goods selectByGdBrand(String GdBrand) throws SQLException{
+	    	Connection con = null; 
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			Goods goods = null;
+			
+			String sql = "select * from goods where gd_brand=?";
+			try {
+				con = DbUtil.getConnection();
+				ps = con.prepareStatement(sql);
+				ps.setString(1, GdBrand);
+				
+				rs = ps.executeQuery();
+				
+				if(rs.next()) {
+					goods = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
+							rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+				}
+				
+			}finally {
+				DbUtil.dbClose(rs, ps, con);
+			}
+			
+			return goods;
+		}
+	 
+	    
+	    /**
+	     * 가격대 별 검색
+	     * */
+	    @Override
+		public Goods selectByGdPrice(int GdPrice) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	 
+	    
+	    
+	    
+	
+	/**
+	 * 좋아요 수 증가 
+	 * */
 	@Override
 	public int increamentByGdLike(String gdCode) throws SQLException {
 		
 		return 0;
 	}
 
+	
+	/**
+	 * 레코드 추가 
+	 * */
 	@Override
-	public int insert(GoodsDTO goodsDTO) throws SQLException {
+	public int insert(Goods goodsDTO) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -114,6 +175,10 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
+	
+	/**
+	 * 모델번호에 해당하는 레코드 삭제 
+	 * */
 	@Override
 	public int delete(String gdCode) throws SQLException {
 		Connection con = null;
@@ -134,8 +199,12 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
+	
+	/**
+	 * 모델번호에 해당하는 레코드 수정 
+	 * */
 	@Override
-	public int update(GoodsDTO goodsDTO) throws SQLException {
+	public int update(Goods goodsDTO) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -157,4 +226,16 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
+
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
 }

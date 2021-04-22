@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -79,7 +80,7 @@
   </header>
 	<!--================ End Header Menu Area =================-->
 
-	<!-- ================ start banner area ================= -->	
+	<!-- ================ start banner area ================= -->
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
@@ -98,7 +99,7 @@
 	<!-- ================ end banner area ================= -->
 
 
-	<!-- ================ category section start ================= -->		  
+	<!-- ================ category section start ================= -->
   <section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
@@ -193,8 +194,8 @@
           </div>
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
-          
-         
+
+
           <section class="lattest-product-area pb-40 category-list">
             <div class="row">
           <c:forEach begin="1" end="9">
@@ -218,10 +219,10 @@
              </c:forEach>
              </div>
   			</section>
-  	
-	<!-- ================ category section end ================= -->		  
 
-	<!-- ================ top product area start ================= -->	
+	<!-- ================ category section end ================= -->
+
+	<!-- ================ top product area start ================= -->
 	<section class="related-product-area">
 		<div class="container">
 			<div class="section-intro pb-60px">
@@ -335,9 +336,9 @@
       </div>
 		</div>
 	</section>
-	<!-- ================ top product area end ================= -->		
+	<!-- ================ top product area end ================= -->
 
-	<!-- ================ Subscribe section start ================= -->		  
+	<!-- ================ Subscribe section start ================= -->
   <section class="subscribe-position">
     <div class="container">
       <div class="subscribe text-center">
@@ -356,14 +357,14 @@
 
           </form>
         </div>
-        
+
       </div>
     </div>
   </section>
-	<!-- ================ Subscribe section end ================= -->		  
+	<!-- ================ Subscribe section end ================= -->
 
 
-  <!--================ Start footer Area  =================-->	
+  <!--================ Start footer Area  =================-->
 	<footer>
 		<div class="footer-area">
 			<div class="container">
@@ -372,11 +373,11 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title large_title">Our Mission</h4>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
+								So seed seed green that winged cattle in. Gathering thing made fly you're no
 								divided deep moved us lan Gathering thing us land years living.
 							</p>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
 							</p>
 						</div>
 					</div>
@@ -415,7 +416,7 @@
 									Head Office
 								</p>
 								<p>123, Main Street, Your City</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
@@ -424,7 +425,7 @@
 									+123 456 7890 <br>
 									+123 456 7890
 								</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-envelope"></span>
 									Email
