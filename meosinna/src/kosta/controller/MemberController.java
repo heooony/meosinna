@@ -37,7 +37,7 @@ public class MemberController implements Controller {
 		String mbName = (String)request.getParameter("name");
 		String id =  (String)request.getParameter("id");
 		String pwd =  (String)request.getParameter("password");
-		String confimrPwd = (String)request.getParameter("confirmPassword");
+		String confirmPwd = (String)request.getParameter("confirmPassword");
 		String email =  (String)request.getParameter("email");
 		String addr1 =  (String)request.getParameter("address");
 		String addr2 =  (String)request.getParameter("addressDetail");		
@@ -67,6 +67,7 @@ public class MemberController implements Controller {
 		//세션에정보저장
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser", dbMember.getId());
+		session.setAttribute("loginUserName", dbMember.getMbName());
 		session.setAttribute("loginPwd", dbMember.getPwd());
 		session.setAttribute("loginEmail", dbMember.getEmail());
 		session.setAttribute("loginTel", dbMember.getTel());

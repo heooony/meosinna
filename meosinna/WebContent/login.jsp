@@ -119,7 +119,7 @@
 						<input type="hidden" name="key" value = "member" />
 						<input type="hidden" name="methodName" value = "login" />
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="userId" name="userId" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+								<input type="text" class="form-control" id="userId" name="userId" placeholder="UserId" onfocus="this.placeholder = ''" onblur="this.placeholder = 'UserId'">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">

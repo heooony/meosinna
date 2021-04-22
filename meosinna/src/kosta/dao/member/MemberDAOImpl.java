@@ -36,7 +36,6 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 
 		return result;
-		
 	}
 	
 	public Member loginCheck(Member member) throws SQLException, AuthenticationException{

@@ -109,7 +109,7 @@
 					<h1>마이페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp"><%=session.getAttribute("loginUser")%></a></li>
+              <li class="breadcrumb-item"><a href="personalInfo.jsp"><%=session.getAttribute("loginUserName")%></a></li>
               <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
@@ -195,7 +195,7 @@
           <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
           	<tr>
           		<th scope="row">아이디</th>
-          		<td colspan="2"><%=session.getAttribute("loginName")%></td>
+          		<td colspan="2"><%=session.getAttribute("loginUser")%></td>
           	</tr>
           	<tr>
           		<th scope="row">비밀번호</th>
@@ -203,7 +203,7 @@
           	</tr>
           	<tr>
           		<th scope="row">이름</th>
-          		<td colspan="2"><%=session.getAttribute("loginUser")%></td>
+          		<td colspan="2"><%=session.getAttribute("loginUserName")%></td>
           	</tr>
           	<tr>
           		<th scope="row">이메일</th>
