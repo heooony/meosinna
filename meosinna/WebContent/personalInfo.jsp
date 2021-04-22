@@ -17,6 +17,17 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <style type="text/css">
+  td{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	}
+	th{
+	padding-right: 100px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	}
+  </style>
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -90,7 +101,7 @@
   </header>
 	<!--================ End Header Menu Area =================-->
 
-	<!-- ================ start banner area ================= -->	
+	<!-- ================ start banner area ================= -->
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
@@ -98,7 +109,7 @@
 					<h1>마이페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp"><%=session.getAttribute("loginUser")%></a></li>
+              <li class="breadcrumb-item"><a href="personalInfo.jsp"><%=session.getAttribute("loginUserName")%></a></li>
               <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
@@ -179,45 +190,47 @@
         
         <div class="col-xl-9 col-lg-8 col-md-7">
           <section class="mypage">
-          <header class="first-info-view-area"><h5>기본회원정보</h5></header>
+          <header class="first-info-view-area"><span>기본회원정보<span>
+          <input type="button" value="수정"  id="btn">
+          </header><hr>
           
-          <table class="table-my-info">
+          <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
           	<tr>
           		<th scope="row">아이디</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginUser")%></td>
           	</tr>
           	<tr>
           		<th scope="row">비밀번호</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginPwd")%></td>
           	</tr>
           	<tr>
           		<th scope="row">이름</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginUserName")%></td>
           	</tr>
           	<tr>
           		<th scope="row">이메일</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginEmail")%></td>
           	</tr>
           	<tr>
           		<th scope="row">주소</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginAddr")%></td>
           	</tr>
           	<tr>
           		<th scope="row">주민등록번호</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginJumin")%></td>
           	</tr>
           	<tr>
           		<th scope="row">전화번호</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginTel")%></td>
           	</tr>
           	<tr>
           		<th scope="row">가입일</th>
-          		<td colspan="2">**</td>
+          		<td colspan="2"><%=session.getAttribute("loginSignUpDate")%></td>
           	</tr>
           </table>
         	</section>
         	<section>
-        		<header class="sample">샘플</header>
+        		<header class="sample"><h5>샘플</h5></header><hr>
         		<table>
         			<tr>
           		<th scope="row">아이디</th>
