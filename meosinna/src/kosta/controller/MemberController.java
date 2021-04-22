@@ -44,9 +44,6 @@ public class MemberController implements Controller {
 		String tel =  (String)request.getParameter("phone");
 		String address = addr1 + addr2;
 		
-		
-		//�쑀�슚�꽦 泥댄겕 
-		//pwd confirmPwd 留ㅼ튂 �솗�씤 �븘�슂
 		Member member = new Member(mbName, id, pwd, email, address, jumin, tel); 
 		
 		memberService.register(member);

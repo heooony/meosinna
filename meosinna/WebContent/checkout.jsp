@@ -247,16 +247,17 @@
 								<li><a href="#"><h4>
 											Product <span>Total</span>
 										</h4></a></li>
+										<c:set var = "total" value = "0" />
 										<c:forEach items="${sessionScope.list}" var="cart">
 											<li><a href="#">${cart.name}<span class="middle">x
 												${cart.qty}</span> <span class="last">$${cart.price}</span></a></li>
+												<c:set var="Income" scope="session" value="${cart.price}"/>  
+												<c:set var= "total" value="${total + cart.price}"/>
 										</c:forEach>
 								
 							</ul>
 							<ul class="list list_2">
-								<li><a href="#">Subtotal <span>$2160.00</span></a></li>
-								<li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-								<li><a href="#">Total <span>$2210.00</span></a></li>
+								<li><a href="#">Total <span>$<c:out value="${total}"/></span></a></li>
 							</ul>
 							<div class="payment_item">
 								<div class="radion_btn">
