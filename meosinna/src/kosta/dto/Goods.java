@@ -12,6 +12,8 @@ public class Goods {
 	private String gdContent;
 	private String img;
 	
+	public Goods() {}
+
 	public Goods(String gdCode, String gdName, int qty, int price, String brand, int gdLike, String szCode,
 			String stCode, String gdContent, String img) {
 		super();
@@ -108,4 +110,5 @@ public class Goods {
 	}
 	
 	
+
 }
