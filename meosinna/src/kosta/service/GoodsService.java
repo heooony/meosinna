@@ -1,7 +1,15 @@
 package kosta.service;
 
-public class GoodsService {
+import java.sql.SQLException;
 
+import kosta.dao.GoodsDAO;
+import kosta.dao.GoodsDAOImpl;
+import kosta.dto.GoodsDTO;
+
+public interface GoodsService {
+
+	
+	
 	/**
 	 * 상품검색 - 상품명 별 검색
 	 * */
@@ -24,6 +32,20 @@ public class GoodsService {
    /**
     * 상품검색 - 시간제한 할인 상품  배너에 출력
     * */
+	
+	/**
+	 * 등록
+	 * */
+	public void insert(GoodsDTO goodsDTO) throws SQLException;
+
+	/**
+	 * 삭제
+	 * */
+	public void delete(String gdCode) throws SQLException;
+	/**
+	 * 수정
+	 * */
+	public void update(GoodsDTO dto) throws SQLException;
 
 
 

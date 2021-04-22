@@ -27,8 +27,7 @@ public interface GoodsDAO {
 	* 레코드 삽입
 	* @return : 1-삽입성공 , 0 - 삽입실패
 	* */
-	int insert(GoodsDTO goodsDTO) throws SQLException;
-	  
+	int insert(GoodsDTO goodsDTO) throws SQLException ;
 	/**
 	 * 모델번호에 해당하는 레코드 삭제
 	 * @return : 1-삭제성공 , 0 - 삭제실패

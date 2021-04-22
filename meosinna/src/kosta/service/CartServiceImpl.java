@@ -6,7 +6,7 @@ import java.util.List;
 import kosta.dao.cart.CartDAO;
 import kosta.dao.cart.CartDAOImpl;
 import kosta.dto.CartDTO;
-import kosta.dto.Goods;
+import kosta.dto.GoodsDTO;
 
 public class CartServiceImpl implements CartService{
 	CartDAO dao = new CartDAOImpl();
@@ -19,7 +19,7 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	
-	public void addToCart(Goods goods, int qty, int mbCode) throws SQLException {
+	public void addToCart(GoodsDTO goods, int qty, int mbCode) throws SQLException {
 		int result = dao.addToCart(goods, qty, mbCode);
 		if(result == 0) throw new SQLException("장바구니에 추가되지 않았습니다.");
 	}
