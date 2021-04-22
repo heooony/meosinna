@@ -2,7 +2,6 @@ package kosta.service;
 
 import java.sql.SQLException;
 
-
 import kosta.dao.MemberDAO;
 import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
@@ -26,6 +25,4 @@ public class MemberService {
 		}
 		return dbMember;
 	}
-
-		
 }

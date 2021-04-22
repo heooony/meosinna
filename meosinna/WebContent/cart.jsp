@@ -115,7 +115,7 @@
                       </thead>
                       <tbody>
                       <c:forEach items="${sessionScope.list}" var="cart">
-                      <tr>
+                     	 <tr>
                               <td>
                                   <div class="media">
                                       <div class="d-flex">
@@ -139,7 +139,7 @@
                       </c:forEach>
                           <tr class="bottom_button">
                               <td>
-                                  <a class="button" href="#">Update Cart</a>
+                                  <a class="button" href="front?key=cart&methodName=viewCart">Update Cart</a>
                               </td>
                               <td>
 
