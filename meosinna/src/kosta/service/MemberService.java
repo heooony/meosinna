@@ -1,7 +1,22 @@
 package kosta.service;
 
-public interface MemberService {
-	/**
-	 * sample 입니다. (빈 패키지 커밋 안되는 현상 방지)
-	 */
+import java.sql.SQLException;
+
+import kosta.dao.member.MemberDAO;
+import kosta.dao.member.MemberDAOImpl;
+import kosta.dto.Member;
+
+public class MemberService {
+	MemberDAO dao = new MemberDAOImpl();
+
+	public void register(Member member) throws SQLException {
+
+		int result = dao.insert(member);
+		if (result == 0) {
+			throw new SQLException("등록되지 않았습니다.");
+		}
+
+		
+		
+	}
 }
