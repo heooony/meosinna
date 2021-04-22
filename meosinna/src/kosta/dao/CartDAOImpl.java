@@ -1,4 +1,4 @@
-package kosta.dao.cart;
+package kosta.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

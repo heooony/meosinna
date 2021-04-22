@@ -1,8 +1,9 @@
 package kosta.service;
 
-import kosta.dao.MemberDAOImpl;
+import java.sql.SQLException;
 
-public class OrderService {
-	MemberDAOImpl dao = new MemberDAOImpl();
+import kosta.dto.Order;
 
+public interface OrderService {
+	public int order(Order order) throws SQLException;
 }
