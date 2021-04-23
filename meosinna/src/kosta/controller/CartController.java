@@ -1,6 +1,7 @@
 package kosta.controller;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class CartController implements Controller {
 		return mv;
 	}
 	
+	/*
 	public ModelAndView addToCart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, NumberFormatException, SQLException {
 		HttpSession session = request.getSession();
@@ -47,4 +49,5 @@ public class CartController implements Controller {
 		ModelAndView mv = new ModelAndView("single-product.html", false);
 		return mv;
 	}
+	*/
 }

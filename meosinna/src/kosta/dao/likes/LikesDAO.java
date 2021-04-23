@@ -7,5 +7,5 @@ import kosta.dto.Likes;
 import kosta.dto.Member;
 
 public interface LikesDAO {
-	public List<Likes> selectLikes(Member member) throws SQLException;
+	public List<Likes> selectLikes(int mbCode) throws SQLException;
 }

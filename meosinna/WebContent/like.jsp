@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +28,9 @@
 	padding-right: 100px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	}
+	.info{
+		padding: 10px;
 	}
   </style>
 </head>
@@ -192,13 +197,17 @@
           <section>
          	<header class="first-info-view-area"><h5>좋아요</h5></header><hr>
          		<ul class="like-list" id="product_list">
-         			<li class="product-row">
-         				<img>
-         				<a href="#">나이키</a>
-         				<a href="#">조던시리즈</a>
-         				<span>20000원</span>
-         				<div>좋아요개수</div> 
-         			</li>
+         			<c:forEach items="${requestScope.list}" var="likes">
+         				<li>
+         					<img src="${likes.img}">
+         						<ul>
+         							<li>${likes.Goods.gdName}</li>
+         							<li>${likes.brand}</li>
+         							<li>${likes.price}</li>
+         							<li>${likes.gdLike}</li>
+         						</ul>
+         				</li>
+         			</c:forEach>
          		</ul>
           </section>
         </div>
