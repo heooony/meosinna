@@ -57,7 +57,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">멤버</a>
                 <ul class="dropdown-menu">
-                  <%if(session.getAttribute("loginUser") == null){ %>
+                  <%if(session.getAttribute("dbMember") == null){ %>
                   <li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
@@ -75,11 +75,11 @@
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <%if(session.getAttribute("loginUser") == null) {%>
+              <%if(session.getAttribute("dbMember") == null) {%>
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
-              <li class="nav-item"><button><a class="like" href="#">좋아요</a></li>
+              <li class="nav-item"><button><a class="like" href="like.jsp">좋아요</a></li>
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
               <%} %>
             </ul>
@@ -98,7 +98,7 @@
 					<h1>마이페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp"><%=session.getAttribute("loginUserName")%></a></li>
+              <li class="breadcrumb-item"><a href="personalInfo.jsp">${dbMember.mbName}</a></li>
               <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
