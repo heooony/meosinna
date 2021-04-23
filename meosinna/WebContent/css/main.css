@@ -3645,7 +3645,7 @@ a {
     height: 100%;
     width: 100%;
     content: "";
-    background: #384aeb;
+    background: #AAAAFF;
     opacity: .9
 }
 
@@ -4775,4 +4775,22 @@ a {
         padding-top: 115px !important;
         padding-bottom: 115px !important
     }
+
+.first-info-view-area{
+	border-bottom: 2px #AAAAFF;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 20px;
+}
+
+.sample{
+	padding-top: 80px;
+}
+
+.table-my-info{
+	
+}
+
+
+
 }

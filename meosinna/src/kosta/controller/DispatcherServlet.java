@@ -30,6 +30,7 @@ public class DispatcherServlet extends HttpServlet {
 		String key = request.getParameter("key");
 		String methodName = request.getParameter("methodName");
 	try {	
+		
 		Class<?> clz = clzMap.get(key);
 		Method method = clz.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
 		
@@ -47,6 +48,7 @@ public class DispatcherServlet extends HttpServlet {
 	}catch(Exception e){
 		e.printStackTrace();
 	}
+	
 	}
 	
 

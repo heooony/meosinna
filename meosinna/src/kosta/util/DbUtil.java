@@ -11,12 +11,12 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 /**
- * DB연동을 위한 로드, 연결, 닫기 기능 클래스
+ * 
  * */
 public class DbUtil {
 	static DataSource ds;
     /**
-     * 로드
+     
      * */
 	static {
 		try {
@@ -28,14 +28,14 @@ public class DbUtil {
 	}
 	
 	/**
-	 * 연결
+	 * 
 	 * */
 	public static Connection getConnection() throws SQLException{
 		return  ds.getConnection();
 	} 
 	
 	/**
-	 * 닫기 (insert, update ,delete 인경우 )
+	 * 
 	 * */
 	public static void dbClose(Statement st, Connection con){
 		try {
@@ -47,7 +47,7 @@ public class DbUtil {
 	}
 	
 	/**
-	 * 닫기(select 인경우)
+	 * 
 	 * */
     public static void dbClose(ResultSet rs , Statement st, Connection con){
     	try {
