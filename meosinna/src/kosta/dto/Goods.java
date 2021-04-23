@@ -3,7 +3,6 @@ package kosta.dto;
 public class Goods {
 	private String gdCode;
 	private String gdName;
-	private int qty;
 	private int price;
 	private String brand;
 	private int gdLike;
@@ -12,12 +11,11 @@ public class Goods {
 	private String gdContent;
 	private String img;
 	
-	public Goods(String gdCode, String gdName, int qty, int price, String brand, int gdLike, String szCode,
+	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, String szCode,
 			String stCode, String gdContent, String img) {
 		super();
 		this.gdCode = gdCode;
 		this.gdName = gdName;
-		this.qty = qty;
 		this.price = price;
 		this.brand = brand;
 		this.gdLike = gdLike;
@@ -41,14 +39,6 @@ public class Goods {
 
 	public void setGdName(String gdName) {
 		this.gdName = gdName;
-	}
-
-	public int getQty() {
-		return qty;
-	}
-
-	public void setQty(int qty) {
-		this.qty = qty;
 	}
 
 	public int getPrice() {

@@ -7,9 +7,10 @@ public class OrderLine {
 	private int qty;
 	private int isEvent;
 	private String req;
+	private int size;
 	
 	public OrderLine() {}
-	public OrderLine(int odCode, String gdName, String odDate, int qty, int isEvent, String req) {
+	public OrderLine(int odCode, String gdName, String odDate, int qty, int isEvent, String req, int size) {
 		super();
 		this.odCode = odCode;
 		this.gdName = gdName;
@@ -17,6 +18,7 @@ public class OrderLine {
 		this.qty = qty;
 		this.isEvent = isEvent;
 		this.req = req;
+		this.size = size;
 	}
 	
 	public int getOdCode() {
@@ -54,6 +56,12 @@ public class OrderLine {
 	}
 	public void setReq(String req) {
 		this.req = req;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
 	}
 	
 }

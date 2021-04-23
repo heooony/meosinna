@@ -262,7 +262,7 @@
 									& conditions*</a>
 							</div>
 							<div class="text-center">
-								<a class="button button-paypal" href="#" id="payment">Proceed to Paypal</a>
+								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">Proceed to Paypal</a>
 							</div>
 						</div>
 					</div>

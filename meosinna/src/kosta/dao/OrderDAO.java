@@ -2,9 +2,7 @@ package kosta.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import kosta.dto.Order;
-import kosta.dto.OrderEach;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
 
@@ -15,12 +13,11 @@ public interface OrderDAO {
 	 * order를 통해서 결제, 주문 개별, 주문 상세 테이블이 만들어진다.
 	 * @param order
 	 * @param orderLine
-	 * @param orderEach
 	 * @param payment
 	 * @return int
 	 * @throws SQLException
 	 */
-	int order(Order order, OrderLine orderLine, OrderEach orderEach, Payment payment) throws SQLException;
+	int order(Order order, OrderLine orderLine, Payment payment) throws SQLException;
 	
 	/**
 	 * order메소드가 호출될 때 실행된다.
@@ -31,17 +28,6 @@ public interface OrderDAO {
 	 * @throws SQLException
 	 */
 	int orderLine(Connection connection, OrderLine orderLine) throws SQLException;
-	
-	/**
-	 * order메소드가 호출될 때 실행된다.
-	 * 하나의 주문에 여러 가지 상품이 들어갈 수 있기 때문에 공통적인 속성을 제외한 상품 각자가 가지고 있는 속성들을
-	 * 저장하기 위한 메소드이다.
-	 * @param connection
-	 * @param orderEach
-	 * @return int
-	 * @throws SQLException
-	 */
-	int orderEach(Connection connection, OrderEach orderEach) throws SQLException;
 	
 	/**
 	 * order메소드가 호출될 때 실행된다.
