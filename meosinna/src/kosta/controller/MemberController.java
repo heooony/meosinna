@@ -2,9 +2,6 @@ package kosta.controller;
 
 import java.io.IOException;
 
-
-
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -46,9 +43,6 @@ public class MemberController implements Controller {
 		String tel =  (String)request.getParameter("phone");
 		String address = addr1 + addr2;
 		
-		
-		//�쑀�슚�꽦 泥댄겕 
-		//pwd confirmPwd 留ㅼ튂 �솗�씤 �븘�슂
 		Member member = new Member(mbName, id, pwd, email, address, jumin, tel); 
 		
 		memberService.register(member);
@@ -67,7 +61,7 @@ public class MemberController implements Controller {
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();
-		session.setAttribute("dbMember", dbMember);
+		session.setAttribute("member", dbMember);
 		
 		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
