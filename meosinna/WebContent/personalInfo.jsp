@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
-
   <link rel="stylesheet" href="css/style.css">
+  
   <style type="text/css">
   td{
 	padding-top: 20px;
@@ -109,7 +109,7 @@
 					<h1>마이페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp"><%=session.getAttribute("loginUserName")%></a></li>
+              <li class="breadcrumb-item"><a href="personalInfo.jsp">${dbMember.mbName}</a></li>
               <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
@@ -191,43 +191,60 @@
         <div class="col-xl-9 col-lg-8 col-md-7">
           <section class="mypage">
           <header class="first-info-view-area"><span>기본회원정보<span>
-          <input type="button" value="수정"  id="btn">
-          </header><hr>
+          <form class="ps-info-form" action="${pageContext.request.contextPath}/front">
+          <input type="hidden" name="key" value = "member" />
+		  <input type="hidden" name="methodName" value = "update" />
+          <input type="button" value="수정"  id="ps-info-update-btn">
           
+          </header><hr>
+          <button type="submit" class="ps-info-update-btn" name="ps-info-update-btn" id="ps-info-update-btn" value="submit">적용</button>
           <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
           	<tr>
           		<th scope="row">아이디</th>
-          		<td colspan="2"><%=session.getAttribute("loginUser")%></td>
+          		<td colspan="2"><span name="ps-info-id">${dbMember.id}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">비밀번호</th>
-          		<td colspan="2"><%=session.getAttribute("loginPwd")%></td>
+          		<td colspan="2"><span>${dbMember.pwd}</span>
+          		&nbsp<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${dbMember.pwd}">
+          		
+          		</td>
           	</tr>
           	<tr>
           		<th scope="row">이름</th>
-          		<td colspan="2"><%=session.getAttribute("loginUserName")%></td>
+          		<td colspan="2"><span name="ps-info-name">${dbMember.mbName}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">이메일</th>
-          		<td colspan="2"><%=session.getAttribute("loginEmail")%></td>
+          		<td colspan="2"><span>${dbMember.email}</span>
+          		&nbsp<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${dbMember.email}">
+          		
+          		</td>
           	</tr>
           	<tr>
           		<th scope="row">주소</th>
-          		<td colspan="2"><%=session.getAttribute("loginAddr")%></td>
+          		<td colspan="2"><span>${dbMember.addr}</span>
+          		&nbsp<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${dbMember.addr}">
+          		
+          		</td>
           	</tr>
           	<tr>
           		<th scope="row">주민등록번호</th>
-          		<td colspan="2"><%=session.getAttribute("loginJumin")%></td>
+          		<td colspan="2"><span name="ps-info-jumin">${dbMember.jumin}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">전화번호</th>
-          		<td colspan="2"><%=session.getAttribute("loginTel")%></td>
+          		<td colspan="2"><span>${dbMember.tel}</span>
+          		&nbsp<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${dbMember.tel}">
+          		</td>
           	</tr>
           	<tr>
           		<th scope="row">가입일</th>
-          		<td colspan="2"><%=session.getAttribute("loginSignUpDate")%></td>
+          		<td colspan="2"><span>${dbMember.signUpDate}</span></td>
           	</tr>
           </table>
+          
+          </form>
         	</section>
         	<section>
         		<header class="sample"><h5>샘플</h5></header><hr>
@@ -376,5 +393,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+  	$(function() {
+		$("#ps-info-update-btn").click(function() {
+			$("#ps-info-pwd").show();
+			$("#ps-info-email").show();
+			$("#ps-info-addr").show();
+			$("#ps-info-tel").show();
+			$("#ps-info-update-btn").show();
+		})
+	})
+  </script>
 </body>
 </html>
