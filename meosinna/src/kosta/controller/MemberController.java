@@ -64,6 +64,7 @@ public class MemberController implements Controller {
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();
+		session.setAttribute("member", dbMember);
 		session.setAttribute("loginUser", dbMember.getId());
 		session.setAttribute("loginUserName", dbMember.getMbName());
 		session.setAttribute("loginPwd", dbMember.getPwd());

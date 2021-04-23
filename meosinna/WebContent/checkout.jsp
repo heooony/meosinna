@@ -23,18 +23,20 @@
 <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
 <script>
 	$(function() {
+		
 		$("#shipping-select").on("change", function() {
 			let selected = $("#shipping-select option:selected").val();
 			if(selected === "1") {
 				$("#rname").val($("#sname").val());
 				$("#rtel").val($("#stel").val());
-				$("#address").val("일단 임시용 집");
+				$("#address").val("${sessionScope.member.addr}");
 			} else if (selected === "2") {
 				$("#rname").val("");
 				$("#rtel").val("");
 				$("#address").val("");
 			}
 		});
+		
 	});
 </script>
 </head>
@@ -184,17 +186,17 @@
 							novalidate="novalidate">
 							<div class="col-md-6 form-group p_star">
 								<input type="text" class="form-control" id="sname" name="sname"
-									placeholder="Name"> <span class="placeholder"
+									placeholder="Name" value="${sessionScope.member.mbName}"> <span class="placeholder"
 									data-placeholder="Name"></span>
 							</div>
 							<div class="col-md-6 form-group p_star">
 								<input type="text" class="form-control" id="stel" name="stel"
-									placeholder="Tel"> <span class="placeholder"
+									placeholder="Tel" value="${sessionScope.member.tel}"> <span class="placeholder"
 									data-placeholder="Tel"></span>
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="email" name="email"
-									placeholder="Email">
+									placeholder="Email" value="${sessionScope.member.email}"> 
 							</div>
 							<div class="col-md-12 form-group mb-0">
 								<div class="creat_account">

@@ -1,6 +1,7 @@
 package kosta.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ public class OrderController implements Controller {
 	}
 	
 	public ModelAndView order(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SQLException {
 		Order order = new Order();
 		int reuslt = service.order(order);
 		ModelAndView mv = new ModelAndView();
