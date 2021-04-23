@@ -194,21 +194,21 @@
             </div>
           </div>
           <!-- End Filter Bar -->
+          
           <!-- Start Best Seller -->
-
- 
           <section class="lattest-product-area pb-40 category-list">
             <div class="row">
             
-          <c:forEach begin="1" end="9">  <!-- sessionScope.goods.qty~~~ --> 
+          <c:forEach items="${requestScope.list}" var="goods" <%-- begin="1" end="9" --%>>  <!-- sessionScope.goods.qty~~~ --> 
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
                   
-                 <!-- if -->     
-                    <img class="card-img" src="img/product/product1.png" alt="" style="opacity: 0.2">
-                    <!-- else -->  
-                      <img class="card-img" src="img/product/product1.png" alt="" >
+                  <!-- if -->     
+                    <!-- <img class="card-img" src="img/product/product1.png" alt="" style="opacity: 0.2">
+                    else --> 
+                      <img class="card-img" src="${goods.img}" alt="" >  
+                      
                     
                     
                     <ul class="card-product__imgOverlay">
@@ -219,9 +219,9 @@
                     
                   </div>
                   <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
+                    <p>Shoes</p>
+                    <h4 class="card-product__title"><a href="#">${goods.gdName}</a></h4>
+                    <p class="card-product__price">${goods.price}</p>
                   </div>
                  </div>
                </div>

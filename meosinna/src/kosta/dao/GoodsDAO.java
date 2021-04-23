@@ -18,17 +18,22 @@ public interface GoodsDAO {
 	 * */
 	Goods selectByGdName(String gdName) throws SQLException;
 	
+	/**
+	 * 상품코드 검색
+	 * */
+	Goods selectByGdCode(String gdName) throws SQLException;
+	
 	
 	/**
 	 * 브랜드 검색
 	 * */
-	 Goods selectByGdBrand(String gdBrand) throws SQLException;
+	 Goods selectByBrand(String gdBrand) throws SQLException;
 	  
 	  
 	/**
 	 * 가격대 검색 
 	 * */
-	 Goods selectByGdPrice(int gdPrice) throws SQLException; 
+	 Goods selectByPrice(int gdPrice) throws SQLException; 
 	  
 	
 	/**

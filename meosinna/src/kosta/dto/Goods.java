@@ -3,27 +3,22 @@ package kosta.dto;
 public class Goods {
 	private String gdCode;
 	private String gdName;
-	private int qty;
 	private int price;
 	private String brand;
 	private int gdLike;
-	private String szCode;
 	private String stCode;
 	private String gdContent;
 	private String img;
 	
 	public Goods() {}
 
-	public Goods(String gdCode, String gdName, int qty, int price, String brand, int gdLike, String szCode,
-			String stCode, String gdContent, String img) {
+	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, String stCode, String gdContent, String img) {
 		super();
 		this.gdCode = gdCode;
 		this.gdName = gdName;
-		this.qty = qty;
 		this.price = price;
 		this.brand = brand;
 		this.gdLike = gdLike;
-		this.szCode = szCode;
 		this.stCode = stCode;
 		this.gdContent = gdContent;
 		this.img = img;
@@ -45,13 +40,6 @@ public class Goods {
 		this.gdName = gdName;
 	}
 
-	public int getQty() {
-		return qty;
-	}
-
-	public void setQty(int qty) {
-		this.qty = qty;
-	}
 
 	public int getPrice() {
 		return price;
@@ -77,13 +65,6 @@ public class Goods {
 		this.gdLike = gdLike;
 	}
 
-	public String getSzCode() {
-		return szCode;
-	}
-
-	public void setSzCode(String szCode) {
-		this.szCode = szCode;
-	}
 
 	public String getStCode() {
 		return stCode;

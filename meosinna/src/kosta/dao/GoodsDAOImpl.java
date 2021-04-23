@@ -45,8 +45,8 @@ public class GoodsDAOImpl implements GoodsDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
-						rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
 				
 				list.add(dto);
 			}
@@ -78,8 +78,8 @@ public class GoodsDAOImpl implements GoodsDAO {
 			rs = ps.executeQuery(); 
 			
 			if(rs.next()) {
-				dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
-						rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+				dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
 			}
 			
 		}finally {
@@ -110,8 +110,8 @@ public class GoodsDAOImpl implements GoodsDAO {
 				rs = ps.executeQuery();
 				
 				if(rs.next()) {
-					goods = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), rs.getInt(6),
-							rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+					goods = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3),  rs.getString(4), rs.getInt(5),
+							rs.getString(6), rs.getString(7), rs.getString(8));
 				}
 				
 			}finally {
@@ -126,7 +126,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	     * 가격대 별 검색
 	     * */
 	    @Override
-		public Goods selectByGdPrice(int GdPrice) throws SQLException {
+		public Goods selectByPrice(int GdPrice) throws SQLException {
 			// TODO Auto-generated method stub
 			return null;
 		}
@@ -153,21 +153,19 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "insert into good values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into good values(?,?,?,?,?,?,?,?)";
 		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, goodsDTO.getGdCode());
 			ps.setString(2, goodsDTO.getGdName());
-			ps.setInt(3, goodsDTO.getQty());
-			ps.setInt(4, goodsDTO.getPrice());
-			ps.setString(5, goodsDTO.getBrand());
-			ps.setInt(6, goodsDTO.getGdLike());
-			ps.setString(7, goodsDTO.getSzCode());
-			ps.setString(8, goodsDTO.getStCode());
-			ps.setString(9, goodsDTO.getGdContent());
-			ps.setString(10, goodsDTO.getImg());
+			ps.setInt(3, goodsDTO.getPrice());
+			ps.setString(4, goodsDTO.getBrand());
+			ps.setInt(5, goodsDTO.getGdLike());
+			ps.setString(6, goodsDTO.getStCode());
+			ps.setString(7, goodsDTO.getGdContent());
+			ps.setString(8, goodsDTO.getImg());
 			
 		}finally {
 			DbUtil.dbClose(ps, con);
@@ -208,16 +206,15 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "update goods set gd_name=?.qty=?,price=?,brand=?,gd_content=?,img=? where gd_code=?" ;
+		String sql = "update goods set gd_name=?,price=?,brand=?,gd_content=?,img=? where gd_code=?" ;
 		
 		try {
 			ps.setString(1, goodsDTO.getGdName());
-			ps.setInt(2, goodsDTO.getQty());
-			ps.setInt(3, goodsDTO.getPrice());
-			ps.setString(4, goodsDTO.getBrand());
-			ps.setString(5, goodsDTO.getGdContent());
-			ps.setString(6, goodsDTO.getImg());
-			ps.setString(7, goodsDTO.getGdCode());
+			ps.setInt(2, goodsDTO.getPrice());
+			ps.setString(3, goodsDTO.getBrand());
+			ps.setString(4, goodsDTO.getGdContent());
+			ps.setString(5, goodsDTO.getImg());
+			ps.setString(6, goodsDTO.getGdCode());
 			
 		}finally {
 			DbUtil.dbClose(ps, con);
@@ -225,6 +222,36 @@ public class GoodsDAOImpl implements GoodsDAO {
 				
 		return result;
 	}
+
+
+	@Override
+	public Goods selectByGdCode(String gdCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Goods dto = null;
+		
+		String sql = "select * from goods where gd_code=?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, gdCode);
+			
+			rs = ps.executeQuery(); 
+			
+			if(rs.next()) {
+				dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+			}
+			
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return dto;
+	}
+
+
 
 
 	

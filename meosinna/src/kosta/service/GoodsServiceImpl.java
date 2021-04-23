@@ -14,19 +14,26 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public void insert(Goods goods) throws SQLException {
 		int result = goodsDAO.insert(goods);
-		if(result==0) throw new SQLException("등록되지 않았습니다.");
+		if(result==0) throw new SQLException("ERROR : 등록되지 않았습니다.");
 
 	}
 
 	@Override
 	public void delete(String gdCode) throws SQLException {
-		// TODO Auto-generated method stub
-
+		if(goodsDAO.delete(gdCode)==0) {
+			throw new SQLException("ERROR : 삭제 실패했습니다.");
+		}
+		
 	}
 
 	@Override
 	public void update(Goods goods) throws SQLException {
-		// TODO Auto-generated method stub
+		Goods dbGoods = goodsDAO.selectByGdCode(goods.getGdCode());
+		if(!dbGoods.getGdCode().equals(goods.getGdCode())) {
+			throw new SQLException("ERROR : 상품코드가 일치하지 않습니다");
+		}
+		
+		
 
 	}
 
