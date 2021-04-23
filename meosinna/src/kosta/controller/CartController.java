@@ -25,7 +25,9 @@ public class CartController implements Controller {
 	
 	public ModelAndView viewCart(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		List<CartDTO> list = service.viewCart();
+		Member member = (Member) session.getAttribute("member");
+		int mbCode = member.getMbCode();
+		List<CartDTO> list = service.viewCart(mbCode);
 		
 		session.setAttribute("list", list);
 		ModelAndView mv = new ModelAndView("cart.jsp",false);

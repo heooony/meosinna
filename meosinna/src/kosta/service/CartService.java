@@ -8,7 +8,7 @@ import kosta.dto.Goods;
 
 public interface CartService {
 	
-	public List<CartDTO> viewCart() throws SQLException;
+	public List<CartDTO> viewCart(int mbCode) throws SQLException;
 	
 	public void addToCart(Goods goods, int qty, int mbCode) throws SQLException;
 	

@@ -11,7 +11,7 @@ public interface CartDAO {
 	/**
 	 * Cart.jsp에서 장바구니 전체 목록 보여주는 메소드 
 	 */
-	public List<CartDTO> viewCart() throws SQLException;
+	public List<CartDTO> viewCart(int mbCode) throws SQLException;
 	
 	/**
 	 * single-product.html에서 단일상품 장바구니에 넣어주는 메소드 
