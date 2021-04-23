@@ -29,9 +29,19 @@ public class MemberController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		return null;
 	}
+	
+	
+	/**
+	 * 1. 회원가입
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	
 	public ModelAndView register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		HttpSession session = request.getSession();
@@ -47,8 +57,8 @@ public class MemberController implements Controller {
 		String address = addr1 + addr2;
 		
 		
-		//�쑀�슚�꽦 泥댄겕 
-		//pwd confirmPwd 留ㅼ튂 �솗�씤 �븘�슂
+		//pwd와 confirm pwd의 일치여부 확인 필요
+		//아직 유효성 체크 구현 안됨
 		Member member = new Member(mbName, id, pwd, email, address, jumin, tel); 
 		
 		memberService.register(member);
@@ -58,6 +68,17 @@ public class MemberController implements Controller {
 		return mv;
 	}
 
+	
+	
+	
+	/**
+	 * 2. 로그인
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws Exception
+	 */
+	
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String userId=request.getParameter("userId");
 		String pwd=request.getParameter("pwd");
@@ -69,11 +90,20 @@ public class MemberController implements Controller {
 		HttpSession session = request.getSession();
 		session.setAttribute("dbMember", dbMember);
 		
-		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
 		return mv;
 	}
+	
+	
+	
+	/**
+	 * 3. 로그아웃
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws Exception
+	 */
 	
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
@@ -81,6 +111,9 @@ public class MemberController implements Controller {
 		
 		return new ModelAndView("index.jsp", true);
 	}
+	
+	
+	
 	
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{

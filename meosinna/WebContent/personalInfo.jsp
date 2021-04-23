@@ -191,7 +191,7 @@
         <div class="col-xl-9 col-lg-8 col-md-7">
           <section class="mypage">
           <header class="first-info-view-area"><span>기본회원정보<span>
-          <form class="ps-info-form" action="${pageContext.request.contextPath}/front">
+          <form class="ps-info-form" action="${pageContext.request.contextPath}/personalInfo.jsp">
           <input type="hidden" name="key" value = "member" />
 		  <input type="hidden" name="methodName" value = "update" />
           <input type="button" value="수정"  id="ps-info-update-btn">
