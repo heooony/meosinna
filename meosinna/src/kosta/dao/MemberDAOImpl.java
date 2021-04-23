@@ -66,7 +66,7 @@ public class MemberDAOImpl implements MemberDAO{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "update member set pwd=?, email=? addr=?, tel=? where id=?";
+		String sql = "update member set pwd=?, email=?, addr=?, tel=? where id=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -78,7 +78,6 @@ public class MemberDAOImpl implements MemberDAO{
 			
 			result = ps.executeUpdate();
 		}finally{
-			con.commit();
 			DbUtil.dbClose(ps, con);
 		}
 		return result;

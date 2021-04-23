@@ -125,14 +125,19 @@ public class MemberController implements Controller {
 		String addr = request.getParameter("ps-info-addr");
 		String tel = request.getParameter("ps-info-tel");
 		String jumin = request.getParameter("ps-info-jumin");
-		
+	
 		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
+		System.out.println(dbMember);
 		memberService.update(dbMember);
-		
 		request.setAttribute("dbMember", dbMember);
+		
 		
 		return new ModelAndView("personalInfo.jsp", true);
 	}
+	
+
+	
+	
 	
 	
 }

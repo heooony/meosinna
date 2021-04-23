@@ -90,9 +90,9 @@
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
-              <li class="nav-item"><button><a class="like" href="like.jsp">좋아요</a></li>
-              <li class="nav-item"><button><a class="like" href="myPage.jsp">${dbMember.mbName}</a>님</li>
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
+              <li class="nav-item"><a class="like" href="${pageContext.request.contextPath}/like.jsp">좋아요</a></li>
+              <li class="nav-item"><a class="like" href="${pageContext.request.contextPath}/myPage.jsp">${dbMember.mbName}</a>님</li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout">logout</a></li>
               <%} %>
             </ul>
           </div>
@@ -190,53 +190,54 @@
         </div>
         
         <div class="col-xl-9 col-lg-8 col-md-7">
-          <section class="mypage">
-          <header class="first-info-view-area"><span>기본회원정보<span>
-          <form class="ps-info-form" action="${pageContext.request.contextPath}/personalInfo.jsp">
-          <input type="hidden" name="key" value = "member" />
-		  <input type="hidden" name="methodName" value = "update" />
-          <input type="button" value="수정"  id="ps-info-update-btn">
-          
+          <header class="first-info-view-area"><span>기본회원정보</span>
+          &nbsp;<input type="button" value="수정"  id="ps-info-modify-btn">
           </header><hr>
+          <section class="mypage">
+          <form class="ps-info-form" id="ps-info-form" action="${pageContext.request.contextPath}/front">
+          
+          <input type="hidden" name="key" value = "member" />
+          <input type="hidden" name="methodName" value = "update" />
+          
           <button type="submit" class="ps-info-update-btn" name="ps-info-update-btn" id="ps-info-update-btn" value="submit">적용</button>
-          <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
+          <table class="table-my-info"  style="border-collapse:collapse; borderSpacing: 0px; padding: 0px">
           	<tr>
           		<th scope="row">아이디</th>
-          		<td colspan="2"><span name="ps-info-id">${dbMember.id}</span></td>
+          		<td colspan="2"><span id="ps-info-id">${dbMember.id}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">비밀번호</th>
           		<td colspan="2"><span>${dbMember.pwd}</span>
-          		&nbsp<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${dbMember.pwd}">
+          	&nbsp;<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${dbMember.pwd}"/>
           		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">이름</th>
-          		<td colspan="2"><span name="ps-info-name">${dbMember.mbName}</span></td>
+          		<td colspan="2"><span id="ps-info-name">${dbMember.mbName}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">이메일</th>
           		<td colspan="2"><span>${dbMember.email}</span>
-          		&nbsp<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${dbMember.email}">
+          		&nbsp;<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${dbMember.email}"/>
           		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">주소</th>
           		<td colspan="2"><span>${dbMember.addr}</span>
-          		&nbsp<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${dbMember.addr}">
+          		&nbsp;<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${dbMember.addr}"/>
           		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">주민등록번호</th>
-          		<td colspan="2"><span name="ps-info-jumin">${dbMember.jumin}</span></td>
+          		<td colspan="2"><span id="ps-info-jumin">${dbMember.jumin}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">전화번호</th>
           		<td colspan="2"><span>${dbMember.tel}</span>
-          		&nbsp<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${dbMember.tel}">
+          		&nbsp;<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${dbMember.tel}"/>
           		</td>
           	</tr>
           	<tr>
@@ -395,15 +396,51 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
   <script type="text/javascript">
-  	$(function() {
-		$("#ps-info-update-btn").click(function() {
+  	
+  $(function() {
+  		
+		$("#ps-info-modify-btn").click(function() {
 			$("#ps-info-pwd").show();
 			$("#ps-info-email").show();
 			$("#ps-info-addr").show();
 			$("#ps-info-tel").show();
 			$("#ps-info-update-btn").show();
-		})
-	})
+				
+		});
+	
+  	
+  		$("#ps-info-form").submit(function(){
+  				
+  			var str = "";
+  			
+  			if("${dbMember.pwd}" != $("#ps-info-pwd").val()){
+  				str += "비밀번호, ";
+  			}
+  			if("${dbMember.email}" != $("#ps-info-email").val()){
+  				str += "이메일, ";
+  			}
+  			if("${dbMember.addr}" != $("#ps-info-addr").val()){
+  				str += "주소, ";
+  			}
+  			if("${dbMember.tel}" != $("#ps-info-tel").val()){
+  				str += "핸드폰 번호, ";
+  			}
+  			
+  			str = str.substring(0, str.length-2);
+  			
+  			if(!confirm(str + "을 변경하시겠습니까?")){
+  				return false;
+  			} 
+  			
+  			
+  			
+  			
+  		});
+   		
+  	
+  	
+  	
+  	})
   </script>
 </body>
 </html>
