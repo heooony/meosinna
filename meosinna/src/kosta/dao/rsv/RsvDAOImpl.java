@@ -28,9 +28,9 @@ public class RsvDAOImpl implements RsvDAO {
 			ps.setInt(1, member.getMbCode());
 			rs = ps.executeQuery();
 			
-			where(rs.next()){
+			//while(rs.next()){
 				
-			}
+			//}
 		}finally {
 			
 		}

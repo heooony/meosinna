@@ -25,12 +25,12 @@ public class LikesController implements Controller {
 	
 	public ModelAndView selectLikes(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
-		Member dbMember = (Member) session.getAttribute("dbMember");
+		Member dbMember = (Member) session.getAttribute("member");
 		
 		List<Likes> list = likesService.selectLikes(dbMember.getMbCode());
 		session.setAttribute("list", list);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("elec/like.jsp");
+		mv.setViewName("/like.jsp");
 		
 		return mv;
 	}

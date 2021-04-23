@@ -61,7 +61,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">멤버</a>
                 <ul class="dropdown-menu">
-                  <%if(session.getAttribute("dbMember") == null){ %>
+                  <%if(session.getAttribute("member") == null){ %>
                   <li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
@@ -79,12 +79,12 @@
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <%if(session.getAttribute("dbMember") == null) {%>
+              <%if(session.getAttribute("member") == null) {%>
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
               <li class="nav-item"><button><a class="like" href="like.jsp">좋아요</a></li>
-              <li class="nav-item"><button><a class="like" href="myPage.jsp">${dbMember.mbName}</a>님</li>
+              <li class="nav-item"><button><a class="like" href="myPage.jsp">${member.mbName}</a>님</li>
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
               <%} %>
             </ul>
@@ -129,7 +129,7 @@
 					</div>
 				</div>
 				<c:choose>
-					<c:when test="${empty loginUser}">
+					<c:when test="${empty member}">
 						<div class="col-lg-6">
 							<div class="login_form_inner">
 								<h3>Log in to enter</h3>

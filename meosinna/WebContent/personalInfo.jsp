@@ -68,7 +68,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">멤버</a>
                 <ul class="dropdown-menu">
-                  <%if(session.getAttribute("dbMember") == null){ %>
+                  <%if(session.getAttribute("member") == null){ %>
                   <li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
@@ -86,7 +86,7 @@
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <%if(session.getAttribute("dbMember") == null) {%>
+              <%if(session.getAttribute("member") == null) {%>
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
@@ -110,7 +110,7 @@
 					<h1>마이페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp">${dbMember.mbName}</a></li>
+              <li class="breadcrumb-item"><a href="personalInfo.jsp">${member.mbName}</a></li>
               <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
@@ -202,46 +202,46 @@
           <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
           	<tr>
           		<th scope="row">아이디</th>
-          		<td colspan="2"><span name="ps-info-id">${dbMember.id}</span></td>
+          		<td colspan="2"><span name="ps-info-id">${member.id}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">비밀번호</th>
-          		<td colspan="2"><span>${dbMember.pwd}</span>
-          		&nbsp<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${dbMember.pwd}">
+          		<td colspan="2"><span>${member.pwd}</span>
+          		&nbsp<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${member.pwd}">
           		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">이름</th>
-          		<td colspan="2"><span name="ps-info-name">${dbMember.mbName}</span></td>
+          		<td colspan="2"><span name="ps-info-name">${member.mbName}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">이메일</th>
-          		<td colspan="2"><span>${dbMember.email}</span>
-          		&nbsp<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${dbMember.email}">
+          		<td colspan="2"><span>${member.email}</span>
+          		&nbsp<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${member.email}">
           		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">주소</th>
-          		<td colspan="2"><span>${dbMember.addr}</span>
-          		&nbsp<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${dbMember.addr}">
+          		<td colspan="2"><span>${member.addr}</span>
+          		&nbsp<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${member.addr}">
           		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">주민등록번호</th>
-          		<td colspan="2"><span name="ps-info-jumin">${dbMember.jumin}</span></td>
+          		<td colspan="2"><span name="ps-info-jumin">${member.jumin}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">전화번호</th>
-          		<td colspan="2"><span>${dbMember.tel}</span>
-          		&nbsp<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${dbMember.tel}">
+          		<td colspan="2"><span>${member.tel}</span>
+          		&nbsp<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${member.tel}">
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">가입일</th>
-          		<td colspan="2"><span>${dbMember.signUpDate}</span></td>
+          		<td colspan="2"><span>${member.signUpDate}</span></td>
           	</tr>
           </table>
           

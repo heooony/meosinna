@@ -88,7 +88,7 @@ public class MemberController implements Controller {
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();
-		session.setAttribute("dbMember", dbMember);
+		session.setAttribute("member", dbMember);
 		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
@@ -129,7 +129,7 @@ public class MemberController implements Controller {
 		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
 		memberService.update(dbMember);
 		
-		request.setAttribute("dbMember", dbMember);
+		request.setAttribute("member", dbMember);
 		
 		return new ModelAndView("personalInfo.jsp", true);
 	}
