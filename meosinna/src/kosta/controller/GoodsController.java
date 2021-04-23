@@ -29,7 +29,7 @@ public class GoodsController implements Controller {
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String encoding = "UTF-8";
 		
-		MultipartRequest m = 
+
 	}
 
 }
