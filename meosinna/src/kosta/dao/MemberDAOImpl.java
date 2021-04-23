@@ -78,6 +78,7 @@ public class MemberDAOImpl implements MemberDAO{
 			
 			result = ps.executeUpdate();
 		}finally{
+			con.commit();
 			DbUtil.dbClose(ps, con);
 		}
 		return result;

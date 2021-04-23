@@ -85,13 +85,13 @@ public class MemberController implements Controller {
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
 		
-		String name=request.getParameter("ps-info-name");
-		String id=request.getParameter("ps-info-id");
-		String pwd=request.getParameter("ps-info-pwd");
-		String email=request.getParameter("ps-info-email");
-		String addr=request.getParameter("ps-info-addr");
-		String tel= request.getParameter("ps-info-tel");
-		String jumin=request.getParameter("ps-info-jumin");
+		String name = request.getParameter("ps-info-name");
+		String id = request.getParameter("ps-info-id");
+		String pwd = request.getParameter("ps-info-pwd");
+		String email = request.getParameter("ps-info-email");
+		String addr = request.getParameter("ps-info-addr");
+		String tel = request.getParameter("ps-info-tel");
+		String jumin = request.getParameter("ps-info-jumin");
 		
 		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
 		memberService.update(dbMember);
