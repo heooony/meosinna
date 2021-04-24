@@ -45,4 +45,14 @@ public class OrderController implements Controller {
 		return mv;
 	}
 	
+	public ModelAndView viewAllOrder(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException, SQLException {
+		
+		List<Order> orderList = service.viewAllOrders();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("viewAllOrders.jsp");
+		
+		return mv;
+	}
 }

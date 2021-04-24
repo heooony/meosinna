@@ -28,6 +28,8 @@ public class SingleProductFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String gdCode = request.getParameter("gdCode");
+		
+		
 		//Controller controller = new GoodsController();
 		
 		

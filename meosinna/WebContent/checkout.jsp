@@ -67,7 +67,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<a class="navbar-brand logo_h" href="index.html"><img
-						src="img/logo.png" alt=""></a>
+						src="img/logo3.png" alt="" width="100px"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -262,7 +262,7 @@
 									& conditions*</a>
 							</div>
 							<div class="text-center">
-								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">Proceed to Paypal</a>
+								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">결제하기</a>
 							</div>
 						</div>
 					</div>
