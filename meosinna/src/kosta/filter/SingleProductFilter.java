@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kosta.controller.GoodsController;
 
@@ -30,9 +31,8 @@ public class SingleProductFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String gdCode = request.getParameter("gdCode");
-		request.setAttribute("gdCode", gdCode);
 		GoodsController controller = new GoodsController();
-		controller.selectByGdCode((HttpServletRequest)request, (HttpServletResponse)response);
+		controller.selectByGdCode((HttpServletRequest)request, (HttpServletResponse)response,  gdCode);
 		chain.doFilter(request, response);
 	}
 

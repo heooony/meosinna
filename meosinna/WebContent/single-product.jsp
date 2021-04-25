@@ -119,7 +119,7 @@
 				<div class="col-lg-6">
 					<div class="owl-carousel owl-theme s_Product_carousel">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+							<img class="img-fluid" src="${requestScope.goods.img}" alt="">
 						</div>
 						<!-- <div class="single-prd-item">
 							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
@@ -131,8 +131,8 @@
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>${requestScope.gdName}</h3>
-						<h2>₩${requestScope.price}</h2>
+						<h3>${requestScope.goods.gdName}</h3>
+						<h2>₩${requestScope.goods.price}</h2>
 						<ul class="list">
 							<li><a class="active" href="#"><span>Category</span> :
 									Household</a></li>
@@ -144,10 +144,11 @@
 								id="sst" size="2" maxlength="12" value="1" title="Quantity:"
 								class="input-text qty">
 							<a class="button primary-btn"
-								href="front?key=cart&methodName=addToCart">Add to Cart</a>
+								href="front?key=cart&methodName=addToCart&gdCode=${requestScope.goods.gdCode}" id="add">Add to Cart</a>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<a class="icon_btn" href="${pageContext.request.contextPath}/front?key=goods&methodName=updateLikes&gdCode=${requestScope.gdCode}"><i class="lnr lnr lnr-heart"></i></a>
+							<a class="icon_btn" href="${pageContext.request.contextPath}/front?key=goods&methodName=updateLikes&gdCode=${requestScope.goods.gdCode}"><i class="lnr lnr lnr-heart"></i></a>
+							<div>${requestScope.goods.gdLike}</div>
 						</div>
 					</div>
 				</div>

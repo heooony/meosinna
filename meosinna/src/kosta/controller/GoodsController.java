@@ -26,9 +26,8 @@ public class GoodsController implements Controller {
 		return null;
 	}
 	
-	public ModelAndView selectByGdCode(HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView selectByGdCode(HttpServletRequest request, HttpServletResponse response, String gdCode)
 			throws ServletException, IOException {
-		String gdCode = (String)request.getAttribute("gdCode");
 		try {
 			Goods goods = goodsService.selectByGdCode(gdCode);
 			request.setAttribute("goods", goods);

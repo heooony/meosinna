@@ -32,12 +32,11 @@ public class CartDAOImpl implements CartDAO {
 			
 			while(rs.next()) {
 				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getInt(3), 
-						rs.getInt(4), rs.getInt(5), rs.getInt(6)));
+						rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7)));
 			}
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		
 		return list;
 	}
 	/** @author Lee SeungHyun
@@ -52,7 +51,7 @@ public class CartDAOImpl implements CartDAO {
 	public int addToCart(Goods goods , int qty, int mbCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		String sql="INSERT INTO CART VALUES(?,?,?,?,?,?)";
+		String sql="INSERT INTO CART VALUES(?,?,?,?,?,?,?)";
 		int result = 0;
 		
 		try {
@@ -64,6 +63,7 @@ public class CartDAOImpl implements CartDAO {
 			ps.setInt(4, goods.getPrice());
 			ps.setInt(5, qty);
 			ps.setInt(6, mbCode);
+			ps.setString(7,  goods.getImg());
 			result = ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(ps, con);

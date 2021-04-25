@@ -224,7 +224,7 @@
     					      <h4 class="card-product__title">${goods.gdName}</h4>
                     	</c:when>
                     	<c:otherwise>
-                    		<h4 class="card-product__title"><a href="#">${goods.gdName}</a></h4>
+                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
   						  </c:otherwise>
 					</c:choose>
                     <p class="card-product__price">₩${goods.price}</p>
