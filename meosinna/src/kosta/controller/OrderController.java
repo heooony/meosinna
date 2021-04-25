@@ -49,6 +49,9 @@ public class OrderController implements Controller {
 			throws ServletException, IOException, SQLException {
 		
 		List<Order> orderList = service.viewAllOrders();
+		HttpSession session = request.getSession();
+		session.setAttribute("orderList", orderList);
+		
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("viewAllOrders.jsp");

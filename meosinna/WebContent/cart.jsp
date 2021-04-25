@@ -152,6 +152,7 @@
                                       <input type="text" placeholder="Coupon Code">
                                       <a class="primary-btn" href="#">Apply</a>
                                       <a class="button" href="#">Have a Coupon?</a>
+                                      <a class="button" href="#">삭제하기</a>
                                   </div>
                               </td>
                           </tr>
