@@ -15,7 +15,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public int order(Order order, OrderLine orderLine, Payment payment) throws SQLException {
 		int result = dao.order(order, orderLine, payment);
-		return 0;
+		return result;
 	}
 	
 	@Override
@@ -24,3 +24,4 @@ public class OrderServiceImpl implements OrderService {
 		return list;
 	}
 }
+ 

@@ -93,10 +93,27 @@
             </thead>
             <tbody>
               <tr>
-             <c:forEach items="" var="i" varStatus="state"> 
+             <c:forEach items="${sessionScope.orderList}" var="order" varStatus="state"> 
+                
                 <td>
-                <c:out value="${i}"/>
+                <c:out value="${sessionScope.order.odCode}"/>
                 </td>
+                <td>
+                <c:out value="${sessionScope.order.mbName}"/>
+                </td>
+                <td>
+                <c:out value="${sessionScope.order.pay}"/>
+                </td>
+                <td>
+                <c:out value="${sessionScope.order.state}"/>
+                </td>
+                <td>
+                <c:out value="${sessionScope.order.gdCode}"/>
+                </td>
+                <td>
+                <c:out value="${sessionScope.order.mbCode}"/>
+                </td>
+                
               </c:forEach>
               </tr>
             </tbody>
