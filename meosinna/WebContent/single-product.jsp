@@ -138,7 +138,7 @@
 									Household</a></li>
 							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
 						</ul>
-						<p>${requestScope.gdContent}</p>
+						<p>${requestScope.gdCode}</p>
 						<div class="product_count">
 							<label for="qty">Quantity:</label> <input type="text" name="qty"
 								id="sst" size="2" maxlength="12" value="1" title="Quantity:"
@@ -147,8 +147,7 @@
 								href="front?key=cart&methodName=addToCart">Add to Cart</a>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+							<a class="icon_btn" href="${pageContext.request.contextPath}/front?key=goods&methodName=updateLikes&gdCode=${requestScope.gdCode}"><i class="lnr lnr lnr-heart"></i></a>
 						</div>
 					</div>
 				</div>

@@ -6,12 +6,11 @@ public class Goods {
 	private int price;
 	private String brand;
 	private int gdLike;
-	private String szCode;
 	private String stCode;
 	private String gdContent;
 	private String img;
 	
-	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, String szCode,
+	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, 
 			String stCode, String gdContent, String img) {
 		super();
 		this.gdCode = gdCode;
@@ -19,7 +18,6 @@ public class Goods {
 		this.price = price;
 		this.brand = brand;
 		this.gdLike = gdLike;
-		this.szCode = szCode;
 		this.stCode = stCode;
 		this.gdContent = gdContent;
 		this.img = img;
@@ -63,14 +61,6 @@ public class Goods {
 
 	public void setGdLike(int gdLike) {
 		this.gdLike = gdLike;
-	}
-
-	public String getSzCode() {
-		return szCode;
-	}
-
-	public void setSzCode(String szCode) {
-		this.szCode = szCode;
 	}
 
 	public String getStCode() {

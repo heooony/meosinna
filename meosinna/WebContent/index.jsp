@@ -80,7 +80,7 @@
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
               <li class="nav-item"><button><a class="like" href="like.jsp">좋아요</a></li>
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout">logout</a></li>
               <%} %>
             </ul>
           </div>
