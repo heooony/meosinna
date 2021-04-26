@@ -70,12 +70,17 @@ public class GoodsServiceImpl implements GoodsService {
 		return null;
 	}
 
-	
+	@Override
+	public List<Goods> selectAll(int pageNo) throws SQLException {
+		
+		return goodsDAO.getGoodsList(pageNo);
+	}
+
 	
 	@Override
 	public void updateLikes(String gdCode) throws SQLException {
 	  int result = goodsDAO.updateLikes(gdCode);   //updateLikes를 호출했다. 그리고 변수에 담아줄 거에요 
-	  System.out.println(gdCode+"짱");
+
 	if(result == 0) {
 		throw new SQLException("ERROR : 좋아요 수가 증가하지 않았습니다.");
 		
@@ -84,7 +89,6 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	public Goods selectByGdCode(String gdCode) throws SQLException {
-		System.out.println(gdCode);
 		Goods goods = goodsDAO.selectByGdCode(gdCode);
 		if(goods == null) {
 			throw new SQLException("ERROR : 해당하는 브랜드에 대한 상품정보가 없습니다.");
@@ -93,6 +97,16 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 	
 	
+	@Override
+	public Goods gdDetail(String gdCode) throws SQLException {
+		Goods goods = goodsDAO.gdDetail(gdCode);
+		if(goods == null) {
+			throw new SQLException("ERROR: 해당상품의 정보가 존재하지 않습니다.");
+		}
+		return goods;
+	}
+
+
 	
 
 	

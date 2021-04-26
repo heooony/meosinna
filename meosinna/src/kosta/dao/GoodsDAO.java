@@ -34,7 +34,12 @@ public interface GoodsDAO {
 	 * 가격대 검색 
 	 * */
 	 Goods selectByPrice(int gdPrice) throws SQLException; 
+	  
 	
+	/**
+	 * 좋아요 증가 기능???
+	 * */
+	int increamentByGdLike(String gdCode) throws SQLException;
 	
 	/**
 	* 레코드 삽입
@@ -54,7 +59,6 @@ public interface GoodsDAO {
 	* */
 	int update(Goods goods) throws SQLException;
 	
-	
 	/**
 	 * 품절여부 
 	 * -qty 0 될 때 이미지 opacity 0.2로
@@ -71,6 +75,19 @@ public interface GoodsDAO {
 	 * */
 	
 	int updateLikes(String gdCode) throws SQLException; 
+	
+	  /**
+	   * 상품 상세페이지 
+	   * 상품이름, 코드, 가격,, 등 정보 
+	   * return goods 
+	   * */
+	
+	Goods gdDetail(String gdCode) throws SQLException; 
+
+	/**
+	 * 페이징
+	 * */
+	List<Goods> getGoodsList(int pageNo) throws SQLException;
 	
 	  
 }

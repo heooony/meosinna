@@ -9,9 +9,12 @@ public class Goods {
 	private String stCode;
 	private String gdContent;
 	private String img;
+	private int pageCnt;
 	
-	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, 
-			String stCode, String gdContent, String img) {
+
+	public Goods() {}
+
+	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, String stCode, String gdContent, String img) {
 		super();
 		this.gdCode = gdCode;
 		this.gdName = gdName;
@@ -38,6 +41,7 @@ public class Goods {
 	public void setGdName(String gdName) {
 		this.gdName = gdName;
 	}
+
 
 	public int getPrice() {
 		return price;
@@ -86,6 +90,15 @@ public class Goods {
 	public void setImg(String img) {
 		this.img = img;
 	}
+
+	public int getPageCnt() {
+		return pageCnt;
+	}
+
+	public void setPageCnt(int pageCnt) {
+		this.pageCnt = pageCnt;
+	}
 	
 	
+
 }

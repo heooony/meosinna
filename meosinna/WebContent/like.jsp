@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,15 +29,18 @@
 	padding-top: 20px;
 	padding-bottom: 20px;
 	}
+	.info{
+		padding: 10px;
+	}
   </style>
 </head>
 <body>
-  <!--================ Start Header Menu Area =================-->
+ <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo3.png" alt="" width="100px"></a>
+          <a class="navbar-brand logo_h" href="index.jsp"><img src="img/logo3.png" alt="" width="100px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -68,12 +73,12 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">멤버</a>
                 <ul class="dropdown-menu">
-                  <%if(session.getAttribute("loginUser") == null){ %>
+                  <%if(session.getAttribute("member") == null){ %>
                   <li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
                   <%}else{ %>
-                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">마이페이지</a></li>
+                  <li class="nav-item"><a class="nav-link" href="personalInfo.jsp">마이페이지</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
                   <li class="nav-item"><a class="nav-link" href="like.jsp">좋아요</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">주문배송조회</a></li>
@@ -86,11 +91,12 @@
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <%if(session.getAttribute("loginUser") == null) {%>
+              <%if(session.getAttribute("member") == null) {%>
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
-              <li class="nav-item"><button><a class="like" href="#">좋아요</a></li>
+              <li class="nav-item"><button><a class="like" href="like.jsp">좋아요</a></li>
+              <li class="nav-item"><button><a class="like" href="myPage.jsp">${member.mbName}</a>님</li>
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
               <%} %>
             </ul>
@@ -109,7 +115,7 @@
 					<h1>마이페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp"><%=session.getAttribute("loginUser")%></a></li>
+              <li class="breadcrumb-item"><a href="personalInfo.jsp">${member.mbName}</a></li>
               <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
@@ -125,81 +131,76 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
-          <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
-            <ul class="main-categories">
-              <li class="common-filter">
-                <form action="#">
-                  <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Men<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">Women<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">Accessories<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">Footwear<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">Bay item<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">Electronics<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">Food<span> (3600)</span></label></li>
-                  </ul>
-                </form>
-              </li>
-            </ul>
-          </div>
+          
           <div class="sidebar-filter">
-            <div class="top-filter-head">Product Filters</div>
+            <div class="top-filter-head">My page</div>
             <div class="common-filter">
-              <div class="head">Brands</div>
+              <div class="head">쇼핑활동</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">주문 내역 조회</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">구매후기</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">장바구니</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">적립금</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">좋아요</label></li>
                 </ul>
               </form>
             </div>
             <div class="common-filter">
-              <div class="head">Color</div>
+              <div class="head">나의정보</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black
-                      Leather<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black
-                      with red<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">개인정보변경</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">회원탈퇴</label></li>
                 </ul>
               </form>
             </div>
-            <div class="common-filter">
-              <div class="head">Price</div>
-              <div class="price-range-area">
-                <div id="price-range"></div>
-                <div class="value-wrapper d-flex">
-                  <div class="price">Price:</div>
-                  <span>$</span>
-                  <div id="lower-value"></div>
-                  <div class="to">to</div>
-                  <span>$</span>
-                  <div id="upper-value"></div>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
-        
         <div class="col-xl-9 col-lg-8 col-md-7">
-          <section>
-         	<header class="first-info-view-area"><h5>좋아요</h5></header><hr>
-         		<ul class="like-list" id="product_list">
-         			<li class="product-row">
-         				<img>
-         				<a href="#">나이키</a>
-         				<a href="#">조던시리즈</a>
-         				<span>20000원</span>
-         				<div>좋아요개수</div> 
-         			</li>
-         		</ul>
+        
+          <!-- End Filter Bar -->
+          <!-- start likelist -->
+          <section class="lattest-product-area pb-40 category-list">
+          <div class="row">
+          <c:forEach items="${list}" var="likes">
+
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                  	
+                      <c:choose>
+    					<c:when test="${likes.goods.price eq '799000'}">
+                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px;">
+                    		<ul class="card-product__imgOverlay">
+                      		<li><button><i class="ti-search"></i></button></li>
+                    		<li><button><i class="ti-shopping-cart"></i></button></li>
+                      		<li><button><i class="ti-heart"></i></button></li>
+                    		</ul>
+  						  </c:otherwise>
+					</c:choose>
+                  </div>
+                  <div class="card-body">
+                    <p>Accessories</p>
+                    <c:choose>
+    					<c:when test="${likes.goods.price eq '799000'}">
+    					      <h4 class="card-product__title">${likes.goods.gdName}</h4>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${likes.goods.gdCode}">${likes.goods.gdName}</a></h4>
+  						  </c:otherwise>
+					</c:choose>
+                    <p class="card-product__price">₩${likes.goods.price}</p>
+                    <p class="card-product__likes_num">${likes.goods.gdLike}</p>
+                  </div>
+                </div>
+              </div>
+          </c:forEach>
+              </div>
           </section>
         </div>
         

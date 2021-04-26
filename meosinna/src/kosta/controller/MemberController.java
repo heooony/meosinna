@@ -26,9 +26,19 @@ public class MemberController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		return null;
 	}
+	
+	
+	/**
+	 * 1. 회원가입
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	
 	public ModelAndView register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		HttpSession session = request.getSession();
@@ -43,6 +53,9 @@ public class MemberController implements Controller {
 		String tel =  (String)request.getParameter("phone");
 		String address = addr1 + addr2;
 		
+		
+		//pwd와 confirm pwd의 일치여부 확인 필요
+		//아직 유효성 체크 구현 안됨
 		Member member = new Member(mbName, id, pwd, email, address, jumin, tel); 
 		
 		memberService.register(member);
@@ -52,6 +65,17 @@ public class MemberController implements Controller {
 		return mv;
 	}
 
+	
+	
+	
+	/**
+	 * 2. 로그인
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws Exception
+	 */
+	
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String userId=request.getParameter("userId");
 		String pwd=request.getParameter("pwd");
@@ -63,11 +87,20 @@ public class MemberController implements Controller {
 		HttpSession session = request.getSession();
 		session.setAttribute("member", dbMember);
 		
-		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
 		return mv;
 	}
+	
+	
+	
+	/**
+	 * 3. 로그아웃
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws Exception
+	 */
 	
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
@@ -76,24 +109,32 @@ public class MemberController implements Controller {
 		return new ModelAndView("index.jsp", true);
 	}
 	
+	
+	
+	
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
 		
-		String name=request.getParameter("ps-info-name");
-		String id=request.getParameter("ps-info-id");
-		String pwd=request.getParameter("ps-info-pwd");
-		String email=request.getParameter("ps-info-email");
-		String addr=request.getParameter("ps-info-addr");
-		String tel= request.getParameter("ps-info-tel");
-		String jumin=request.getParameter("ps-info-jumin");
-		
+		String name = request.getParameter("ps-info-name");
+		String id = request.getParameter("ps-info-id");
+		String pwd = request.getParameter("ps-info-pwd");
+		String email = request.getParameter("ps-info-email");
+		String addr = request.getParameter("ps-info-addr");
+		String tel = request.getParameter("ps-info-tel");
+		String jumin = request.getParameter("ps-info-jumin");
+	
 		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
 		memberService.update(dbMember);
+
 		
-		request.setAttribute("dbMember", dbMember);
+		request.setAttribute("member", dbMember);
+
 		
-		return new ModelAndView("personalInfo.jsp", true);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("personalInfo.jsp");
+		
+		return mv;
 	}
-	
 	
 }
