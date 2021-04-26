@@ -35,7 +35,7 @@
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo3.png" alt="" width="100px"></a>
+          <a class="navbar-brand logo_h" href="index.jsp"><img src="img/logo3.png" alt="" width="100px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -68,12 +68,12 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">멤버</a>
                 <ul class="dropdown-menu">
-                  <%if(session.getAttribute("loginUser") == null){ %>
+                  <%if(session.getAttribute("member") == null){ %>
                   <li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
                   <%}else{ %>
-                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">마이페이지</a></li>
+                  <li class="nav-item"><a class="nav-link" href="personalInfo.jsp">마이페이지</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
                   <li class="nav-item"><a class="nav-link" href="like.jsp">좋아요</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">주문배송조회</a></li>
@@ -86,12 +86,13 @@
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <%if(session.getAttribute("loginUser") == null) {%>
+              <%if(session.getAttribute("member") == null) {%>
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
-              <li class="nav-item"><button><a class="like" href="#">좋아요</a></li>
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
+              <li class="nav-item"><a class="like" href="${pageContext.request.contextPath}/like.jsp">좋아요</a></li>
+              <li class="nav-item"><a class="like" href="${pageContext.request.contextPath}/myPage.jsp">${dbMember.mbName}</a>님</li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout">logout</a></li>
               <%} %>
             </ul>
           </div>
@@ -109,7 +110,7 @@
 					<h1>마이페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp">${dbMember.mbName}</a></li>
+              <li class="breadcrumb-item"><a href="personalInfo.jsp">${member.mbName}</a></li>
               <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
@@ -125,122 +126,90 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
-          <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
-            <ul class="main-categories">
-              <li class="common-filter">
-                <form action="#">
-                  <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Men<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">Women<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">Accessories<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">Footwear<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">Bay item<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">Electronics<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">Food<span> (3600)</span></label></li>
-                  </ul>
-                </form>
-              </li>
-            </ul>
-          </div>
+          
           <div class="sidebar-filter">
-            <div class="top-filter-head">Product Filters</div>
+            <div class="top-filter-head">My page</div>
             <div class="common-filter">
-              <div class="head">Brands</div>
+              <div class="head">쇼핑활동</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">주문 내역 조회</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">구매후기</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">장바구니</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">적립금</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">좋아요</label></li>
                 </ul>
               </form>
             </div>
             <div class="common-filter">
-              <div class="head">Color</div>
+              <div class="head">나의정보</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black
-                      Leather<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black
-                      with red<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">개인정보변경</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">회원탈퇴</label></li>
                 </ul>
               </form>
             </div>
-            <div class="common-filter">
-              <div class="head">Price</div>
-              <div class="price-range-area">
-                <div id="price-range"></div>
-                <div class="value-wrapper d-flex">
-                  <div class="price">Price:</div>
-                  <span>$</span>
-                  <div id="lower-value"></div>
-                  <div class="to">to</div>
-                  <span>$</span>
-                  <div id="upper-value"></div>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
-        
         <div class="col-xl-9 col-lg-8 col-md-7">
-          <section class="mypage">
-          <header class="first-info-view-area"><span>기본회원정보<span>
-          <form class="ps-info-form" action="${pageContext.request.contextPath}/front">
-          <input type="hidden" name="key" value = "member" />
-		  <input type="hidden" name="methodName" value = "update" />
-          <input type="button" value="수정"  id="ps-info-update-btn">
-          
+        
+          <!-- End Filter Bar -->
+        
+          <header class="first-info-view-area"><span>기본회원정보</span>
+          &nbsp;<input type="button" value="수정"  id="ps-info-modify-btn">
           </header><hr>
+          <section class="mypage">
+          <form class="ps-info-form" id="ps-info-form" action="${pageContext.request.contextPath}/front">
+          
+          <input type="hidden" name="key" value = "member" />
+          <input type="hidden" name="methodName" value = "update" />
+          
           <button type="submit" class="ps-info-update-btn" name="ps-info-update-btn" id="ps-info-update-btn" value="submit">적용</button>
-          <table class="table-my-info"  cellpadding="0" cellspacing="0"  style="border-collapse:collapse">
+          <table class="table-my-info"  style="border-collapse:collapse; borderSpacing: 0px; padding: 0px">
           	<tr>
           		<th scope="row">아이디</th>
-          		<td colspan="2"><span name="ps-info-id">${dbMember.id}</span></td>
+          		<td colspan="2"><span>${member.id}</span>
+          		&nbsp;<input type="text" class="ps-info-id" name="ps-info-id" id="ps-info-id" style="display: none" value="${member.id}">          		
+          		</td>
           	</tr>
           	<tr>
           		<th scope="row">비밀번호</th>
-          		<td colspan="2"><span>${dbMember.pwd}</span>
-          		&nbsp<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${dbMember.pwd}">
-          		
+          		<td colspan="2"><span>${member.pwd}</span>
+          		&nbsp;<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${member.pwd}">          		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">이름</th>
-          		<td colspan="2"><span name="ps-info-name">${dbMember.mbName}</span></td>
+          		<td colspan="2"><span id="ps-info-name">${member.mbName}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">이메일</th>
-          		<td colspan="2"><span>${dbMember.email}</span>
-          		&nbsp<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${dbMember.email}">
-          		
+          		<td colspan="2"><span>${member.email}</span>
+          		&nbsp;<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${member.email}"> 		
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">주소</th>
-          		<td colspan="2"><span>${dbMember.addr}</span>
-          		&nbsp<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${dbMember.addr}">
-          		
+          		<td colspan="2"><span>${member.addr}</span>
+          		&nbsp;<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${member.addr}">
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">주민등록번호</th>
-          		<td colspan="2"><span name="ps-info-jumin">${dbMember.jumin}</span></td>
+          		<td colspan="2"><span id="ps-info-jumin">${member.jumin}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">전화번호</th>
-          		<td colspan="2"><span>${dbMember.tel}</span>
-          		&nbsp<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${dbMember.tel}">
+          		<td colspan="2"><span>${member.tel}</span>
+          		&nbsp;<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${member.tel}">
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">가입일</th>
-          		<td colspan="2"><span>${dbMember.signUpDate}</span></td>
+          		<td colspan="2"><span>${member.signUpDate}</span></td>
+          	
           	</tr>
           </table>
           
@@ -394,15 +363,51 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
   <script type="text/javascript">
-  	$(function() {
-		$("#ps-info-update-btn").click(function() {
+  	
+  $(function() {
+  		
+		$("#ps-info-modify-btn").click(function() {
 			$("#ps-info-pwd").show();
 			$("#ps-info-email").show();
 			$("#ps-info-addr").show();
 			$("#ps-info-tel").show();
 			$("#ps-info-update-btn").show();
-		})
-	})
+				
+		});
+	
+  	
+  		$("#ps-info-form").submit(function(){
+  				
+  			var str = "";
+  			
+  			if("${member.pwd}" != $("#ps-info-pwd").val()){
+  				str += "비밀번호, ";
+  			}
+  			if("${member.email}" != $("#ps-info-email").val()){
+  				str += "이메일, ";
+  			}
+  			if("${member.addr}" != $("#ps-info-addr").val()){
+  				str += "주소, ";
+  			}
+  			if("${member.tel}" != $("#ps-info-tel").val()){
+  				str += "핸드폰 번호, ";
+  			}
+  			
+  			str = str.substring(0, str.length-2);
+  			
+  			if(!confirm(str + "을 변경하시겠습니까?")){
+  				return false;
+  			} 
+  			
+  			
+  			
+  			
+  		});
+   		
+  	
+  	
+  	
+  	})
   </script>
 </body>
 </html>
