@@ -2,9 +2,6 @@ package kosta.controller;
 
 import java.io.IOException;
 
-
-
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -56,6 +53,7 @@ public class MemberController implements Controller {
 		String tel =  (String)request.getParameter("phone");
 		String address = addr1 + addr2;
 		
+
 		
 		//pwd와 confirm pwd의 일치여부 확인 필요
 		//아직 유효성 체크 구현 안됨
@@ -89,7 +87,7 @@ public class MemberController implements Controller {
 		//세션에정보저장
 		HttpSession session = request.getSession();
 		session.setAttribute("member", dbMember);
-		
+
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
 		return mv;

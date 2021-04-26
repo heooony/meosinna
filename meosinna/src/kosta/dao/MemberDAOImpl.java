@@ -15,7 +15,7 @@ public class MemberDAOImpl implements MemberDAO{
 		PreparedStatement ps = null;
 		int result = 0;
 		String sql = "INSERT INTO MEMBER VALUES (MB_CODE_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE)";
-
+		
 		
 		try {
 			con = DbUtil.getConnection();
