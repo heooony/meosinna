@@ -19,6 +19,15 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript"></script>
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js">
+  	$(function () {
+  		alert(1);
+  	})
+  
+  
+  </script>
+  
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -111,6 +120,7 @@
                               <th scope="col">Size</th>
                               <th scope="col">Quantity</th>
                               <th scope="col">Price</th>
+                              <th scope="col"></th>
                           </tr>
                       </thead>
                       <tbody>
@@ -135,11 +145,14 @@
                               <td>
                                   <h5>${cart.price}</h5>
                               </td>
+                              <td>
+                                  <h5><button style="background-color:white; border-color:#eeeeee; font-family:"나눔고딕코딩">삭제하기</button></h5>
+                              </td>
                           </tr>
                       </c:forEach>
                           <tr class="bottom_button">
                               <td>
-                                  <a class="button" href="front?key=cart&methodName=viewCart">Update Cart</a>
+                                  <!--  <a class="button" href="front?key=cart&methodName=viewCart">Update Cart</a> -->
                               </td>
                               <td>
 
@@ -149,10 +162,10 @@
                               </td>
                               <td>
                                   <div class="cupon_text d-flex align-items-center">
-                                      <input type="text" placeholder="Coupon Code">
-                                      <a class="primary-btn" href="#">Apply</a>
-                                      <a class="button" href="#">Have a Coupon?</a>
-                                      <a class="button" href="#">삭제하기</a>
+                                    <!--   <input type="text" placeholder="Coupon Code">
+                                    <a class="primary-btn" href="#">Apply</a>
+                                      <a class="button" href="#">Have a Coupon?</a> -->
+                                      <a class="button" href="#">장바구니 비우기</a>
                                   </div>
                               </td>
                           </tr>
@@ -167,7 +180,9 @@
                                   <h5>Subtotal</h5>
                               </td>
                               <td>
-                                  <h5>$2160.00</h5>
+                                  <h5>₩<% 
+                                  	
+                                  %></h5>
                               </td>
                           </tr>
                           <tr class="shipping_area">

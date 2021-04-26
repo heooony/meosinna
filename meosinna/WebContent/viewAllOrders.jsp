@@ -125,7 +125,7 @@
 	<footer class="footer">
 		<div class="footer-area">
 			<div class="container">
-				<div class="row section_gap">
+				<div class="row section_gap"> 
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title large_title">Our Mission</h4>
