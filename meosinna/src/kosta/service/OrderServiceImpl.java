@@ -5,6 +5,7 @@ import java.util.List;
 
 import kosta.dao.OrderDAO;
 import kosta.dao.OrderDAOImpl;
+import kosta.dto.Goods;
 import kosta.dto.Order;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
@@ -23,5 +24,6 @@ public class OrderServiceImpl implements OrderService {
 		List<Order> list = dao.viewAllOrders();
 		return list;
 	}
+
 }
  

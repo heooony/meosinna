@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kosta.dto.Goods;
 import kosta.dto.Order;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
@@ -24,19 +25,18 @@ public class OrderDAOImpl implements OrderDAO{
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, order.getOdCode());
-			ps.setString(2, order.getMbName());
-			ps.setString(3, order.getTel());
-			ps.setString(4, order.getAddr());
-			ps.setInt(5, order.getPay());
-			ps.setString(6, order.getState());
-			ps.setString(7, order.getGdCode());
-			ps.setInt(8, order.getMbCode());
-			
+			ps.setString(1, order.getMbName());
+			ps.setString(2, order.getTel());
+			ps.setString(3, order.getAddr());
+			ps.setInt(4, order.getPay());
+			ps.setString(5, order.getState());
+			ps.setString(6, order.getGdCode());
+			ps.setInt(7, order.getMbCode());
 			result = ps.executeUpdate();
 			
 			this.orderLine(con, orderLine);
 			this.payment(con, payment);
+			
 		} finally {
 			DbUtil.dbClose(ps, con);
 		}
@@ -47,16 +47,15 @@ public class OrderDAOImpl implements OrderDAO{
 	@Override
 	public int orderLine(Connection con, OrderLine orderLine) throws SQLException {
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO ORDERLINE VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ORDERLINE VALUES(?, ?, SYSDATE, ?, ?, ?, ?)";
 		int result = 0;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, orderLine.getOdCode());
-			ps.setString(2, orderLine.getGdName());
-			ps.setString(3, orderLine.getOdDate());
-			ps.setInt(4, orderLine.getQty());
-			ps.setInt(5, orderLine.getIsEvent());
-			ps.setString(6, orderLine.getReq());
+			ps.setString(1, orderLine.getGdName());
+			ps.setInt(2, orderLine.getQty());
+			ps.setInt(3, orderLine.getIsEvent());
+			ps.setString(4, orderLine.getReq());
+			ps.setInt(5, orderLine.getSize());
 			result = ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(ps, null);
@@ -67,16 +66,15 @@ public class OrderDAOImpl implements OrderDAO{
 	@Override
 	public int payment(Connection con, Payment payment) throws SQLException {
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO PAYMENT VALUES(?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO PAYMENT VALUES(?, ?, SYSDATE, ?, ?, ?)";
 		int result = 0;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, payment.getPyCode());
 			ps.setInt(2, payment.getOdCode());
-			ps.setString(3, payment.getPayDate());
-			ps.setInt(4, payment.getPay());
-			ps.setString(5, payment.getMethod());
-			ps.setString(6, payment.getState());
+			ps.setInt(3, payment.getPay());
+			ps.setString(4, payment.getMethod());
+			ps.setString(5, payment.getState());
 			result = ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(ps, null);
@@ -107,5 +105,4 @@ public class OrderDAOImpl implements OrderDAO{
 		}
 		return list;
 	}
-	
 }

@@ -114,7 +114,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                      <c:forEach items="${sessionScope.goodsList}" var="cart">
+                      <c:forEach items="${requestScope.goodsList}" var="cart">
                      	 <tr>
                               <td>
                                   <div class="media">
