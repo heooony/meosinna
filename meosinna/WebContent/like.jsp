@@ -195,6 +195,7 @@
   						  </c:otherwise>
 					</c:choose>
                     <p class="card-product__price">₩${likes.goods.price}</p>
+                    <p class="card-product__likes_num">${likes.goods.gdLike}</p>
                   </div>
                 </div>
               </div>
