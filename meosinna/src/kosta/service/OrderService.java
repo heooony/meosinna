@@ -2,6 +2,7 @@ package kosta.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import kosta.dao.MemberDAOImpl;
 
 import kosta.dto.Goods;
 import kosta.dto.Order;

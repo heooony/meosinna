@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 
   <!DOCTYPE html>
 <html lang="en">
@@ -20,17 +22,8 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
-<script>
-	$(function() {
-		for(let li : ${requestScope.list}) {
-			console.log(li);
-		}
-		console.log(list);
-	});
-</script>
-</head>
 
+</head>
 <body>
   <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
@@ -203,6 +196,7 @@
             </div>
           </div>
           <!-- End Filter Bar -->
+
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
           <div class="row">
@@ -444,7 +438,7 @@
 									Head Office
 								</p>
 								<p>123, Main Street, Your City</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
@@ -453,7 +447,6 @@
 									+123 456 7890 <br>
 									+123 456 7890
 								</p>
-	
 								<p class="sm-head">
 									<span class="fa fa-envelope"></span>
 									Email

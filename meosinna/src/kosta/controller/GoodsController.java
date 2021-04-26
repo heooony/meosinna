@@ -2,6 +2,7 @@ package kosta.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,7 +17,6 @@ import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
 
 public class GoodsController implements Controller {
-	
 	GoodsService goodsService = new GoodsServiceImpl();
 	
 	@Override
@@ -36,19 +36,26 @@ public class GoodsController implements Controller {
 		return mv;
 	}
 	
+
 	/**
 	 * 전체검색
 	 * */
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		List<Goods> list = goodsService.selectAll();
+		//   String pageNo = request.getParameter("pageNo");
+		  
+		//   if(pageNo==null || pageNo.equals("")) { 
+		// 	  pageNo="1"; 
+		//   }
+
+		// List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
 		request.setAttribute("list", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("category.jsp");
 		
 		return mv;
-	}
-	
+	} 
 	/**
 	 * 등록하기
 	 * */
@@ -150,6 +157,7 @@ public class GoodsController implements Controller {
 	 *가격대 검색 
 	 * */ 
  public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
        int  price = Integer.parseInt(request.getParameter("price"));
         
         Goods goods = goodsService.selectByPrice(price);
@@ -172,14 +180,17 @@ public class GoodsController implements Controller {
     	  ModelAndView mv = new ModelAndView("index.jsp", true);
   		
   		return mv;
-
  }
-	
       /**
-       * 품절여부 표시
+       * 상세페이지 이동
        * */
-	
-      
-	}
-	
+      public  ModelAndView gdDetail(HttpServletRequest request, HttpServletResponse response) throws Exception{
+ 	     String gdCode = request.getParameter("gdCode");  //얻어온 거 gdCode 그릇에 담기 ! 
+ 	     Goods goods = goodsService.gdDetail(gdCode);      //인수로 넣어줘서 서비스의 디테일호출하기 
+ 	     request.setAttribute("goods", goods);   
+ 	     ModelAndView mv = new ModelAndView();
+ 	     mv.setViewName("single-product.jsp");  
+       return mv; 
+       }
 
+}

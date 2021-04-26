@@ -48,6 +48,7 @@ public class CartController implements Controller {
 		String qty = "1"; //임시 수량
 		service.addToCart(goods, Integer.parseInt(qty), member.getMbCode());
 		ModelAndView mv = new ModelAndView("single-product.jsp", false);
+
 		return mv;
 	}
 }
