@@ -203,7 +203,9 @@
           <table class="table-my-info"  style="border-collapse:collapse; borderSpacing: 0px; padding: 0px">
           	<tr>
           		<th scope="row">아이디</th>
-          		<td colspan="2"><span name="ps-info-id">${member.id}</span></td>
+          		<td colspan="2"><span>${member.id}</span>
+          		&nbsp;<input type="text" class="ps-info-id" name="ps-info-id" id="ps-info-id" style="display: none" value="${member.id}">          		
+          		</td>
           	</tr>
           	<tr>
           		<th scope="row">비밀번호</th>
