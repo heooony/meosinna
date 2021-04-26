@@ -33,7 +33,6 @@ public class GoodsServiceImpl implements GoodsService {
 			throw new SQLException("ERROR : 상품코드가 일치하지 않습니다");
 		}
 		
-		
 
 	}
 
@@ -42,7 +41,6 @@ public class GoodsServiceImpl implements GoodsService {
 		List<Goods> list = goodsDAO.selectAll();
 		if(list.size()==0)throw new SQLException("ERROR : 등록된 상품정보가 없습니다.");
 		return list;
-		
 	}
 
 	@Override
@@ -79,10 +77,10 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	
-	
 	@Override
 	public void updateLikes(String gdCode) throws SQLException {
 	  int result = goodsDAO.updateLikes(gdCode);   //updateLikes를 호출했다. 그리고 변수에 담아줄 거에요 
+
 	if(result == 0) {
 		throw new SQLException("ERROR : 좋아요 수가 증가하지 않았습니다.");
 		
@@ -90,6 +88,15 @@ public class GoodsServiceImpl implements GoodsService {
 	
 	}
 
+	public Goods selectByGdCode(String gdCode) throws SQLException {
+		Goods goods = goodsDAO.selectByGdCode(gdCode);
+		if(goods == null) {
+			throw new SQLException("ERROR : 해당하는 브랜드에 대한 상품정보가 없습니다.");
+		}
+		return goods;
+	}
+	
+	
 	@Override
 	public Goods gdDetail(String gdCode) throws SQLException {
 		Goods goods = goodsDAO.gdDetail(gdCode);

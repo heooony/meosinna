@@ -1,6 +1,8 @@
 package kosta.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,28 +22,39 @@ public class GoodsController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		return null;
 	}
 	
+	public ModelAndView selectByGdCode(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		String gdCode = request.getParameter("gdCode");
+		Goods goods = goodsService.selectByGdCode(gdCode);
+		request.setAttribute("goods", goods);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("single-product.jsp");
+		return mv;
+	}
+	
+
 	/**
 	 * 전체검색
 	 * */
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		  String pageNo = request.getParameter("pageNo");
+		List<Goods> list = goodsService.selectAll();
+		//   String pageNo = request.getParameter("pageNo");
 		  
-		  if(pageNo==null || pageNo.equals("")) { 
-			  pageNo="1"; 
-		  }
+		//   if(pageNo==null || pageNo.equals("")) { 
+		// 	  pageNo="1"; 
+		//   }
 
-		List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
+		// List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
 		request.setAttribute("list", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("category.jsp");
 		
 		return mv;
-
 	} 
 	/**
 	 * 등록하기
@@ -69,7 +82,6 @@ public class GoodsController implements Controller {
 		
 		return new ModelAndView();//처리방식
 	}
-	
 	
 	/**
 	 * 수정하기
@@ -108,6 +120,11 @@ public class GoodsController implements Controller {
 		return mv;
 	}
 	
+	
+	
+	/**
+	 * 상품명 검색
+	 * */
 
 	public ModelAndView selectByGdName(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		String goodsName = request.getParameter("goodsName");
@@ -135,10 +152,12 @@ public class GoodsController implements Controller {
 	   return mv;
 	}
 	
+	
 	/**
 	 *가격대 검색 
 	 * */ 
-  public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
+ public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
        int  price = Integer.parseInt(request.getParameter("price"));
         
         Goods goods = goodsService.selectByPrice(price);
@@ -156,8 +175,8 @@ public class GoodsController implements Controller {
 	  * */
       
       public  ModelAndView updateLikes(HttpServletRequest request, HttpServletResponse response) throws Exception{
-         String gdCode= request.getParameter("gdCode");
-         
+    	  String gdCode = request.getParameter("gdCode");
+    	  goodsService.updateLikes(gdCode);
     	  ModelAndView mv = new ModelAndView("index.jsp", true);
   		
   		return mv;

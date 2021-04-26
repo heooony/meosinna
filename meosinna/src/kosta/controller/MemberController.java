@@ -2,8 +2,6 @@ package kosta.controller;
 
 import java.io.IOException;
 
-
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -14,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kosta.dao.MemberDAO;
 import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
 import kosta.controller.ModelAndView;
@@ -27,17 +26,27 @@ public class MemberController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		return null;
 	}
+	
+	
+	/**
+	 * 1. 회원가입
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 */
 	
 	public ModelAndView register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		HttpSession session = request.getSession();
 		String mbName = (String)request.getParameter("name");
 		String id =  (String)request.getParameter("id");
 		String pwd =  (String)request.getParameter("password");
-		String confimrPwd = (String)request.getParameter("confirmPassword");
-		String email =  (String)request.getParameter("confirmPassword");
+		String confirmPwd = (String)request.getParameter("confirmPassword");
+		String email =  (String)request.getParameter("email");
 		String addr1 =  (String)request.getParameter("address");
 		String addr2 =  (String)request.getParameter("addressDetail");		
 		String jumin =  (String)request.getParameter("jumin");
@@ -45,8 +54,8 @@ public class MemberController implements Controller {
 		String address = addr1 + addr2;
 		
 		
-		//�쑀�슚�꽦 泥댄겕 
-		//pwd confirmPwd 留ㅼ튂 �솗�씤 �븘�슂
+		//pwd와 confirm pwd의 일치여부 확인 필요
+		//아직 유효성 체크 구현 안됨
 		Member member = new Member(mbName, id, pwd, email, address, jumin, tel); 
 		
 		memberService.register(member);
@@ -56,6 +65,17 @@ public class MemberController implements Controller {
 		return mv;
 	}
 
+	
+	
+	
+	/**
+	 * 2. 로그인
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws Exception
+	 */
+	
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String userId=request.getParameter("userId");
 		String pwd=request.getParameter("pwd");
@@ -65,13 +85,22 @@ public class MemberController implements Controller {
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();
-		session.setAttribute("loginUser", dbMember.getId());
-		session.setAttribute("loginName", dbMember.getMbName());
+		session.setAttribute("member", dbMember);
 		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
 		return mv;
 	}
+	
+	
+	
+	/**
+	 * 3. 로그아웃
+	 * @param request
+	 * @param response
+	 * @return ModelAndView
+	 * @throws Exception
+	 */
 	
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
@@ -80,18 +109,32 @@ public class MemberController implements Controller {
 		return new ModelAndView("index.jsp", true);
 	}
 	
-	/*public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response)
+	
+	
+	
+	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
 		
-		HttpSession session = request.getSession();
-		session.
+		String name = request.getParameter("ps-info-name");
+		String id = request.getParameter("ps-info-id");
+		String pwd = request.getParameter("ps-info-pwd");
+		String email = request.getParameter("ps-info-email");
+		String addr = request.getParameter("ps-info-addr");
+		String tel = request.getParameter("ps-info-tel");
+		String jumin = request.getParameter("ps-info-jumin");
+	
+		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
+		memberService.update(dbMember);
+
+		
+		request.setAttribute("member", dbMember);
+
+		
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("myPage.jsp");
-		
+		mv.setViewName("personalInfo.jsp");
 		
 		return mv;
 	}
-*/
 	
 }

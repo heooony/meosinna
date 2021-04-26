@@ -11,6 +11,7 @@ public class Goods {
 	private String img;
 	private int pageCnt;
 	
+
 	public Goods() {}
 
 	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, String stCode, String gdContent, String img) {
@@ -65,7 +66,6 @@ public class Goods {
 	public void setGdLike(int gdLike) {
 		this.gdLike = gdLike;
 	}
-
 
 	public String getStCode() {
 		return stCode;

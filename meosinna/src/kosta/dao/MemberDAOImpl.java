@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import kosta.dto.Member;
 import kosta.exception.AuthenticationException;
 import kosta.util.DbUtil;
@@ -16,7 +15,7 @@ public class MemberDAOImpl implements MemberDAO{
 		PreparedStatement ps = null;
 		int result = 0;
 		String sql = "INSERT INTO MEMBER VALUES (MB_CODE_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE)";
-
+		
 		
 		try {
 			con = DbUtil.getConnection();
@@ -54,12 +53,34 @@ public class MemberDAOImpl implements MemberDAO{
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				dbMember = new Member(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				dbMember = new Member(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
 			}
 		}finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
 		return dbMember;
+	}
+	
+
+	@Override
+	public int update(Member dbMember) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "update member set pwd=?, email=?, addr=?, tel=? where id=?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dbMember.getPwd());
+			ps.setString(2, dbMember.getEmail());
+			ps.setString(3, dbMember.getAddr());
+			ps.setString(4, dbMember.getTel());
+			ps.setString(5, dbMember.getId());
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
 	}
 
 

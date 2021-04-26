@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -21,6 +22,7 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -98,6 +100,7 @@
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
+
 
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
@@ -483,4 +486,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
-</body></html>
+</body>
+</html>

@@ -91,6 +91,12 @@ public class Member {
 		this.signUpDate = signUpDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Member [mbCode=" + mbCode + ", mbName=" + mbName + ", id=" + id + ", pwd=" + pwd + ", email=" + email
+				+ ", addr=" + addr + ", jumin=" + jumin + ", tel=" + tel + ", signUpDate=" + signUpDate + "]";
+	}
 
+	
 	
 }

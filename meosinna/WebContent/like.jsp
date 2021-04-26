@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +17,8 @@
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
+
   <link rel="stylesheet" href="css/style.css">
-  
   <style type="text/css">
   td{
 	padding-top: 20px;
@@ -27,10 +29,13 @@
 	padding-top: 20px;
 	padding-bottom: 20px;
 	}
+	.info{
+		padding: 10px;
+	}
   </style>
 </head>
 <body>
-  <!--================ Start Header Menu Area =================-->
+ <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -90,9 +95,9 @@
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
-              <li class="nav-item"><a class="like" href="${pageContext.request.contextPath}/like.jsp">좋아요</a></li>
-              <li class="nav-item"><a class="like" href="${pageContext.request.contextPath}/myPage.jsp">${dbMember.mbName}</a>님</li>
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout">logout</a></li>
+              <li class="nav-item"><button><a class="like" href="like.jsp">좋아요</a></li>
+              <li class="nav-item"><button><a class="like" href="myPage.jsp">${member.mbName}</a>님</li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
               <%} %>
             </ul>
           </div>
@@ -156,102 +161,47 @@
         <div class="col-xl-9 col-lg-8 col-md-7">
         
           <!-- End Filter Bar -->
-        
-          <header class="first-info-view-area"><span>기본회원정보</span>
-          &nbsp;<input type="button" value="수정"  id="ps-info-modify-btn">
-          </header><hr>
-          <section class="mypage">
-          <form class="ps-info-form" id="ps-info-form" action="${pageContext.request.contextPath}/front">
-          
-          <input type="hidden" name="key" value = "member" />
-          <input type="hidden" name="methodName" value = "update" />
-          
-          <button type="submit" class="ps-info-update-btn" name="ps-info-update-btn" id="ps-info-update-btn" value="submit">적용</button>
-          <table class="table-my-info"  style="border-collapse:collapse; borderSpacing: 0px; padding: 0px">
-          	<tr>
-          		<th scope="row">아이디</th>
-          		<td colspan="2"><span>${member.id}</span>
-          		&nbsp;<input type="text" class="ps-info-id" name="ps-info-id" id="ps-info-id" style="display: none" value="${member.id}">          		
-          		</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">비밀번호</th>
-          		<td colspan="2"><span>${member.pwd}</span>
-          		&nbsp;<input type="text" class="ps-info-pwd" name="ps-info-pwd" id="ps-info-pwd" style="display: none" value="${member.pwd}">          		
-          		</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이름</th>
-          		<td colspan="2"><span id="ps-info-name">${member.mbName}</span></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이메일</th>
-          		<td colspan="2"><span>${member.email}</span>
-          		&nbsp;<input type="text" class="ps-info-email" name="ps-info-email" id="ps-info-email" style="display: none" value="${member.email}"> 		
-          		</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주소</th>
-          		<td colspan="2"><span>${member.addr}</span>
-          		&nbsp;<input type="text" class="ps-info-addr" name="ps-info-addr" id="ps-info-addr" style="display: none" value="${member.addr}">
-          		</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주민등록번호</th>
-          		<td colspan="2"><span id="ps-info-jumin">${member.jumin}</span></td>
-          	</tr>
-          	<tr>
-          		<th scope="row">전화번호</th>
-          		<td colspan="2"><span>${member.tel}</span>
-          		&nbsp;<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${member.tel}">
-          		</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">가입일</th>
-          		<td colspan="2"><span>${member.signUpDate}</span></td>
-          	
-          	</tr>
-          </table>
-          
-          </form>
-        	</section>
-        	<section>
-        		<header class="sample"><h5>샘플</h5></header><hr>
-        		<table>
-        			<tr>
-          		<th scope="row">아이디</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">비밀번호</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이름</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">이메일</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주소</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">주민등록번호</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">전화번호</th>
-          		<td colspan="2">**</td>
-          	</tr>
-          	<tr>
-          		<th scope="row">가입일</th>
-          		<td colspan="2">**</td>
-          	</tr>
-        		</table>
-        	</section>  
+          <!-- start likelist -->
+          <section class="lattest-product-area pb-40 category-list">
+          <div class="row">
+          <c:forEach items="${list}" var="likes">
+
+              <div class="col-md-6 col-lg-4">
+                <div class="card text-center card-product">
+                  <div class="card-product__img">
+                  	
+                      <c:choose>
+    					<c:when test="${likes.goods.price eq '799000'}">
+                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px;">
+                    		<ul class="card-product__imgOverlay">
+                      		<li><button><i class="ti-search"></i></button></li>
+                    		<li><button><i class="ti-shopping-cart"></i></button></li>
+                      		<li><button><i class="ti-heart"></i></button></li>
+                    		</ul>
+  						  </c:otherwise>
+					</c:choose>
+                  </div>
+                  <div class="card-body">
+                    <p>Accessories</p>
+                    <c:choose>
+    					<c:when test="${likes.goods.price eq '799000'}">
+    					      <h4 class="card-product__title">${likes.goods.gdName}</h4>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${likes.goods.gdCode}">${likes.goods.gdName}</a></h4>
+  						  </c:otherwise>
+					</c:choose>
+                    <p class="card-product__price">₩${likes.goods.price}</p>
+                    <p class="card-product__likes_num">${likes.goods.gdLike}</p>
+                  </div>
+                </div>
+              </div>
+          </c:forEach>
+              </div>
+          </section>
         </div>
         
       </div>
@@ -362,52 +312,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
-  <script type="text/javascript">
-  	
-  $(function() {
-  		
-		$("#ps-info-modify-btn").click(function() {
-			$("#ps-info-pwd").show();
-			$("#ps-info-email").show();
-			$("#ps-info-addr").show();
-			$("#ps-info-tel").show();
-			$("#ps-info-update-btn").show();
-				
-		});
-	
-  	
-  		$("#ps-info-form").submit(function(){
-  				
-  			var str = "";
-  			
-  			if("${member.pwd}" != $("#ps-info-pwd").val()){
-  				str += "비밀번호, ";
-  			}
-  			if("${member.email}" != $("#ps-info-email").val()){
-  				str += "이메일, ";
-  			}
-  			if("${member.addr}" != $("#ps-info-addr").val()){
-  				str += "주소, ";
-  			}
-  			if("${member.tel}" != $("#ps-info-tel").val()){
-  				str += "핸드폰 번호, ";
-  			}
-  			
-  			str = str.substring(0, str.length-2);
-  			
-  			if(!confirm(str + "을 변경하시겠습니까?")){
-  				return false;
-  			} 
-  			
-  			
-  			
-  			
-  		});
-   		
-  	
-  	
-  	
-  	})
-  </script>
 </body>
 </html>

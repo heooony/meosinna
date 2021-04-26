@@ -2944,7 +2944,8 @@ a {
 .order_details_table {
     background: #f1f6f7;
     padding: 30px;
-    margin-top: 75px
+    margin-top: 75px;
+    overflow: scroll;
 }
 
 @media (min-width: 767px) {
@@ -4817,11 +4818,9 @@ td th {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-top: 40px;
-	padding-bottom: 20px;
 }
 
 .sample{
 	padding-top: 80px;
-	padding-bottom: 20px;
 	
 }

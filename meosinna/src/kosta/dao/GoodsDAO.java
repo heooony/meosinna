@@ -41,7 +41,6 @@ public interface GoodsDAO {
 	 * */
 	int increamentByGdLike(String gdCode) throws SQLException;
 	
-	
 	/**
 	* 레코드 삽입
 	* @return : 1-삽입성공 , 0 - 삽입실패
