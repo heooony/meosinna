@@ -223,14 +223,14 @@
 							<h2>Your Order</h2>
 							<ul class="list">
 								<li><a href="#"><h4>
-											Product <span>Total</span>
+											Product <span>Price</span>
 										</h4></a></li>
 										<c:set var = "total" value = "0" />
 										<table>
 											<c:forEach items="${requestScope.goodsList}" var="cart">
 												<tr>
 													<td style="width: 200px">${cart.name} x ${cart.qty}</td>
-													<td><b>₩${cart.price}</b></td>
+													<td style="padding:5px"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₩${cart.price}</b></td>
 													<c:set var= "total" value="${total + cart.price}"/>
 												</tr>
 											</c:forEach>

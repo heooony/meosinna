@@ -33,7 +33,7 @@
   <style>
   	#deleteBtn{background-color:white; border-color:#eeeeee; 
   			   font-family: "Noto Sans KR", sans-serif; border-radius:6px;
-  			   box-shadow : 0 1px  3px -1px;}
+  			   box-shadow : 0 2px  4px -1px #bbbbff;}
   </style>
 </head>
 <body>
@@ -205,7 +205,7 @@
                               <td>
                                   <div class="shipping_box">
                                       <ul class="list">
-                                          <li class="active"><a href="#">배송비 : 2,500￦</a></li>
+                                          <li class="active"><a href="#">배송비 : 2,500 ￦</a></li>
                                       </ul>
                                       <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
                                       <select class="shipping_select">
@@ -235,7 +235,7 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                      <a class="gray_btn" href="#">Continue Shopping</a>
+                                      <a class="gray_btn" href="category.html">Continue Shopping</a>
                                       <a class="primary-btn ml-2" href="checkout.jsp">Proceed to checkout</a>
                                   </div>
                               </td>
@@ -271,7 +271,7 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Quick Links</h4>
 							<ul class="list">
-								<li><a href="#">Home</a></li>
+								<li><a href="index.jsp">Home</a></li>
 								<li><a href="#">Shop</a></li>
 								<li><a href="#">Blog</a></li>
 								<li><a href="#">Product</a></li>
