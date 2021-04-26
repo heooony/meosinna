@@ -143,6 +143,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		
 		return 0;
 	}
+	
 
 	
 	/**
@@ -153,7 +154,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "insert into good values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into goods values(?,?,?,?,?,?,?,?)";
 		
 		try {
 			con = DbUtil.getConnection();
@@ -223,7 +224,9 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return result;
 	}
 
-
+/**
+ * 상품코드 검색
+ * */
 	@Override
 	public Goods selectByGdCode(String gdCode) throws SQLException {
 		Connection con = null;
@@ -254,12 +257,54 @@ public class GoodsDAOImpl implements GoodsDAO {
 
 
 
+    
 	
+/**
+ * 좋아요 수 증가 
+ * */
+    
+@Override
+public int updateLikes(String gdCode) throws SQLException {
+	Connection con = null;
+	PreparedStatement ps = null;
+	int result = 0;  
+	String sql = "update goods set GD_LIKE = (GD_LIKE + 1) where gd_code = ?";
+	
+	try {
+		con = DbUtil.getConnection();
+		ps = con.prepareStatement(sql);
+		ps.setString(1, gdCode);
+	 
+		result = ps.executeUpdate();  
+		
+	}finally {
+		DbUtil.dbClose(ps, con);
+	}
+	return result;
+}
+
 
 	
+	/**
+	 * 품절여부
+	 * -qty 0이 될 때 이미지 opacity 0.2로
+	 * */
 	
-	
-	
+public int soldOut(int qty) throws SQLException{
+//   Connection con = null;
+//   PreparedStatement ps = null;
+//  int result =0; 
+//  String sql = " ";
+//  
+//  try {
+//	  con=DbUtil.getConnection();
+//	  ps= con.prepareStatement(sql);
+//	  ps.setString(, sql);
+//  }
+//return qty; 
+	return -0;
+   
+}
 
 	
 	

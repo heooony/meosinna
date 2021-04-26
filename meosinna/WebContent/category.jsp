@@ -20,7 +20,17 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+<script>
+	$(function() {
+		for(let li : ${requestScope.list}) {
+			console.log(li);
+		}
+		console.log(list);
+	});
+</script>
 </head>
+
 <body>
   <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
@@ -195,27 +205,43 @@
           <!-- End Filter Bar -->
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-          <c:forEach begin="1" end="3" var="goods">
           <div class="row">
+          <c:forEach items="${requestScope.list}" var="goods">
+
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
-                    <img class="card-img" src="img/product/product1.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
+                  	
+                      <c:choose>
+    					<c:when test="${goods.price eq '799000'}">
+                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px;">
+                    		<ul class="card-product__imgOverlay">
+                      		<li><button><i class="ti-search"></i></button></li>
+                    		<li><button><i class="ti-shopping-cart"></i></button></li>
+                      		<li><button><i class="ti-heart"></i></button></li>
+                    		</ul>
+  						  </c:otherwise>
+					</c:choose>
                   </div>
                   <div class="card-body">
                     <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
+                    <c:choose>
+    					<c:when test="${goods.price eq '799000'}">
+    					      <h4 class="card-product__title">${goods.gdName}</h4>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
+  						  </c:otherwise>
+					</c:choose>
+                    <p class="card-product__price">₩${goods.price}</p>
                   </div>
                 </div>
               </div>
-              </div>
           </c:forEach>
+              </div>
           </section>
           <!-- End Best Seller -->
         </div>

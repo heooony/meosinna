@@ -10,9 +10,8 @@ public class Goods {
 	private String gdContent;
 	private String img;
 	
-	public Goods() {}
-
-	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, String stCode, String gdContent, String img) {
+	public Goods(String gdCode, String gdName, int price, String brand, int gdLike, 
+			String stCode, String gdContent, String img) {
 		super();
 		this.gdCode = gdCode;
 		this.gdName = gdName;
@@ -64,7 +63,6 @@ public class Goods {
 		this.gdLike = gdLike;
 	}
 
-
 	public String getStCode() {
 		return stCode;
 	}
@@ -90,5 +88,4 @@ public class Goods {
 	}
 	
 	
-
 }

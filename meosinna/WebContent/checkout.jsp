@@ -67,7 +67,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<a class="navbar-brand logo_h" href="index.html"><img
-						src="img/logo.png" alt=""></a>
+						src="img/logo3.png" alt="" width="100px"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -226,16 +226,19 @@
 											Product <span>Total</span>
 										</h4></a></li>
 										<c:set var = "total" value = "0" />
-										<c:forEach items="${sessionScope.list}" var="cart">
-											<li><a href="#">${cart.name}<span class="middle">x
-												${cart.qty}</span> <span class="last">$${cart.price}</span></a></li>
-												<c:set var="Income" scope="session" value="${cart.price}"/>  
-												<c:set var= "total" value="${total + cart.price}"/>
-										</c:forEach>
+										<table>
+											<c:forEach items="${requestScope.goodsList}" var="cart">
+												<tr>
+													<td style="width: 200px">${cart.name} x ${cart.qty}</td>
+													<td><b>₩${cart.price}</b></td>
+													<c:set var= "total" value="${total + cart.price}"/>
+												</tr>
+											</c:forEach>
+										</table>
 								
 							</ul>
 							<ul class="list list_2">
-								<li><a href="#">Total <span>$<c:out value="${total}"/></span></a></li>
+								<li><a href="#">Total <span>₩<c:out value="${total}"/></span></a></li>
 							</ul>
 							<div class="payment_item">
 								<div class="radion_btn">
@@ -262,7 +265,7 @@
 									& conditions*</a>
 							</div>
 							<div class="text-center">
-								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">Proceed to Paypal</a>
+								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">결제하기</a>
 							</div>
 						</div>
 					</div>

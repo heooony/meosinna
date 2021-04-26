@@ -10,8 +10,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import kosta.controller.Controller;
+import kosta.controller.GoodsController;
 
 /**
  * Servlet Filter implementation class EncodingFilter
@@ -28,9 +31,8 @@ public class SingleProductFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String gdCode = request.getParameter("gdCode");
-		//Controller controller = new GoodsController();
-		
-		
+		request.getRequestDispatcher("front?key=goods&methodName=selectByGdCode&gdCode=" + gdCode).forward(request, response);
+		chain.doFilter(request, response);
 	}
 
 	/**
