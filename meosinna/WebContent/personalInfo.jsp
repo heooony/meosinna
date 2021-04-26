@@ -209,7 +209,6 @@
           	<tr>
           		<th scope="row">가입일</th>
           		<td colspan="2"><span>${member.signUpDate}</span></td>
-          		&nbsp;<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${member.tel}">
           	
           	</tr>
           </table>
