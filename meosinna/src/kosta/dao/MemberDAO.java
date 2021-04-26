@@ -9,5 +9,6 @@ public interface MemberDAO {
 	public int insert(Member member) throws SQLException;
 	public Member loginCheck(Member member) throws SQLException, AuthenticationException;
 	public int update(Member dbMember) throws SQLException;
+	public int delete(int mbCode) throws SQLException;
 
 }

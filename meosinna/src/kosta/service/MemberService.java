@@ -13,26 +13,35 @@ public class MemberService {
 
 		int result = dao.insert(member);
 
-		if(result==0) {
+		if (result == 0) {
 			throw new SQLException("완료되지 않았습니다.");
 
 		}
 	}
-	
-	public Member loginCheck(Member member) throws SQLException{
+
+	public Member loginCheck(Member member) throws SQLException {
 		Member dbMember = dao.loginCheck(member);
-		if(dbMember == null) {
+		if (dbMember == null) {
 			throw new SQLException("아이디와 비밀번호를 확인해주세요");
 		}
 		return dbMember;
 	}
-	
-	public void update(Member dbMember) throws SQLException{
+
+	public void update(Member dbMember) throws SQLException {
 		int result = dao.update(dbMember);
-		
-		if(result==0) {
+
+		if (result == 0) {
 			throw new SQLException("변경되지 않았습니다.");
 		}
+
+	}
+
+	public void delete(int mbCode) throws SQLException {
+		int result = dao.delete(mbCode);
 		
+		if (result == 0) {
+			throw new SQLException("회원 탈퇴에 실패하였습니다.");
+		}
+
 	}
 }

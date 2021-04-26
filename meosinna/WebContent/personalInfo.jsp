@@ -156,6 +156,12 @@
         <div class="col-xl-9 col-lg-8 col-md-7">
         
           <!-- End Filter Bar -->
+           <form class="ps-info-form" id="ps-withdrawl-form" action="${pageContext.request.contextPath}/front">
+          &nbsp;<input type="submit" class="ps-info-id" name="ps-withdrawl" id="ps-withdrawl" value="회원 탈퇴하기"> 
+          &nbsp;<input type="text" class="ps-info-id" name="ps-info-mbCode" id="ps-info-mbCode" style="display: none" value="${member.mbCode}">          		
+          <input type="hidden" name="key" value = "member" />
+          <input type="hidden" name="methodName" value = "delete" />
+          </form>
         
           <header class="first-info-view-area"><span>기본회원정보</span>
           &nbsp;<input type="button" value="수정"  id="ps-info-modify-btn">

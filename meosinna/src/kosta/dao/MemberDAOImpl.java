@@ -83,6 +83,21 @@ public class MemberDAOImpl implements MemberDAO{
 		return result;
 	}
 
-
+	@Override
+	public int delete(int mbCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "DELETE FROM MEMBER WHERE MB_CODE = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
 	
 }

@@ -138,4 +138,23 @@ public class MemberController implements Controller {
 		return mv;
 	}
 	
+	
+	
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response)
+			throws Exception{
+	
+		int mbCodeid = Integer.parseInt(request.getParameter("ps-info-mbCode"));
+		
+		
+		
+		memberService.delete(mbCodeid);
+		
+		ModelAndView mv = new ModelAndView("index.jsp", true);
+		
+		return mv;
+	}
+	
+	
+	
+	
 }
