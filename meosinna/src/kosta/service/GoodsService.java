@@ -68,4 +68,15 @@ public interface GoodsService {
 
 
 
+  /**
+   *  좋아요....
+   * */
+	public void updateLikes(String gdCode) throws SQLException; 
+	
+	/**
+	 * 상세페이지
+	 * */
+     public Goods gdDetail(String gdCode) throws SQLException; 
+
+	
 }

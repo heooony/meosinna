@@ -37,13 +37,13 @@ public class CartController implements Controller {
 			throws ServletException, IOException, NumberFormatException, SQLException {
 		HttpSession session = request.getSession();
 //		Goods goods = (Goods)session.getAttribute("goods");
-		Goods goods = new Goods("1", "kawai", 3, 30000, "nike", 10, "1", "1", "이 신발은 명품입니다.", "https://gcsevmfhfcsn4841109.gcdn.ntruss.com/data/jdsports_data/images/addimg/00/00/22/28/24/b_00160153_add.gif");
+		//Goods goods = new Goods("1", "kawai", 3, 30000, "nike", 10, "1", "1", "이 신발은 명품입니다.", "https://gcsevmfhfcsn4841109.gcdn.ntruss.com/data/jdsports_data/images/addimg/00/00/22/28/24/b_00160153_add.gif");
 //		String qty = request.getParameter("qty");
 		String qty = "1";
 //		Member member = (Member)session.getAttribute("member");
 		Member member = new Member();
 		
-		service.addToCart(goods, Integer.parseInt(qty), member.getMbCode());
+		//service.addToCart(goods, Integer.parseInt(qty), member.getMbCode());
 		ModelAndView mv = new ModelAndView("single-product.html", false);
 		return mv;
 	}

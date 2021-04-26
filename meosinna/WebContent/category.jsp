@@ -81,7 +81,7 @@
   </header>
 	<!--================ End Header Menu Area =================-->
 
-	<!-- ================ start banner area ================= -->
+	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
@@ -99,8 +99,7 @@
 	</section>
 	<!-- ================ end banner area ================= -->
 
-
-	<!-- ================ category section start ================= -->
+	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
@@ -194,44 +193,55 @@
             </div>
           </div>
           <!-- End Filter Bar -->
-          
+
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-            <div class="row">
-            
-          <c:forEach items="${requestScope.list}" var="goods" <%-- begin="1" end="9" --%>>  <!-- sessionScope.goods.qty~~~ --> 
+          <div class="row">
+          <c:forEach items="${requestScope.list}" var="goods">
+
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
-                  
-                  <!-- if -->     
-                    <!-- <img class="card-img" src="img/product/product1.png" alt="" style="opacity: 0.2">
-                    else --> 
-                      <img class="card-img" src="${goods.img}" alt="" >  
-                      
-                    
-                    
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                    
+                  	
+                      <c:choose>
+    					<c:when test="${goods.price eq '799000'}">
+                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px;">
+                    		<ul class="card-product__imgOverlay">
+                      		<li><button><i class="ti-search"></i></button></li>
+                    		<li><button><i class="ti-shopping-cart"></i></button></li>
+                      		<li><button><i class="ti-heart"></i></button></li>
+                    		</ul>
+  						  </c:otherwise>
+					</c:choose>
                   </div>
                   <div class="card-body">
-                    <p>Shoes</p>
-                    <h4 class="card-product__title"><a href="#">${goods.gdName}</a></h4>
-                    <p class="card-product__price">${goods.price}</p>
+                    <p>Accessories</p>
+                    <c:choose>
+    					<c:when test="${goods.price eq '799000'}">
+    					      <h4 class="card-product__title">${goods.gdName}</h4>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
+  						  </c:otherwise>
+					</c:choose>
+                    <p class="card-product__price">₩${goods.price}</p>
                   </div>
-                 </div>
-               </div>
-             </c:forEach>
-             </div>
-  			</section>
+                </div>
+              </div>
+          </c:forEach>
+              </div>
+          </section>
+          <!-- End Best Seller -->
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ category section end ================= -->		  
 
-	<!-- ================ category section end ================= -->
-
-	<!-- ================ top product area start ================= -->
+	<!-- ================ top product area start ================= -->	
 	<section class="related-product-area">
 		<div class="container">
 			<div class="section-intro pb-60px">
@@ -345,9 +355,9 @@
       </div>
 		</div>
 	</section>
-	<!-- ================ top product area end ================= -->
+	<!-- ================ top product area end ================= -->		
 
-	<!-- ================ Subscribe section start ================= -->
+	<!-- ================ Subscribe section start ================= -->		  
   <section class="subscribe-position">
     <div class="container">
       <div class="subscribe text-center">
@@ -366,14 +376,14 @@
 
           </form>
         </div>
-
+        
       </div>
     </div>
   </section>
-	<!-- ================ Subscribe section end ================= -->
+	<!-- ================ Subscribe section end ================= -->		  
 
 
-  <!--================ Start footer Area  =================-->
+  <!--================ Start footer Area  =================-->	
 	<footer>
 		<div class="footer-area">
 			<div class="container">
@@ -382,11 +392,11 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title large_title">Our Mission</h4>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no
+								So seed seed green that winged cattle in. Gathering thing made fly you're no 
 								divided deep moved us lan Gathering thing us land years living.
 							</p>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
+								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
 							</p>
 						</div>
 					</div>
@@ -434,7 +444,6 @@
 									+123 456 7890 <br>
 									+123 456 7890
 								</p>
-
 								<p class="sm-head">
 									<span class="fa fa-envelope"></span>
 									Email

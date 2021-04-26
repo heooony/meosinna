@@ -7,23 +7,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 import kosta.dto.Goods;
-import kosta.mvc.controller.ModelAndView;
-import kosta.mvc.dto.Electronics;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
 
 public class GoodsController implements Controller {
-	
 	GoodsService goodsService = new GoodsServiceImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		return null;
 	}
 	
@@ -33,17 +27,17 @@ public class GoodsController implements Controller {
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		List<Goods> list = goodsService.selectAll();
-		request.setAttribute("list", list);
+		request.setAttribute("list", list);   //  ( 프론트에서 쓸변수, 백에서 프론트로 넘길 때의 값 ) 연결해준다는 의미로.  프론트에서 쓸 수 있다고 값을 넣어줬다. !set(값을 넣어주는 거 ), get (값을 가지고 오기) 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("category.jsp");
 		
 		return mv;
-	}
-	
+
+	} 
 	/**
 	 * 등록하기
 	 * */
-	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	/*public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saveDir = request.getServletContext().getRealPath("/save");
 		String encoding = "UTF-8";
 		int maxSize = 1024*1024*100; //100MB
@@ -66,6 +60,7 @@ public class GoodsController implements Controller {
 		
 		return new ModelAndView();//처리방식
 	}
+	}*/
 	
 	/**
 	 * 수정하기
@@ -137,17 +132,42 @@ public class GoodsController implements Controller {
 	}
 	
 	/**
-	 * 가격대 검색
-	 * */
-	public ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		String Price = request.getParameter("price");
-		
-	   Goods goods  = goodsService.selectByPrice();
-		
-	   request.setAttribute("goods", goods);
-	   ModelAndView mv = new ModelAndView();
-	   mv.setViewName("category.jsp");
-	   return mv;
-	}
-	
+	 *가격대 검색 
+	 * */ 
+  public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
+       int  price = Integer.parseInt(request.getParameter("price"));
+        
+        Goods goods = goodsService.selectByPrice(price);
+        
+      request.setAttribute("price", price);
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("category.jsp");
+      return mv; 
+        
+ }
+      
+	 /**
+	  * 좋아요 기능
+	  *  - 메인페이지, 상세페이지에서 좋아요 버튼 누르면 회원에 연결. 
+	  * */
+      
+      public  ModelAndView updateLikes(HttpServletRequest request, HttpServletResponse response) throws Exception{
+         String gdCode= request.getParameter("gdCode");
+         
+    	  ModelAndView mv = new ModelAndView("index.jsp", true);
+  		
+  		return mv;
+ }
+      /**
+       * 상세페이지 이동
+       * */
+      public  ModelAndView gdDetail(HttpServletRequest request, HttpServletResponse response) throws Exception{
+ 	     String gdCode = request.getParameter("gdCode");  //얻어온 거 gdCode 그릇에 담기 ! 
+ 	     Goods goods = goodsService.gdDetail(gdCode);      //인수로 넣어줘서 서비스의 디테일호출하기 
+ 	     request.setAttribute("goods", goods);   
+ 	     ModelAndView mv = new ModelAndView();
+ 	     mv.setViewName("single-product.jsp");  
+       return mv; 
+       }
+
 }

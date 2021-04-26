@@ -64,10 +64,40 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	public Goods selectByPrice(int price) throws SQLException {
-		// TODO Auto-generated method stub
+		Goods goods = goodsDAO.selectByPrice(price);
+		if(goods==null) {
+			throw new SQLException("ERROR :설정하신 가격대의 상품정보가 없습니다.");
+		}
 		return null;
 	}
 
 	
 	
+	@Override
+	public void updateLikes(String gdCode) throws SQLException {
+	  int result = goodsDAO.updateLikes(gdCode);   //updateLikes를 호출했다. 그리고 변수에 담아줄 거에요 
+	if(result == 0) {
+		throw new SQLException("ERROR : 좋아요 수가 증가하지 않았습니다.");
+		
+	 }
+	
+	}
+
+	@Override
+	public Goods gdDetail(String gdCode) throws SQLException {
+		Goods goods = goodsDAO.gdDetail(gdCode);
+		if(goods == null) {
+			throw new SQLException("ERROR: 해당상품의 정보가 존재하지 않습니다.");
+		}
+		return goods;
+	}
+
+
+	
+
+	
+	
 }
+	
+	
+
