@@ -79,7 +79,7 @@
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
-              <li class="nav-item"><button><a class="like" href="/front?key=likes&methodName=selectLikes">좋아요</a></li>
+              <li class="nav-item"><button><a class="like" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
               <li class="nav-item"><button><a class="like" href="myPage.jsp">${member.mbName}</a>님</li>
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=likes&methodName=logout"">logout</a></li>
               <%} %>

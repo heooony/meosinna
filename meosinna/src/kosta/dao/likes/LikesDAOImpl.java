@@ -39,9 +39,8 @@ public class LikesDAOImpl implements LikesDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				goods = new Goods(null, rs.getString(1), rs.getInt(2), rs.getString(3), rs.getInt(4), null, null, rs.getString(5));
-				likes = new Likes(0, null, null, goods);
-				
+				goods = new Goods(null, rs.getString(1), rs.getInt(3), rs.getString(2), rs.getInt(4), null, null, rs.getString(5));
+				likes = new Likes(mbCode, null, null, goods);
 				list.add(likes);
 			}
 		}finally {

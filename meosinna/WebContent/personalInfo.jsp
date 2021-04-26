@@ -126,70 +126,37 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
-          <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
-            <ul class="main-categories">
-              <li class="common-filter">
-                <form action="#">
-                  <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Men<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">Women<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">Accessories<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">Footwear<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">Bay item<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">Electronics<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">Food<span> (3600)</span></label></li>
-                  </ul>
-                </form>
-              </li>
-            </ul>
-          </div>
+          
           <div class="sidebar-filter">
-            <div class="top-filter-head">Product Filters</div>
+            <div class="top-filter-head">My page</div>
             <div class="common-filter">
-              <div class="head">Brands</div>
+              <div class="head">쇼핑활동</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">주문 내역 조회</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">구매후기</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">장바구니</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">적립금</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">좋아요</label></li>
                 </ul>
               </form>
             </div>
             <div class="common-filter">
-              <div class="head">Color</div>
+              <div class="head">나의정보</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black
-                      Leather<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black
-                      with red<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">개인정보변경</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">회원탈퇴</label></li>
                 </ul>
               </form>
             </div>
-            <div class="common-filter">
-              <div class="head">Price</div>
-              <div class="price-range-area">
-                <div id="price-range"></div>
-                <div class="value-wrapper d-flex">
-                  <div class="price">Price:</div>
-                  <span>$</span>
-                  <div id="lower-value"></div>
-                  <div class="to">to</div>
-                  <span>$</span>
-                  <div id="upper-value"></div>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
-        
         <div class="col-xl-9 col-lg-8 col-md-7">
+        
+          <!-- End Filter Bar -->
+        
           <header class="first-info-view-area"><span>기본회원정보</span>
           &nbsp;<input type="button" value="수정"  id="ps-info-modify-btn">
           </header><hr>
