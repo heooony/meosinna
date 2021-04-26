@@ -24,4 +24,14 @@ public class CartServiceImpl implements CartService{
 		if(result == 0) throw new SQLException("장바구니에 추가되지 않았습니다.");
 	}
 	
+	public void deleteCart() throws SQLException {
+		
+	}
+	
+	public void clearCart(int mbCode) throws SQLException {
+		int result = dao.clearCart(mbCode);
+		if(result==0) throw new SQLException("장바구니가 비워지지 않았습니다.");
+	}
+	
+	
 }

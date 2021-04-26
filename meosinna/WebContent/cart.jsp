@@ -19,15 +19,22 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript"></script>
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js">
-  	$(function () {
-  		alert(1);
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+  	
+  $(function () {
+  		$(document).on("click","#deleteBtn",function() {
+  			$(location).attr("href","front?key=cart&methodName=deleteCart");
+  		})
+  	
   	})
   
-  
   </script>
-  
+  <style>
+  	#deleteBtn{background-color:white; border-color:#eeeeee; 
+  			   font-family: "Noto Sans KR", sans-serif; border-radius:6px;
+  			   box-shadow : 0 1px  3px -1px;}
+  </style>
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -124,6 +131,7 @@
                           </tr>
                       </thead>
                       <tbody>
+                      <c:set var="totalPrice" value="0"/>
                       <c:forEach items="${requestScope.goodsList}" var="cart">
                      	 <tr>
                               <td>
@@ -146,9 +154,10 @@
                                   <h5>${cart.price}</h5>
                               </td>
                               <td>
-                                  <h5><button style="background-color:white; border-color:#eeeeee; font-family:"나눔고딕코딩">삭제하기</button></h5>
+                                  <h5><button id="deleteBtn">삭제하기</button></h5>
                               </td>
                           </tr>
+                      <c:set var="totalPrice" value="${totalPrice + cart.price}"/>
                       </c:forEach>
                           <tr class="bottom_button">
                               <td>
@@ -165,7 +174,7 @@
                                     <!--   <input type="text" placeholder="Coupon Code">
                                     <a class="primary-btn" href="#">Apply</a>
                                       <a class="button" href="#">Have a Coupon?</a> -->
-                                      <a class="button" href="#">장바구니 비우기</a>
+                                      <div style="float:right;"><a class="button" href="front?key=cart&methodName=clearCart">장바구니 비우기</a></div>
                                   </div>
                               </td>
                           </tr>
@@ -177,12 +186,10 @@
 
                               </td>
                               <td>
-                                  <h5>Subtotal</h5>
+                                  <h4 style="font-size:2rem">Subtotal</h4>
                               </td>
                               <td>
-                                  <h5>₩<% 
-                                  	
-                                  %></h5>
+                                  <h4><c:out value="${totalPrice}"/>&nbsp;₩</h4>
                               </td>
                           </tr>
                           <tr class="shipping_area">
@@ -198,23 +205,20 @@
                               <td>
                                   <div class="shipping_box">
                                       <ul class="list">
-                                          <li><a href="#">Flat Rate: $5.00</a></li>
-                                          <li><a href="#">Free Shipping</a></li>
-                                          <li><a href="#">Flat Rate: $10.00</a></li>
-                                          <li class="active"><a href="#">Local Delivery: $2.00</a></li>
+                                          <li class="active"><a href="#">배송비 : 2,500￦</a></li>
                                       </ul>
                                       <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
                                       <select class="shipping_select">
-                                          <option value="1">Bangladesh</option>
-                                          <option value="2">India</option>
-                                          <option value="4">Pakistan</option>
+                                          <option value="1">대한민국(Republic of Korea)</option>
+                                         <!--   <option value="2">India</option>
+                                          <option value="4">Pakistan</option>-->
                                       </select>
                                       <select class="shipping_select">
                                           <option value="1">Select a State</option>
                                           <option value="2">Select a State</option>
                                           <option value="4">Select a State</option>
                                       </select>
-                                      <input type="text" placeholder="Postcode/Zipcode">
+                                      <input type="text" placeholder="Postcode/Zipcode" id="zipcode">
                                       <a class="gray_btn" href="#">Update Details</a>
                                   </div>
                               </td>

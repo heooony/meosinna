@@ -51,4 +51,35 @@ public class CartController implements Controller {
 
 		return mv;
 	}
+	
+	public ModelAndView deleteCart(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException, NumberFormatException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Member member = (Member)session.getAttribute("member");
+		//Goods goods = request.getattribute
+		
+		int mbCode = member.getMbCode();
+		// String gdCode = 
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cart.jsp");
+		return mv;
+	}
+	
+	public ModelAndView clearCart(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException, NumberFormatException, SQLException {
+		
+		HttpSession session = request.getSession();
+		Member member = (Member)session.getAttribute("member");
+		int mbCode = member.getMbCode();
+		
+		service.clearCart(mbCode);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cart.jsp");
+		return mv;
+	}
+	
 }

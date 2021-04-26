@@ -72,9 +72,27 @@ public class CartDAOImpl implements CartDAO {
 	}
 
 	@Override
-	public int delete() throws SQLException {
+	public int deleteCart() throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public int clearCart(int mbCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "DELETE FROM CART WHERE MB_CODE=?";
+		int result = 0;
+		try{
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return result;
 	}
 
 }
