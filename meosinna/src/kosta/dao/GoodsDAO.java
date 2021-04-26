@@ -84,4 +84,11 @@ public interface GoodsDAO {
 	   * */
 	
 	Goods gdDetail(String gdCode) throws SQLException; 
+
+	/**
+	 * 페이징
+	 * */
+	List<Goods> getGoodsList(int pageNo) throws SQLException;
+	
+	  
 }

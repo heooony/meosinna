@@ -14,6 +14,10 @@ public interface GoodsService {
 	 * */
 	List<Goods> selectAll() throws SQLException;
 	
+	/**
+	 * 페이징
+	 * */
+	List<Goods> selectAll(int pageNo) throws SQLException;
 
 	/**
 	 * 상품검색 - 상품명 별 검색

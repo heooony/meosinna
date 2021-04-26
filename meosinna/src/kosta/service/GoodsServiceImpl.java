@@ -42,6 +42,7 @@ public class GoodsServiceImpl implements GoodsService {
 		List<Goods> list = goodsDAO.selectAll();
 		if(list.size()==0)throw new SQLException("ERROR : 등록된 상품정보가 없습니다.");
 		return list;
+		
 	}
 
 	@Override
@@ -69,6 +70,12 @@ public class GoodsServiceImpl implements GoodsService {
 			throw new SQLException("ERROR :설정하신 가격대의 상품정보가 없습니다.");
 		}
 		return null;
+	}
+
+	@Override
+	public List<Goods> selectAll(int pageNo) throws SQLException {
+		
+		return goodsDAO.getGoodsList(pageNo);
 	}
 
 	

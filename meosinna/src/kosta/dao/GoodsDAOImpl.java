@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Properties;
 
 import kosta.dto.Goods;
+import kosta.dto.PageCnt;
 import kosta.util.DbUtil;
 
 public class GoodsDAOImpl implements GoodsDAO {
@@ -240,9 +241,75 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return dto;
 	}
 
+	
+	
+	 /*
+	  *  페이징
+	 * */
+	@Override
+	public List<Goods> getGoodsList(int pageNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps =null;
+		ResultSet rs =null;
+		List<Goods> list = new ArrayList<Goods>();
+		
+		String sql="SELECT * FROM (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM goods ORDER BY MODEL_NUM ASC) a WHERE ROWNUM <= ?)  WHERE rnum >= ?";
+		try {
+			int totalCount = getSelectTotalCount();
+			
+			PageCnt page= new PageCnt();
+			//전체 페이지 구하기 =>총상품수/페이지당 상품수 +1
+			page.setPageCnt(totalCount % page.getPageSize() == 0 ? totalCount / page.getPageSize() : totalCount / page.getPageSize() + 1);
+			page.setPageNo(pageNo);
+			
+			con = DbUtil.getConnection();
+			//전체 상품수 가져오기
+			ps= con.prepareStatement(sql);
+			ps.setInt(1, pageNo * page.getPageSize() );
+			ps.setInt(2, (pageNo - 1) * page.getPageSize() + 1);
+			
+			//상품 가져오기
+			rs = ps.executeQuery(); 
+			while(rs.next()) {
+				Goods goods = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(goods);
+			}
+			
+			
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
+	
 	/**
-	 * 좋아요 수 증가
-	 */
+	 * totalCount 총 컬럼수 카운트
+	 * */
+	public int getSelectTotalCount() throws SQLException{
+    	Connection con=null;
+		PreparedStatement ps =null;
+		ResultSet rs =null;
+		int result=0;
+		
+		String sql="select count(*) from goods";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				 result =rs.getInt(1);
+			}			
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return result;
+    }
+
 
 	@Override
 	public int updateLikes(String gdCode) throws SQLException {

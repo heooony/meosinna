@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import kosta.dto.Goods;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
@@ -26,8 +29,14 @@ public class GoodsController implements Controller {
 	 * */
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		List<Goods> list = goodsService.selectAll();
-		request.setAttribute("list", list);   //  ( 프론트에서 쓸변수, 백에서 프론트로 넘길 때의 값 ) 연결해준다는 의미로.  프론트에서 쓸 수 있다고 값을 넣어줬다. !set(값을 넣어주는 거 ), get (값을 가지고 오기) 
+		  String pageNo = request.getParameter("pageNo");
+		  
+		  if(pageNo==null || pageNo.equals("")) { 
+			  pageNo="1"; 
+		  }
+		  
+		List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
+		request.setAttribute("list", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("category.jsp");
 		
@@ -37,10 +46,10 @@ public class GoodsController implements Controller {
 	/**
 	 * 등록하기
 	 * */
-	/*public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saveDir = request.getServletContext().getRealPath("/save");
 		String encoding = "UTF-8";
-		int maxSize = 1024*1024*100; //100MB
+		int maxSize = 1024*1024*100; //300MB
 		
 		MultipartRequest m = new MultipartRequest(request, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
 		
@@ -60,7 +69,7 @@ public class GoodsController implements Controller {
 		
 		return new ModelAndView();//처리방식
 	}
-	}*/
+	
 	
 	/**
 	 * 수정하기
@@ -99,11 +108,6 @@ public class GoodsController implements Controller {
 		return mv;
 	}
 	
-	
-	
-	/**
-	 * 상품명 검색
-	 * */
 
 	public ModelAndView selectByGdName(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		String goodsName = request.getParameter("goodsName");
