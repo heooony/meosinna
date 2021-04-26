@@ -127,6 +127,7 @@
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="myInfo"><label for="gionee">장바구니</label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="myInfo"><label for="micromax">적립금</label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung">좋아요</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></label></li>
                 </ul>
               </form>
             </div>

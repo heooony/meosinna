@@ -160,47 +160,26 @@
           </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
-          <!-- End Filter Bar -->
-          <!-- start likelist -->
-          <section class="lattest-product-area pb-40 category-list">
-          <div class="row">
-          <c:forEach items="${list}" var="likes">
-
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                  	
-                      <c:choose>
-    					<c:when test="${likes.goods.price eq '799000'}">
-                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
-                    	</c:when>
-                    	<c:otherwise>
-                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px;">
-                    		<ul class="card-product__imgOverlay">
-                      		<li><button><i class="ti-search"></i></button></li>
-                    		<li><button><i class="ti-shopping-cart"></i></button></li>
-                      		<li><button><i class="ti-heart"></i></button></li>
-                    		</ul>
-  						  </c:otherwise>
-					</c:choose>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <c:choose>
-    					<c:when test="${likes.goods.price eq '799000'}">
-    					      <h4 class="card-product__title">${likes.goods.gdName}</h4>
-                    	</c:when>
-                    	<c:otherwise>
-                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${likes.goods.gdCode}">${likes.goods.gdName}</a></h4>
-  						  </c:otherwise>
-					</c:choose>
-                    <p class="card-product__price">₩${likes.goods.price}</p>
-                    <p class="card-product__likes_num">${likes.goods.gdLike}</p>
-                  </div>
-                </div>
-              </div>
-          </c:forEach>
-              </div>
+                  <!-- start likelist -->
+          <section class="goods-question-list">
+			<table>
+				<thead>
+					<tr>
+						<th>상품정보</th>
+						<th>문의내용</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${gqList}" var="gqList">
+						<tr>
+							<td>${gqList.goods.gdName}</td>
+							<td>${gqList.gqContent}</td>
+							<td>${gqList.rgDate}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
           </section>
         </div>
         
