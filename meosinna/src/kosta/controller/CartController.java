@@ -31,7 +31,8 @@ public class CartController implements Controller {
 		int mbCode = member.getMbCode();
 		List<CartDTO> goodsList = service.viewCart(mbCode);
 		request.setAttribute("goodsList", goodsList);
-		ModelAndView mv = new ModelAndView("checkout.jsp",false);
+		String path = (String)request.getAttribute("path");
+		ModelAndView mv = new ModelAndView(path,false);
 		return mv;
 	}
 	
