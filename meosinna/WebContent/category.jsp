@@ -20,7 +20,17 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+<script>
+	$(function() {
+		for(let li : ${requestScope.list}) {
+			console.log(li);
+		}
+		console.log(list);
+	});
+</script>
 </head>
+
 <body>
   <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
@@ -205,7 +215,6 @@
                       <c:choose>
     					<c:when test="${goods.price eq '799000'}">
                     		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
-                    		<div style="position: relative;">품절</div>
                     	</c:when>
                     	<c:otherwise>
                     		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px;">

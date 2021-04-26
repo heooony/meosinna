@@ -26,16 +26,14 @@ public class GoodsController implements Controller {
 		return null;
 	}
 	
-	public ModelAndView selectByGdCode(HttpServletRequest request, HttpServletResponse response, String gdCode)
-			throws ServletException, IOException {
-		try {
-			Goods goods = goodsService.selectByGdCode(gdCode);
-			request.setAttribute("goods", goods);
-			System.out.println("execute");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public ModelAndView selectByGdCode(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		String gdCode = request.getParameter("gdCode");
+		Goods goods = goodsService.selectByGdCode(gdCode);
+		request.setAttribute("goods", goods);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("single-product.jsp");
+		return mv;
 	}
 	
 	/**

@@ -30,9 +30,8 @@ public class CartController implements Controller {
 		Member member = (Member) session.getAttribute("member");
 		int mbCode = member.getMbCode();
 		List<CartDTO> goodsList = service.viewCart(mbCode);
-		
-		session.setAttribute("goodsList", goodsList);
-		ModelAndView mv = new ModelAndView("cart.jsp",false);
+		request.setAttribute("goodsList", goodsList);
+		ModelAndView mv = new ModelAndView("checkout.jsp",false);
 		return mv;
 	}
 	

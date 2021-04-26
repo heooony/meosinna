@@ -31,8 +31,7 @@ public class SingleProductFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String gdCode = request.getParameter("gdCode");
-		GoodsController controller = new GoodsController();
-		controller.selectByGdCode((HttpServletRequest)request, (HttpServletResponse)response,  gdCode);
+		request.getRequestDispatcher("front?key=goods&methodName=selectByGdCode&gdCode=" + gdCode).forward(request, response);
 		chain.doFilter(request, response);
 	}
 
