@@ -134,8 +134,8 @@
               <div class="head">나의정보</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">개인정보변경</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">회원탈퇴</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo">개인정보변경</li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="myInfo">회원탈퇴</li>
                 </ul>
               </form>
             </div>
@@ -414,5 +414,30 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript"></script>
+  <script>
+  
+	$(function() {
+
+		//정남님...id이름 짓기 힘드셨군요..
+		 $("myInfo").click(function () {
+			
+			 alert(1);
+			 
+			 
+		});
+		 
+		
+		
+		
+		
+		
+		
+	})//Jquery끝  
+  
+  
+  
+  </script>
+  
 </body>
 </html>
