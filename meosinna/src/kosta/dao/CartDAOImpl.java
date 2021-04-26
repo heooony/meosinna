@@ -1,6 +1,7 @@
 package kosta.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import kosta.dto.CartDTO;
 import kosta.dto.Goods;
-import kosta.dto.SizeDTO;
 import kosta.util.DbUtil;
 
 public class CartDAOImpl implements CartDAO {

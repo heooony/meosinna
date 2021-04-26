@@ -1,11 +1,11 @@
 package kosta.dao;
 
 import java.sql.SQLException;
+
 import java.util.List;
 
 import kosta.dto.CartDTO;
 import kosta.dto.Goods;
-import kosta.dto.SizeDTO;
 
 public interface CartDAO {
 	/**
