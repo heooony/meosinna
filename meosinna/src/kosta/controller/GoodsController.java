@@ -34,7 +34,7 @@ public class GoodsController implements Controller {
 		  if(pageNo==null || pageNo.equals("")) { 
 			  pageNo="1"; 
 		  }
-		  
+
 		List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
 		request.setAttribute("list", list);
 		ModelAndView mv = new ModelAndView();
@@ -49,7 +49,7 @@ public class GoodsController implements Controller {
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saveDir = request.getServletContext().getRealPath("/save");
 		String encoding = "UTF-8";
-		int maxSize = 1024*1024*100; //300MB
+		int maxSize = 1024*1024*100; //100MB
 		
 		MultipartRequest m = new MultipartRequest(request, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
 		

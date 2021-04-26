@@ -110,6 +110,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 						rs.getString(6), rs.getString(7), rs.getString(8));
 			}
 
+
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
@@ -117,11 +118,12 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return goods;
 	}
 
+
 	/**
 	 * 가격대 별 검색
 	 */
 	@Override
-	public Goods selectByPrice(int GdPrice) throws SQLException {
+	public Goods selectByPrice(int price) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -253,7 +255,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		ResultSet rs =null;
 		List<Goods> list = new ArrayList<Goods>();
 		
-		String sql="SELECT * FROM (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM goods ORDER BY MODEL_NUM ASC) a WHERE ROWNUM <= ?)  WHERE rnum >= ?";
+		String sql="SELECT * FROM (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM goods ORDER BY gd_name ASC) a WHERE ROWNUM <= ?)  WHERE rnum >= ?";
 		try {
 			int totalCount = getSelectTotalCount();
 			
