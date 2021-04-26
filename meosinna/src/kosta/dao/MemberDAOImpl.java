@@ -75,9 +75,7 @@ public class MemberDAOImpl implements MemberDAO{
 			ps.setString(3, dbMember.getAddr());
 			ps.setString(4, dbMember.getTel());
 			ps.setString(5, dbMember.getId());
-			System.out.println(dbMember);
 			result = ps.executeUpdate();
-			System.out.println(result);
 		}finally{
 			DbUtil.dbClose(ps, con);
 		}
