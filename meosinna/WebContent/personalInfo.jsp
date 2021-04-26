@@ -215,7 +215,7 @@
           	</tr>
           	<tr>
           		<th scope="row">이름</th>
-          		<td colspan="2"><span name="ps-info-name">${member.mbName}</span></td>
+          		<td colspan="2"><span id="ps-info-name">${member.mbName}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">이메일</th>
@@ -231,17 +231,19 @@
           	</tr>
           	<tr>
           		<th scope="row">주민등록번호</th>
-          		<td colspan="2"><span name="ps-info-jumin">${member.jumin}</span></td>
+          		<td colspan="2"><span id="ps-info-jumin">${member.jumin}</span></td>
           	</tr>
           	<tr>
           		<th scope="row">전화번호</th>
           		<td colspan="2"><span>${member.tel}</span>
-          		&nbsp<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${member.tel}">
+          		&nbsp;<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${member.tel}">
           		</td>
           	</tr>
           	<tr>
           		<th scope="row">가입일</th>
           		<td colspan="2"><span>${member.signUpDate}</span></td>
+          		&nbsp;<input type="text" class="ps-info-tel" name="ps-info-tel" id="ps-info-tel" style="display: none" value="${member.tel}">
+          	
           	</tr>
           </table>
           
