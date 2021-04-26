@@ -380,16 +380,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   				
   			var str = "";
   			
-  			if("${dbMember.pwd}" != $("#ps-info-pwd").val()){
+  			if("${member.pwd}" != $("#ps-info-pwd").val()){
   				str += "비밀번호, ";
   			}
-  			if("${dbMember.email}" != $("#ps-info-email").val()){
+  			if("${member.email}" != $("#ps-info-email").val()){
   				str += "이메일, ";
   			}
-  			if("${dbMember.addr}" != $("#ps-info-addr").val()){
+  			if("${member.addr}" != $("#ps-info-addr").val()){
   				str += "주소, ";
   			}
-  			if("${dbMember.tel}" != $("#ps-info-tel").val()){
+  			if("${member.tel}" != $("#ps-info-tel").val()){
   				str += "핸드폰 번호, ";
   			}
   			

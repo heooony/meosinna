@@ -60,6 +60,7 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 		return dbMember;
 	}
+	
 
 	@Override
 	public int update(Member dbMember) throws SQLException {

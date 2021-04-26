@@ -127,7 +127,6 @@ public class MemberController implements Controller {
 		String jumin = request.getParameter("ps-info-jumin");
 	
 		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
-		System.out.println(dbMember);
 		memberService.update(dbMember);
 
 		
@@ -135,7 +134,10 @@ public class MemberController implements Controller {
 
 		
 		
-		return new ModelAndView("personalInfo.jsp", true);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("personalInfo.jsp");
+		
+		return mv;
 	}
 	
 }
