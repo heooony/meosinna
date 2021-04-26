@@ -20,7 +20,7 @@ public class OrderDAOImpl implements OrderDAO{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO G_ORDER VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO G_ORDER VALUES(SEQ_OD_CODE.NEXTVAL,?,?,?,?,?,?,?)";
 
 		try {
 			con = DbUtil.getConnection();
@@ -52,10 +52,11 @@ public class OrderDAOImpl implements OrderDAO{
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, orderLine.getGdName());
-			ps.setInt(2, orderLine.getQty());
-			ps.setInt(3, orderLine.getIsEvent());
-			ps.setString(4, orderLine.getReq());
-			ps.setInt(5, orderLine.getSize());
+			ps.setString(2, orderLine.getGdName());
+			ps.setInt(3, orderLine.getQty());
+			ps.setInt(4, orderLine.getIsEvent());
+			ps.setString(5, orderLine.getReq());
+			ps.setInt(6, orderLine.getSize());
 			result = ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(ps, null);
@@ -66,15 +67,14 @@ public class OrderDAOImpl implements OrderDAO{
 	@Override
 	public int payment(Connection con, Payment payment) throws SQLException {
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO PAYMENT VALUES(?, ?, SYSDATE, ?, ?, ?)";
+		String sql = "INSERT INTO PAYMENT VALUES(SEQ_PY_CODE.NEXTVAL, ?, SYSDATE, ?, ?, ?)";
 		int result = 0;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, payment.getPyCode());
-			ps.setInt(2, payment.getOdCode());
-			ps.setInt(3, payment.getPay());
-			ps.setString(4, payment.getMethod());
-			ps.setString(5, payment.getState());
+			ps.setInt(1, payment.getOdCode());
+			ps.setInt(2, payment.getPay());
+			ps.setString(3, payment.getMethod());
+			ps.setString(4, payment.getState());
 			result = ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(ps, null);
