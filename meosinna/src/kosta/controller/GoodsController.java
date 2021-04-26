@@ -11,8 +11,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kosta.dto.Goods;
-import kosta.mvc.controller.ModelAndView;
-import kosta.mvc.dto.Electronics;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
 
@@ -32,7 +30,15 @@ public class GoodsController implements Controller {
 	 * */
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		List<Goods> list = goodsService.selectAll();
+		  String pageNo = request.getParameter("pageNo");
+		  
+		  if(pageNo==null || pageNo.equals("")) { 
+			  pageNo="1"; 
+			  
+		  }
+		 
+		  
+		List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
 		request.setAttribute("list", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("category.jsp");
@@ -46,7 +52,7 @@ public class GoodsController implements Controller {
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saveDir = request.getServletContext().getRealPath("/save");
 		String encoding = "UTF-8";
-		int maxSize = 1024*1024*100; //100MB
+		int maxSize = 1024*1024*100; //300MB
 		
 		MultipartRequest m = new MultipartRequest(request, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
 		
@@ -104,50 +110,5 @@ public class GoodsController implements Controller {
 		return mv;
 	}
 	
-	
-	
-	/**
-	 * 상품명 검색
-	 * */
 
-	public ModelAndView selectByGdName(HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		String goodsName = request.getParameter("goodsName");
-		
-	   Goods goods  = goodsService.selectByGdName(goodsName);
-		
-	   request.setAttribute("goods", goods);
-	   ModelAndView mv = new ModelAndView();
-	   mv.setViewName("category.jsp");
-	   return mv;
-	}
-	
-	
-	/**
-	 * 브랜드 검색 
-	 * */
-	public ModelAndView selectByBrand(HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		String brand= request.getParameter("brand");
-		
-	   Goods goods  = goodsService.selectByBrand(brand);
-		
-	   request.setAttribute("goods", goods);
-	   ModelAndView mv = new ModelAndView();
-	   mv.setViewName("category.jsp");
-	   return mv;
-	}
-	
-	/**
-	 * 가격대 검색
-	 * */
-	public ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		String Price = request.getParameter("price");
-		
-	   Goods goods  = goodsService.selectByPrice();
-		
-	   request.setAttribute("goods", goods);
-	   ModelAndView mv = new ModelAndView();
-	   mv.setViewName("category.jsp");
-	   return mv;
-	}
-	
 }

@@ -58,5 +58,11 @@ public interface GoodsDAO {
 	* @return : 1-수정성공 , 0 - 수정실패
 	* */
 	int update(Goods goods) throws SQLException;
+
+	/**
+	 * 페이징
+	 * */
+	List<Goods> getGoodsList(int pageNo) throws SQLException;
+	
 	  
 }
