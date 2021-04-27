@@ -13,7 +13,7 @@ public class CartServiceImpl implements CartService{
 	
 	public List<CartDTO> viewCart(int mbCode) throws SQLException {
 		List<CartDTO> list = dao.viewCart(mbCode);
-		if(list == null || list.size()==0 || list.isEmpty()) throw new SQLException("장바구니에 상품이 없습니다.");
+		//if(list == null || list.size()==0 || list.isEmpty()) throw new SQLException("장바구니에 상품이 없습니다.");
 		
 		return list;
 	}
@@ -24,8 +24,9 @@ public class CartServiceImpl implements CartService{
 		if(result == 0) throw new SQLException("장바구니에 추가되지 않았습니다.");
 	}
 	
-	public void deleteCart() throws SQLException {
-		
+	public void deleteCart(int mbCode, String gdCode) throws SQLException {
+		int result = dao.deleteCart(mbCode, gdCode);
+		if(result==0) throw new SQLException("삭제되지 않았습니다");
 	}
 	
 	public void clearCart(int mbCode) throws SQLException {

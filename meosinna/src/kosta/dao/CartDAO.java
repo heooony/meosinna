@@ -21,7 +21,7 @@ public interface CartDAO {
 	/**
 	 * Cart.jsp에서 장바구니 목록에서 단일상품 제거하는 메소드 
 	 */
-	public int deleteCart() throws SQLException;
+	public int deleteCart(int mbCode, String gdCode) throws SQLException;
 	
 	/**
 	 * Cart.jsp에서 장바구니 목록을 일괄 제거하는 메소드 

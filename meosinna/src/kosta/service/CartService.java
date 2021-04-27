@@ -12,7 +12,7 @@ public interface CartService {
 	
 	public void addToCart(Goods goods, int qty, int mbCode) throws SQLException;
 	
-	public void deleteCart() throws SQLException;
+	public void deleteCart(int mbCode, String gdCode) throws SQLException;
 	
 	public void clearCart(int mbCode) throws SQLException;
 	

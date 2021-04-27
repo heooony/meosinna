@@ -21,14 +21,20 @@
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
-  	
   $(function () {
-  		$(document).on("click","#deleteBtn",function() {
-  			$(location).attr("href","front?key=cart&methodName=deleteCart");
-  		})
-  	
-  	})
-  
+	  
+	  function deleteCart (gdCode) {
+		 console.log("무야호" + gdCode)
+	  }
+	  myDelete = deleteCart;
+  	//	$(document).on("click","#deleteBtn",function() {
+  		//	console.log($("#deleteBtn").val())
+  			//$(location).attr("href","front?key=cart&methodName=deleteCart");
+	  })
+	  
+	  function kosta (gdCode) {
+			  location.href="front?key=cart&methodName=deleteCart&gdCode=" + gdCode;
+  	   }	  
   </script>
   <style>
   	#deleteBtn{background-color:white; border-color:#eeeeee; 
@@ -152,9 +158,10 @@
                               </td>
                               <td>
                                   <h5>${cart.price}</h5>
+                                  <input type="hidden" value="${cart.gdCode}"/>
                               </td>
                               <td>
-                                  <h5><button id="deleteBtn">삭제하기</button></h5>
+                                  <h5><button id="deleteBtn" onclick="kosta('${cart.gdCode}')">삭제하기</button></h5>
                               </td>
                           </tr>
                       <c:set var="totalPrice" value="${totalPrice + cart.price}"/>

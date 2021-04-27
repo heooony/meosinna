@@ -57,14 +57,14 @@ public class CartController implements Controller {
 		
 		HttpSession session = request.getSession();
 		Member member = (Member)session.getAttribute("member");
-		//Goods goods = request.getattribute
 		
 		int mbCode = member.getMbCode();
-		// String gdCode = 
-		
+		String gdCode = request.getParameter("gdCode");
+		service.deleteCart(mbCode, gdCode);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cart.jsp");
+		request.setAttribute("path", "cart.jsp");
+		mv.setViewName("front?key=cart&methodName=viewCart");
 		return mv;
 	}
 	
