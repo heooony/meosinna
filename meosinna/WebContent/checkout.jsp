@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
 <title>Aroma Shop - Checkout</title>
 <link rel="icon" href="img/Fevicon.png" type="image/png">
 
@@ -21,7 +22,11 @@
 <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AYoPmMvSovbe_uF8pLv2Lcehowq9efFnGhMNjW_8BPh8LvxgsaVDIp9zXghQNKsY9NzOgxQUmht0-JZk"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+  </script>
 <script>
+	paypal.Buttons().render('#paypal-button-container');
 	$(function() {
 		
 		$("#shipping-select").on("change", function() {
@@ -53,10 +58,13 @@
 						$(this).css("border-color","red");
 						state = false;
 						return false;
-					}
+					} 
 				});
+				$(this).attr('href', 'front?key=order&methodName=order&req=' + $("#req").val());
+	
 				
 			})
+
 	});
 </script>
 </head>
@@ -213,7 +221,7 @@
 								<div class="creat_account">
 									<h3>Shipping Details</h3>
 								</div>
-								<textarea class="form-control" name="message" id="message"
+								<textarea class="form-control" name="req" id="req"
 									rows="1" placeholder="Order Notes"></textarea>
 							</div>
 						</form>
@@ -265,7 +273,8 @@
 									& conditions*</a>
 							</div>
 							<div class="text-center">
-								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">결제하기</a>
+								<a class="button button-paypal" id="payment">결제하기</a>
+								<div id="paypal-button-container"></div>
 							</div>
 						</div>
 					</div>

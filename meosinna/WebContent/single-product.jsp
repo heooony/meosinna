@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,14 +23,19 @@
 <script>
 	$(function() {
 		$("#like-button").click(function() {
+			console.log('${requestScope.like}');
 			$.ajax({
-				url : 'dbGet.jsp', 
-				method : 'post',
+				url : 'dbGet.jsp',
 				data : {
-					gdCode : '${goods.gdCode}'
+					gdCode : '${goods.gdCode}',
+					isLike:  '${requestScope.like}'
 				},
-				success : function() { 
-					$("#like-total").html(  Number($("#like-total").html()) + 1  );
+				success : function(value) {
+					if(value === 1) {
+						$("#like-total").html(  Number($("#like-total").html()) + 1  );
+					} else {
+						$("#like-total").html(  Number($("#like-total").html()) - 1  );
+					}
 				},
 				fail : function() {
 					console.log(item);
@@ -193,9 +199,17 @@
 								to Cart</a>
 						</div>
 						<div class="card_area d-flex align-items-center">
-
-							<a class="icon_btn" id="like-button"><i class="lnr lnr lnr-heart"></i></a>
-							<span id="like-total">${goods.gdLike}</span>
+							
+						<c:choose>
+    						<c:when test="${requestScope.like eq '0'}">
+								<a class="icon_btn" id="like-button"><i class="lnr lnr lnr-heart"></i></a>
+								<span id="like-total">${goods.gdLike}</span>
+                    		</c:when>
+                    	<c:otherwise>
+                    			<a class="icon_btn" id="like-button"><i class="fas fa-heart" style="color: red"></i></a>
+								<span id="like-total">${goods.gdLike}</span>
+  						  </c:otherwise>
+					</c:choose>
 
 						</div>
 					</div>

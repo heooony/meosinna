@@ -81,6 +81,9 @@ public interface GoodsService {
 	/**
 	 * 상세페이지
 	 * */
-     public Goods gdDetail(String gdCode) throws SQLException; 
+     public Goods gdDetail(String gdCode) throws SQLException;
+
+
+	int checkLike(int mbCode, String gdCode) throws SQLException ; 
 	
 }

@@ -2,17 +2,18 @@ package kosta.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kosta.dto.Goods;
+import kosta.dto.Member;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
 
@@ -31,6 +32,13 @@ public class GoodsController implements Controller {
 		String gdCode = request.getParameter("gdCode");
 		Goods goods = goodsService.selectByGdCode(gdCode);
 		request.setAttribute("goods", goods);
+		
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
+		
+		int isLike = goodsService.checkLike(member.getMbCode(), gdCode);
+		request.setAttribute("like", isLike);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("single-product.jsp");
 		return mv;

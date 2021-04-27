@@ -38,7 +38,7 @@ public class OrderController implements Controller {
 		//session에 저장해두기
 		CartService cartService = new CartServiceImpl();
 		List<CartDTO> goodsList = cartService.viewCart(member.getMbCode());
-		String req = (String)session.getAttribute("req");
+		String req = request.getParameter("req");
 		
 		for(CartDTO cart : goodsList) {
 			Order order = new Order(1, member.getMbName(), member.getTel(), member.getAddr(), cart.getPrice(), "주문 대기", cart.getGdCode(), member.getMbCode());
@@ -46,6 +46,7 @@ public class OrderController implements Controller {
 			Payment payment = new Payment(1,0, null, cart.getPrice(), "paypal", "결제완료");
 			service.order(order, orderLine, payment);
 		}
+		//clearCart
 		ModelAndView mv = new ModelAndView("index.jsp", false);
 		return mv;
 	}

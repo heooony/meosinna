@@ -391,10 +391,19 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return goods;
 	}
 
-	public int setGdLike(String gdCode) throws SQLException {
+	public int setGdLike(String gdCode, String isLike) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		String sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE + 1 WHERE GD_CODE = ?";
+		String sql = null;
+		switch(isLike) {
+			case "0":
+				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE + 1 WHERE GD_CODE = ?";
+				break;
+			case "1":
+				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE - 1 WHERE GD_CODE = ?";
+				break;
+		}
+		
 		int result = 0;
 		try {
 			con = DbUtil.getConnection();
@@ -405,5 +414,32 @@ public class GoodsDAOImpl implements GoodsDAO {
 			DbUtil.dbClose(ps, con);
 		}
 		return result;
+	}
+
+
+	@Override
+	public int checkLike(int mbCode, String gdCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String sql = "SELECT * FROM LIKES WHERE MB_CODE = ? AND GD_CODE = ?";
+		int count = 0;
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			ps.setString(2, gdCode);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				count++;
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return count;
 	}
 }
