@@ -23,7 +23,7 @@
 <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
 <script>
 	$(function() {
-
+		
 		$("#shipping-select").on("change", function() {
 			let selected = $("#shipping-select option:selected").val();
 			if(selected === "1") {
@@ -36,7 +36,7 @@
 				$("#address").val("");
 			}
 		});
-
+		
 			$("#payment").on("click", function() {
 				/*let formValues = $("[input=text]").val();
 				console.log(formValues);
@@ -46,7 +46,7 @@
 				var state = true;
 				$("input[type=text]").each(function(index, element) {
 					$(this).css("border-color","#eeeeee").css("background","transparent");
-
+					
 					if($(this).val() == "") {
 						alert("필수 입력사항을 모두 기재해주세요 :)");
 						$(this).focus();
@@ -55,7 +55,7 @@
 						return false;
 					}
 				});
-
+				
 			})
 	});
 </script>
@@ -67,7 +67,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<div class="container">
 					<a class="navbar-brand logo_h" href="index.html"><img
-						src="img/logo3.png" alt="" width="100px"></a>
+						src="img/logo.png" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -172,7 +172,7 @@
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="email" name="email"
-									placeholder="Email" value="${sessionScope.member.email}">
+									placeholder="Email" value="${sessionScope.member.email}"> 
 							</div>
 							<div class="col-md-12 form-group mb-0">
 								<div class="creat_account">
@@ -226,19 +226,16 @@
 											Product <span>Total</span>
 										</h4></a></li>
 										<c:set var = "total" value = "0" />
-										<table>
-											<c:forEach items="${requestScope.goodsList}" var="cart">
-												<tr>
-													<td style="width: 200px">${cart.name} x ${cart.qty}</td>
-													<td><b>₩${cart.price}</b></td>
-													<c:set var= "total" value="${total + cart.price}"/>
-												</tr>
-											</c:forEach>
-										</table>
-
+										<c:forEach items="${sessionScope.list}" var="cart">
+											<li><a href="#">${cart.name}<span class="middle">x
+												${cart.qty}</span> <span class="last">$${cart.price}</span></a></li>
+												<c:set var="Income" scope="session" value="${cart.price}"/>  
+												<c:set var= "total" value="${total + cart.price}"/>
+										</c:forEach>
+								
 							</ul>
 							<ul class="list list_2">
-								<li><a href="#">Total <span>₩<c:out value="${total}"/></span></a></li>
+								<li><a href="#">Total <span>$<c:out value="${total}"/></span></a></li>
 							</ul>
 							<div class="payment_item">
 								<div class="radion_btn">
@@ -265,7 +262,7 @@
 									& conditions*</a>
 							</div>
 							<div class="text-center">
-								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">결제하기</a>
+								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">Proceed to Paypal</a>
 							</div>
 						</div>
 					</div>

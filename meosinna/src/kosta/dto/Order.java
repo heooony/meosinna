@@ -11,20 +11,16 @@ public class Order {
 	private int mbCode;
 	
 	public Order() {}
-	public Order(int odCode, String mbName, int pay, String state, String gdCode, int mbCode) {
+	public Order(int odCode, String mbName, String tel, String addr, int pay, String state, String gdCode, int mbCode) {
 		super();
 		this.odCode = odCode;
 		this.mbName = mbName;
+		this.tel = tel;
+		this.addr = addr;
 		this.pay = pay;
 		this.state = state;
 		this.gdCode = gdCode;
 		this.mbCode = mbCode;
-		
-	}
-	public Order(int odCode, String mbName, String tel, String addr, int pay, String state, String gdCode, int mbCode) {
-		this(odCode, mbName, pay, state, gdCode, mbCode);
-		this.tel = tel;
-		this.addr = addr;
 	}
 
 	public int getOdCode() {
