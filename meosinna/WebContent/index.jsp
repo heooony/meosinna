@@ -62,7 +62,7 @@
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
                   <%}else{ %>
-                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage.jsp?mbCode=${member.mbCode}">마이페이지</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">마이페이지</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
                   <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">주문배송조회</a></li>
@@ -76,7 +76,7 @@
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
               <%if(session.getAttribute("member") == null) {%>
-              
+
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
               <%}else{ %>
               <li class="nav-item"><button><a class="like" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
@@ -92,7 +92,7 @@
 	<!--================ End Header Menu Area =================-->
 
   <main class="site-main">
-    
+
     <!--================ Hero banner start =================-->
     <section class="hero-banner">
       <div class="container">
@@ -143,7 +143,7 @@
     </section>
     <!--================ Hero Carousel end =================-->
 
-    <!-- ================ trending product section start ================= -->  
+    <!-- ================ trending product section start ================= -->
     <section class="section-margin calc-60px">
       <div class="container">
         <div class="section-intro pb-60px">
@@ -270,7 +270,7 @@
                 <p>Accessories</p>
                 <h4 class="card-product__title"><a href="single-product.html">Blutooth Speaker</a></h4>
                 <p class="card-product__price">$150.00</p>
-              </div> 
+              </div>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 col-xl-3">
@@ -293,10 +293,10 @@
         </div>
       </div>
     </section>
-    <!-- ================ trending product section end ================= -->  
+    <!-- ================ trending product section end ================= -->
 
 
-    <!-- ================ offer section start ================= --> 
+    <!-- ================ offer section start ================= -->
     <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
       <div class="container">
         <div class="row">
@@ -311,13 +311,13 @@
         </div>
       </div>
     </section>
-    <!-- ================ offer section end ================= --> 
+    <!-- ================ offer section end ================= -->
 
     <!-- ================ Best Selling item  carousel ================= -->
 
     <!-- ================ Best Selling item  carousel end ================= -->
 
-    <!-- ================ Blog section start ================= -->  
+    <!-- ================ Blog section start ================= -->
     <section class="blog">
       <div class="container">
         <div class="section-intro pb-60px">
@@ -379,9 +379,9 @@
         </div>
       </div>
     </section>
-    <!-- ================ Blog section end ================= -->  
+    <!-- ================ Blog section end ================= -->
 
-    <!-- ================ Subscribe section start ================= --> 
+    <!-- ================ Subscribe section start ================= -->
     <section class="subscribe-position">
       <div class="container">
         <div class="subscribe text-center">
@@ -400,18 +400,18 @@
 
             </form>
           </div>
-          
+
         </div>
       </div>
     </section>
-    <!-- ================ Subscribe section end ================= --> 
+    <!-- ================ Subscribe section end ================= -->
 
-    
+
 
   </main>
 
 
-  <!--================ Start footer Area  =================-->	
+  <!--================ Start footer Area  =================-->
 	<footer class="footer">
 		<div class="footer-area">
 			<div class="container">
@@ -420,11 +420,11 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title large_title">Our Mission</h4>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
+								So seed seed green that winged cattle in. Gathering thing made fly you're no
 								divided deep moved us lan Gathering thing us land years living.
 							</p>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
 							</p>
 						</div>
 					</div>
@@ -463,7 +463,7 @@
 									Head Office
 								</p>
 								<p>123, Main Street, Your City</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
@@ -472,7 +472,7 @@
 									+123 456 7890 <br>
 									+123 456 7890
 								</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-envelope"></span>
 									Email

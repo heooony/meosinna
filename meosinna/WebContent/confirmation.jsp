@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Aroma Shop - Cart</title>
+  <title>Aroma Shop</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -19,15 +18,6 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript"></script>
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js">
-  	$(function () {
-  		alert(1);
-  	})
-  
-  
-  </script>
-  
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -61,7 +51,6 @@
                   aria-expanded="false">Blog</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
                   <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
                 </ul>
 							</li>
@@ -70,6 +59,7 @@
                   aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
                 </ul>
               </li>
@@ -87,17 +77,17 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-
+  
 	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
-					<h1>Shopping Cart</h1>
+					<h1>Order Confirmation</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+              <li class="breadcrumb-item active" aria-current="page">Shop Category</li>
             </ol>
           </nav>
 				</div>
@@ -106,143 +96,166 @@
 	</section>
 	<!-- ================ end banner area ================= -->
   
-  
-
-  <!--================Cart Area =================-->
-  <section class="cart_area">
-      <div class="container">
-          <div class="cart_inner">
-              <div class="table-responsive">
-                  <table class="table">
-                      <thead>
-                          <tr>
-                              <th scope="col">Product</th>
-                              <th scope="col">Size</th>
-                              <th scope="col">Quantity</th>
-                              <th scope="col">Price</th>
-                              <th scope="col"></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                      <c:forEach items="${requestScope.goodsList}" var="cart">
-                     	 <tr>
-                              <td>
-                                  <div class="media">
-                                      <div class="d-flex">
-                                          <img src="${cart.img}" alt="" style="width:65px;"> <!-- img/cart/cart1.png -->
-                                      </div>
-                                      <div class="media-body">
-                                          <p>${cart.name}</p>
-                                      </div>
-                                  </div>
-                              </td>
-                              <td>
-                                  <h5>${cart.size}</h5>
-                              </td>
-                              <td>
-                                  <h5>${cart.qty}</h5>
-                              </td>
-                              <td>
-                                  <h5>${cart.price}</h5>
-                              </td>
-                              <td>
-                                  <h5><button style="background-color:white; border-color:#eeeeee; font-family:"나눔고딕코딩">삭제하기</button></h5>
-                              </td>
-                          </tr>
-                      </c:forEach>
-                          <tr class="bottom_button">
-                              <td>
-                                  <!--  <a class="button" href="front?key=cart&methodName=viewCart">Update Cart</a> -->
-                              </td>
-                              <td>
-
-                              </td>
-                              <td>
-
-                              </td>
-                              <td>
-                                  <div class="cupon_text d-flex align-items-center">
-                                    <!--   <input type="text" placeholder="Coupon Code">
-                                    <a class="primary-btn" href="#">Apply</a>
-                                      <a class="button" href="#">Have a Coupon?</a> -->
-                                      <a class="button" href="#">장바구니 비우기</a>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-
-                              </td>
-                              <td>
-
-                              </td>
-                              <td>
-                                  <h5>Subtotal</h5>
-                              </td>
-                              <td>
-                                  <h5>₩<% 
-                                  	
-                                  %></h5>
-                              </td>
-                          </tr>
-                          <tr class="shipping_area">
-                              <td class="d-none d-md-block">
-
-                              </td>
-                              <td>
-
-                              </td>
-                              <td>
-                                  <h5>Shipping</h5>
-                              </td>
-                              <td>
-                                  <div class="shipping_box">
-                                      <ul class="list">
-                                          <li><a href="#">Flat Rate: $5.00</a></li>
-                                          <li><a href="#">Free Shipping</a></li>
-                                          <li><a href="#">Flat Rate: $10.00</a></li>
-                                          <li class="active"><a href="#">Local Delivery: $2.00</a></li>
-                                      </ul>
-                                      <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                                      <select class="shipping_select">
-                                          <option value="1">Bangladesh</option>
-                                          <option value="2">India</option>
-                                          <option value="4">Pakistan</option>
-                                      </select>
-                                      <select class="shipping_select">
-                                          <option value="1">Select a State</option>
-                                          <option value="2">Select a State</option>
-                                          <option value="4">Select a State</option>
-                                      </select>
-                                      <input type="text" placeholder="Postcode/Zipcode">
-                                      <a class="gray_btn" href="#">Update Details</a>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr class="out_button_area">
-                              <td class="d-none-l">
-
-                              </td>
-                              <td class="">
-
-                              </td>
-                              <td>
-
-                              </td>
-                              <td>
-                                  <div class="checkout_btn_inner d-flex align-items-center">
-                                      <a class="gray_btn" href="#">Continue Shopping</a>
-                                      <a class="primary-btn ml-2" href="checkout.jsp">Proceed to checkout</a>
-                                  </div>
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
+  <!--================Order Details Area =================-->
+  <section class="order_details section-margin--small">
+    <div class="container">
+      <p class="text-center billing-alert">Thank you. Your order has been received.</p>
+      <div class="row mb-5">
+        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+          <div class="confirmation-card">
+            <h3 class="billing-title">Order Info</h3>
+            <table class="order-rable">
+              <tr>
+                <td>Order number</td>
+                <td>: 60235</td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>: Oct 03, 2017</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>: USD 2210</td>
+              </tr>
+              <tr>
+                <td>Payment method</td>
+                <td>: Check payments</td>
+              </tr>
+            </table>
           </div>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+          <div class="confirmation-card">
+            <h3 class="billing-title">Billing Address</h3>
+            <table class="order-rable">
+              <tr>
+                <td>Street</td>
+                <td>: 56/8 panthapath</td>
+              </tr>
+              <tr>
+                <td>City</td>
+                <td>: Dhaka</td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td>: Bangladesh</td>
+              </tr>
+              <tr>
+                <td>Postcode</td>
+                <td>: 1205</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+          <div class="confirmation-card">
+            <h3 class="billing-title">Shipping Address</h3>
+            <table class="order-rable">
+              <tr>
+                <td>Street</td>
+                <td>: 56/8 panthapath</td>
+              </tr>
+              <tr>
+                <td>City</td>
+                <td>: Dhaka</td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td>: Bangladesh</td>
+              </tr>
+              <tr>
+                <td>Postcode</td>
+                <td>: 1205</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
+      <div class="order_details_table">
+        <h2>Order Details</h2>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <p>Pixelstore fresh Blackberry</p>
+                </td>
+                <td>
+                  <h5>x 02</h5>
+                </td>
+                <td>
+                  <p>$720.00</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Pixelstore fresh Blackberry</p>
+                </td>
+                <td>
+                  <h5>x 02</h5>
+                </td>
+                <td>
+                  <p>$720.00</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Pixelstore fresh Blackberry</p>
+                </td>
+                <td>
+                  <h5>x 02</h5>
+                </td>
+                <td>
+                  <p>$720.00</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Subtotal</h4>
+                </td>
+                <td>
+                  <h5></h5>
+                </td>
+                <td>
+                  <p>$2160.00</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Shipping</h4>
+                </td>
+                <td>
+                  <h5></h5>
+                </td>
+                <td>
+                  <p>Flat rate: $50.00</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Total</h4>
+                </td>
+                <td>
+                  <h5></h5>
+                </td>
+                <td>
+                  <h4>$2210.00</h4>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
-  <!--================End Cart Area =================-->
+  <!--================End Order Details Area =================-->
 
 
 

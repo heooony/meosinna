@@ -2,6 +2,9 @@ package kosta.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
+
+import kosta.dto.Goods;
 import kosta.dto.Order;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
@@ -38,4 +41,15 @@ public interface OrderDAO {
 	 * @throws SQLException
 	 */
 	int payment(Connection connection, Payment payment) throws SQLException;
+	
+	/**
+	 * order메소드가 호출될 때 실행된다.
+	 * 전체 주문 목록을 조회하기 위한 메소드이다.
+	 * @param connection
+	 * @param payment
+	 * @return int
+	 * @throws SQLException
+	 */
+	List<Order> viewAllOrders() throws SQLException;
+
 }
