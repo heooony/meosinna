@@ -7,5 +7,5 @@ import kosta.dto.Review;
 
 
 public interface ReviewDAO {
-	List<Review> select() throws SQLException;
+	List<Review> selectByGdCode(String gdCode) throws SQLException;
 }

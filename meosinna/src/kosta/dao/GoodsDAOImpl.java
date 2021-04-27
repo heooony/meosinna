@@ -17,14 +17,14 @@ public class GoodsDAOImpl implements GoodsDAO {
 	Properties proFile = new Properties();
 	
 	public GoodsDAOImpl () {
-		try {	
+		/*try {	
 			proFile.load(getClass().getClassLoader().getResourceAsStream("dbQuery.properties"));
 			
 			String str = proFile.getProperty("query.select");
 			System.out.println("str = " + str);
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	

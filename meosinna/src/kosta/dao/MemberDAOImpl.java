@@ -31,7 +31,7 @@ public class MemberDAOImpl implements MemberDAO{
 			result = ps.executeUpdate();
 			
 		} finally {
-			DbUtil.dbClose( ps, con);
+			DbUtil.dbClose(ps, con);
 		}
 
 		return result;
