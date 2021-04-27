@@ -13,12 +13,14 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kosta.dto.Goods;
+import kosta.dto.Review;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
+import kosta.service.ReviewService;
 
 public class GoodsController implements Controller {
 	GoodsService goodsService = new GoodsServiceImpl();
-	
+	ReviewService reviewService = new ReviewService();
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -31,6 +33,8 @@ public class GoodsController implements Controller {
 		String gdCode = request.getParameter("gdCode");
 		Goods goods = goodsService.selectByGdCode(gdCode);
 		request.setAttribute("goods", goods);
+		List<Review> reviewList = reviewService.selectByGdCode(gdCode);
+		request.setAttribute("reviewList", reviewList);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("single-product.jsp");
 		return mv;

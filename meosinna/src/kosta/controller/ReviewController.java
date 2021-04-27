@@ -21,13 +21,10 @@ public class ReviewController implements Controller {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	/*
 	public ModelAndView selectByGdCode(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String gdCode = request.getParameter("gdCode");
-		List<Review> reviewList = reviewService.selectByGdCode(gdCode);
-		request.setAttribute("reviewList", reviewList);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("single-product.jsp");
-		return mv;
+		
 	}
+	*/
 }
