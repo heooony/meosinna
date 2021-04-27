@@ -58,36 +58,5 @@ public interface GoodsDAO {
 	* @return : 1-수정성공 , 0 - 수정실패
 	* */
 	int update(Goods goods) throws SQLException;
-	
-	/**
-	 * 품절여부 
-	 * -qty 0 될 때 이미지 opacity 0.2로
-	 * */
-	int soldOut(int qty) throws SQLException; 
-	
-	/**
-	 * 좋아요 기능 
-	 * 
-	 * 숫자1증가 , 감소 - database안에서 쿼리문 작성 먼저! 
-	 * update!
-	 *  특정 유저의 좋아요 증가 !
-	 * 
-	 * */
-	
-	int updateLikes(String gdCode) throws SQLException; 
-	
-	  /**
-	   * 상품 상세페이지 
-	   * 상품이름, 코드, 가격,, 등 정보 
-	   * return goods 
-	   * */
-	
-	Goods gdDetail(String gdCode) throws SQLException; 
-
-	/**
-	 * 페이징
-	 * */
-	List<Goods> getGoodsList(int pageNo) throws SQLException;
-	
 	  
 }
