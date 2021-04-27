@@ -62,7 +62,7 @@
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
                   <%}else{ %>
-                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/myPage.jsp?mbCode=${member.mbCode}">마이페이지</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">마이페이지</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
                   <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">주문배송조회</a></li>
@@ -90,7 +90,6 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-
   <main class="site-main">
     
     <!--================ Hero banner start =================-->
@@ -114,7 +113,6 @@
       </div>
     </section>
     <!--================ Hero banner start =================-->
-
     <!--================ Hero Carousel start =================-->
     <section class="section-margin mt-0" style="padding-top: 100px">
       <div class="owl-carousel owl-theme hero-carousel">
@@ -142,7 +140,6 @@
       </div>
     </section>
     <!--================ Hero Carousel end =================-->
-
     <!-- ================ trending product section start ================= -->  
     <section class="section-margin calc-60px">
       <div class="container">
@@ -294,8 +291,6 @@
       </div>
     </section>
     <!-- ================ trending product section end ================= -->  
-
-
     <!-- ================ offer section start ================= --> 
     <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
       <div class="container">
@@ -312,11 +307,8 @@
       </div>
     </section>
     <!-- ================ offer section end ================= --> 
-
     <!-- ================ Best Selling item  carousel ================= -->
-
     <!-- ================ Best Selling item  carousel end ================= -->
-
     <!-- ================ Blog section start ================= -->  
     <section class="blog">
       <div class="container">
@@ -324,7 +316,6 @@
           <p>Popular Item in the market</p>
           <h2>Latest <span class="section-intro__style">News</span></h2>
         </div>
-
         <div class="row">
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="card card-blog">
@@ -342,7 +333,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="card card-blog">
               <div class="card-blog__img">
@@ -359,7 +349,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="card card-blog">
               <div class="card-blog__img">
@@ -380,7 +369,6 @@
       </div>
     </section>
     <!-- ================ Blog section end ================= -->  
-
     <!-- ================ Subscribe section start ================= --> 
     <section class="subscribe-position">
       <div class="container">
@@ -397,7 +385,6 @@
               <div style="position: absolute; left: -5000px;">
                 <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
               </div>
-
             </form>
           </div>
           
@@ -405,12 +392,8 @@
       </div>
     </section>
     <!-- ================ Subscribe section end ================= --> 
-
     
-
   </main>
-
-
   <!--================ Start footer Area  =================-->	
 	<footer class="footer">
 		<div class="footer-area">
@@ -487,7 +470,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row d-flex">
@@ -500,9 +482,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!--================ End footer Area  =================-->
-
-
-
   <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="vendors/skrollr.min.js"></script>

@@ -59,7 +59,7 @@ public class GoodsController implements Controller {
 	/**
 	 * 등록하기
 	 * */
-	/*public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saveDir = request.getServletContext().getRealPath("/save");
 		String encoding = "UTF-8";
 		int maxSize = 1024*1024*100; //100MB
@@ -82,7 +82,7 @@ public class GoodsController implements Controller {
 		
 		return new ModelAndView();//처리방식
 	}
-	*/
+	
 	/**
 	 * 수정하기
 	 * */

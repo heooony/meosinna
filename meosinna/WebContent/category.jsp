@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 
   <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +21,7 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -193,29 +195,46 @@
             </div>
           </div>
           <!-- End Filter Bar -->
+
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-          <c:forEach begin="1" end="3" var="goods">
           <div class="row">
+          <c:forEach items="${requestScope.list}" var="goods">
+
               <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                   <div class="card-product__img">
-                    <img class="card-img" src="img/product/product1.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                      <li><button><i class="ti-search"></i></button></li>
-                      <li><button><i class="ti-shopping-cart"></i></button></li>
-                      <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
+                  	
+                      <c:choose>
+    					<c:when test="${goods.price eq '799000'}">
+                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px;">
+                    		<ul class="card-product__imgOverlay">
+                      		<li><button><i class="ti-search"></i></button></li>
+                    		<li><button><i class="ti-shopping-cart"></i></button></li>
+                      		<li><button><i class="ti-heart"></i></button></li>
+                    		</ul>
+  						  </c:otherwise>
+					</c:choose>
                   </div>
                   <div class="card-body">
                     <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="#">Quartz Belt Watch</a></h4>
-                    <p class="card-product__price">$150.00</p>
+                    <c:choose>
+    					<c:when test="${goods.price eq '799000'}">
+    					      <h4 class="card-product__title">${goods.gdName}</h4>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
+  						  </c:otherwise>
+					</c:choose>
+                    <p class="card-product__price">₩${goods.price}</p>
                   </div>
                 </div>
               </div>
-              </div>
           </c:forEach>
+              </div>
           </section>
           <!-- End Best Seller -->
         </div>
@@ -418,7 +437,7 @@
 									Head Office
 								</p>
 								<p>123, Main Street, Your City</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
@@ -427,7 +446,6 @@
 									+123 456 7890 <br>
 									+123 456 7890
 								</p>
-	
 								<p class="sm-head">
 									<span class="fa fa-envelope"></span>
 									Email
