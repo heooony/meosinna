@@ -13,5 +13,7 @@ public interface OrderService {
 	public int order(Order order, OrderLine orderLine, Payment payment) throws SQLException;
 	
 	public List<Order> viewAllOrders() throws SQLException;
+	
+	public List<Order> viewMyOrder(int mbCode) throws SQLException;
 
 }

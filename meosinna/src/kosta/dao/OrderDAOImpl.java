@@ -94,8 +94,8 @@ public class OrderDAOImpl implements OrderDAO{
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				list.add(new Order(rs.getInt(1), rs.getString(2), rs.getInt(5),
-									rs.getString(6),rs.getString(7), rs.getInt(8) ));
+				list.add(new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6),rs.getString(7), rs.getInt(8) ));
 			}
 			
 		} finally {
@@ -103,4 +103,31 @@ public class OrderDAOImpl implements OrderDAO{
 		}
 		return list;
 	}
+	
+	public List<Order> viewMyOrder(int mbCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Order> list = new ArrayList<Order>();
+		String sql = "SELECT * FROM G_ORDER WHERE MB_CODE=?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+									rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
+	
 }

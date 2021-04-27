@@ -122,7 +122,7 @@
               <div class="head">쇼핑활동</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">주문 내역 조회</label></li>
+                  <li class="filter-list"><a href="myOrder.jsp"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">주문 내역 조회</label></a></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">구매후기</label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">장바구니</label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">적립금</label></li>
