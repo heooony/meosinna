@@ -269,7 +269,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 			
 			PageCnt page= new PageCnt();
 			//전체 페이지 구하기 =>총상품수/페이지당 상품수 +1
-			page.setPageCnt(totalCount % page.getPageSize() == 0 ? totalCount / page.getPageSize() : totalCount / page.getPageSize() + 1);
+			page.setPageCnt(totalCount % page.getPageSize() == 0 ? totalCount / page.getPageSize() : totalCount / page.getPageSize() + 1); //3항 연산자
 			page.setPageNo(pageNo);
 			
 			con = DbUtil.getConnection();

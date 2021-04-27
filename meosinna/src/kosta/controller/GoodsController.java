@@ -51,6 +51,7 @@ public class GoodsController implements Controller {
 
 		// List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
 		request.setAttribute("list", list);
+		request.setAttribute("pageNo", pageNo);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("category.jsp");
 		

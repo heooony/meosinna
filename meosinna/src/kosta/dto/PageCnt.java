@@ -5,9 +5,7 @@ package kosta.dto;
 public class PageCnt {
 	
 	private static int pageCnt; //총 페이지 수
-	
 	public static int pageSize = 9; //페이지 당 상품 출력 개수 9개
-	
 	public static int pageNo = 1;
 
 	public PageCnt() {
