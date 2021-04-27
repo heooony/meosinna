@@ -20,7 +20,7 @@ public class OrderDAOImpl implements OrderDAO{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO G_ORDER VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO G_ORDER VALUES(SEQ_OD_CODE.NEXTVAL,?,?,?,?,?,?,?)";
 
 		try {
 			con = DbUtil.getConnection();
@@ -66,15 +66,14 @@ public class OrderDAOImpl implements OrderDAO{
 	@Override
 	public int payment(Connection con, Payment payment) throws SQLException {
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO PAYMENT VALUES(?, ?, SYSDATE, ?, ?, ?)";
+		String sql = "INSERT INTO PAYMENT VALUES(SEQ_PY_CODE.NEXTVAL, ?, SYSDATE, ?, ?, ?)";
 		int result = 0;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, payment.getPyCode());
-			ps.setInt(2, payment.getOdCode());
-			ps.setInt(3, payment.getPay());
-			ps.setString(4, payment.getMethod());
-			ps.setString(5, payment.getState());
+			ps.setInt(1, payment.getOdCode());
+			ps.setInt(2, payment.getPay());
+			ps.setString(3, payment.getMethod());
+			ps.setString(4, payment.getState());
 			result = ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(ps, null);

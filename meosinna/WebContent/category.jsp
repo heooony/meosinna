@@ -215,7 +215,7 @@
                     		<ul class="card-product__imgOverlay">
                       		<li><button><i class="ti-search"></i></button></li>
                     		<li><button><i class="ti-shopping-cart"></i></button></li>
-                      		<li><button><i class="ti-heart"></i></button></li>
+                      		<li><button id="${goods.gdCode}"><i class="ti-heart"></i></button></li>
                     		</ul>
   						  </c:otherwise>
 					</c:choose>
@@ -393,13 +393,10 @@
 				<div class="row section_gap">
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title large_title">Our Mission</h4>
+							<h4 class="footer_title large_title">MEOSINNA</h4>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
-								divided deep moved us lan Gathering thing us land years living.
-							</p>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+								머신나는 고객의 소리에 집중합니다. 불편한 부분이나 해결이 되지 않는 부분이 있다면 머신나 정책에 대한 문의를 남겨주세요.
+								<p><b>머신나</b>는 항상 고객이 우리 상품의 주인공이 되기를 기다리고 있습니다.
 							</p>
 						</div>
 					</div>
@@ -437,23 +434,24 @@
 									<span class="fa fa-location-arrow"></span>
 									Head Office
 								</p>
-								<p>123, Main Street, Your City</p>
+								<p>경기도 성남시 분당구 구미동 185-3</p>
+								<p>하나프라자빌딩</p>
 
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
 								</p>
 								<p>
-									+123 456 7890 <br>
-									+123 456 7890
+									010 - 1234 - 5678 <br>
+									010 - 1352 - 1357
 								</p>
 								<p class="sm-head">
 									<span class="fa fa-envelope"></span>
 									Email
 								</p>
 								<p>
-									free@infoexample.com <br>
-									www.infoexample.com
+									meosinna@kosta.or.kr <br>
+									www.meosinna.com
 								</p>
 							</div>
 						</div>

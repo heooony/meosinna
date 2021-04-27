@@ -370,6 +370,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+
 		String sql = "Select * from goods where gd_code =?";
 		Goods goods = null;
 
@@ -390,4 +391,19 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return goods;
 	}
 
+	public int setGdLike(String gdCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE + 1 WHERE GD_CODE = ?";
+		int result = 0;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, gdCode);
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
 }
