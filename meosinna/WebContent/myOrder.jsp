@@ -155,19 +155,19 @@
 		            <thead>
 		              <tr>
 		                <th scope="col">주문코드</th>
+		                <th scope="col">상품코드</th>
 		                <th scope="col">주문금액</th>
 		                <th scope="col">주문상태</th>
-		                <th scope="col">상품코드</th>
 		                <th scope="col"></th>
 		              </tr>
 		            </thead>
 		            <tbody>
 		              <c:forEach items="${requestScope.myOrderList}" var="order"> 
 		              <tr>
-		                <td><c:out value="${order.odCode}"/></td>
-		                <td><c:out value="${order.pay}"/></td>
-		                <td><c:out value="${order.state}"/></td>
-		                <td><c:out value="${order.gdCode}"/></td>
+		                <td>${order.odCode}</td>
+		                <td>${order.gdCode}</td>
+		                <td>${order.pay}</td>
+		                <td>${order.state}</td>
 		              </tr>
 		              </c:forEach>
 		            </tbody>
