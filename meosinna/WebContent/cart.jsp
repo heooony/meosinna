@@ -24,7 +24,7 @@
   $(function () {
 	  
 	  function deleteCart (gdCode) {
-		 console.log("무야호" + gdCode)
+	  
 	  }
 	  myDelete = deleteCart;
   	//	$(document).on("click","#deleteBtn",function() {

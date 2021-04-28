@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
+  
 	  function cancle (odCode, gdCode) {
 			  location.href="front?key=order&methodName=setComplain&type=cancle&odCode=" + odCode + "&gdCode=" + gdCode;
 	  }
@@ -175,7 +176,7 @@
 		              <c:forEach items="${requestScope.myOrderList}" var="order"> 
 		              <tr>
 		                <td>${order.odCode}</td>
-		                <td>${order.gdCode}</td>
+		                <td><a id="orderDetail" href="front?key=order&methodName=viewOrderDetail&gdCode=${order.gdCode}&odCode=${order.odCode}">${order.gdCode}</a></td>
 		                <td>${order.pay}</td>
 		                <td>${order.state}</td>
 		                <td>

@@ -14,6 +14,7 @@ import kosta.dto.CartDTO;
 import kosta.dto.Goods;
 import kosta.dto.Member;
 import kosta.dto.Order;
+import kosta.dto.OrderDetail;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
 import kosta.service.CartService;
@@ -89,6 +90,24 @@ public class OrderController implements Controller {
 		
 		mv.setViewName("myOrder.jsp");
 		mv.setRedirect(true);
+		
+		return mv;
+	
+	}
+	
+	public ModelAndView viewOrderDetail(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		
+		String gdCode = request.getParameter("gdCode");
+		int odCode = Integer.parseInt(request.getParameter("odCode"));
+		
+		OrderDetail orderDetail = service.viewOrderDetail(gdCode, odCode);
+		
+		request.setAttribute("orderDetail", orderDetail);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("confirmation.jsp");
+		
 		return mv;
 	}
 }

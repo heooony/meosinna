@@ -7,6 +7,7 @@ import java.util.List;
 import kosta.dto.Goods;
 import kosta.dto.Member;
 import kosta.dto.Order;
+import kosta.dto.OrderDetail;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
 
@@ -62,6 +63,8 @@ public interface OrderDAO {
 	 * @throws SQLException
 	 */
 	List<Order> viewMyOrder(int mbCode) throws SQLException;
+	
+	OrderDetail viewOrderDetail(String gdCode, int odCode) throws SQLException;
 
 	int setComplain(Member member, Order order, Goods goods, String type) throws SQLException;
 	

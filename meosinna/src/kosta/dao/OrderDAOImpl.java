@@ -10,6 +10,7 @@ import java.util.List;
 import kosta.dto.Goods;
 import kosta.dto.Member;
 import kosta.dto.Order;
+import kosta.dto.OrderDetail;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
 import kosta.util.DbUtil;
@@ -203,5 +204,37 @@ public class OrderDAOImpl implements OrderDAO{
 		} finally {
 			DbUtil.dbClose(ps, null);
 		}
+		
+	}
+	public OrderDetail viewOrderDetail(String gdCode, int odCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		OrderDetail orderDetail = null;
+		String sql="SELECT G_ORDER.OD_CODE, G_ORDER.GD_CODE, G_ORDER.MB_NAME, G_ORDER.TEL, G_ORDER.ADDR, G_ORDER.STATE, \r\n"
+				+ "PAYMENT.PAY,\r\n"
+				+ "ORDERLINE.GD_NAME, ORDERLINE.S_SIZE ,ORDERLINE.OD_DATE, ORDERLINE.QTY, ORDERLINE.REQ \r\n"
+				+ "FROM G_ORDER JOIN PAYMENT ON G_ORDER.OD_CODE = PAYMENT.OD_CODE \r\n"
+				+ "JOIN ORDERLINE ON G_ORDER.OD_CODE = ORDERLINE.OD_CODE \r\n"
+				+ "WHERE GD_CODE = ? AND G_ORDER.OD_CODE = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, gdCode);
+			ps.setInt(2, odCode);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				orderDetail = new OrderDetail(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
+							rs.getString(6), rs.getInt(7), rs.getString(8), rs.getInt(9),
+							rs.getString(10), rs.getInt(11), rs.getString(12));
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return orderDetail;
 	}
 }

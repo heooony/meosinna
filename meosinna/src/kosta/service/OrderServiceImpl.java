@@ -12,6 +12,7 @@ import kosta.dao.OrderDAOImpl;
 import kosta.dto.Goods;
 import kosta.dto.Member;
 import kosta.dto.Order;
+import kosta.dto.OrderDetail;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
 
@@ -36,6 +37,12 @@ public class OrderServiceImpl implements OrderService {
 	public List<Order> viewMyOrder(int mbCode) throws SQLException {
 		List<Order> list = dao.viewMyOrder(mbCode);
 		return list;
+	}
+	
+	@Override
+	public OrderDetail viewOrderDetail(String gdCode, int odCode) throws SQLException {
+		OrderDetail orderDetail = dao.viewOrderDetail(gdCode, odCode);
+		return orderDetail;
 	}
 
 	@Override
