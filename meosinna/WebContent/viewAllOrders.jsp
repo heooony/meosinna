@@ -77,7 +77,7 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-	 <div class="order_details_table">
+	 <div class="private_order_details_table">
         <h2>전체주문조회</h2>
         <div class="table-responsive">
           <table class="table">
@@ -92,30 +92,16 @@
               </tr>
             </thead>
             <tbody>
+             <c:forEach items="${requestScope.orderList}" var="order"> 
               <tr>
-             <c:forEach items="${sessionScope.orderList}" var="order" varStatus="state"> 
-                
-                <td>
-                <c:out value="${sessionScope.order.odCode}"/>
-                </td>
-                <td>
-                <c:out value="${sessionScope.order.mbName}"/>
-                </td>
-                <td>
-                <c:out value="${sessionScope.order.pay}"/>
-                </td>
-                <td>
-                <c:out value="${sessionScope.order.state}"/>
-                </td>
-                <td>
-                <c:out value="${sessionScope.order.gdCode}"/>
-                </td>
-                <td>
-                <c:out value="${sessionScope.order.mbCode}"/>
-                </td>
-                
-              </c:forEach>
+                <td><c:out value="${order.odCode}"/></td>
+                <td><c:out value="${order.mbName}"/></td>
+                <td><c:out value="${order.pay}"/></td>
+                <td><c:out value="${order.state}"/></td>
+                <td><c:out value="${order.gdCode}"/></td>
+                <td><c:out value="${order.mbCode}"/></td>
               </tr>
+              </c:forEach>
             </tbody>
           </table>
         </div>

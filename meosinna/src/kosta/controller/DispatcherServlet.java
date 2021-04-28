@@ -29,12 +29,11 @@ public class DispatcherServlet extends HttpServlet {
 		//System.out.println("요청완료!");
 		String key = request.getParameter("key");
 		String methodName = request.getParameter("methodName");
-		
-	try {
+	try {	
 		
 		Class<?> clz = clzMap.get(key);
 		Method method = clz.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
-
+		
 		Controller controller = map.get(key);
 		
 		ModelAndView mv = (ModelAndView)method.invoke(controller, request, response); 

@@ -1,21 +1,15 @@
 package kosta.controller;
 
 import java.io.IOException;
-
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kosta.dao.MemberDAO;
-import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
-import kosta.controller.ModelAndView;
 import kosta.service.MemberService;
 
 
@@ -53,6 +47,7 @@ public class MemberController implements Controller {
 		String tel =  (String)request.getParameter("phone");
 		String address = addr1 + addr2;
 		
+
 		
 		//pwd와 confirm pwd의 일치여부 확인 필요
 		//아직 유효성 체크 구현 안됨
@@ -86,7 +81,7 @@ public class MemberController implements Controller {
 		//세션에정보저장
 		HttpSession session = request.getSession();
 		session.setAttribute("member", dbMember);
-		
+
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
 		return mv;
@@ -136,5 +131,29 @@ public class MemberController implements Controller {
 		
 		return mv;
 	}
+	
+	
+	
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response)
+			throws Exception{
+	
+		int mbCodeid = Integer.parseInt(request.getParameter("ps-info-mbCode"));
+		
+		memberService.delete(mbCodeid);
+		
+		ModelAndView mv = new ModelAndView("index.jsp", true);
+		return mv;
+	}
+	
+	public ModelAndView selectPrivate(HttpServletRequest request, HttpServletResponse response)
+			throws Exception{
+		List<Member> list = memberService.selectPrivate();
+		request.setAttribute("list", list);
+		
+		ModelAndView mv = new ModelAndView("index.jsp", true);
+		
+		return mv;
+	}
+	
 	
 }

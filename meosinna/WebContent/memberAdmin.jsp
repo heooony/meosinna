@@ -1,6 +1,5 @@
+<%@page import="kosta.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,23 +18,9 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
-  <style type="text/css">
-  td{
-	padding-top: 20px;
-	padding-bottom: 20px;
-	}
-	th{
-	padding-right: 100px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	}
-	.info{
-		padding: 10px;
-	}
-  </style>
 </head>
 <body>
- <!--================ Start Header Menu Area =================-->
+  <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -54,38 +39,43 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/category.jsp">Shop Category</a></li>
                 </ul>
 							</li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                </ul>
-							</li>
+				<%
+					Member member = (Member)session.getAttribute("member");
+					
+					if(session.getAttribute("member") == null || !member.getMbName().equals("admin")){
+			
+              
+				}else{%>
+					<li class="nav-item submenu dropdown">
+	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+	                  aria-expanded="false">Admin</a>
+	                <ul class="dropdown-menu">
+	                  <li class="nav-item"><a class="nav-link" href="#">Member Administration</a></li>
+	                  <li class="nav-item"><a class="nav-link" href="#">Order Administration</a></li>
+	                </ul>
+								</li>	
+				<%} %>
 							<li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">멤버</a>
+                  aria-expanded="false">Member</a>
                 <ul class="dropdown-menu">
                   <%if(session.getAttribute("member") == null){ %>
-                  <li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
+                  <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.jsp">Register</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Service</a></li>
                   <%}else{ %>
-                  <li class="nav-item"><a class="nav-link" href="personalInfo.jsp">마이페이지</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
-                  <li class="nav-item"><a class="nav-link" href="like.jsp">좋아요</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">주문배송조회</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">My Page</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.jsp">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">Likes</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Service</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Confirmation</a></li>
                   <%} %>
                 </ul>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
             </ul>
 
             <ul class="nav-shop">
@@ -93,11 +83,11 @@
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
               <%if(session.getAttribute("member") == null) {%>
               
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Login</a></li>
               <%}else{ %>
-              <li class="nav-item"><button><a class="like" href="like.jsp">좋아요</a></li>
+              <li class="nav-item"><button><a class="like" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
               <li class="nav-item"><button><a class="like" href="myPage.jsp">${member.mbName}</a>님</li>
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">logout</a></li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">Logout</a></li>
               <%} %>
             </ul>
           </div>
@@ -107,16 +97,14 @@
   </header>
 	<!--================ End Header Menu Area =================-->
 
-	<!-- ================ start banner area ================= -->
+	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
-					<h1>마이페이지</h1>
+					<h1>관리자 페이지</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="personalInfo.jsp">${member.mbName}</a></li>
-              <li class="breadcrumb-item active" aria-current="page">님 환영합니다.</li>
             </ol>
           </nav>
 				</div>
@@ -133,22 +121,18 @@
         <div class="col-xl-3 col-lg-4 col-md-5">
           
           <div class="sidebar-filter">
-            <div class="top-filter-head">My page</div>
+            <div class="top-filter-head">Admin</div>
             <div class="common-filter">
-              <div class="head">쇼핑활동</div>
+              <div class="head">회원관리</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple">주문 내역 조회</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">구매후기</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="myInfo"><label for="gionee">장바구니</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="myInfo"><label for="micromax">적립금</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung">좋아요</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple">회원목록</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">회원제명</label></li>
                 </ul>
               </form>
             </div>
             <div class="common-filter">
-              <div class="head">나의정보</div>
+              <div class="head">주문관리</div>
               <form action="personalInfo.jsp">
                 <ul>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo"><a href="${pageContext.request.contextPath}/personalInfo.jsp">개인정보변경</a></li>
@@ -160,50 +144,45 @@
           </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
-          <!-- End Filter Bar -->
-          <!-- start likelist -->
-          <section class="lattest-product-area pb-40 category-list">
-          <div class="row">
-          <c:forEach items="${list}" var="likes">
-
-              <div class="col-md-6 col-lg-4">
-                <div class="card text-center card-product">
-                  <div class="card-product__img">
-                  	
-                      <c:choose>
-    					<c:when test="${likes.goods.price eq '799000'}">
-                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
-                    	</c:when>
-                    	<c:otherwise>
-                    		<img class="card-img" src="${likes.goods.img}" alt="" style="width: 240px; height: 200px;">
-                    		<ul class="card-product__imgOverlay">
-                      		<li><button><i class="ti-search"></i></button></li>
-                    		<li><button><i class="ti-shopping-cart"></i></button></li>
-                      		<li><button><i class="ti-heart"></i></button></li>
-                    		</ul>
-  						  </c:otherwise>
-					</c:choose>
-                  </div>
-                  <div class="card-body">
-                    <p>Accessories</p>
-                    <c:choose>
-    					<c:when test="${likes.goods.price eq '799000'}">
-    					      <h4 class="card-product__title">${likes.goods.gdName}</h4>
-                    	</c:when>
-                    	<c:otherwise>
-                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${likes.goods.gdCode}">${likes.goods.gdName}</a></h4>
-  						  </c:otherwise>
-					</c:choose>
-                    <p class="card-product__price">₩${likes.goods.price}</p>
-                    <p class="card-product__likes_num">${likes.goods.gdLike}</p>
-                  </div>
-                </div>
-              </div>
-          </c:forEach>
-              </div>
-          </section>
-        </div>
         
+          <!-- End Filter Bar -->
+          
+          <!-- Start Best Seller -->
+          <section class="lattest-product-area pb-40 category-list">
+            <div class="private_member_table">
+        <h2>전체회원조회</h2>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">회원이름</th>
+                <th scope="col">회원아이디</th>
+                <th scope="col">이메일</th>
+                <th scope="col">주소</th>
+                <th scope="col">주민등록번호</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">가입일</th>
+              </tr>
+            </thead>
+            <tbody>
+             <c:forEach items="${requestScope.list}" var="member"> 
+              <tr>
+                <td><c:out value="${member.mbName}"/></td>
+                <td><c:out value="${member.id}"/></td>
+                <td><c:out value="${member.email}"/></td>
+                <td><c:out value="${member.addr}"/></td>
+                <td><c:out value="${member.jumin}"/></td>
+                <td><c:out value="${member.tel}"/></td>
+                <td><c:out value="${member.signUpDate}"/></td>
+              </tr>
+              </c:forEach>
+            </tbody>
+          </table>
+        </div>
+      </div>
+          </section>
+          <!-- End Best Seller -->
+        </div>
       </div>
     </div>
   </section>
@@ -212,19 +191,18 @@
 	
 
   <!--================ Start footer Area  =================-->	
-	<footer>
+	<footer class="footer">
 		<div class="footer-area">
 			<div class="container">
 				<div class="row section_gap">
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title large_title">Our Mission</h4>
+							<h4 class="footer_title large_title">MEOSINNA</h4>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
-								divided deep moved us lan Gathering thing us land years living.
+								머신나는 고객의 소리에 집중합니다. 불편한 부분이나 해결이 되지 않는 부분이 있다면 머신나 정책에 대한 문의를 남겨주세요.
 							</p>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+								<b>머신나</b>는 항상 고객이 우리 상품의 주인공이 되기를 기다리고 있습니다. 
 							</p>
 						</div>
 					</div>
@@ -232,18 +210,15 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Quick Links</h4>
 							<ul class="list">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Product</a></li>
-								<li><a href="#">Brand</a></li>
+								<li><a href="index.jsp">Home</a></li>
+								<li><a href="${pageContext.request.contextPath}/category.jsp">Shop</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-6 col-sm-6">
 						<div class="single-footer-widget instafeed">
-							<h4 class="footer_title">Gallery</h4>
+							<h4 class="footer_title">Designer</h4>
 							<ul class="list instafeed d-flex flex-wrap">
 								<li><img src="img/gallery/r1.jpg" alt=""></li>
 								<li><img src="img/gallery/r2.jpg" alt=""></li>
@@ -262,15 +237,15 @@
 									<span class="fa fa-location-arrow"></span>
 									Head Office
 								</p>
-								<p>123, Main Street, Your City</p>
-	
+								<p>경기도 성남시 분당구 구미동 185-3</p>
+								<p>하나프라자빌딩</p>
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
 								</p>
 								<p>
-									+123 456 7890 <br>
-									+123 456 7890
+									010 - 1234 - 5678 <br>
+									010 - 1352 - 1357
 								</p>
 	
 								<p class="sm-head">
@@ -278,8 +253,8 @@
 									Email
 								</p>
 								<p>
-									free@infoexample.com <br>
-									www.infoexample.com
+									meosinna@kosta.or.kr <br>
+									www.meosinna.com
 								</p>
 							</div>
 						</div>
@@ -287,7 +262,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row d-flex">
@@ -312,5 +286,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript"></script>
+  <script>
+  
+
+  
+  
+  
+  </script>
+  
 </body>
 </html>

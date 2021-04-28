@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -376,14 +377,15 @@
 									</div>
 								</div>
 							</div>
-							<div class="review_list">
+							<div class="review_list" id="review_list">
+								<c:forEach items="${reviewList}" var="review">
 								<div class="review_item">
 									<div class="media">
 										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
+											<img src="${review.img}" alt="">
 										</div>
 										<div class="media-body">
-											<h4>Blake Ruiz</h4>
+											<h4>${review.mbName}</h4>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -391,46 +393,10 @@
 											<i class="fa fa-star"></i>
 										</div>
 									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
+									<p>${review.content}</p>
 								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
+								</c:forEach>
+							
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -445,21 +411,25 @@
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
 								<p>Outstanding</p>
-                <form action="#/" class="form-contact form-review mt-3">
-                  <div class="form-group">
-                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
+                <form id="review-form" method="post" class="form-contact form-review mt-3">
+                   <input type="hidden" name="gdCode" value="${param.gdCode}"/>
+                <div class="form-group">
+                    <input class="form-control" name="grade" type="text" placeholder="Enter your grade" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
+                    <input class="form-control" name="size" type="text" placeholder="Enter your size" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
+                    <input class="form-control" name="img" type="text" placeholder="Enter your img" required>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
+                    <input class="form-control" name="title" type="text" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control different-control w-100" name="content" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
                   </div>
                   <div class="form-group text-center text-md-right mt-3">
-                    <button type="submit" class="button button--active button-review">Submit Now</button>
+                    <button type="button" id="review-submit" class="button button--active button-review">Submit Now</button>
                   </div>
                 </form>
 							</div>
@@ -687,5 +657,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+  	$(function() {
+		$("#review-submit").click(function() {
+			
+			$.ajax({
+				url: "${pageContext.request.contextPath}/insertReview",
+				type: "post",
+				dataType: "text",
+				data: $("#review-form").serialize(),
+				success: function(result) {
+					alert(result);
+					location.reload();
+				},
+				error: function(err) {
+					alert(err + " :  오류 발생...");
+				}
+			})
+		})
+	})
+  </script>
 </body>
 </html>
