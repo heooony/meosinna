@@ -36,4 +36,29 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return list;
 	}
 
+	@Override
+	public int insertByMbName(Review review) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "insert into review values(rv_code.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try{
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, review.getGdName());
+			ps.setString(2, review.getMbName());
+			ps.setString(3, review.getTitle());
+			ps.setString(4, review.getContent());
+			ps.setString(5, review.getImg());
+			ps.setInt(6, review.getGrade());
+			ps.setInt(7, review.getGdSize());
+			ps.setString(8, review.getGdCode());
+			
+			result = ps.executeUpdate();
+		}finally {
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
+
 }

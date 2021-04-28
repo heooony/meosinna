@@ -154,7 +154,15 @@ public class MemberController implements Controller {
 		return mv;
 	}
 	
-	
+	public ModelAndView selectPrivate(HttpServletRequest request, HttpServletResponse response)
+			throws Exception{
+		List<Member> list = memberService.selectPrivate();
+		request.setAttribute("list", list);
+		
+		ModelAndView mv = new ModelAndView("index.jsp", true);
+		
+		return mv;
+	}
 	
 	
 }

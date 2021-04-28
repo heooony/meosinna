@@ -1,6 +1,7 @@
 package kosta.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import kosta.dao.MemberDAO;
 import kosta.dao.MemberDAOImpl;
@@ -43,5 +44,14 @@ public class MemberService {
 			throw new SQLException("회원 탈퇴에 실패하였습니다.");
 		}
 
+	}
+	
+	public List<Member> selectPrivate() throws SQLException{
+		List<Member> list = dao.selectPrivate();
+		
+		if(list==null) {
+			throw new SQLException("회원 정보를 불러올 수 없습니다.");
+		}
+		return list;
 	}
 }

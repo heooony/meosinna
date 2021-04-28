@@ -17,4 +17,11 @@ public class ReviewService {
 		}
 		return list;
 	}
+	
+	public void insertByMbName(Review review) throws SQLException{
+		int result = dao.insertByMbName(review);
+		if(result==0) {
+			throw new SQLException("리뷰를 작성할 수 없습니다.");
+		}
+	}
 }

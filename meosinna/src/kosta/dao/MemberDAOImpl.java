@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import kosta.dto.Member;
 import kosta.exception.AuthenticationException;
 import kosta.util.DbUtil;
@@ -98,6 +101,29 @@ public class MemberDAOImpl implements MemberDAO{
 			DbUtil.dbClose(ps, con);
 		}
 		return result;
+	}
+
+	@Override
+	public List<Member> selectPrivate() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Member> list = new ArrayList<Member>();
+		String sql = "select mb_name, id, email, addr, regexp_replace(jumin, '\\d','*','7')as p_jumin, tel, sign_up_date\r\n"
+				+ "from member where NOT id IN ('admin')";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Member member = new Member(0, rs.getString(1), rs.getString(2), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				
+				list.add(member);
+			}
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return list;
 	}
 	
 }

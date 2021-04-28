@@ -377,7 +377,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="review_list">
+							<div class="review_list" id="review_list">
 								<c:forEach items="${reviewList}" var="review">
 								<div class="review_item">
 									<div class="media">
@@ -411,21 +411,25 @@
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
 								<p>Outstanding</p>
-                <form action="#/" class="form-contact form-review mt-3">
-                  <div class="form-group">
-                    <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
+                <form id="review-form" method="post" class="form-contact form-review mt-3">
+                   <input type="hidden" name="gdCode" value="${param.gdCode}"/>
+                <div class="form-group">
+                    <input class="form-control" name="grade" type="text" placeholder="Enter your grade" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="email" type="email" placeholder="Enter email address" required>
+                    <input class="form-control" name="size" type="text" placeholder="Enter your size" required>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" name="subject" type="text" placeholder="Enter Subject">
+                    <input class="form-control" name="img" type="text" placeholder="Enter your img" required>
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
+                    <input class="form-control" name="title" type="text" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control different-control w-100" name="content" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
                   </div>
                   <div class="form-group text-center text-md-right mt-3">
-                    <button type="submit" class="button button--active button-review">Submit Now</button>
+                    <button type="button" id="review-submit" class="button button--active button-review">Submit Now</button>
                   </div>
                 </form>
 							</div>
@@ -653,5 +657,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+  	$(function() {
+		$("#review-submit").click(function() {
+			
+			$.ajax({
+				url: "${pageContext.request.contextPath}/insertReview",
+				type: "post",
+				dataType: "text",
+				data: $("#review-form").serialize(),
+				success: function(result) {
+					alert(result);
+					location.reload();
+				},
+				error: function(err) {
+					alert(err + " :  오류 발생...");
+				}
+			})
+		})
+	})
+  </script>
 </body>
 </html>

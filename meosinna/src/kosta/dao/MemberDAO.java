@@ -1,6 +1,7 @@
 package kosta.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import kosta.dto.Member;
 import kosta.exception.*;
@@ -10,5 +11,5 @@ public interface MemberDAO {
 	public Member loginCheck(Member member) throws SQLException, AuthenticationException;
 	public int update(Member dbMember) throws SQLException;
 	public int delete(int mbCode) throws SQLException;
-
+	public List<Member> selectPrivate() throws SQLException;
 }

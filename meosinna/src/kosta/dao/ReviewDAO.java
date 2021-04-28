@@ -8,4 +8,6 @@ import kosta.dto.Review;
 
 public interface ReviewDAO {
 	List<Review> selectByGdCode(String gdCode) throws SQLException;
+	
+	int insertByMbName(Review review) throws SQLException;
 }

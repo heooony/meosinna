@@ -8,11 +8,13 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kosta.dto.Goods;
+import kosta.dto.Member;
 import kosta.dto.Review;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
@@ -30,11 +32,15 @@ public class GoodsController implements Controller {
 	
 	public ModelAndView selectByGdCode(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
+		//해당상품출력
 		String gdCode = request.getParameter("gdCode");
 		Goods goods = goodsService.selectByGdCode(gdCode);
 		request.setAttribute("goods", goods);
+		
+		//리뷰리스트출력
 		List<Review> reviewList = reviewService.selectByGdCode(gdCode);
 		request.setAttribute("reviewList", reviewList);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("single-product.jsp");
 		return mv;
