@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kosta.dto.Goods;
+import kosta.dto.Member;
 import kosta.dto.Order;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
@@ -51,7 +52,7 @@ public class OrderDAOImpl implements OrderDAO{
 		int result = 0;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, orderLine.getQty());
+			ps.setString(1, orderLine.getGdName());
 			ps.setInt(2, orderLine.getQty());
 			ps.setInt(3, orderLine.getIsEvent());
 			ps.setString(4, orderLine.getReq());
@@ -129,5 +130,78 @@ public class OrderDAOImpl implements OrderDAO{
 		
 		return list;
 	}
+
+	@Override
+	public int setComplain(Member member, Order order, Goods goods, String type) throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "INSERT INTO COMPLAIN VALUES(SEQ_COMPLAIN.NEXTVAL,?,SYSDATE,?,?,?,?,?,?,?)";
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, type);
+			ps.setString(2, member.getMbName());
+			ps.setString(3, goods.getGdName());
+			ps.setInt(4, 1);
+			ps.setString(5, "요청 대기");
+			if(type.equals("cancle")) {
+				ps.setString(6, null);
+				ps.setString(7, null);
+			} else {
+				ps.setInt(6, order.getPay());
+				ps.setInt(7, order.getPay());
+			}
+			ps.setInt(8, order.getOdCode());
+			this.updateState(con, order.getOdCode());
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+
+		return result;
+	}
 	
+	@Override
+	public Order getOrder(int odCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM G_ORDER WHERE OD_CODE = ?";
+		Order order = null;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, odCode);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				order = new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return order;
+	}
+	
+	public void updateState(Connection con, int odCode) throws SQLException{
+		PreparedStatement ps = null;
+		String sql = "UPDATE G_ORDER SET STATE = ? WHERE OD_CODE = ?";
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "요청 중");
+			ps.setInt(2, odCode);
+			ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, null);
+		}
+	}
 }

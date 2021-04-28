@@ -48,7 +48,7 @@ public class OrderController implements Controller {
 			service.order(order, orderLine, payment);
 		}
 		//clearCart
-		ModelAndView mv = new ModelAndView("index.jsp", false);
+		ModelAndView mv = new ModelAndView("success.jsp", true);
 		return mv;
 	}
 	
@@ -72,6 +72,23 @@ public class OrderController implements Controller {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("myOrder.jsp");
+		return mv;
+	}
+	
+	public ModelAndView setComplain(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException, SQLException {
+		int odCode = Integer.parseInt(request.getParameter("odCode"));
+		String gdCode = request.getParameter("gdCode");
+		String type = request.getParameter("type");
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
+		
+		service.setComplain(member, odCode, gdCode, type);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("myOrder.jsp");
+		mv.setRedirect(true);
 		return mv;
 	}
 }

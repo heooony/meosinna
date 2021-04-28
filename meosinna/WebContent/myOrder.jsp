@@ -18,6 +18,16 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+	  function cancle (odCode, gdCode) {
+			  location.href="front?key=order&methodName=setComplain&type=cancle&odCode=" + odCode + "&gdCode=" + gdCode;
+	  }
+	  
+	  function refund (odCode, gdCode) {
+			  location.href="front?key=order&methodName=setComplain&type=refund&odCode=" + odCode + "&gdCode=" + gdCode;
+  	   }	  
+  </script>
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -158,7 +168,7 @@
 		                <th scope="col">상품코드</th>
 		                <th scope="col">주문금액</th>
 		                <th scope="col">주문상태</th>
-		                <th scope="col"></th>
+		                <th scope="col">상품이상</th>
 		              </tr>
 		            </thead>
 		            <tbody>
@@ -168,6 +178,23 @@
 		                <td>${order.gdCode}</td>
 		                <td>${order.pay}</td>
 		                <td>${order.state}</td>
+		                <td>
+			                <c:choose>
+	    						<c:when test="${order.state eq '주문 대기'}">
+				                	<input type="button" value="취소" onclick="cancle('${order.odCode}', '${order.gdCode}')">
+	                    		</c:when>
+	                    		<c:when test="${order.state eq '요청 중'}">
+	                    			요청 대기중입니다.
+	                    		</c:when>
+	                    		<c:when test="${order.state eq '요청 완료'}">
+	                    			요청이 완료되었습니다.
+	                    		</c:when>
+	                    		<c:otherwise>
+			                		<input type="button" value="환불" onclick="refund('${order.odCode}', '${order.gdCode}')">
+				                	<input type="button" value="취소" onclick="cancle('${order.odCode}', '${order.gdCode}')">
+	  						  	</c:otherwise>
+							</c:choose>
+		                </td>
 		              </tr>
 		              </c:forEach>
 		            </tbody>

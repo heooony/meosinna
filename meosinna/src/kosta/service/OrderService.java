@@ -2,9 +2,8 @@ package kosta.service;
 
 import java.sql.SQLException;
 import java.util.List;
-import kosta.dao.MemberDAOImpl;
 
-import kosta.dto.Goods;
+import kosta.dto.Member;
 import kosta.dto.Order;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
@@ -15,5 +14,7 @@ public interface OrderService {
 	public List<Order> viewAllOrders() throws SQLException;
 	
 	public List<Order> viewMyOrder(int mbCode) throws SQLException;
+
+	public void setComplain(Member member, int odCode, String gdCode, String type) throws SQLException;
 
 }
