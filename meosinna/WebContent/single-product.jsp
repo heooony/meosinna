@@ -22,20 +22,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(function() {
+		let curLike = '${requestScope.like}';
 		$("#like-button").click(function() {
-			console.log('${requestScope.like}');
+			console.log(curLike);
 			$.ajax({
 				url : 'dbGet.jsp',
+				method : 'post',
 				data : {
 					gdCode : '${goods.gdCode}',
-					isLike:  '${requestScope.like}'
+					isLike:  '0'
 				},
 				success : function(value) {
-					if(value === 1) {
+					if(value === "1") {
 						$("#like-total").html(  Number($("#like-total").html()) + 1  );
 					} else {
 						$("#like-total").html(  Number($("#like-total").html()) - 1  );
 					}
+					curLike = value;
 				},
 				fail : function() {
 					console.log(item);

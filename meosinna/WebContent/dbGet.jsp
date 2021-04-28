@@ -12,8 +12,8 @@
 	GoodsDAOImpl dao = new GoodsDAOImpl();
 	dao.setGdLike(gdCode, isLike);
 	if(isLike.equals("0")) {
-		request.setAttribute("like", "1");
+		out.println("1");
 	} else {
-		request.setAttribute("like", "0");
+		out.println("0");
 	}
 %>
