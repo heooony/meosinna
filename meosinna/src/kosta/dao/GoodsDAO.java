@@ -89,5 +89,15 @@ public interface GoodsDAO {
 	 * */
 	List<Goods> getGoodsList(int pageNo) throws SQLException;
 	
+	/**
+	 * 낮은 가격순 정렬
+	 * */
+	List<Goods> selectAllByPriceAsc() throws SQLException;
+	
+	/**
+	 * 높은 가격순 정렬
+	 * */
+	List<Goods> selectAllByPriceDesc() throws SQLException;
+	
 	  
 }
