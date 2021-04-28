@@ -165,15 +165,15 @@
               </tr>
             </thead>
             <tbody>
-             <c:forEach items="${requestScope.list}" var="member"> 
+             <c:forEach items="${requestScope.privateList}" var="privateMember"> 
               <tr>
-                <td><c:out value="${member.mbName}"/></td>
-                <td><c:out value="${member.id}"/></td>
-                <td><c:out value="${member.email}"/></td>
-                <td><c:out value="${member.addr}"/></td>
-                <td><c:out value="${member.jumin}"/></td>
-                <td><c:out value="${member.tel}"/></td>
-                <td><c:out value="${member.signUpDate}"/></td>
+                <td><span>${privateMember.mbName}</span></td>
+                <td><span>${privateMember.id}</span></td>
+                <td><span>${privateMember.email}</span></td>
+                <td><span>${privateMember.addr}</span></td>
+                <td><span>${privateMember.jumin}</span></td>
+                <td><span>${privateMember.tel}</span></td>
+                <td><span>${privateMember.signUpDate}</span></td>
               </tr>
               </c:forEach>
             </tbody>

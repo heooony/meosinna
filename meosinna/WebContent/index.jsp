@@ -53,7 +53,7 @@
 	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 	                  aria-expanded="false">Admin</a>
 	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="memberAdmin.jsp">Member Administration</a></li>
+	                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=member&methodName=selectPrivate">Member Administration</a></li>
 	                  <li class="nav-item"><a class="nav-link" href="#">Order Administration</a></li>
 	                </ul>
 								</li>	
