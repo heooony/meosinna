@@ -21,76 +21,7 @@
   <link rel="stylesheet" href="css/style.css">
  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-$(function() {
-	
-	$("[name=choice]").change(function(){
-		//alert($(this).val())
-		if($(this).val()=="0"){
-			return;
-		}
-		
-		  $.ajax({
-	   			 url:"priceAlign" , // 서버요청주소  
-	   			 type: "get", //method방식 = 전송방식(get, post, put, delete)
-	   			 dataType: "json", //서버가 응답해주는 데이터의 타입(html, text, xml, json 중의 한개)
-	   			 data: {align : $(this).val() } ,  //서버에게 보낼 parameter정보
-	   			 success : function(result){
-	   			   // alert(result)
-	   			   var str="";
-		                  
-	   			   $.each(result, function(index, item){
-						/* str += `<section class="lattest-product-area pb-40 category-list">`;
-						str += `<div class="row">`;
-						str += `<c:forEach items="${requestScope.list}" var="goods">`;
-						str += `<div class="col-md-6 col-lg-4">`;
-						str += `<div class="card text-center card-product">`;
-						str += `<div class="card-product__img">`;
-						str += `<c:choose>`;
-						str += `<c:when test="${goods.price eq '799000'}">`;
-						str += `<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">`;
-						str += `</c:when>`;
-						str += `<c:otherwise>`;
-						str += `<img class="card-img" src="${item.img}" alt="" style="width: 240px; height: 200px;">`;
-						str += `<ul class="card-product__imgOverlay">`;
-						str += `<li><button><i class="ti-search"></i></button></li>`;
-						str += `<li><button><i class="ti-shopping-cart"></i></button></li>`;
-						str += `<li><button><i class="ti-heart"></i></button></li>`;
-						str += `</ul>`;
-						str += `</c:otherwise>`;
-						str += `</c:choose>`;
-						str += `</div>`;
-						str += `<div class="card-body">`;
-						str += `<p>Accessories</p>`;
-						str += `<c:choose>`;
-						str += `<c:when test="${goods.price eq '799000'}">`;
-						str += `<h4 class="card-product__title">${item.gdName}</h4>`;
-						str += `</c:when>`;
-						str += `<c:otherwise>`;
-						str += `<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${item.gdName}</a></h4>`;
-						str += `</c:otherwise>`	;									
-						str += `</c:choose>`;
-						str += ` <p class="card-product__price">₩${item.price}</p>`;
-						str += `</div>`;
-						str += `</div>`;
-						str += `</div>`;
-						str += `</c:forEach>`;
-						str += `</div>`;
-						str += `</section>`; */
-						
-						
-	   			   })
 
-										$("[class=row]").html(str);
-
-									}, //성공했을때 함수
-									error : function(err) {
-										alert(err + "발생했어요^^")
-									} //오류발생했을때 함수 
-
-								});//ajax끝
-					})
-
-})
 </script> 
   
 <style>

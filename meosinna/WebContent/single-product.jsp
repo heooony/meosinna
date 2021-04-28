@@ -198,6 +198,9 @@
 
 								</div>
 								</form>
+								<a class="button primary-btn"
+								href="front?key=cart&methodName=addToCart&gdCode=${goods.gdCode}">Add
+								to Cart</a>
 
 								<script>
 									function dp_menu() {

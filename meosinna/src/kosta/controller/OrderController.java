@@ -1,7 +1,6 @@
 package kosta.controller;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,12 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kosta.dto.CartDTO;
 import kosta.dto.Goods;
 import kosta.dto.Member;
 import kosta.dto.Order;
 import kosta.dto.OrderDetail;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
+import kosta.service.CartService;
+import kosta.service.CartServiceImpl;
 import kosta.service.OrderService;
 import kosta.service.OrderServiceImpl;
 
@@ -34,19 +36,17 @@ public class OrderController implements Controller {
 		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("member");
-
 		//session에 저장해두기
 		CartService cartService = new CartServiceImpl();
 		List<CartDTO> goodsList = cartService.viewCart(member.getMbCode());
 		String req = request.getParameter("req");
 		
-		for(Goods goods : goodsList) {
-			Order order = new Order(0, member.getMbName(), member.getTel(), member.getAddr(), goods.getPrice(), "주문 대기", goods.getGdCode(), member.getMbCode());
-			OrderLine orderLine = new OrderLine(0, goods.getGdName(), null, 0, 0, req, 0);
-			Payment payment = new Payment(0,0, null, goods.getPrice(), "paypal", "결제완료");
+		for(CartDTO cart : goodsList) {
+			Order order = new Order(1, member.getMbName(), member.getTel(), member.getAddr(), cart.getPrice(), "주문 대기", cart.getGdCode(), member.getMbCode());
+			OrderLine orderLine = new OrderLine(1, cart.getName(), null, 1, 0, req, 240);
+			Payment payment = new Payment(1,0, null, cart.getPrice(), "paypal", "결제완료");
 			service.order(order, orderLine, payment);
 		}
-
 		//clearCart
 		ModelAndView mv = new ModelAndView("success.jsp", true);
 		return mv;

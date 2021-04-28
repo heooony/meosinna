@@ -474,7 +474,27 @@ public class GoodsDAOImpl implements GoodsDAO {
 		List<Goods> list = new ArrayList<Goods>();
 		
 		String sql = "select * from goods order by price desc" ;
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
 	}
+	
 	public int checkLike(int mbCode, String gdCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
