@@ -17,14 +17,13 @@ public class GoodsDAOImpl implements GoodsDAO {
 	Properties proFile = new Properties();
 	
 	public GoodsDAOImpl () {
-		try {	
-			proFile.load(getClass().getClassLoader().getResourceAsStream("dbQuery.properties"));
-			
-			String str = proFile.getProperty("query.select");
-			System.out.println("str = " + str);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		/*
+		 * try { proFile.load(getClass().getClassLoader().getResourceAsStream(
+		 * "dbQuery.properties"));
+		 * 
+		 * String str = proFile.getProperty("query.select"); System.out.println("str = "
+		 * + str); }catch (Exception e) { e.printStackTrace(); }
+		 */
 	}
 	
 	
@@ -408,6 +407,66 @@ public class GoodsDAOImpl implements GoodsDAO {
 			DbUtil.dbClose(rs, ps, con);
 		}
 		return goods;
+	}
+
+
+	@Override
+	public List<Goods> selectAllByPriceAsc() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
+		
+		String sql = "select * from goods order by price asc" ;
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
+
+
+	@Override
+	public List<Goods> selectAllByPriceDesc() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
+		
+		String sql = "select * from goods order by price desc" ;
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
 	}
 
 }

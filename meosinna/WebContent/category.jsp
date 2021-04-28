@@ -3,26 +3,97 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Aroma Shop - Category</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
+  <link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
+  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="vendors/linericon/style.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
-
   <link rel="stylesheet" href="css/style.css">
+ <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	
+	$("[name=choice]").change(function(){
+		//alert($(this).val())
+		if($(this).val()=="0"){
+			return;
+		}
+		
+		  $.ajax({
+	   			 url:"priceAlign" , // 서버요청주소  
+	   			 type: "get", //method방식 = 전송방식(get, post, put, delete)
+	   			 dataType: "json", //서버가 응답해주는 데이터의 타입(html, text, xml, json 중의 한개)
+	   			 data: {align : $(this).val() } ,  //서버에게 보낼 parameter정보
+	   			 success : function(result){
+	   			   // alert(result)
+	   			   var str="";
+		                  
+	   			   $.each(result, function(index, item){
+						/* str += `<section class="lattest-product-area pb-40 category-list">`;
+						str += `<div class="row">`;
+						str += `<c:forEach items="${requestScope.list}" var="goods">`;
+						str += `<div class="col-md-6 col-lg-4">`;
+						str += `<div class="card text-center card-product">`;
+						str += `<div class="card-product__img">`;
+						str += `<c:choose>`;
+						str += `<c:when test="${goods.price eq '799000'}">`;
+						str += `<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">`;
+						str += `</c:when>`;
+						str += `<c:otherwise>`;
+						str += `<img class="card-img" src="${item.img}" alt="" style="width: 240px; height: 200px;">`;
+						str += `<ul class="card-product__imgOverlay">`;
+						str += `<li><button><i class="ti-search"></i></button></li>`;
+						str += `<li><button><i class="ti-shopping-cart"></i></button></li>`;
+						str += `<li><button><i class="ti-heart"></i></button></li>`;
+						str += `</ul>`;
+						str += `</c:otherwise>`;
+						str += `</c:choose>`;
+						str += `</div>`;
+						str += `<div class="card-body">`;
+						str += `<p>Accessories</p>`;
+						str += `<c:choose>`;
+						str += `<c:when test="${goods.price eq '799000'}">`;
+						str += `<h4 class="card-product__title">${item.gdName}</h4>`;
+						str += `</c:when>`;
+						str += `<c:otherwise>`;
+						str += `<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${item.gdName}</a></h4>`;
+						str += `</c:otherwise>`	;									
+						str += `</c:choose>`;
+						str += ` <p class="card-product__price">₩${item.price}</p>`;
+						str += `</div>`;
+						str += `</div>`;
+						str += `</div>`;
+						str += `</c:forEach>`;
+						str += `</div>`;
+						str += `</section>`; */
+						
+						
+	   			   })
 
+										$("[class=row]").html(str);
+
+									}, //성공했을때 함수
+									error : function(err) {
+										alert(err + "발생했어요^^")
+									} //오류발생했을때 함수 
+
+								});//ajax끝
+					})
+
+})
+</script> 
+  
 <style>
 @import url("https:/fonts.googleapis.com/css?family=Roboto:400,300");
 
@@ -39,12 +110,15 @@ h1 {
 }
 
 .pagination-container {
-	margin: 100px auto;
+	margin: 35px auto;
 	text-align: center;
+	margin-left: 800px;	
 }
 
 .pagination {
 	position: relative;
+	text-align: center;
+	
 }
 
 .pagination a {
@@ -97,9 +171,6 @@ h1 {
 	margin-left: 50px;
 }
 
-table td {
-	text-align: center;
-	}
 </style>
 
 
@@ -284,17 +355,10 @@ table td {
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
             <div class="sorting">
-              <select>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-                <option value="1">Default sorting</option>
-              </select>
-            </div>
-            <div class="sorting mr-auto">
-              <select>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
-                <option value="1">Show 12</option>
+              <select name="choice">
+                <option value="0">--정렬 선택--</option>
+                <option value="1">낮은 가격순</option>
+                <option value="2">높은 가격순</option>
               </select>
             </div>
             <div>
@@ -310,7 +374,7 @@ table td {
 
           <!-- Start Best Seller -->
           <section class="lattest-product-area pb-40 category-list">
-          <div class="row">
+          <div class="row"> 
           <c:forEach items="${requestScope.list}" var="goods">
 
               <div class="col-md-6 col-lg-4">
@@ -363,10 +427,10 @@ table td {
 			<a class="pagination-newer" href="${path}/front?key=goods&methodName=selectAll&pageNo=${pageNo>1?pageNo-1:1}">PREV</a> 
 				<span class="pagination-inner"> 
 				<c:forEach var='i' begin='1' end='${p.pageCnt}'>
-				  <a class="${i==pageNo?'pagination-active':page}" href="${path}/front?key=goods&methodName=selectAll&pageNo=${i}">${i}</a> 
+				  <a class="${i==pageNo?'pagination-active':page}" href="${path}/meosinna/front?key=goods&methodName=selectAll&pageNo=${i}">${i}</a> 
 				</c:forEach>
 				</span> 
-			<a class="pagination-older" href="${path}/front?key=goods&methodName=selectAll&pageNo=${pageNo<pageCnt?pageNo+1:pageCnt}">NEXT</a>
+			<a class="pagination-older" href="${path}/meosinna/front?key=goods&methodName=selectAll&pageNo=${pageNo<pageCnt?pageNo+1:pageCnt}">NEXT</a>
 		</div>
 	</nav> 
 	

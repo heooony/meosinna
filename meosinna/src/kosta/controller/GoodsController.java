@@ -41,8 +41,7 @@ public class GoodsController implements Controller {
 	 * 전체검색
 	 * */
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-	
+			
 		 String pageNo = request.getParameter("pageNo");
 		  
 	        if(pageNo==null || pageNo.equals("")) { 
@@ -50,6 +49,7 @@ public class GoodsController implements Controller {
 		  }
 
 		 List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
+
 		request.setAttribute("list", list);
 		request.setAttribute("pageNo", pageNo);
 		ModelAndView mv = new ModelAndView();
