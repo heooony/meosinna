@@ -1,21 +1,15 @@
 package kosta.controller;
 
 import java.io.IOException;
-
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kosta.dao.MemberDAO;
-import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
-import kosta.controller.ModelAndView;
 import kosta.service.MemberService;
 
 
@@ -145,12 +139,9 @@ public class MemberController implements Controller {
 	
 		int mbCodeid = Integer.parseInt(request.getParameter("ps-info-mbCode"));
 		
-		
-		
 		memberService.delete(mbCodeid);
 		
 		ModelAndView mv = new ModelAndView("index.jsp", true);
-		
 		return mv;
 	}
 	

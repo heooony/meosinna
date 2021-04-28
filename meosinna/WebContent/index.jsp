@@ -74,8 +74,9 @@
                   <li class="nav-item"><a class="nav-link" href="#">Product Checkout</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">Confirmation</a></li>
                   <%} %>
-                </ul>
-              <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+
+			</ul>
+              <li class="nav-item"><a class="nav-link" href="contact.jsp">Contact</a></li>
             </ul>
 
             <ul class="nav-shop">

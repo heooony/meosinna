@@ -6,6 +6,7 @@ import java.util.List;
 import kosta.dao.MemberDAO;
 import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
+import kosta.dto.Order;
 
 public class MemberService {
 	MemberDAO dao = new MemberDAOImpl();
@@ -45,6 +46,7 @@ public class MemberService {
 		}
 
 	}
+
 	
 	public List<Member> selectPrivate() throws SQLException{
 		List<Member> list = dao.selectPrivate();
@@ -54,4 +56,22 @@ public class MemberService {
 		}
 		return list;
 	}
+
+
+	public Order getOrderList(int mbCode) throws SQLException{
+		Order order = dao.getOrderListByMember(mbCode);
+		
+		if(order == null) {
+			throw new SQLException("주문정보 조회에 실패하였습니다.");
+		}
+		
+		return order;
+	
+	}
+
+
+
 }
+
+
+
