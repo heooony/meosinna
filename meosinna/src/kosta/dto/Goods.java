@@ -9,7 +9,6 @@ public class Goods {
 	private String stCode;
 	private String gdContent;
 	private String img;
-	private int pageCnt;
 	
 
 	public Goods() {}
@@ -67,6 +66,7 @@ public class Goods {
 		this.gdLike = gdLike;
 	}
 
+
 	public String getStCode() {
 		return stCode;
 	}
@@ -89,14 +89,6 @@ public class Goods {
 
 	public void setImg(String img) {
 		this.img = img;
-	}
-
-	public int getPageCnt() {
-		return pageCnt;
-	}
-
-	public void setPageCnt(int pageCnt) {
-		this.pageCnt = pageCnt;
 	}
 	
 	

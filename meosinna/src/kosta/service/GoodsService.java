@@ -92,5 +92,4 @@ public interface GoodsService {
  	List<Goods> selectAllByPriceDesc() throws SQLException;
      
 	
-
 }

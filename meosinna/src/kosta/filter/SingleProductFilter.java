@@ -10,29 +10,28 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kosta.controller.GoodsController;
+import kosta.controller.Controller;
 
 /**
  * Servlet Filter implementation class EncodingFilter
  */
 @WebFilter(
-		urlPatterns = {  
+		urlPatterns = {
 				"/single-product.jsp"
-		}, 
-		initParams = { 
+		},
+		initParams = {
 				@WebInitParam(name = "encoding", value = "UTF-8")
 		})
 public class SingleProductFilter implements Filter {
 	String encoding;
-	
+
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String gdCode = request.getParameter("gdCode");
 		request.getRequestDispatcher("front?key=goods&methodName=selectByGdCode&gdCode=" + gdCode).forward(request, response);
+		//request.getRequestDispatcher("front?key=review&methodName=selectByGdCode&gdCode=" + gdCode).forward(request, response);
 		chain.doFilter(request, response);
+		
 	}
 
 	/**

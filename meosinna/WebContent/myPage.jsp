@@ -62,7 +62,7 @@
                   <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
                   <%}else{ %>
-                  <li class="nav-item"><a class="nav-link" href="personalInfo.jsp">마이페이지</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">마이페이지</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
                   <li class="nav-item"><a class="nav-link" href="like.jsp">좋아요</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">주문배송조회</a></li>
@@ -122,20 +122,22 @@
               <div class="head">쇼핑활동</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">주문 내역 조회</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">구매후기</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">장바구니</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">적립금</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">좋아요</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple">주문 내역 조회</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">구매후기</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="myInfo"><label for="gionee">장바구니</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="myInfo"><label for="micromax">적립금</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung">좋아요</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="contact"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">일대일문의</a></label></li>
                 </ul>
               </form>
             </div>
             <div class="common-filter">
               <div class="head">나의정보</div>
-              <form action="#">
+              <form action="personalInfo.jsp">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo">개인정보변경</li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="myInfo">회원탈퇴</li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo"><a href="${pageContext.request.contextPath}/personalInfo.jsp">개인정보변경</a></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="myInfo"><a href="${pageContext.request.contextPath}/withdrawl.jsp">회원탈퇴</a></li>
                 </ul>
               </form>
             </div>
@@ -417,23 +419,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script type="text/javascript"></script>
   <script>
   
-	$(function() {
 
-		//정남님...id이름 짓기 힘드셨군요..
-		 $("myInfo").click(function () {
-			
-			 alert(1);
-			 
-			 
-		});
-		 
-		
-		
-		
-		
-		
-		
-	})//Jquery끝  
   
   
   

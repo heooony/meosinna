@@ -22,6 +22,7 @@ public class DbUtil {
 		try {
 		  Context initContext = new InitialContext();
 		  ds = (DataSource)initContext.lookup("java:/comp/env/jdbc/myoracle");
+		  System.out.println("ds = " + ds);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

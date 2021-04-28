@@ -21,6 +21,23 @@ public class OrderLine {
 		this.size = size;
 	}
 	
+	
+	/////////////////////////////////////////////////////////////////////////////////	
+	
+	/**
+	*  일대일 문의를 위한 추가 생성자
+	**/
+	
+	public OrderLine(int odCode, String odDate, String gdName, int qty) {
+		this.odCode = odCode;
+		this.odDate = odDate;
+		this.gdName = gdName;
+		this.qty = qty;
+	}
+	/////////////////////////////////////////////////////////////////////////////////	
+
+	
+	
 	public int getOdCode() {
 		return odCode;
 	}
@@ -63,5 +80,20 @@ public class OrderLine {
 	public void setSize(int size) {
 		this.size = size;
 	}
+	
+	
+/////////////////////////////////////////////////////////////////////////////////	
+	
+/**
+*  일대일 문의를 위한 추가 toString
+**/
+	public String toString() {
+		return "OrderLine [odCode=" + odCode + ", gdName=" + gdName + ", odDate=" + odDate + ", qty=" + qty
+				+ "]";
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	
 }

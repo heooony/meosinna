@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -456,92 +456,62 @@
 									</ul>
 								</div>
 							</div>
-						</div>
-						<div class="review_list">
-							<div class="review_item">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/review-1.png" alt="">
+							<div class="review_list" id="review_list">
+								<c:forEach items="${reviewList}" var="review">
+								<div class="review_item">
+									<div class="media">
+										<div class="d-flex">
+											<img src="${review.img}" alt="">
+										</div>
+										<div class="media-body">
+											<h4>${review.mbName}</h4>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
 									</div>
-									<div class="media-body">
-										<h4>Blake Ruiz</h4>
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
+									<p>${review.content}</p>
 								</div>
-								<p>디자인이 깔끔하고 예뻐서 구매했습니다. 어떤 룩에도 잘어울려서 활용성도 좋고 착화감도 너무 좋아서
-									만족하고 착용 중입니다! 좋은 상품을 합리적인 가격에 구매할 수 있어서 만족합니다~~ 다음번에도 콜라보 신발은
-									머신나로 구매하러 올게요 !!!</p>
-							</div>
-							<div class="review_item">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/review-2.png" alt="">
-									</div>
-									<div class="media-body">
-										<h4>Blake Ruiz</h4>
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
-								</div>
-								<p>친구들이 신발 보고 다들 잘샀다고 하네요. 저희 아버지께서 머신나라는 이름 들으시고 계속 아재개그를
-									하시네요 하하 덕분에 즐거운 시간도 생겼고 머시나는 신발도 생겼네요~</p>
-							</div>
-							<div class="review_item">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/review-3.png" alt="">
-									</div>
-									<div class="media-body">
-										<h4>Blake Ruiz</h4>
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
-								</div>
-								<p>天啊！ 这一双鞋怎么这么让我满意呀～！ 我所有的朋友都称我的漂亮鞋子。 所以我建议他们在这儿上购买它～
-									希望您的生意蒸蒸日上!</p>
+								</c:forEach>
+							
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="review_box">
-							<h4>Add a Review</h4>
-							<p>Your Rating:</p>
-							<ul class="list">
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-							</ul>
-							<p>Outstanding</p>
-							<form action="#/" class="form-contact form-review mt-3">
-								<div class="form-group">
-									<input class="form-control" name="name" type="text"
-										placeholder="Enter your name" required>
-								</div>
-								<div class="form-group">
-									<input class="form-control" name="email" type="email"
-										placeholder="Enter email address" required>
-								</div>
-								<div class="form-group">
-									<input class="form-control" name="subject" type="text"
-										placeholder="Enter Subject">
-								</div>
-								<div class="form-group">
-									<textarea class="form-control different-control w-100"
-										name="textarea" id="textarea" cols="30" rows="5"
-										placeholder="Enter Message"></textarea>
-								</div>
-								<div class="form-group text-center text-md-right mt-3">
-									<button type="submit"
-										class="button button--active button-review">Submit
-										Now</button>
-								</div>
-							</form>
+						<div class="col-lg-6">
+							<div class="review_box">
+								<h4>Add a Review</h4>
+								<p>Your Rating:</p>
+								<ul class="list">
+									<li><a href="#"><i class="fa fa-star"></i></a></li>
+									<li><a href="#"><i class="fa fa-star"></i></a></li>
+									<li><a href="#"><i class="fa fa-star"></i></a></li>
+									<li><a href="#"><i class="fa fa-star"></i></a></li>
+									<li><a href="#"><i class="fa fa-star"></i></a></li>
+								</ul>
+								<p>Outstanding</p>
+                <form id="review-form" method="post" class="form-contact form-review mt-3">
+                   <input type="hidden" name="gdCode" value="${param.gdCode}"/>
+                <div class="form-group">
+                    <input class="form-control" name="grade" type="text" placeholder="Enter your grade" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="size" type="text" placeholder="Enter your size" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="img" type="text" placeholder="Enter your img" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="title" type="text" placeholder="Enter Title">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control different-control w-100" name="content" id="textarea" cols="30" rows="5" placeholder="Enter Message"></textarea>
+                  </div>
+                  <div class="form-group text-center text-md-right mt-3">
+                    <button type="button" id="review-submit" class="button button--active button-review">Submit Now</button>
+                  </div>
+                </form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -761,13 +731,33 @@
 
 
 
-<script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="vendors/skrollr.min.js"></script>
-<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-<script src="vendors/jquery.ajaxchimp.min.js"></script>
-<script src="vendors/mail-script.js"></script>
-<script src="js/main.js"></script>
+  <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendors/skrollr.min.js"></script>
+  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="vendors/jquery.ajaxchimp.min.js"></script>
+  <script src="vendors/mail-script.js"></script>
+  <script src="js/main.js"></script>
+  <script type="text/javascript">
+  	$(function() {
+		$("#review-submit").click(function() {
+			
+			$.ajax({
+				url: "${pageContext.request.contextPath}/insertReview",
+				type: "post",
+				dataType: "text",
+				data: $("#review-form").serialize(),
+				success: function(result) {
+					alert(result);
+					location.reload();
+				},
+				error: function(err) {
+					alert(err + " :  오류 발생...");
+				}
+			})
+		})
+	})
+  </script>
 </body>
 </html>

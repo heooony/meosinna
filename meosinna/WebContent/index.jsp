@@ -1,3 +1,4 @@
+<%@page import="kosta.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,38 +39,44 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.jsp">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/category.jsp">Shop Category</a></li>
                 </ul>
 							</li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                </ul>
-							</li>
+				<%
+					Member member = (Member)session.getAttribute("member");
+					
+					if(session.getAttribute("member") == null || !member.getMbName().equals("admin")){
+			
+              
+				}else{%>
+					<li class="nav-item submenu dropdown">
+	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+	                  aria-expanded="false">Admin</a>
+	                <ul class="dropdown-menu">
+	                  <li class="nav-item"><a class="nav-link" href="memberAdmin.jsp">Member Administration</a></li>
+	                  <li class="nav-item"><a class="nav-link" href="#">Order Administration</a></li>
+	                </ul>
+								</li>	
+				<%} %>
 							<li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">멤버</a>
+                  aria-expanded="false">Member</a>
                 <ul class="dropdown-menu">
                   <%if(session.getAttribute("member") == null){ %>
-                  <li class="nav-item"><a class="nav-link" href="login.jsp">로그인</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.jsp">회원가입</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
+                  <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.jsp">Register</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Service</a></li>
                   <%}else{ %>
-                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">마이페이지</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.jsp">장바구니</a></li>
-                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">주문배송조회</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">고객센터</a></li>
+                  <li class="nav-item"><a class="nav-link" href="myPage.jsp">My Page</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.jsp">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">Likes</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Service</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Confirmation</a></li>
                   <%} %>
-                </ul>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+			</ul>
+              <li class="nav-item"><a class="nav-link" href="contact.jsp">Contact</a></li>
             </ul>
 
             <ul class="nav-shop">
@@ -77,11 +84,11 @@
               <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
               <%if(session.getAttribute("member") == null) {%>
               
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Buy Now</a></li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Login</a></li>
               <%}else{ %>
               <li class="nav-item"><button><a class="like" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
               <li class="nav-item"><button><a class="like" href="myPage.jsp">${member.mbName}</a>님</li>
-              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=likes&methodName=logout"">logout</a></li>
+              <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/front?key=member&methodName=logout"">Logout</a></li>
               <%} %>
             </ul>
           </div>
@@ -90,7 +97,6 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-
   <main class="site-main">
     
     <!--================ Hero banner start =================-->
@@ -107,14 +113,13 @@
               <h4>MEOSINNA</h4>
               <h1>당신의 가치, 우리의 노력</h1>
               <p>'머신나'는 사람들의 대한 이해관계로 상품을 제작합니다. 우리 곁에 항상 있었던 머신나와 함께 고객의 색으로 만들어 가는 상품을 살펴보세요.</p>
-              <a class="button button-hero" href="#">상품 둘러보기</a>
+              <a class="button button-hero" href="${pageContext.request.contextPath}/category.jsp">상품 둘러보기</a>
             </div>
           </div>
         </div>
       </div>
     </section>
     <!--================ Hero banner start =================-->
-
     <!--================ Hero Carousel start =================-->
     <section class="section-margin mt-0" style="padding-top: 100px">
       <div class="owl-carousel owl-theme hero-carousel">
@@ -142,7 +147,6 @@
       </div>
     </section>
     <!--================ Hero Carousel end =================-->
-
     <!-- ================ trending product section start ================= -->  
     <section class="section-margin calc-60px">
       <div class="container">
@@ -150,7 +154,7 @@
           <p>당신의 가치</p>
           <h2>PRODUCT'S
             <span class="section-intro__style">DETAILS</span>
-            <a href="" class="more-items">더 알아보기 ></a>
+            <a href="${pageContext.request.contextPath}/category.jsp" class="more-items">더 알아보기 ></a>
           </h2>
         </div>
         <div class="row">
@@ -294,8 +298,6 @@
       </div>
     </section>
     <!-- ================ trending product section end ================= -->  
-
-
     <!-- ================ offer section start ================= --> 
     <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
       <div class="container">
@@ -312,105 +314,12 @@
       </div>
     </section>
     <!-- ================ offer section end ================= --> 
-
     <!-- ================ Best Selling item  carousel ================= -->
-
     <!-- ================ Best Selling item  carousel end ================= -->
-
-    <!-- ================ Blog section start ================= -->  
-    <section class="blog">
-      <div class="container">
-        <div class="section-intro pb-60px">
-          <p>Popular Item in the market</p>
-          <h2>Latest <span class="section-intro__style">News</span></h2>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-blog">
-              <div class="card-blog__img">
-                <img class="card-img rounded-0" src="img/blog/blog1.png" alt="">
-              </div>
-              <div class="card-body">
-                <ul class="card-blog__info">
-                  <li><a href="#">By Admin</a></li>
-                  <li><a href="#"><i class="ti-comments-smiley"></i> 2 Comments</a></li>
-                </ul>
-                <h4 class="card-blog__title"><a href="single-blog.html">The Richland Center Shooping News and weekly shooper</a></h4>
-                <p>Let one fifth i bring fly to divided face for bearing divide unto seed. Winged divided light Forth.</p>
-                <a class="card-blog__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-blog">
-              <div class="card-blog__img">
-                <img class="card-img rounded-0" src="img/blog/blog2.png" alt="">
-              </div>
-              <div class="card-body">
-                <ul class="card-blog__info">
-                  <li><a href="#">By Admin</a></li>
-                  <li><a href="#"><i class="ti-comments-smiley"></i> 2 Comments</a></li>
-                </ul>
-                <h4 class="card-blog__title"><a href="single-blog.html">The Shopping News also offers top-quality printing services</a></h4>
-                <p>Let one fifth i bring fly to divided face for bearing divide unto seed. Winged divided light Forth.</p>
-                <a class="card-blog__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card card-blog">
-              <div class="card-blog__img">
-                <img class="card-img rounded-0" src="img/blog/blog3.png" alt="">
-              </div>
-              <div class="card-body">
-                <ul class="card-blog__info">
-                  <li><a href="#">By Admin</a></li>
-                  <li><a href="#"><i class="ti-comments-smiley"></i> 2 Comments</a></li>
-                </ul>
-                <h4 class="card-blog__title"><a href="single-blog.html">Professional design staff and efficient equipment you’ll find we offer</a></h4>
-                <p>Let one fifth i bring fly to divided face for bearing divide unto seed. Winged divided light Forth.</p>
-                <a class="card-blog__link" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ================ Blog section end ================= -->  
-
-    <!-- ================ Subscribe section start ================= --> 
-    <section class="subscribe-position">
-      <div class="container">
-        <div class="subscribe text-center">
-          <h3 class="subscribe__title">Get Update From Anywhere</h3>
-          <p>Bearing Void gathering light light his eavening unto dont afraid</p>
-          <div id="mc_embed_signup">
-            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe-form form-inline mt-5 pt-1">
-              <div class="form-group ml-sm-auto">
-                <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '" >
-                <div class="info"></div>
-              </div>
-              <button class="button button-subscribe mr-auto mb-1" type="submit">Subscribe Now</button>
-              <div style="position: absolute; left: -5000px;">
-                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-              </div>
-
-            </form>
-          </div>
-          
-        </div>
-      </div>
-    </section>
-    <!-- ================ Subscribe section end ================= --> 
-
     
-
+    
+    
   </main>
-
-
   <!--================ Start footer Area  =================-->	
 	<footer class="footer">
 		<div class="footer-area">
@@ -418,13 +327,12 @@
 				<div class="row section_gap">
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title large_title">Our Mission</h4>
+							<h4 class="footer_title large_title">MEOSINNA</h4>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
-								divided deep moved us lan Gathering thing us land years living.
+								머신나는 고객의 소리에 집중합니다. 불편한 부분이나 해결이 되지 않는 부분이 있다면 머신나 정책에 대한 문의를 남겨주세요.
 							</p>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+								<b>머신나</b>는 항상 고객이 우리 상품의 주인공이 되기를 기다리고 있습니다. 
 							</p>
 						</div>
 					</div>
@@ -432,18 +340,15 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Quick Links</h4>
 							<ul class="list">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Product</a></li>
-								<li><a href="#">Brand</a></li>
+								<li><a href="index.jsp">Home</a></li>
+								<li><a href="${pageContext.request.contextPath}/category.jsp">Shop</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-6 col-sm-6">
 						<div class="single-footer-widget instafeed">
-							<h4 class="footer_title">Gallery</h4>
+							<h4 class="footer_title">Designer</h4>
 							<ul class="list instafeed d-flex flex-wrap">
 								<li><img src="img/gallery/r1.jpg" alt=""></li>
 								<li><img src="img/gallery/r2.jpg" alt=""></li>
@@ -462,15 +367,15 @@
 									<span class="fa fa-location-arrow"></span>
 									Head Office
 								</p>
-								<p>123, Main Street, Your City</p>
-	
+								<p>경기도 성남시 분당구 구미동 185-3</p>
+								<p>하나프라자빌딩</p>
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
 								</p>
 								<p>
-									+123 456 7890 <br>
-									+123 456 7890
+									010 - 1234 - 5678 <br>
+									010 - 1352 - 1357
 								</p>
 	
 								<p class="sm-head">
@@ -478,8 +383,8 @@
 									Email
 								</p>
 								<p>
-									free@infoexample.com <br>
-									www.infoexample.com
+									meosinna@kosta.or.kr <br>
+									www.meosinna.com
 								</p>
 							</div>
 						</div>
@@ -487,7 +392,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row d-flex">
@@ -500,9 +404,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!--================ End footer Area  =================-->
-
-
-
   <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="vendors/skrollr.min.js"></script>

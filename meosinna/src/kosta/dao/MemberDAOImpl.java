@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import kosta.dto.Member;
+import kosta.dto.Order;
+import kosta.dto.OrderLine;
 import kosta.exception.AuthenticationException;
 import kosta.util.DbUtil;
 
@@ -31,7 +36,7 @@ public class MemberDAOImpl implements MemberDAO{
 			result = ps.executeUpdate();
 			
 		} finally {
-			DbUtil.dbClose( ps, con);
+			DbUtil.dbClose(ps, con);
 		}
 
 		return result;
@@ -83,6 +88,87 @@ public class MemberDAOImpl implements MemberDAO{
 		return result;
 	}
 
+	@Override
+	public int delete(int mbCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "DELETE FROM MEMBER WHERE MB_CODE = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
 
+	@Override
+	public List<Member> selectPrivate() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Member> list = new ArrayList<Member>();
+		String sql = "select mb_name, id, email, addr, regexp_replace(jumin, '\\d','*','7')as p_jumin, tel, sign_up_date\r\n"
+				+ "from member where NOT id IN ('admin')";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Member member = new Member(0, rs.getString(1), rs.getString(2), null, rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				
+				list.add(member);
+			}
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return list;
+	}
+	
+	
+	public Order getOrderListByMember(int mbCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Order order = null;
+		List<OrderLine> list = new ArrayList<OrderLine>();
+		
+		String sql = "SELECT OD_CODE, TO_CHAR(OD_DATE, 'YY/MM/DD HH24:MI'), PAY, GOODS.GD_NAME, ORDERLINE.QTY\r\n"
+				+ "FROM ORDERLINE JOIN G_ORDER\r\n"
+				+ "USING (OD_CODE) JOIN GOODS\r\n"
+				+ "USING (GD_CODE)\r\n"
+				+ "WHERE MB_CODE = ?"
+				+ "ORDER BY (OD_CODE)ASC";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			rs = ps.executeQuery();
+			
+			
+			while (rs.next()) {
+				int odCode = rs.getInt(1);
+				String odDate = rs.getString(2);
+				int pay = rs.getInt(3);
+				String gdName = rs.getString(4);
+				int qty = rs.getInt(5);
+				
+				order = new Order(odCode, pay);
+				list.add(new OrderLine(odCode, odDate, gdName, qty));					
+				order.setOrderList(list);
+			}
+			
+		}finally{
+			DbUtil.dbClose(rs, ps, con);
+		}
+		System.out.println(order);
+		return order;
+	}
+	
+	
 	
 }
