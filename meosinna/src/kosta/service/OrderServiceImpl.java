@@ -24,6 +24,12 @@ public class OrderServiceImpl implements OrderService {
 		List<Order> list = dao.viewAllOrders();
 		return list;
 	}
+	
+	@Override
+	public List<Order> viewMyOrder(int mbCode) throws SQLException {
+		List<Order> list = dao.viewMyOrder(mbCode);
+		return list;
+	}
 
 }
  

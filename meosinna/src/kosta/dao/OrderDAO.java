@@ -51,5 +51,15 @@ public interface OrderDAO {
 	 * @throws SQLException
 	 */
 	List<Order> viewAllOrders() throws SQLException;
+	
+	/**
+	 * order메소드가 호출될 때 실행된다.
+	 * 로그인된 회원의 개인 주문 목록을 조회하기 위한 메소드이다.
+	 * @param connection
+	 * @param payment
+	 * @return int
+	 * @throws SQLException
+	 */
+	List<Order> viewMyOrder(int mbCode) throws SQLException;
 
 }

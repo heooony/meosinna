@@ -1,6 +1,7 @@
 package kosta.controller;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -55,13 +56,22 @@ public class OrderController implements Controller {
 			throws ServletException, IOException, SQLException {
 		
 		List<Order> orderList = service.viewAllOrders();
-		HttpSession session = request.getSession();
-		session.setAttribute("orderList", orderList);
-		
+		request.setAttribute("orderList", orderList);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("viewAllOrders.jsp");
+		return mv;
+	}
+	
+	public ModelAndView viewMyOrder(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException, SQLException {
 		
+		int mbCode = Integer.parseInt(request.getParameter("mbCode"));
+		List<Order> myOrderList = service.viewMyOrder(mbCode);
+		request.setAttribute("myOrderList", myOrderList);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("myOrder.jsp");
 		return mv;
 	}
 }
