@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
 <title>Aroma Shop - Checkout</title>
 <link rel="icon" href="img/Fevicon.png" type="image/png">
 
@@ -21,7 +22,11 @@
 <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AYoPmMvSovbe_uF8pLv2Lcehowq9efFnGhMNjW_8BPh8LvxgsaVDIp9zXghQNKsY9NzOgxQUmht0-JZk"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+  </script>
 <script>
+	paypal.Buttons().render('#paypal-button-container');
 	$(function() {
 		
 		$("#shipping-select").on("change", function() {
@@ -53,10 +58,13 @@
 						$(this).css("border-color","red");
 						state = false;
 						return false;
-					}
+					} 
 				});
+				$(this).attr('href', 'front?key=order&methodName=order&req=' + $("#req").val());
+	
 				
 			})
+
 	});
 </script>
 </head>
@@ -213,7 +221,7 @@
 								<div class="creat_account">
 									<h3>Shipping Details</h3>
 								</div>
-								<textarea class="form-control" name="message" id="message"
+								<textarea class="form-control" name="req" id="req"
 									rows="1" placeholder="Order Notes"></textarea>
 							</div>
 						</form>
@@ -223,15 +231,19 @@
 							<h2>Your Order</h2>
 							<ul class="list">
 								<li><a href="#"><h4>
-											Product <span>Total</span>
+											Product <span>Price</span>
 										</h4></a></li>
 										<c:set var = "total" value = "0" />
-										<c:forEach items="${sessionScope.list}" var="cart">
-											<li><a href="#">${cart.name}<span class="middle">x
-												${cart.qty}</span> <span class="last">$${cart.price}</span></a></li>
-												<c:set var="Income" scope="session" value="${cart.price}"/>  
-												<c:set var= "total" value="${total + cart.price}"/>
-										</c:forEach>
+
+										<table>
+											<c:forEach items="${requestScope.goodsList}" var="cart">
+												<tr>
+													<td style="width: 200px">${cart.name} x ${cart.qty}</td>
+													<td style="padding:5px"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₩${cart.price}</b></td>
+													<c:set var= "total" value="${total + cart.price}"/>
+												</tr>
+											</c:forEach>
+										</table>
 								
 							</ul>
 							<ul class="list list_2">
@@ -262,7 +274,9 @@
 									& conditions*</a>
 							</div>
 							<div class="text-center">
-								<a class="button button-paypal" href="front?key=order&methodName=order" id="payment">Proceed to Paypal</a>
+
+								<a class="button button-paypal" id="payment">결제하기</a>
+								<div id="paypal-button-container"></div>
 							</div>
 						</div>
 					</div>
@@ -340,24 +354,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row d-flex">
-					<p class="col-lg-12 footer-text text-center">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>
-							document.write(new Date().getFullYear());
-						</script>
-						All rights reserved | This template is made with <i
-							class="fa fa-heart" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
 				</div>
 			</div>
 		</div>

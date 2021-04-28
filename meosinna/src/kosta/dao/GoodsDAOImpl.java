@@ -25,6 +25,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		 * + str); }catch (Exception e) { e.printStackTrace(); }
 		 */
 	}
+
 	
 	
 	/**
@@ -389,6 +390,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+
 		String sql = "Select * from goods where gd_code =?";
 		Goods goods = null;
 
@@ -438,6 +440,30 @@ public class GoodsDAOImpl implements GoodsDAO {
 		
 		return list;
 	}
+	public int setGdLike(String gdCode, String isLike) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = null;
+		switch(isLike) {
+			case "0":
+				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE + 1 WHERE GD_CODE = ?";
+				break;
+			case "1":
+				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE - 1 WHERE GD_CODE = ?";
+				break;
+		}
+		
+		int result = 0;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, gdCode);
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
 
 
 	@Override
@@ -448,25 +474,31 @@ public class GoodsDAOImpl implements GoodsDAO {
 		List<Goods> list = new ArrayList<Goods>();
 		
 		String sql = "select * from goods order by price desc" ;
-		
+	}
+	public int checkLike(int mbCode, String gdCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String sql = "SELECT * FROM LIKES WHERE MB_CODE = ? AND GD_CODE = ?";
+		int count = 0;
 
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+
+			ps.setInt(1, mbCode);
+			ps.setString(2, gdCode);
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7), rs.getString(8));
-				
-				list.add(dto);
+
+			if (rs.next()) {
+				count++;
 			}
 			
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		
-		return list;
-	}
 
+		return count;
+	}
 }

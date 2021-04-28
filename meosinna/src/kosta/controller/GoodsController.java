@@ -2,7 +2,6 @@ package kosta.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,6 +39,11 @@ public class GoodsController implements Controller {
 		//리뷰리스트출력
 		List<Review> reviewList = reviewService.selectByGdCode(gdCode);
 		request.setAttribute("reviewList", reviewList);
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
+		
+		int isLike = goodsService.checkLike(member.getMbCode(), gdCode);
+		request.setAttribute("like", isLike);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("single-product.jsp");

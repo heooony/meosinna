@@ -1,7 +1,9 @@
-<!-- dbGet.jsp -->
-<!-- 클라이언트로부터 가져온 데이터를 이용해 DB에 접근하는 페이지 -->
+
 <%@page import="kosta.util.DbUtil"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="kosta.util.DbUtil"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="kosta.dao.GoodsDAO"%>
 <%@page import="kosta.dao.GoodsDAOImpl"%>
@@ -9,6 +11,13 @@
 	pageEncoding="UTF-8"%>
 <%
 	String gdCode = request.getParameter("gdCode"); 
+
+	String isLike = request.getParameter("isLike");
 	GoodsDAOImpl dao = new GoodsDAOImpl();
-	dao.updateLikes(gdCode);
+	dao.setGdLike(gdCode, isLike);
+	if(isLike.equals("0")) {
+		out.println("1");
+	} else {
+		out.println("0");
+	}
 %>

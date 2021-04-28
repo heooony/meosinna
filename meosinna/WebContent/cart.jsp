@@ -19,6 +19,28 @@
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+  $(function () {
+	  
+	  function deleteCart (gdCode) {
+	  
+	  }
+	  myDelete = deleteCart;
+  	//	$(document).on("click","#deleteBtn",function() {
+  		//	console.log($("#deleteBtn").val())
+  			//$(location).attr("href","front?key=cart&methodName=deleteCart");
+	  })
+	  
+	  function kosta (gdCode) {
+			  location.href="front?key=cart&methodName=deleteCart&gdCode=" + gdCode;
+  	   }	  
+  </script>
+  <style>
+  	#deleteBtn{background-color:white; border-color:#eeeeee; 
+  			   font-family: "Noto Sans KR", sans-serif; border-radius:6px;
+  			   box-shadow : 0 2px  4px -1px #bbbbff;}
+  </style>
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
@@ -114,7 +136,9 @@
                           </tr>
                       </thead>
                       <tbody>
-                      <c:forEach items="${sessionScope.list}" var="cart">
+
+                      <c:set var="totalPrice" value="0"/>
+                      <c:forEach items="${requestScope.goodsList}" var="cart">
                      	 <tr>
                               <td>
                                   <div class="media">
@@ -134,8 +158,13 @@
                               </td>
                               <td>
                                   <h5>${cart.price}</h5>
+                                  <input type="hidden" value="${cart.gdCode}"/>
+                              </td>
+                              <td>
+                                  <h5><button id="deleteBtn" onclick="kosta('${cart.gdCode}')">삭제하기</button></h5>
                               </td>
                           </tr>
+                      <c:set var="totalPrice" value="${totalPrice + cart.price}"/>
                       </c:forEach>
                           <tr class="bottom_button">
                               <td>
@@ -149,9 +178,11 @@
                               </td>
                               <td>
                                   <div class="cupon_text d-flex align-items-center">
-                                      <input type="text" placeholder="Coupon Code">
-                                      <a class="primary-btn" href="#">Apply</a>
-                                      <a class="button" href="#">Have a Coupon?</a>
+
+                                    <!--   <input type="text" placeholder="Coupon Code">
+                                    <a class="primary-btn" href="#">Apply</a>
+                                      <a class="button" href="#">Have a Coupon?</a> -->
+                                      <div style="float:right;"><a class="button" href="front?key=cart&methodName=clearCart">장바구니 비우기</a></div>
                                   </div>
                               </td>
                           </tr>
@@ -163,10 +194,10 @@
 
                               </td>
                               <td>
-                                  <h5>Subtotal</h5>
+                                  <h4 style="font-size:2rem">Subtotal</h4>
                               </td>
                               <td>
-                                  <h5>$2160.00</h5>
+                                  <h4><c:out value="${totalPrice}"/>&nbsp;₩</h4>
                               </td>
                           </tr>
                           <tr class="shipping_area">
@@ -182,23 +213,20 @@
                               <td>
                                   <div class="shipping_box">
                                       <ul class="list">
-                                          <li><a href="#">Flat Rate: $5.00</a></li>
-                                          <li><a href="#">Free Shipping</a></li>
-                                          <li><a href="#">Flat Rate: $10.00</a></li>
-                                          <li class="active"><a href="#">Local Delivery: $2.00</a></li>
+                                          <li class="active"><a href="#">배송비 : 2,500 ￦</a></li>
                                       </ul>
                                       <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
                                       <select class="shipping_select">
-                                          <option value="1">Bangladesh</option>
-                                          <option value="2">India</option>
-                                          <option value="4">Pakistan</option>
+                                          <option value="1">대한민국(Republic of Korea)</option>
+                                         <!--   <option value="2">India</option>
+                                          <option value="4">Pakistan</option>-->
                                       </select>
                                       <select class="shipping_select">
                                           <option value="1">Select a State</option>
                                           <option value="2">Select a State</option>
                                           <option value="4">Select a State</option>
                                       </select>
-                                      <input type="text" placeholder="Postcode/Zipcode">
+                                      <input type="text" placeholder="Postcode/Zipcode" id="zipcode">
                                       <a class="gray_btn" href="#">Update Details</a>
                                   </div>
                               </td>
@@ -215,7 +243,7 @@
                               </td>
                               <td>
                                   <div class="checkout_btn_inner d-flex align-items-center">
-                                      <a class="gray_btn" href="#">Continue Shopping</a>
+                                      <a class="gray_btn" href="category.html">Continue Shopping</a>
                                       <a class="primary-btn ml-2" href="checkout.jsp">Proceed to checkout</a>
                                   </div>
                               </td>
@@ -251,7 +279,7 @@
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Quick Links</h4>
 							<ul class="list">
-								<li><a href="#">Home</a></li>
+								<li><a href="index.jsp">Home</a></li>
 								<li><a href="#">Shop</a></li>
 								<li><a href="#">Blog</a></li>
 								<li><a href="#">Product</a></li>

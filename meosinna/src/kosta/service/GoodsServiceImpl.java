@@ -3,6 +3,8 @@ package kosta.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sound.sampled.AudioFileFormat.Type;
+
 import kosta.dao.GoodsDAO;
 import kosta.dao.GoodsDAOImpl;
 import kosta.dto.Goods;
@@ -118,6 +120,11 @@ public class GoodsServiceImpl implements GoodsService {
 		List<Goods> list = goodsDAO.selectAllByPriceDesc();
 		if(list.size()==0)throw new SQLException("ERROR : 등록된 상품정보가 없습니다.");
 		return list;
+	}
+
+	public int checkLike(int mbCode, String gdCode) throws SQLException {
+		int count =  goodsDAO.checkLike(mbCode, gdCode);
+		return count;
 	}
 
 

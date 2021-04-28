@@ -129,60 +129,78 @@
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-5">
-          
-          <div class="sidebar-filter">
-            <div class="top-filter-head">My page</div>
-            <div class="common-filter">
-              <div class="head">쇼핑활동</div>
-              <form action="#">
-                <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple">주문 내역 조회</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">구매후기</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="myInfo"><label for="gionee">장바구니</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="myInfo"><label for="micromax">적립금</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung">좋아요</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></label></li>
-                </ul>
-              </form>
-            </div>
-            <div class="common-filter">
-              <div class="head">나의정보</div>
-              <form action="personalInfo.jsp">
-                <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo"><a href="${pageContext.request.contextPath}/personalInfo.jsp">개인정보변경</a></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="myInfo"><a href="${pageContext.request.contextPath}/withdrawl.jsp">회원탈퇴</a></li>
-                </ul>
-              </form>
-            </div>
-           
+
+      <p class="text-center billing-alert">Thank you ${sessionScope.member.mbName}. Your order has been received.</p>
+      <div class="row mb-5">
+        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+          <div class="confirmation-card">
+            <h3 class="billing-title">Order Info</h3>
+            <table class="order-rable">
+              <tr>
+                <td>Order number</td>
+                <td> ${requestScope.orderDetail.odCode} </td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td style="font-size: 0.83rem; font-weight: none;">${requestScope.orderDetail.odDate} </td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td> ${requestScope.orderDetail.pay}￦</td>
+              </tr>
+              <tr>
+                <td>State</td>
+                <td> ${requestScope.orderDetail.state}</td>
+              </tr>
+            </table>
           </div>
         </div>
-        <div class="col-xl-9 col-lg-8 col-md-7">
-                  <!-- start likelist -->
-          <section class="goods-question-list">
-			<table>
-				<thead>
-					<tr>
-						<th>상품정보</th>
-						<th>문의내용</th>
-						<th>작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${gqList}" var="gqList">
-						<tr>
-							<td>${gqList.goods.gdName}</td>
-							<td>${gqList.gqContent}</td>
-							<td>${gqList.rgDate}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-          </section>
+        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+          <div class="confirmation-card">
+            <h3 class="billing-title">Product Info</h3>
+            <table class="order-rable">
+              <tr>
+                <td>Code</td>
+                <td> ${requestScope.orderDetail.gdCode}</td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td>${requestScope.orderDetail.gdName}</td>
+              </tr>
+              <tr>
+                <td>Size</td>
+                <td style="color:#384AEB"> ${requestScope.orderDetail.size}</td>
+              </tr>
+              <tr>
+                <td>Amount</td>
+                <td> ${requestScope.orderDetail.qty}</td>
+              </tr>
+            </table>
+          </div>
         </div>
-        
+        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
+          <div class="confirmation-card">
+            <h3 class="billing-title">Shipping Address</h3>
+            <table class="order-rable">
+              <tr>
+                <td>Address</td>
+                <td>${requestScope.orderDetail.addr}</td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td> ${requestScope.orderDetail.mbName}</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td> ${requestScope.orderDetail.tel}</td>
+              </tr>
+              <tr>
+                <td>Request</td>
+                <td>${requestScope.orderDetail.req}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -190,94 +208,7 @@
 
 	
 
-  <!--================ Start footer Area  =================-->	
-	<footer>
-		<div class="footer-area">
-			<div class="container">
-				<div class="row section_gap">
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title large_title">Our Mission</h4>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
-								divided deep moved us lan Gathering thing us land years living.
-							</p>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
-							</p>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Quick Links</h4>
-							<ul class="list">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Product</a></li>
-								<li><a href="#">Brand</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget instafeed">
-							<h4 class="footer_title">Gallery</h4>
-							<ul class="list instafeed d-flex flex-wrap">
-								<li><img src="img/gallery/r1.jpg" alt=""></li>
-								<li><img src="img/gallery/r2.jpg" alt=""></li>
-								<li><img src="img/gallery/r3.jpg" alt=""></li>
-								<li><img src="img/gallery/r5.jpg" alt=""></li>
-								<li><img src="img/gallery/r7.jpg" alt=""></li>
-								<li><img src="img/gallery/r8.jpg" alt=""></li>
-							</ul>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Contact Us</h4>
-							<div class="ml-40">
-								<p class="sm-head">
-									<span class="fa fa-location-arrow"></span>
-									Head Office
-								</p>
-								<p>123, Main Street, Your City</p>
-	
-								<p class="sm-head">
-									<span class="fa fa-phone"></span>
-									Phone Number
-								</p>
-								<p>
-									+123 456 7890 <br>
-									+123 456 7890
-								</p>
-	
-								<p class="sm-head">
-									<span class="fa fa-envelope"></span>
-									Email
-								</p>
-								<p>
-									free@infoexample.com <br>
-									www.infoexample.com
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row d-flex">
-					<p class="col-lg-12 footer-text text-center">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-				</div>
-			</div>
-		</div>
-	</footer>
 	<!--================ End footer Area  =================-->
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,21 +19,29 @@
 <link rel="stylesheet"
 	href="vendors/owl-carousel/owl.theme.default.min.css">
 <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-<link rel="stylesheet" href="css/style.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(function() {
+		let curLike = '${requestScope.like}';
 		$("#like-button").click(function() {
+			console.log(curLike);
 			$.ajax({
 				url : 'dbGet.jsp',
 				method : 'post',
 				data : {
-					gdCode : '${goods.gdCode}'
+					gdCode : '${goods.gdCode}',
+					isLike:  '0'
 				},
-				success : function() {
-					$("#like-total").html(Number($("#like-total").html()) + 1);
+				success : function(value) {
+					if(value === "1") {
+						$("#like-total").html(  Number($("#like-total").html()) + 1  );
+					} else {
+						$("#like-total").html(  Number($("#like-total").html()) - 1  );
+					}
+					curLike = value;
 				},
 				fail : function() {
 					console.log(item);
@@ -41,7 +50,6 @@
 		});
 	});
 </script>
-
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
@@ -187,6 +195,7 @@
 										<option value="290">290</option>
 									</select><br>
 									<p><input type="submit" value ="cart">&nbsp&nbsp<input type="submit" value ="buy"></p>
+
 								</div>
 								</form>
 
@@ -344,6 +353,7 @@
 										<h5>12th Feb, 2018 at 05:56 pm</h5>
 										<a class="reply_btn" href="#">Reply</a>
 									</div>
+
 								</div>
 								<p>디자인이 깔끔하고 예뻐서 구매했습니다. 어떤 룩에도 잘어울려서 활용성도 좋고 착화감도 너무 좋아서
 									만족하고 착용 중입니다! 좋은 상품을 합리적인 가격에 구매할 수 있어서 만족합니다~~ 다음번에도 콜라보 신발은
@@ -372,6 +382,7 @@
 										<h4>王大陆</h4>
 										<h5>12th Feb, 2021 at 05:56 pm</h5>
 										<a class="reply_btn" href="#">Reply</a>
+
 									</div>
 								</div>
 								<p>天啊！ 这一双鞋怎么这么让我满意呀～！ 我所有的朋友都称我的漂亮鞋子。 所以我建议他们在这儿上购买它～
@@ -407,6 +418,7 @@
 										<textarea class="form-control" name="message" id="message"
 											rows="1" placeholder="Message"></textarea>
 									</div>
+
 								</div>
 								<div class="col-md-12 text-right">
 									<button type="submit" value="submit" class="btn primary-btn">Submit
@@ -473,6 +485,7 @@
 										</div>
 									</div>
 									<p>${review.content}</p>
+
 								</div>
 								</c:forEach>
 							
@@ -511,6 +524,7 @@
                     <button type="button" id="review-submit" class="button button--active button-review">Submit Now</button>
                   </div>
                 </form>
+
 							</div>
 						</div>
 					</div>
@@ -564,6 +578,7 @@
 						<div class="desc">
 							<a href="#" class="title">Gray Coffee Cup</a>
 							<div class="price">$170.00</div>
+
 						</div>
 					</div>
 					<div class="single-search-product d-flex">
@@ -630,6 +645,7 @@
 						<div class="desc">
 							<a href="#" class="title">Gray Coffee Cup</a>
 							<div class="price">$170.00</div>
+
 						</div>
 					</div>
 				</div>
@@ -653,6 +669,7 @@
 						<p>So seed seed green that winged cattle in. Gathering thing
 							made fly you're no divided deep moved</p>
 					</div>
+
 				</div>
 				<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
 					<div class="single-footer-widget tp_widgets">
@@ -759,5 +776,6 @@
 		})
 	})
   </script>
+
 </body>
 </html>

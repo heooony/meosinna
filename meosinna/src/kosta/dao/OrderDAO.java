@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kosta.dto.Goods;
+import kosta.dto.Member;
 import kosta.dto.Order;
+import kosta.dto.OrderDetail;
 import kosta.dto.OrderLine;
 import kosta.dto.Payment;
 
@@ -51,5 +53,21 @@ public interface OrderDAO {
 	 * @throws SQLException
 	 */
 	List<Order> viewAllOrders() throws SQLException;
+	
+	/**
+	 * order메소드가 호출될 때 실행된다.
+	 * 로그인된 회원의 개인 주문 목록을 조회하기 위한 메소드이다.
+	 * @param connection
+	 * @param payment
+	 * @return int
+	 * @throws SQLException
+	 */
+	List<Order> viewMyOrder(int mbCode) throws SQLException;
+	
+	OrderDetail viewOrderDetail(String gdCode, int odCode) throws SQLException;
 
+
+	int setComplain(Member member, Order order, Goods goods, String type) throws SQLException;
+	
+	public Order getOrder(int odCode) throws SQLException;
 }

@@ -91,5 +91,8 @@ public interface GoodsService {
  	 * */
  	List<Goods> selectAllByPriceDesc() throws SQLException;
      
+
+
+	int checkLike(int mbCode, String gdCode) throws SQLException ; 
 	
 }
