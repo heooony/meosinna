@@ -42,14 +42,14 @@ public class GoodsController implements Controller {
 	 * */
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		List<Goods> list = goodsService.selectAll();
-		//   String pageNo = request.getParameter("pageNo");
+	
+		 String pageNo = request.getParameter("pageNo");
 		  
-		//   if(pageNo==null || pageNo.equals("")) { 
-		// 	  pageNo="1"; 
-		//   }
+	        if(pageNo==null || pageNo.equals("")) { 
+		 	  pageNo="1"; 
+		  }
 
-		// List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
+		 List<Goods> list = goodsService.selectAll(Integer.parseInt(pageNo));
 		request.setAttribute("list", list);
 		request.setAttribute("pageNo", pageNo);
 		ModelAndView mv = new ModelAndView();
@@ -157,18 +157,19 @@ public class GoodsController implements Controller {
 	/**
 	 *가격대 검색 
 	 * */ 
- public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
-
-       int  price = Integer.parseInt(request.getParameter("price"));
-        
-        Goods goods = goodsService.selectByPrice(price);
-        
-      request.setAttribute("price", price);
-      ModelAndView mv = new ModelAndView();
-      mv.setViewName("category.jsp");
-      return mv; 
-        
- }
+// public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
+//	
+//	    	int qty = Integer.parseInt(request.getParameter("price"));     
+//	    	System.out.println("price"); 
+//	        int size = Integer.parseInt(request.getParameter("price")); 
+//	        System.out.println("price"); 
+//	        request.setAttribute("",	 );
+//	        request.setAttribute("", );
+//	        ModelAndView mv = new ModelAndView();
+//	    	 mv.setViewName("category.jsp");
+//	    	  return mv;
+//        
+// }
       
 	 /**
 	  * 좋아요 기능
@@ -193,5 +194,23 @@ public class GoodsController implements Controller {
  	     mv.setViewName("single-product.jsp");  
        return mv; 
        }
-
+      
+      
+      /**
+       * 폼에서 수량, 사이즈 받아서 cart.jsp로 넘기기 
+       * */
+      public ModelAndView getInfo(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    	int qty = Integer.parseInt(request.getParameter("qty"));     
+    	// System.out.println(qty); 
+        int size = Integer.parseInt(request.getParameter("size")); 
+        //System.out.println(size); 
+        request.setAttribute("qty",	 qty);
+        request.setAttribute("size", size);
+        ModelAndView mv = new ModelAndView();
+    	 mv.setViewName("cart.jsp");
+    	  return mv;
+    	  
+    	  
+    
+      }
 }

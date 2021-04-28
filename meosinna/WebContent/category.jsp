@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/style.css">
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
+@import url("https:/fonts.googleapis.com/css?family=Roboto:400,300");
 
 body {
 	color: #2c3e50;
@@ -233,22 +233,53 @@ table td {
                 </ul>
               </form>
             </div>
+   <!--          
+            <form action="/front?key=goods&methodName=selectByPrice"  method="post" >
+								MIN <br> <select name="qty" size="5" multiple>
+									<option value="선택" selected="selected">선택</option>
+									<option value="1">100,000</option>
+									<option value="2">500,000</option>
+									<option value="3">1,000,000</option>
+									<option value="4">1,500,000</option>
+								
+								</select> <br> <br>
+
+								<div class="gdSize">
+									MAX <br> <select name="size" size="8" multiple>
+										<option value="선택" selected="selected">선택</option>
+										<option value="220">500,000</option>
+										<option value="230">1,000,000</option>
+										<option value="230">1,500,000</option>
+										<option value="240">2,000,000</option>
+									
+									</select><br>
+									<br><br><p><input type="submit" value ="search"></p>
+								</div>
+								</form>
+            
+            
+             -->
+           
+            
             <div class="common-filter">
               <div class="head">Price</div>
               <div class="price-range-area">
-                <div id="price-range"></div>
+              <div id="price-range" class="noUi-target noUi-ltr noUi-horizontal"></div>
                 <div class="value-wrapper d-flex">
                   <div class="price">Price:</div>
-                  <span>$</span>
+                  <span>₩</span>
                   <div id="lower-value"></div>
                   <div class="to">to</div>
-                  <span>$</span>
-                  <div id="upper-value"></div>
+                  <span>₩</span>
+                  <div id="upper-value"></div><br>
+                  <br><br><p><input type="submit" value ="search"></p>
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
+        </form>
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
@@ -295,8 +326,9 @@ table td {
                     		<ul class="card-product__imgOverlay">
                       		<li><button><i class="ti-search"></i></button></li>
                     		<li><button><i class="ti-shopping-cart"></i></button></li>
-                      		<li><button><i class="ti-heart"></i></button></li>
-                    		</ul>
+  							<a class="icon_btn" id="like-button"><i class="lnr lnr lnr-heart"></i></a>
+							<span id="like-total">${goods.gdLike}</span>                    		
+							</ul>
   						  </c:otherwise>
 					</c:choose>
                   </div>
@@ -310,7 +342,7 @@ table td {
                     		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
   						  </c:otherwise>
 					</c:choose>
-                    <p class="card-product__price">₩${goods.price}</p>
+                    <p class="card-product__price">${goods.price}</p>
                   </div>
                 </div>
               </div>

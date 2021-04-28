@@ -58,17 +58,12 @@ public interface GoodsService {
 	 * */
 	public void update(Goods goods) throws SQLException;
 
-
-
-   /**
-    * 상품 품절여부 표시
-    * */
-
-
+	
 
    /**
-    * 자주 검색한 상품과 같은 태그 달고있는 상품 우선순위로 보이기
+    * 상품 품절여부 표시 - front에서 처리 
     * */
+
 
 
 
@@ -78,9 +73,12 @@ public interface GoodsService {
 	public void updateLikes(String gdCode) throws SQLException; 
 	
 	public Goods selectByGdCode(String gdCode) throws SQLException;
+	
+	
 	/**
 	 * 상세페이지
 	 * */
      public Goods gdDetail(String gdCode) throws SQLException; 
-	
+   
+
 }
