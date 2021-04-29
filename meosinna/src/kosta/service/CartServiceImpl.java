@@ -19,8 +19,8 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	
-	public void addToCart(Goods goods, int qty, int mbCode) throws SQLException {
-		int result = dao.addToCart(goods, qty, mbCode);
+	public void addToCart(Goods goods, int qty, int mbCode, int size) throws SQLException {
+		int result = dao.addToCart(goods, qty, mbCode, size);
 		if(result == 0) throw new SQLException("장바구니에 추가되지 않았습니다.");
 	}
 	

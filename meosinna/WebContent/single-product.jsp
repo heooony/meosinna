@@ -70,7 +70,7 @@
 				alert("사이즈를 선택해주세요");
 				return false;
 			}
-			location.href="front?key=cart&methodName=addToCart&gdCode=${goods.gdCode}&size=" + size + "&qty=" + qty;
+			$("form").attr("action",  "front?key=cart&methodName=addToCart&gdCode=${goods.gdCode}&size=" + size + "&qty=" + qty);
 		});
 	});
 </script>
@@ -129,8 +129,14 @@
 						<p>${goods.gdContent}</p>
 
 					  <form action=""  method="post" >
-						<fieldset style = "width:150" > 
-								수량: <br>
+						<fieldset style = "width:500" > 
+									<div>사이즈: </div><select name="size" size="8">
+										<option value="선택" selected="selected">선택</option>
+										<c:forEach items="${requestScope.goodsInfo}" var="info">
+											<option value="${info.value}">${info.key}</option>
+										</c:forEach>
+									</select><br><br>
+								<div>수량: </div>
 								<select name="qty" size="5" id="qty">
 									<%-- <c:forEach begin="1" end="5"> --%>
 										<option value="basic" selected="selected">선택</option>
@@ -140,20 +146,16 @@
 										<option value="4">4</option>
 										<option value="5">5</option>
 									<%-- </c:forEach> --%>
-								</select> <br> <br>
-
-								<div class="gdSize">
-									사이즈: <br> <select name="size" size="8">
-										<option value="선택" selected="selected">선택</option>
-										<c:forEach items="${requestScope.goodsInfo}" var="info">
-											<option value="${info.value}">${info.key}</option>
-										</c:forEach>
-									</select><br>
-									<p><input class="button primary-btn" type="submit" value ="Add To Cart"></p>
-
-								</div>
+								</select>
+								<br>
+								<p><input class="button primary-btn" type="submit" value ="Add To Cart"></p>
+								
 								</form>
-
+								</div>
+								</div>
+								</div>
+								</div>
+								</div>
 								<script>
 									function dp_menu() {
 										let click = document

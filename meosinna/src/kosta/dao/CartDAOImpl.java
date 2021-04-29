@@ -48,10 +48,10 @@ public class CartDAOImpl implements CartDAO {
 	 * 
 	 */
 	@Override
-	public int addToCart(Goods goods , int qty, int mbCode) throws SQLException {
+	public int addToCart(Goods goods , int qty, int mbCode, int size) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		String selectSql="SELECT * FROM CART WHERE GD_CODE=?";
+		String selectSql="SELECT * FROM CART WHERE GD_CODE=? AND S_SIZE=?";
 		String updateSql="UPDATE CART SET QTY=QTY+? WHERE GD_CODE=?";
 		String insertSql="INSERT INTO CART VALUES(?,?,?,?,?,?,?)";
 		ResultSet rs = null;
@@ -61,6 +61,7 @@ public class CartDAOImpl implements CartDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(selectSql);
 			ps.setString(1, goods.getGdCode());
+			ps.setInt(2, size);
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
@@ -78,7 +79,7 @@ public class CartDAOImpl implements CartDAO {
 				
 				ps.setString(1, goods.getGdCode());
 				ps.setString(2, goods.getGdName());
-				ps.setInt(3, 230); // 이 부분은 논의 필요. goods에서 어떻게 사이즈코드에 맞는 사이즈를 가져올 수 있는지. 일단 임시 값 100으로 집어 넣음.
+				ps.setInt(3, size);
 				ps.setInt(4, goods.getPrice());
 				ps.setInt(5, qty);
 				ps.setInt(6, mbCode);

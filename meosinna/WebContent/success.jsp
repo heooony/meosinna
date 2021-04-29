@@ -20,34 +20,7 @@
 <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
 
 <link rel="stylesheet" href="css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-	$(function() {
-		let curLike = '${requestScope.like}';
-		$("#like-button").click(function() {
-			console.log(curLike);
-			$.ajax({
-				url : 'dbGet.jsp',
-				method : 'post',
-				data : {
-					gdCode : '${goods.gdCode}',
-					isLike:  '0'
-				},
-				success : function(value) {
-					if(value === "1") {
-						$("#like-total").html(  Number($("#like-total").html()) + 1  );
-					} else {
-						$("#like-total").html(  Number($("#like-total").html()) - 1  );
-					}
-					curLike = value;
-				},
-				fail : function() {
-					console.log(item);
-				}
-			});
-		});
-	});
-</script>
+
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
@@ -56,7 +29,7 @@
 
 	<!-- ================ start banner area ================= -->
 	<div style="width: 100%">
-		<h1 style="text-align: center; padding-top: 300px; padding-bottom: 50px">주문이 완료되었습니다.</h1>
+		<h1 style="text-align: center; padding-top: 300px; padding-bottom: 50px">완료되었습니다.</h1>
 		<a class="button primary-btn" href="${contextPage.request.contextPath}index.jsp"
 		style="position: relative; left: 50%; transform: translatex(-50%); margin-bottom: 300px">메인 페이지로</a>
 	</div>
