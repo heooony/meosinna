@@ -89,7 +89,7 @@
     <section class="section-margin mt-0" style="padding-top: 100px">
       <div class="owl-carousel owl-theme hero-carousel">
         <div class="hero-carousel__slide">
-          <img src="img/member_img.svg" alt="" class="img-fluid" style="weight:336;height:230">
+          <img src="img/member.jpg" alt="" class="img-fluid" style="weight:336;height:230; opacity: 0.8">
           <a href="#" class="hero-carousel__slideOverlay">
             <h3>We</h3>
             <p>Member Team</p>
@@ -97,7 +97,7 @@
           </a>
         </div>
         <div class="hero-carousel__slide">
-          <img src="img/goods_img.svg" alt="" class="img-fluid" style="weight:336;height:230">
+          <img src="img/goods.jpg" alt="" class="img-fluid" style="weight:336;height:230; opacity: 0.8">
           <a href="#" class="hero-carousel__slideOverlay">
             <h3>Are</h3>
             <p>Goods Team</p>
@@ -105,7 +105,7 @@
           </a>
         </div>
         <div class="hero-carousel__slide">
-          <img src="img/order_img.svg" alt="" class="img-fluid" style="weight:336;height:230">
+          <img src="img/order.jpg" alt="" class="img-fluid" style="weight:336;height:230; opacity: 0.8">
           <a href="#" class="hero-carousel__slideOverlay">
             <h3>MEOSINNA</h3>
             <p>Order Team</p>
