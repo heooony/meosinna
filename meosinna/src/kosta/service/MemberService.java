@@ -8,6 +8,7 @@ import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
 import kosta.dto.Order;
 import kosta.dto.OrderIndex;
+import kosta.dto.PrivateQuestion;
 
 public class MemberService {
 	MemberDAO dao = new MemberDAOImpl();
@@ -70,7 +71,15 @@ public class MemberService {
 	
 	}
 
-
+	public void sendContact(PrivateQuestion pq) throws SQLException{
+		int result = dao.insertContact(pq);
+		
+		if(result == 0) {
+			throw new SQLException("일대일 문의 등록에 실패하였습니다.");
+		}
+	
+	}
+	
 
 }
 

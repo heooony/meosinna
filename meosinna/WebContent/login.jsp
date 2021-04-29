@@ -68,7 +68,7 @@
 								<h3>Log in to enter</h3>
 								<form class="row login_form"
 									action="${pageContext.request.contextPath}/front"
-									id="contactForm" method="">
+									id="contactForm" method="post">
 									<input type="hidden" name="key" value="member" /> <input
 										type="hidden" name="methodName" value="login" />
 									<div class="col-md-12 form-group">

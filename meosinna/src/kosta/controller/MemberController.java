@@ -1,6 +1,7 @@
 package kosta.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kosta.dto.Member;
+import kosta.dto.OrderIndex;
+import kosta.dto.PrivateQuestion;
 import kosta.service.MemberService;
+import net.sf.json.JSONArray;
 
 
 public class MemberController implements Controller {
@@ -64,7 +68,7 @@ public class MemberController implements Controller {
 	
 	
 	/**
-	 * 2. 로그인
+	 * 2. 로그인 / 주문 내역 가져오기
 	 * @param request
 	 * @param response
 	 * @return ModelAndView
@@ -77,6 +81,11 @@ public class MemberController implements Controller {
 		Member member = new Member(userId, pwd);
 		
 		Member dbMember = memberService.loginCheck(member);
+		
+		//orderIndex가져오기
+		int mbCode = dbMember.getMbCode();
+		dbMember.setOrderIndex(memberService.getOrderList(mbCode));
+		System.out.println(dbMember.getOrderIndex());
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();
@@ -159,4 +168,30 @@ public class MemberController implements Controller {
 		return mv;
 	}
 	
+	
+	public ModelAndView contact(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		int odCode = Integer.parseInt(request.getParameter("orderIndexs"));
+		String name = request.getParameter("name");	
+		String tel = request.getParameter("phone");
+		String email = request.getParameter("email");
+		String title = request.getParameter("subject");
+		String content = request.getParameter("message");
+		String type = request.getParameter("contactType");
+		
+
+		PrivateQuestion pq = new PrivateQuestion(odCode, name, tel, email, title, content, type); 
+		
+		memberService.sendContact(pq);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("myPage.jsp");
+		
+		return mv;
+	
+	}
+	
+	
+	
+
 }

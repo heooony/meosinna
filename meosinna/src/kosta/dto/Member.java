@@ -3,7 +3,7 @@ package kosta.dto;
 import java.util.List;
 
 public class Member {
-	private int mbCode;
+	private int mbCode ;
 	private String mbName;
 	private String id;
 	private String pwd;
@@ -101,11 +101,11 @@ public class Member {
 		this.signUpDate = signUpDate;
 	}
 
-	public List<OrderIndex> getOrderIndexes() {
+	public List<OrderIndex> getOrderIndex() {
 		return orderIndex;
 	}
 
-	public void setOrderIndexes(List<OrderIndex> orderIndexes) {
+	public void setOrderIndex(List<OrderIndex> orderIndexes) {
 		this.orderIndex = orderIndexes;
 	}
 
