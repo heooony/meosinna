@@ -97,33 +97,33 @@ public class GoodsDAOImpl implements GoodsDAO {
 	/**
 	 * 브랜드 검색
 	 */
-	public Goods selectByBrand(String GdBrand) throws SQLException {
+	public List<Goods> selectByBrand(String GdBrand) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
 		Goods goods = null;
 
-		String sql = "select * from goods where brand like '%'";
+		String sql = "select * from goods where upper(brand) like  upper(?)";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, GdBrand);
+			ps.setString(1,"%"+GdBrand+"%");
 
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
+		   while (rs.next()) {
 				goods = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
 						rs.getString(6), rs.getString(7), rs.getString(8));
-			}
-
-
+				
+				list.add(goods);
+		   }
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-
-		return goods;
+		return list;
 	}
-
+	
 
 	/**
 	 * 가격대 별 검색

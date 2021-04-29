@@ -114,12 +114,19 @@ h1 {
  #space{
  float:left
  }
+ 
 </style>
+
 
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	
+    $(".pixel-radio").click(function(){
+ 	   let ra = $(this).attr("id")
+ 	   $("#brand").val(ra)
+ 	   $("#brandForm").submit();
+  })
+  
 	$("[name=choice]").change(function(){
 		//alert($(this).val())
 		if($(this).val()=="0"){
@@ -178,6 +185,7 @@ $(function() {
 
 </head>
 <body>
+
   <!--================ Start Header Menu Area =================-->
 	<%@ include file="header.jsp" %>
 	<!--================ End Header Menu Area =================-->
@@ -211,15 +219,22 @@ $(function() {
             <div class="top-filter-head">Product Filters</div>
             <div class="common-filter">
               <div class="head">Brands</div>
-              <form action="#">
-                <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Nike X Sacai<span>(5)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Nike X Peaceminusone<span>(3)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Adidas X Yeezy Boose<span>(5)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Nike X Off White The<span>(2)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Nike X Travis Scott<span>(19)</span></label></li>
-                </ul>
+              
+              <form action="${pageContext.request.contextPath}/front" id="brandForm" method="post"> 
+                 <input type="hidden" name="brand" value="" id="brand">
+                 <input type="hidden" name="key" value="goods">
+                 <input type="hidden" name="methodName" value="selectByBrand">
+                 
+                 
               </form>
+                <ul>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Sacai" name="brand"><label for="Nike X Sacai">Nike X Sacai<span>(5)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Peaceminusone" name="brand"><label for="Nike X Peaceminusone">Nike X Peaceminusone<span>(3)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Adidas X Yeezy Boos" name="brand"><label for="Adidas X Yeezy Boos">Adidas X Yeezy Boost<span>(5)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Off White The" name="brand"><label for="Nike X Off White The">Nike X Off White The<span>(2)</span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Travis Scott" name="brand"><label for="Nike X Travis Scott">Nike X Travis Scott<span>(2)</span></label></li>
+                </ul>
+              
               
                    <form id="price-form"  method="post" >
 								<div id="min"> <select name="min" >

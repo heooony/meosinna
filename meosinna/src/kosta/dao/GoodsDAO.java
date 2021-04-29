@@ -28,7 +28,7 @@ public interface GoodsDAO {
 	/**
 	 * 브랜드 검색
 	 * */
-	 Goods selectByBrand(String gdBrand) throws SQLException;
+	 List<Goods> selectByBrand(String Gdbrand) throws SQLException;
 	  
 	  
 	/**

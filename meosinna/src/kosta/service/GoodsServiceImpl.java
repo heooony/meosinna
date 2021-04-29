@@ -50,18 +50,18 @@ public class GoodsServiceImpl implements GoodsService {
 	public Goods selectByGdName(String gdName) throws SQLException {
 		Goods goods = goodsDAO.selectByGdName(gdName);
 		if(goods==null) {
-			throw new SQLException("ERROR : 해당하는 브랜드에 대한 상품정보가 없습니다.");
+			throw new SQLException("ERROR : 해당하는 이름에 대한 상품정보가 없습니다.");
 		}
 		return goods;
 	}
 
 	@Override
-	public Goods selectByBrand(String brand) throws SQLException {
-		Goods goods = goodsDAO.selectByBrand(brand);
-		if(goods==null) {
+	public List<Goods> selectByBrand(String brand) throws SQLException {
+		List<Goods> list = goodsDAO.selectByBrand(brand);
+		if(list==null) {
 			throw new SQLException("ERROR : 해당하는 브랜드에 대한 상품정보가 없습니다.");
 		}
-		return goods;
+		return list;
 	}
 
 	@Override

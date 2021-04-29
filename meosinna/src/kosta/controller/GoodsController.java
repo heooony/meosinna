@@ -162,10 +162,12 @@ public class GoodsController implements Controller {
 	 * */
 	public ModelAndView selectByBrand(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		String brand= request.getParameter("brand");
-		
-	   Goods goods  = goodsService.selectByBrand(brand);
-		
-	   request.setAttribute("goods", goods);
+		System.out.println(brand);
+	   List<Goods> list  = goodsService.selectByBrand(brand);
+	   for(Goods goods : list) {
+	         System.out.println(goods.toString());
+	      }
+	   request.setAttribute("list", list);
 	   ModelAndView mv = new ModelAndView();
 	   mv.setViewName("category.jsp");
 	   return mv;

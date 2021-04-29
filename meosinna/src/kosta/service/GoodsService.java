@@ -30,7 +30,7 @@ public interface GoodsService {
 	/**
 	 * 상품검색 - 브랜드 별 검색
 	 * */
-	Goods selectByBrand(String brand) throws SQLException;
+	List<Goods> selectByBrand(String GdBrand) throws SQLException;
 	
 
    /**
