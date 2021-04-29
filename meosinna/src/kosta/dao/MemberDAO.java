@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import kosta.dto.Member;
-import kosta.dto.Order;
+import kosta.dto.OrderIndex;
 import kosta.exception.AuthenticationException;
 
 public interface MemberDAO {
@@ -13,5 +13,5 @@ public interface MemberDAO {
 	public int update(Member dbMember) throws SQLException;
 	public int delete(int mbCode) throws SQLException;
 	public List<Member> selectPrivate() throws SQLException;
-	public Order getOrderListByMember(int mbCode) throws SQLException;
+	public List<OrderIndex> getOrderListByMember(int mbCode) throws SQLException;
 }

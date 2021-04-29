@@ -9,7 +9,7 @@ import java.util.List;
 
 import kosta.dto.Member;
 import kosta.dto.Order;
-import kosta.dto.OrderLine;
+import kosta.dto.OrderIndex;
 import kosta.exception.AuthenticationException;
 import kosta.util.DbUtil;
 
@@ -111,8 +111,7 @@ public class MemberDAOImpl implements MemberDAO{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Member> list = new ArrayList<Member>();
-		String sql = "select mb_name, id, email, addr, regexp_replace(jumin, '\\d','*','7')as p_jumin, tel, sign_up_date\r\n"
-				+ "from member where NOT id IN ('admin')";
+		String sql = "select mb_name, id, email, addr, regexp_replace(jumin, '\\d','*','7')as p_jumin, tel, sign_up_date from member where NOT id IN ('admin')";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -129,12 +128,12 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	
 	
-	public Order getOrderListByMember(int mbCode) throws SQLException {
+	public List<OrderIndex> getOrderListByMember(int mbCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Order order = null;
-		List<OrderLine> list = new ArrayList<OrderLine>();
+		List<OrderIndex> list = null;
 		
 		String sql = "SELECT OD_CODE, TO_CHAR(OD_DATE, 'YY/MM/DD HH24:MI'), PAY, GOODS.GD_NAME, ORDERLINE.QTY\r\n"
 				+ "FROM ORDERLINE JOIN G_ORDER\r\n"
@@ -157,16 +156,17 @@ public class MemberDAOImpl implements MemberDAO{
 				String gdName = rs.getString(4);
 				int qty = rs.getInt(5);
 				
-				order = new Order(odCode, pay);
-				list.add(new OrderLine(odCode, odDate, gdName, qty));					
-				order.setOrderList(list);
+				list = new ArrayList<OrderIndex>();
+				list.add(new OrderIndex(odCode, gdName, odDate, qty, pay));					
+				
 			}
 			
 		}finally{
 			DbUtil.dbClose(rs, ps, con);
 		}
+		
 		System.out.println(order);
-		return order;
+		return list;
 	}
 	
 	

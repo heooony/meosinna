@@ -11,7 +11,6 @@ public class Order {
 	private String state;
 	private String gdCode;
 	private int mbCode;
-	private List<OrderLine> orderList;
 	
 	
 	public Order() {}
@@ -32,26 +31,12 @@ public class Order {
 		this.addr = addr;
 	}
 	
-	public Order(int odCode, String mbName, String tel, String addr, int pay, String state, String gdCode, int mbCode,  List<OrderLine> orderList) {
+	public Order(int odCode, String mbName, String tel, String addr, int pay, String state, String gdCode, int mbCode,  List<OrderIndex> orderIndex) {
 		this(odCode, mbName, pay, state, gdCode, mbCode);
 		this.tel = tel;
 		this.addr = addr;
-		this.orderList = orderList;
 	}
 
-/////////////////////////////////////////////////////////////////////////////////	
-	
-	/**
-	 *  일대일 문의를 위한 추가 생성자
-	 **/
-	
-	public Order(int odCode, int pay) {
-		this.odCode = odCode;
-		this.pay = pay;	
-	}
-	
-/////////////////////////////////////////////////////////////////////////////////	
-	
 	
 	public int getOdCode() {
 		return odCode;
@@ -117,13 +102,5 @@ public class Order {
 		this.mbCode = mbCode;
 	}
 	
-	
-	public List<OrderLine> getOrderList() {
-		return orderList;
-	}
-	
-	public void setOrderList(List<OrderLine> orderList) {
-		this.orderList = orderList;
-	}
 	
 }

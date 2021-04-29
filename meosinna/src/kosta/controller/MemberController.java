@@ -147,13 +147,17 @@ public class MemberController implements Controller {
 	
 	public ModelAndView selectPrivate(HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
-		List<Member> list = memberService.selectPrivate();
-		request.setAttribute("list", list);
+		List<Member> privateList = memberService.selectPrivate();
+		for(Member member : privateList) {
+			System.out.println(member.getMbName());
+		}
+		HttpSession session = request.getSession();
+		session.setAttribute("privateList", privateList);
 		
-		ModelAndView mv = new ModelAndView("index.jsp", true);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("memberAdmin.jsp");
 		
 		return mv;
 	}
-	
 	
 }

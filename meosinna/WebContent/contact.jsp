@@ -1,7 +1,6 @@
 <%@page import="kosta.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,13 +114,11 @@
                   <input class="form-control" name="phone" id="phone" type="text" placeholder="Enter your phone number" value="${member.tel}">
                 </div>
                 <div class="form-group" id="orderList">
-                	 <select class="form-control" name="orderList" id="orderList" >
+                <jsp:useBean id="bean" class="kosta.dto.Member"/>
+                	 <select class="form-control" name="orderIndexs" id="orderIndexs" >
                   		<option id="optionFirst" value="0">주문 내역 조회</option>
-            	   			<%-- <c:forEach items="${member.orderList}" var="orderList" varStatus="state">
-								<option>${orderList}</option>
-						</c:forEach> --%>
-               		</select> 
-                </div>
+               			</select> 
+                	</div>
                 <div class="form-group">
                 <%-- 	<c:otherwise><!-- c태그 otherwise추가 -->
                 	</c:otherwise><!-- c태그 otherwise추가 --> --%>
@@ -167,60 +164,7 @@
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
   <script type="text/javascript"></script>
-  <script>
-  
-  $(function () {
-  
-  	$("#orderList").click(function () {
-		
-  		$.ajax({
-			url : "${pageContext.request.contextPath}/orderList",
-			type : "post",
-			dataType : "json",
-			data : {
-				mbCode: "${member.mbCode}"
-			},
-			success : function(result) { //[값, 값,....]
-			
-				var pay = "${order.pay}"
-				var str = "";
-				alert(pay);
-				$.each(result, function (index, orderLine) {
-					
-					 str += orderLine.odCode + " | ";
-					 str += orderLine.odDate + " | ";
-					 str += orderLine.gdName + " | ";
-					 str += orderLine.qty + " | ";
-						
-				});
-				
-				console.log(str);
-			},//성공 함수
-		
-			error : function (err) {
-				alert("아아아~~");
-			}
-			
-			
-		});
-  		
-  		
-	}); 
-  
-  
-  })
-  
-  </script>
-  
-  [
-  {"gdName":"LDV WAFFLE GREEN","isEvent":0,"odCode":17,"odDate":"21/04/27 07:38","qty":1,"req":"","size":0},
-  {"gdName":"LDV WAFFLE GREEN","isEvent":0,"odCode":19,"odDate":"21/04/27 07:39","qty":1,"req":"","size":0},
-  {"gdName":"LDV WAFFLE BLUE","isEvent":0,"odCode":21,"odDate":"21/04/28 06:12","qty":1,"req":"","size":0},
-  {"gdName":"LDV WAFFLE BLUE","isEvent":0,"odCode":18,"odDate":"21/04/27 07:38","qty":1,"req":"","size":0},{"gdName":"LDV WAFFLE BLUE","isEvent":0,"odCode":26,"odDate":"21/04/28 06:38","qty":1,"req":"","size":0},{"gdName":"LDV WAFFLE BLUE","isEvent":0,"odCode":20,"odDate":"21/04/27 07:39","qty":1,"req":"","size":0},{"gdName":"LDV WAFFLE DIOR DAYBREAK","isEvent":0,"odCode":22,"odDate":"21/04/28 06:12","qty":1,"req":"","size":0},{"gdName":"MID BLAZER BLACK","isEvent":0,"odCode":23,"odDate":"21/04/28 06:18","qty":1,"req":"","size":0},{"gdName":"WAVERUNNER 700","isEvent":0,"odCode":24,"odDate":"21/04/28 06:20","qty":1,"req":"","size":0}]
-  
-  
-  
-  
+ 
   
   
   
