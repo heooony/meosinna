@@ -127,29 +127,33 @@ public class GoodsDAOImpl implements GoodsDAO {
 	 * 가격대 별 검색
 	 */
 	@Override
-	public Goods selectByPrice(int price) throws SQLException {
+	  public List<Goods> selectByPrice (int min, int max) throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null; 
+		List<Goods> list = new ArrayList<Goods>();
 		Goods goods = null;
 		
 		String sql = "select * from goods where price between ? AND ? ";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, price);
-			ps.setInt(1, price);
+			ps.setInt(1, min);
+			ps.setInt(2, max);
 
 			rs = ps.executeQuery();
-			if(rs.next()) {
+			
+			while(rs.next()) {
 				goods = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
 						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(goods); 
 			}
 
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		return goods;
+		return list;
 	}
 	
 	/**

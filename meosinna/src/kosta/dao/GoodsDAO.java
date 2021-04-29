@@ -31,10 +31,9 @@ public interface GoodsDAO {
 	  
 	  
 	/**
-	 * 가격대 검색 
+	 * 가격대 검색  - 여러개 담아!
 	 * */
-	 Goods selectByPrice(int gdPrice) throws SQLException; 
-	  
+	  List<Goods> selectByPrice (int min, int max) throws SQLException;
 	
 	/**
 	 * 좋아요 증가 기능???

@@ -102,7 +102,23 @@ h1 {
 	margin-left: 50px;
 }
 
+#min{
+  float:left
+}
+
+#max{
+  float:left
+}
+
+#search{
+ float:left
+ }
+ 
+ #space{
+ float:left
+ }
 </style>
+
 
 
 </head>
@@ -135,24 +151,7 @@ h1 {
     <div class="container">
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
-          <div class="sidebar-categories">
-            <div class="head">Browse Categories</div>
-            <ul class="main-categories">
-              <li class="common-filter">
-                <form action="#">
-                  <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Men<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">Women<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">Accessories<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">Footwear<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">Bay item<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">Electronics<span> (3600)</span></label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">Food<span> (3600)</span></label></li>
-                  </ul>
-                </form>
-              </li>
-            </ul>
-          </div>
+         
           <div class="sidebar-filter">
             <div class="top-filter-head">Product Filters</div>
             <div class="common-filter">
@@ -166,68 +165,42 @@ h1 {
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
                 </ul>
               </form>
-            </div>
-            <div class="common-filter">
-              <div class="head">Color</div>
-              <form action="#">
-                <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black
-                      Leather<span>(29)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black
-                      with red<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gold" name="color"><label for="gold">Gold<span>(19)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
-                </ul>
-              </form>
-            </div>
-   <!--          
-            <form action="/front?key=goods&methodName=selectByPrice"  method="post" >
-								MIN <br> <select name="qty" size="5" multiple>
+              
+                   <form id="price-form"  method="post" >
+								<div id="min"> <select name="min" >
 									<option value="선택" selected="selected">선택</option>
-									<option value="1">100,000</option>
-									<option value="2">500,000</option>
-									<option value="3">1,000,000</option>
-									<option value="4">1,500,000</option>
+									<option value="100000">100,000</option>
+									<option value="500000">500,000</option>
+									<option value="1000000">1,000,000</option>
+									<option value="1500000">1,500,000</option>
 								
-								</select> <br> <br>
-
-								<div class="gdSize">
-									MAX <br> <select name="size" size="8" multiple>
+								</select> 
+										</div>
+										
+										<div id="space">~</div>
+								<div id="max">
+									 <select name="max" >
 										<option value="선택" selected="selected">선택</option>
-										<option value="220">500,000</option>
-										<option value="230">1,000,000</option>
-										<option value="230">1,500,000</option>
-										<option value="240">2,000,000</option>
+										<option value="500000">500,000</option>
+										<option value="1000000">1,000,000</option>
+										<option value="1500000">1,500,000</option>
+										<option value="2000000">2,000,000</option>
 									
-									</select><br>
-									<br><br><p><input type="submit" value ="search"></p>
+									</select>
+								
 								</div>
+								<div id="search"><input type="button"  id="price-btn"value ="search"></div>
+								
 								</form>
-            
-            
-             -->
-           
-            
-            <div class="common-filter">
-              <div class="head">Price</div>
-              <div class="price-range-area">
-              <div id="price-range" class="noUi-target noUi-ltr noUi-horizontal"></div>
-                <div class="value-wrapper d-flex">
-                  <div class="price">Price:</div>
-                  <span>₩</span>
-                  <div id="lower-value"></div>
-                  <div class="to">to</div>
-                  <span>₩</span>
-                  <div id="upper-value"></div><br>
-                  <br><br><p><input type="submit" value ="search"></p>
-                  
-                </div>
-              </div>
+         							   <p><p><p><p><p><p><p><p><p><p><p><p><p><p><br>
             </div>
+         
+             
+           
+    
           </div>
         </div>
-        </form>
+    
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
@@ -250,7 +223,7 @@ h1 {
           <!-- End Filter Bar -->
 
           <!-- Start Best Seller -->
-          <section class="lattest-product-area pb-40 category-list">
+          <section id = "categoryList" class="lattest-product-area pb-40 category-list">
           <div class="row"> 
           <c:forEach items="${requestScope.list}" var="goods">
 
@@ -473,5 +446,62 @@ h1 {
   <script src="vendors/jquery.ajaxchimp.min.js"></script>
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
+  
+  <script type="text/javascript">
+  	$(function () {
+		$("#price-btn").click(function () {
+		    	$.ajax({
+				url: "${pageContext.request.contextPath}/front?key=goods&methodName=selectByPrice",
+				type: "post",
+				dataType: "text",
+				data: $("#price-form").serialize(),
+				success: function(result) {
+					$("#categoryList").html(
+					          <c:forEach items="${requestScope.range}" var="goods">
+					          
+					              <div class="col-md-6 col-lg-4">
+					                <div class="card text-center card-product">
+					                  <div class="card-product__img">
+					                  	
+					                      <c:choose>
+					    					<c:when test="${goods.price eq '799000'}">
+					                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
+					                    	</c:when>
+					                    	<c:otherwise>
+					                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px;">
+					                    		<ul class="card-product__imgOverlay">
+					                      		<li><button><i class="ti-search"></i></button></li>
+					                    		<li><button><i class="ti-shopping-cart"></i></button></li>
+					  							<a class="icon_btn" id="like-button"><i class="lnr lnr lnr-heart"></i></a>
+												<span id="like-total">${goods.gdLike}</span>                    		
+												</ul>
+					  						  </c:otherwise>
+										</c:choose>
+					                  </div>
+					                  <div class="card-body">
+					                    <p>Accessories</p>
+					                    <c:choose>
+					    					<c:when test="${goods.price eq '799000'}">
+					    					      <h4 class="card-product__title">${goods.gdName}</h4>
+					                    	</c:when>
+					                    	<c:otherwise>
+					                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
+					  						  </c:otherwise>
+										</c:choose>
+					                    <p class="card-product__price">${goods.price}</p>
+					                  </div>
+					                </div>
+					              </div>
+					          </c:forEach>
+							)
+					location.reload();
+				},
+				error: function(err) {
+					alert(err + " :  오류 발생...");
+				}
+			})
+		})
+	})
+  </script>
 </body>
 </html>

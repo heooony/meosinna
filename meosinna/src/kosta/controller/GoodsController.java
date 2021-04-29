@@ -171,19 +171,19 @@ public class GoodsController implements Controller {
 	/**
 	 *가격대 검색 
 	 * */ 
-// public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
-//	
-//	    	int qty = Integer.parseInt(request.getParameter("price"));     
-//	    	System.out.println("price"); 
-//	        int size = Integer.parseInt(request.getParameter("price")); 
-//	        System.out.println("price"); 
-//	        request.setAttribute("",	 );
-//	        request.setAttribute("", );
-//	        ModelAndView mv = new ModelAndView();
-//	    	 mv.setViewName("category.jsp");
-//	    	  return mv;
-//        
-// }
+		public  ModelAndView selectByPrice(HttpServletRequest request, HttpServletResponse response) throws Exception{
+			int min = Integer.parseInt(request.getParameter("min"));     
+	    	System.out.println(min);
+	        int max = Integer.parseInt(request.getParameter("max")); 
+            System.out.println(max); 
+            List<Goods> list = goodsService.selectByPrice(min, max);  
+            request.setAttribute("range", list); 
+	        ModelAndView mv = new ModelAndView();
+	        mv.setViewName("category.jsp"); 
+	        
+    	       return mv;
+          
+ }
       
 	 /**
 	  * 좋아요 기능

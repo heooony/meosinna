@@ -35,7 +35,7 @@ public interface GoodsService {
    /**
     * 상품검색 - 가격대 별 검색
     * */
-	Goods selectByPrice(int price) throws SQLException;
+	List<Goods> selectByPrice(int min, int max) throws SQLException;
 	
 
 

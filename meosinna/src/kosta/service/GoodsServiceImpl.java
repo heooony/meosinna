@@ -64,12 +64,12 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public Goods selectByPrice(int price) throws SQLException {
-		Goods goods = goodsDAO.selectByPrice(price);
-		if(goods==null) {
+	 public List<Goods> selectByPrice(int min, int max) throws SQLException {
+	List<Goods> list = goodsDAO.selectByPrice(min,max);
+		if(list==null) {
 			throw new SQLException("ERROR :설정하신 가격대의 상품정보가 없습니다.");
 		}
-		return null;
+		return list;
 	}
 
 	@Override
