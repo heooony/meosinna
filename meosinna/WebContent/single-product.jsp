@@ -52,24 +52,23 @@
 		
 		$("select[name=size]").on('change', function() {
 			let str = '';
-			$(".current:eq(0)").html("선택");
+			$(".current:eq(1)").html("선택");
 			str += '<option class="option" value="basic">선택</option>';
 			for(let i = 0; i < $(this).val() && i < 5; i++) {
 				str += '<option class="option" value=' + (i+1) + '>' + (i+1) + '</option>';
 			}
-			$(".list:eq(1)").html(str);
+			$(".list:eq(0)").html(str);
 		});
 		
 		$("input[type=submit]").on('click', function() {
-			let qty = $(".current:eq(0)").html();
-			let size = $(".current:eq(1)").html();
-			if(qty == "선택") {
-				alert("수량 선택해주세요");
-				return false;
-			} else if(size == "선택") {
+			let qty = $(".current:eq(1)").html();
+			let size = $(".current:eq(0)").html();
+			if(size == "선택") {
 				alert("사이즈를 선택해주세요");
 				return false;
-			}
+			} else if(qty == "선택") {
+				alert("수량 선택해주세요");
+				return false;
 			$("form").attr("action",  "front?key=cart&methodName=addToCart&gdCode=${goods.gdCode}&size=" + size + "&qty=" + qty);
 		});
 	});
