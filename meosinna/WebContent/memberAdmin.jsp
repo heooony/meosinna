@@ -54,7 +54,7 @@
               <div class="head">회원관리</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple">회원목록</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><a href="${pageContext.request.contextPath}/front?key=member&methodName=selectPrivate">회원목록</a></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">회원제명</label></li>
                 </ul>
               </form>
