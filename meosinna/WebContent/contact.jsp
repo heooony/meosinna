@@ -19,6 +19,9 @@
 	<link rel="stylesheet" href="vendors/linericon/style.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+  
+<!-- 정희 추가 -->
+  <link rel="stylesheet" href="vendors/nice-select/jquery.nice-select.css">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -117,15 +120,15 @@
                 <div class="form-group">
                   <input class="form-control" name="phone" id="phone" type="text" placeholder="Enter your phone number" value="${member.tel}">
                 </div>
-                <div class="form-group" id="orderList">
-              <jsp:useBean id="memberOrder" class="kosta.dto.Member"/>
-                	 <select class="form-control" name="orderIndexs" id="orderIndexs" >
-                  		<option id="optionFirst" value="0">${memberOrder.id}</option>
-                  		<c:forEach items="${memberOrder}" var="memberOrder">
-							<option value="${memberOrder.tel}">${memberOrder.tel}</option>
+          
+              <%-- <jsp:useBean id="memberOrder" class="kosta.dto.Member"/> --%>
+                <select name="orderIndexs" id="orderIndexs" >
+                  	<option value="0">주문내역조회</option>
+                		<c:forEach items="${sessionScope.orderIndex}" var="orderIndex">
+							<option value="${orderIndex.odCode}">${orderIndex}</option>
 						</c:forEach>
-               			</select> 
-                	</div>
+               	</select> 
+               	
                 <div class="form-group">
                 <%-- 	<c:otherwise><!-- c태그 otherwise추가 -->
                 	</c:otherwise><!-- c태그 otherwise추가 --> --%>
@@ -171,6 +174,50 @@
   <script src="vendors/mail-script.js"></script>
   <script src="js/main.js"></script>
   <script type="text/javascript"></script>
+ <script>
+  
+$(function () {
+  
+  	$("#orderList").click(function () {
+		
+  		$.ajax({
+			url : "${pageContext.request.contextPath}/orderList",
+			type : "post",
+			dataType : "json",
+			data : {
+				mbCode: "${member.mbCode}"
+			},
+			success : function(result) { //[값, 값,....]
+				var str = "";
+				
+				$.each(result, function (index, orderIndex) {
+					
+					 str += orderIndex.odCode + " | ";
+					 str += orderIndex.gdName + " | ";
+					 str += orderIndex.qty + " | ";
+					 str += orderIndex.pay + " | ";
+					 str += orderIndex.odDate + " | ";
+						
+				});
+				
+				console.log(str);
+	
+			},//성공 함수
+		
+			error : function (err) {
+				alert(err);
+			}
+			
+			
+		});
+  		
+  		
+	}); 
+  
+  
+  })
+  
+  </script>
  
   
   

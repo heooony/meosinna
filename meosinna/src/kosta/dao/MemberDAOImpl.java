@@ -133,7 +133,7 @@ public class MemberDAOImpl implements MemberDAO{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Order order = null;
-		List<OrderIndex> list = null;
+		List<OrderIndex> list = new ArrayList<OrderIndex>();
 		
 		String sql = "SELECT OD_CODE, TO_CHAR(OD_DATE, 'YY/MM/DD HH24:MI'), PAY, GOODS.GD_NAME, ORDERLINE.QTY\r\n"
 				+ "FROM ORDERLINE JOIN G_ORDER\r\n"
@@ -156,7 +156,6 @@ public class MemberDAOImpl implements MemberDAO{
 				String gdName = rs.getString(4);
 				int qty = rs.getInt(5);
 				
-				list = new ArrayList<OrderIndex>();
 				list.add(new OrderIndex(odCode, gdName, odDate, qty, pay));					
 				
 			}
@@ -165,7 +164,6 @@ public class MemberDAOImpl implements MemberDAO{
 			DbUtil.dbClose(rs, ps, con);
 		}
 		
-		System.out.println(order);
 		return list;
 	}
 	

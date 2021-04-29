@@ -12,7 +12,7 @@ public class Member {
 	private String jumin;
 	private String tel;
 	private String signUpDate;
-	private List<OrderIndex> orderIndexes;
+	private List<OrderIndex> orderIndex;
 	
 	
   public Member() {}	
@@ -43,7 +43,7 @@ public class Member {
 	public Member(int mbCode, String mbName, String id, String pwd, String email, String addr, String jumin, String tel,
 			String signUpDate, List<OrderIndex> orderIndexes) {
 		this(mbCode, mbName, id, pwd, email, addr, jumin, tel, signUpDate);
-		this.orderIndexes = orderIndexes;
+		this.orderIndex = orderIndexes;
 	}
 
 	public int getMbCode() {
@@ -102,11 +102,11 @@ public class Member {
 	}
 
 	public List<OrderIndex> getOrderIndexes() {
-		return orderIndexes;
+		return orderIndex;
 	}
 
 	public void setOrderIndexes(List<OrderIndex> orderIndexes) {
-		this.orderIndexes = orderIndexes;
+		this.orderIndex = orderIndexes;
 	}
 
 	

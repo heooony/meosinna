@@ -59,4 +59,10 @@ public class OrderIndex {
 	}
 
 	
+	public String toString() {
+		return "odCode:" + odCode + ", gdName: " + gdName + ", odDate: " + odDate + ", qty: " + qty + ", pay: "
+				+ pay;
+	}
+
+	
 }
