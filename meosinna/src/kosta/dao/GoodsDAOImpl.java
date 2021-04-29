@@ -525,4 +525,35 @@ public class GoodsDAOImpl implements GoodsDAO {
 
 		return count;
 	}
+
+
+
+	@Override
+	public List<Goods> selectOrderByLike() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
+		
+		String sql = "SELECT * FROM GOODS JOIN S_SIZE USING(GD_CODE) WHERE QTY > 0 AND S_SIZE = 260 ORDER BY GD_LIKE DESC";
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
 }

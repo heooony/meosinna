@@ -227,5 +227,16 @@ public class GoodsController implements Controller {
     	  
     
       }
+      
+      public ModelAndView selectOrderByLike(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			
+ 		 List<Goods> goodsList = goodsService.selectOrderByLike();
+
+ 		request.setAttribute("goodsList", goodsList);
+ 		ModelAndView mv = new ModelAndView();
+ 		mv.setViewName("index.jsp");
+ 		
+ 		return mv;
+ 	} 
 }
 

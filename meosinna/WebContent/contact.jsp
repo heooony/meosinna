@@ -1,6 +1,10 @@
 <%@page import="kosta.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,9 +118,12 @@
                   <input class="form-control" name="phone" id="phone" type="text" placeholder="Enter your phone number" value="${member.tel}">
                 </div>
                 <div class="form-group" id="orderList">
-                <jsp:useBean id="bean" class="kosta.dto.Member"/>
+              <jsp:useBean id="memberOrder" class="kosta.dto.Member"/>
                 	 <select class="form-control" name="orderIndexs" id="orderIndexs" >
-                  		<option id="optionFirst" value="0">주문 내역 조회</option>
+                  		<option id="optionFirst" value="0">${memberOrder.id}</option>
+                  		<c:forEach items="${memberOrder}" var="memberOrder">
+							<option value="${memberOrder.tel}">${memberOrder.tel}</option>
+						</c:forEach>
                			</select> 
                 	</div>
                 <div class="form-group">

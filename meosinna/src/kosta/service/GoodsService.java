@@ -93,6 +93,9 @@ public interface GoodsService {
      
 
 
-	int checkLike(int mbCode, String gdCode) throws SQLException ; 
+	int checkLike(int mbCode, String gdCode) throws SQLException ;
+
+
+	List<Goods> selectOrderByLike() throws SQLException; 
 	
 }

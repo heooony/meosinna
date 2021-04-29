@@ -99,6 +99,8 @@ public interface GoodsDAO {
 	 * 높은 가격순 정렬
 	 * */
 	List<Goods> selectAllByPriceDesc() throws SQLException;
+
+	List<Goods> selectOrderByLike() throws SQLException;
 	
 	  
 }

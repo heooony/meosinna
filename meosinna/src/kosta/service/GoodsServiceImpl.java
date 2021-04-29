@@ -127,6 +127,12 @@ public class GoodsServiceImpl implements GoodsService {
 		return count;
 	}
 
+	@Override
+	public List<Goods> selectOrderByLike() throws SQLException {
+		List<Goods> list = goodsDAO.selectOrderByLike();
+		return list;
+	}
+
 
 	
 

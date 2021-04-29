@@ -248,7 +248,7 @@ h1 {
 					</c:choose>
                   </div>
                   <div class="card-body">
-                    <p>Accessories</p>
+                    <p style="color: gray">${goods.brand}</p>
                     <c:choose>
     					<c:when test="${goods.price eq '799000'}">
     					      <h4 class="card-product__title">${goods.gdName}</h4>

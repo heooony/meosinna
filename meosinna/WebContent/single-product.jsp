@@ -128,7 +128,7 @@
 										<option value="280">280</option>
 										<option value="290">290</option>
 									</select><br>
-									<p><input type="submit" value ="cart">&nbsp&nbsp<input type="submit" value ="buy"></p>
+									<p><input class="button primary-btn" type="submit" value ="cart">&nbsp&nbsp<input type="submit" value ="buy"></p>
 
 								</div>
 								</form>
