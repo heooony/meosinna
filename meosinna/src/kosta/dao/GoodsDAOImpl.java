@@ -101,7 +101,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		ResultSet rs = null;
 		Goods goods = null;
 
-		String sql = "select * from goods where gd_brand=?";
+		String sql = "select * from goods where brand like '%'";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
