@@ -20,10 +20,7 @@
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
   <link rel="stylesheet" href="css/style.css">
- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-
-</script> 
+ 
   
 <style>
 @import url("https:/fonts.googleapis.com/css?family=Roboto:400,300");
@@ -43,7 +40,7 @@ h1 {
 .pagination-container {
 	margin: 35px auto;
 	text-align: center;
-	margin-left: 800px;	
+	margin-left: 850px;
 }
 
 .pagination {
@@ -119,6 +116,64 @@ h1 {
  }
 </style>
 
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	
+	$("[name=choice]").change(function(){
+		//alert($(this).val())
+		if($(this).val()=="0"){
+			return;
+		}
+		
+		  $.ajax({
+	   			 url:"priceAlign" , // 서버요청주소  
+	   			 type: "get", //method방식 = 전송방식(get, post, put, delete)
+	   			 dataType: "json", //서버가 응답해주는 데이터의 타입(html, text, xml, json 중의 한개)
+	   			 data: {align : $(this).val() } ,  //서버에게 보낼 parameter정보
+	   			 success : function(arr){
+	   			   // alert(result)
+	   			   var str="";
+	   			 
+	   			   str+="<div class='row'>";
+	               $.each(arr, function(index, obj) {
+	            	   	  
+	            	   	  str+="<div class='col-md-6 col-lg-4'>";
+	                   	  str+="<div class='card text-center card-product'>";
+	                  
+	                      str+="<div class='card-product__img'>";
+	                      str+="<img class='card-img' src='"+obj.img+"' alt='' style='width: 240px; height: 200px;'>";
+	                      str+="<ul class='card-product__imgOverlay'>";
+	                      str+="<li><button><i class='ti-search'></i></button></li>";
+	                      str+="<li><button><i class='ti-shopping-cart'></i></button></li>";
+	                      str+="<a class='icon_btn' id='like-button'><i class='lnr lnr lnr-heart'></i></a>";
+	                      str+="<span id='like-total'>"+obj.gdLike+"</span>";                          
+	                      str+="</ul>";
+	                      str+="</div>";
+	                  
+	                      str+="<div class='card-body'>";
+	                      str+="<p>Accessories</p>";
+	                      str+="<h4 class='card-product__title'><a href='${pageContext.request.contextPath}/single-product.jsp?gdCode="+obj.gdCode+"'>"+obj.gdName+"</a></h4>";
+	                      str+="<p class='card-product__price'>"+obj.price+"</p>";
+	                      str+="</div>";
+	                       
+	                      str+="</div>";
+	                      str+="</div>";    	
+	   			    })
+	   			    
+	   			    str+="</div>";
+	   			    $("#categoryList").html(str);
+	   			    
+	   			 } , //성공했을때 함수
+	   			 error: function(err){
+	   				 alert(err+"발생했어요^^")
+	   			 } //오류발생했을때 함수 
+	   			 
+	   		 });//ajax끝
+	})
+	  
+})
+</script>
 
 
 </head>
@@ -284,6 +339,7 @@ h1 {
 			<a class="pagination-older" href="${path}/meosinna/front?key=goods&methodName=selectAll&pageNo=${pageNo<pageCnt?pageNo+1:pageCnt}">NEXT</a>
 		</div>
 	</nav> 
+	<jsp:include page="footer.jsp"/>
 	
 	 <!-- ================ paging end ================= -->
 	 
