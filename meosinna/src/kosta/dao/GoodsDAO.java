@@ -88,6 +88,18 @@ public interface GoodsDAO {
 	 * 페이징
 	 * */
 	List<Goods> getGoodsList(int pageNo) throws SQLException;
+
+	int checkLike(int mbCode, String gdCode) throws SQLException ;
+	
+	/**
+	 * 낮은 가격순 정렬
+	 * */
+	List<Goods> selectAllByPriceAsc() throws SQLException;
+	
+	/**
+	 * 높은 가격순 정렬
+	 * */
+	List<Goods> selectAllByPriceDesc() throws SQLException;
 	
 	  
 }

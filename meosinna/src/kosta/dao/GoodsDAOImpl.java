@@ -17,15 +17,15 @@ public class GoodsDAOImpl implements GoodsDAO {
 	Properties proFile = new Properties();
 	
 	public GoodsDAOImpl () {
-		try {	
-			proFile.load(getClass().getClassLoader().getResourceAsStream("dbQuery.properties"));
-			
-			String str = proFile.getProperty("query.select");
-			System.out.println("str = " + str);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		/*
+		 * try { proFile.load(getClass().getClassLoader().getResourceAsStream(
+		 * "dbQuery.properties"));
+		 * 
+		 * String str = proFile.getProperty("query.select"); System.out.println("str = "
+		 * + str); }catch (Exception e) { e.printStackTrace(); }
+		 */
 	}
+
 	
 	
 	/**
@@ -128,10 +128,30 @@ public class GoodsDAOImpl implements GoodsDAO {
 	 */
 	@Override
 	public Goods selectByPrice(int price) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null; 
+		Goods goods = null;
+		
+		String sql = "select * from goods where price between ? AND ? ";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, price);
+			ps.setInt(1, price);
 
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				goods = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+			}
+
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return goods;
+	}
+	
 	/**
 	 * 좋아요 수 증가
 	 */
@@ -269,7 +289,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 			
 			PageCnt page= new PageCnt();
 			//전체 페이지 구하기 =>총상품수/페이지당 상품수 +1
-			page.setPageCnt(totalCount % page.getPageSize() == 0 ? totalCount / page.getPageSize() : totalCount / page.getPageSize() + 1);
+			page.setPageCnt(totalCount % page.getPageSize() == 0 ? totalCount / page.getPageSize() : totalCount / page.getPageSize() + 1); //3항 연산자
 			page.setPageNo(pageNo);
 			
 			con = DbUtil.getConnection();
@@ -370,6 +390,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+
 		String sql = "Select * from goods where gd_code =?";
 		Goods goods = null;
 
@@ -390,4 +411,114 @@ public class GoodsDAOImpl implements GoodsDAO {
 		return goods;
 	}
 
+
+	@Override
+	public List<Goods> selectAllByPriceAsc() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
+		
+		String sql = "select * from goods order by price asc" ;
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
+	public int setGdLike(String gdCode, String isLike) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = null;
+		switch(isLike) {
+			case "0":
+				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE + 1 WHERE GD_CODE = ?";
+				break;
+			case "1":
+				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE - 1 WHERE GD_CODE = ?";
+				break;
+		}
+		
+		int result = 0;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, gdCode);
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
+
+
+	@Override
+	public List<Goods> selectAllByPriceDesc() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
+		
+		String sql = "select * from goods order by price desc" ;
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
+	
+	public int checkLike(int mbCode, String gdCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String sql = "SELECT * FROM LIKES WHERE MB_CODE = ? AND GD_CODE = ?";
+		int count = 0;
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+
+			ps.setInt(1, mbCode);
+			ps.setString(2, gdCode);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				count++;
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+
+		return count;
+	}
 }
