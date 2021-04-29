@@ -2,6 +2,7 @@ package kosta.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.sound.sampled.AudioFileFormat.Type;
 
@@ -131,6 +132,12 @@ public class GoodsServiceImpl implements GoodsService {
 	public List<Goods> selectOrderByLike() throws SQLException {
 		List<Goods> list = goodsDAO.selectOrderByLike();
 		return list;
+	}
+
+	@Override
+	public Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException {
+		Map<Integer, Integer> map = goodsDAO.getSizeQty(gdCode);
+		return map;
 	}
 
 

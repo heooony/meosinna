@@ -2,6 +2,7 @@ package kosta.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import kosta.dto.Goods;
 
@@ -101,6 +102,8 @@ public interface GoodsDAO {
 	List<Goods> selectAllByPriceDesc() throws SQLException;
 
 	List<Goods> selectOrderByLike() throws SQLException;
+
+	Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException;
 	
 	  
 }

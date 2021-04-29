@@ -38,6 +38,7 @@ public class OrderDAOImpl implements OrderDAO{
 			
 			this.orderLine(con, orderLine);
 			this.payment(con, payment);
+			this.manageQty(con, orderLine.getQty(), order.getGdCode(), orderLine.getSize());
 			
 		} finally {
 			DbUtil.dbClose(ps, con);
@@ -54,11 +55,10 @@ public class OrderDAOImpl implements OrderDAO{
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, orderLine.getGdName());
-			ps.setString(2, orderLine.getGdName());
-			ps.setInt(3, orderLine.getQty());
-			ps.setInt(4, orderLine.getIsEvent());
-			ps.setString(5, orderLine.getReq());
-			ps.setInt(6, orderLine.getSize());
+			ps.setInt(2, orderLine.getQty());
+			ps.setInt(3, orderLine.getIsEvent());
+			ps.setString(4, orderLine.getReq());
+			ps.setInt(5, orderLine.getSize());
 			result = ps.executeUpdate();
 		} finally {
 			DbUtil.dbClose(ps, null);
@@ -240,4 +240,23 @@ public class OrderDAOImpl implements OrderDAO{
 		
 		return orderDetail;
 	}
+	
+	public int manageQty(Connection con, int qty, String gdCode, int size) throws SQLException{
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql="UPDATE S_SIZE SET QTY=QTY-? WHERE GD_CODE=? AND S_SIZE=?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, qty);
+			ps.setString(2, gdCode);
+			ps.setInt(3, size);
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(ps, null);
+		}
+		
+		return result;
+	}
+	
 }

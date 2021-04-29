@@ -44,7 +44,9 @@ public class DispatcherServlet extends HttpServlet {
 		}else {
 			request.getRequestDispatcher(mv.getViewName()).forward(request, response);
 		}
-		
+	} catch(NullPointerException e) {
+		request.setAttribute("errorMsg", e.getMessage());
+		request.getRequestDispatcher("errorPage.jsp").forward(request, response);
 	}catch(Exception e){
 		e.printStackTrace();
 	}

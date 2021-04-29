@@ -70,4 +70,6 @@ public interface OrderDAO {
 	int setComplain(Member member, Order order, Goods goods, String type) throws SQLException;
 	
 	public Order getOrder(int odCode) throws SQLException;
+	
+	public int manageQty(Connection con, int qty, String gdCode, int size)throws SQLException;
 }
