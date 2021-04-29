@@ -2,7 +2,9 @@ package kosta.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +47,9 @@ public class GoodsController implements Controller {
 		int isLike = goodsService.checkLike(member.getMbCode(), gdCode);
 		request.setAttribute("like", isLike);
 		
+		//사이즈수량출력
+		Map<Integer, Integer> map = goodsService.getSizeQty(gdCode);
+		request.setAttribute("goodsInfo", map);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("single-product.jsp");
 		return mv;

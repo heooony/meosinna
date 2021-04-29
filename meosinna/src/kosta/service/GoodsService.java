@@ -2,6 +2,7 @@ package kosta.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import kosta.dto.Goods;
 
@@ -96,6 +97,9 @@ public interface GoodsService {
 	int checkLike(int mbCode, String gdCode) throws SQLException ;
 
 
-	List<Goods> selectOrderByLike() throws SQLException; 
+	List<Goods> selectOrderByLike() throws SQLException;
+
+
+	Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException; 
 	
 }
