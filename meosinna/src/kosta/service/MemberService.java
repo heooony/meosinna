@@ -7,6 +7,7 @@ import kosta.dao.MemberDAO;
 import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
 import kosta.dto.Order;
+import kosta.dto.OrderIndex;
 
 public class MemberService {
 	MemberDAO dao = new MemberDAOImpl();
@@ -58,14 +59,14 @@ public class MemberService {
 	}
 
 
-	public Order getOrderList(int mbCode) throws SQLException{
-		Order order = dao.getOrderListByMember(mbCode);
+	public List<OrderIndex> getOrderList(int mbCode) throws SQLException{
+		List<OrderIndex> orderIndexs = dao.getOrderListByMember(mbCode);
 		
-		if(order == null) {
+		if(orderIndexs == null) {
 			throw new SQLException("주문정보 조회에 실패하였습니다.");
 		}
 		
-		return order;
+		return orderIndexs;
 	
 	}
 

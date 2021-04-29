@@ -1,5 +1,7 @@
 package kosta.dto;
 
+import java.util.List;
+
 public class Member {
 	private int mbCode;
 	private String mbName;
@@ -10,6 +12,8 @@ public class Member {
 	private String jumin;
 	private String tel;
 	private String signUpDate;
+	private List<OrderIndex> orderIndexes;
+	
 	
   public Member() {}	
   	
@@ -36,6 +40,12 @@ public class Member {
 	
 	}
 	
+	public Member(int mbCode, String mbName, String id, String pwd, String email, String addr, String jumin, String tel,
+			String signUpDate, List<OrderIndex> orderIndexes) {
+		this(mbCode, mbName, id, pwd, email, addr, jumin, tel, signUpDate);
+		this.orderIndexes = orderIndexes;
+	}
+
 	public int getMbCode() {
 		return mbCode;
 	}
@@ -91,10 +101,12 @@ public class Member {
 		this.signUpDate = signUpDate;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [mbCode=" + mbCode + ", mbName=" + mbName + ", id=" + id + ", pwd=" + pwd + ", email=" + email
-				+ ", addr=" + addr + ", jumin=" + jumin + ", tel=" + tel + ", signUpDate=" + signUpDate + "]";
+	public List<OrderIndex> getOrderIndexes() {
+		return orderIndexes;
+	}
+
+	public void setOrderIndexes(List<OrderIndex> orderIndexes) {
+		this.orderIndexes = orderIndexes;
 	}
 
 	
