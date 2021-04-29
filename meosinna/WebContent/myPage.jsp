@@ -55,9 +55,9 @@
               <div class="head">쇼핑활동</div>
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple">주문 내역 조회</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple"><a href="myOrder.jsp">주문 내역 조회</a></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">구매후기</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="myInfo"><label for="gionee">장바구니</label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="myInfo"><label for="gionee"><a href="cart.jsp">장바구니</a></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="myInfo"><label for="micromax">적립금</label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung">좋아요</label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></label></li>
