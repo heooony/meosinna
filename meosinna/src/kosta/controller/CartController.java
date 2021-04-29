@@ -39,15 +39,16 @@ public class CartController implements Controller {
 	public ModelAndView addToCart(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, NumberFormatException, SQLException {
 		String gdCode = (String) request.getParameter("gdCode");
+		int size = Integer.parseInt(request.getParameter("size"));
+		int qty = Integer.parseInt(request.getParameter("qty"));
 		System.out.println("gdCode = " + gdCode);
 		GoodsService goodsService = new GoodsServiceImpl();
 		Goods goods = goodsService.selectByGdCode(gdCode);
 		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("member");
-		String qty = "1"; //임시 수량
-		service.addToCart(goods, Integer.parseInt(qty), member.getMbCode());
-		ModelAndView mv = new ModelAndView("single-product.jsp", false);
+		service.addToCart(goods, qty, member.getMbCode(), size);
+		ModelAndView mv = new ModelAndView("success.jsp", true);
 
 		return mv;
 	}

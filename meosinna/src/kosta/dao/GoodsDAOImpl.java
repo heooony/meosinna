@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import kosta.dto.Goods;
@@ -555,5 +557,34 @@ public class GoodsDAOImpl implements GoodsDAO {
 		}
 		
 		return list;
+	}
+
+
+
+	@Override
+	public Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		
+		String sql = "SELECT S_SIZE, QTY FROM S_SIZE WHERE GD_CODE=? ORDER BY S_SIZE";
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, gdCode);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				map.put(rs.getInt(1), rs.getInt(2));
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return map;
 	}
 }

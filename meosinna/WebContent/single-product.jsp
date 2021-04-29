@@ -49,6 +49,29 @@
 				}
 			});
 		});
+		
+		$("select[name=size]").on('change', function() {
+			let str = '';
+			$(".current:eq(0)").html("선택");
+			str += '<option class="option" value="basic">선택</option>';
+			for(let i = 0; i < $(this).val() && i < 5; i++) {
+				str += '<option class="option" value=' + (i+1) + '>' + (i+1) + '</option>';
+			}
+			$(".list:eq(1)").html(str);
+		});
+		
+		$("input[type=submit]").on('click', function() {
+			let qty = $(".current:eq(0)").html();
+			let size = $(".current:eq(1)").html();
+			if(qty == "선택") {
+				alert("수량 선택해주세요");
+				return false;
+			} else if(size == "선택") {
+				alert("사이즈를 선택해주세요");
+				return false;
+			}
+			$("form").attr("action",  "front?key=cart&methodName=addToCart&gdCode=${goods.gdCode}&size=" + size + "&qty=" + qty);
+		});
 	});
 </script>
 </head>
@@ -105,37 +128,34 @@
 						</ul>
 						<p>${goods.gdContent}</p>
 
-					  <form action="front?key=goods&methodName=getInfo"  method="post" >
-						<fieldset style = "width:150" > 
-								수량: <br> <select name="qty" size="5" multiple>
-									<option value="선택" selected="selected">선택</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select> <br> <br>
-
-								<div class="gdSize">
-									사이즈: <br> <select name="size" size="8" multiple>
+					  <form action=""  method="post" >
+						<fieldset style = "width:500" > 
+									<div>사이즈: </div><select name="size" size="8">
 										<option value="선택" selected="selected">선택</option>
-										<option value="220">220</option>
-										<option value="230">230</option>
-										<option value="240">240</option>
-										<option value="250">250</option>
-										<option value="260">260</option>
-										<option value="270">270</option>
-										<option value="280">280</option>
-										<option value="290">290</option>
-									</select><br>
-									<p><input class="button primary-btn" type="submit" value ="cart">&nbsp&nbsp<input type="submit" value ="buy"></p>
-
-								</div>
+										<c:forEach items="${requestScope.goodsInfo}" var="info">
+											<option value="${info.value}">${info.key}</option>
+										</c:forEach>
+									</select><br><br>
+								<div>수량: </div>
+								<select name="qty" size="5" id="qty">
+									<%-- <c:forEach begin="1" end="5"> --%>
+										<option value="basic" selected="selected">선택</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									<%-- </c:forEach> --%>
+								</select>
+								<br>
+								<p><input class="button primary-btn" type="submit" value ="Add To Cart"></p>
+								
 								</form>
-								<a class="button primary-btn"
-								href="front?key=cart&methodName=addToCart&gdCode=${goods.gdCode}">Add
-								to Cart</a>
-
+								</div>
+								</div>
+								</div>
+								</div>
+								</div>
 								<script>
 									function dp_menu() {
 										let click = document
