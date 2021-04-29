@@ -1,5 +1,6 @@
 <%@page import="kosta.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +76,6 @@
           <!-- End Filter Bar -->
           
           <!-- Start Best Seller -->
-          <section class="lattest-product-area pb-40 category-list">
             <div class="private_member_table">
         <h2>전체회원조회</h2>
         <div class="table-responsive">
@@ -94,20 +94,20 @@
             <tbody>
              <c:forEach items="${requestScope.privateList}" var="privateMember"> 
               <tr>
-                <td><span>${privateMember.mbName}</span></td>
-                <td><span>${privateMember.id}</span></td>
-                <td><span>${privateMember.email}</span></td>
-                <td><span>${privateMember.addr}</span></td>
-                <td><span>${privateMember.jumin}</span></td>
-                <td><span>${privateMember.tel}</span></td>
-                <td><span>${privateMember.signUpDate}</span></td>
+                <td><c:out value="${privateMember.mbName}"/></td>
+                <td><c:out value="${privateMember.id}"/></td>
+                <td><c:out value="${privateMember.email}"/></td>
+                <td><c:out value="${privateMember.addr}"/></td>
+                <td><c:out value="${privateMember.jumin}"/></td>
+                <td><c:out value="${privateMember.tel}"/></td>
+                <td><c:out value="${privateMember.signUpDate}"/></td>
               </tr>
               </c:forEach>
             </tbody>
           </table>
         </div>
       </div>
-          </section>
+       
           <!-- End Best Seller -->
         </div>
       </div>
