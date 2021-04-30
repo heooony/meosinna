@@ -81,6 +81,7 @@
 			} else if(qty == "선택") {
 				alert("수량 선택해주세요");
 				return false;
+			}
 			$("form").attr("action",  "front?key=cart&methodName=addToCart&gdCode=${goods.gdCode}&size=" + size + "&qty=" + qty);
 		});
 	});
