@@ -1,7 +1,6 @@
 package kosta.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,10 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kosta.dto.Member;
-import kosta.dto.OrderIndex;
 import kosta.dto.PrivateQuestion;
 import kosta.service.MemberService;
-import net.sf.json.JSONArray;
 
 
 public class MemberController implements Controller {
@@ -85,7 +82,6 @@ public class MemberController implements Controller {
 		//orderIndex가져오기
 		int mbCode = dbMember.getMbCode();
 		dbMember.setOrderIndex(memberService.getOrderList(mbCode));
-		System.out.println(dbMember.getOrderIndex());
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();

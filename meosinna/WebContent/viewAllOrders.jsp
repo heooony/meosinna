@@ -23,6 +23,54 @@
 <body>
 <!--================ Start Header Menu Area =================-->
 	<%@ include file="header.jsp" %>
+	
+	<!-- ================ start banner area ================= -->	
+	<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>관리자 페이지</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+	
+		<!-- ================ category section start ================= -->		  
+  <section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+          
+          <div class="sidebar-filter">
+            <div class="top-filter-head">Admin</div>
+            <div class="common-filter">
+              <div class="head">회원관리</div>
+              <form action="#">
+                <ul>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><a href="${pageContext.request.contextPath}/front?key=member&methodName=selectPrivate">회원목록</a></li>
+                </ul>
+              </form>
+            </div>
+            <div class="common-filter">
+              <div class="head">주문관리</div>
+              <form action="personalInfo.jsp">
+                <ul>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo"><a href="viewAllOrders.jsp">전체주문조회</a></li>
+                </ul>
+              </form>
+            </div>
+           
+          </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+        
+          <!-- End Filter Bar -->
+        
 	<!--================ End Header Menu Area =================-->
 	 <div class="private_order_details_table">
         <h2>전체주문조회</h2>
@@ -53,7 +101,10 @@
           </table>
         </div>
       </div>
-	
+	</div>
+      </div>
+    </div>
+  </section>
  <!--================ Start footer Area  =================-->	
 	<%@ include file="footer.jsp" %>
 	<!--================ End footer Area  =================-->

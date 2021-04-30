@@ -35,7 +35,7 @@
 	                  aria-expanded="false">Admin</a>
 	                <ul class="dropdown-menu">
 	                  <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=member&methodName=selectPrivate">Member Administration</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="#">Order Administration</a></li>
+	                  <li class="nav-item"><a class="nav-link" href="viewAllOrders.jsp">Order Administration</a></li>
 	                </ul>
 								</li>	
 				<%} %>

@@ -2,6 +2,7 @@ package kosta.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import kosta.dto.Member;
 import kosta.dto.OrderIndex;
@@ -16,4 +17,7 @@ public interface MemberDAO {
 	public List<Member> selectPrivate() throws SQLException;
 	public List<OrderIndex> getOrderListByMember(int mbCode) throws SQLException;
 	public int insertContact(PrivateQuestion pq) throws SQLException;
+	public Map<String, List<?>> selectPqAll(int mbCode) throws SQLException;
+	
+
 }

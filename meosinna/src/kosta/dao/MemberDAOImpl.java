@@ -5,10 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.collections.map.HashedMap;
 
 import kosta.dto.Member;
-import kosta.dto.Order;
 import kosta.dto.OrderIndex;
 import kosta.dto.PrivateQuestion;
 import kosta.exception.AuthenticationException;
@@ -128,6 +131,8 @@ public class MemberDAOImpl implements MemberDAO {
 		return list;
 	}
 
+	
+	
 	public List<OrderIndex> getOrderListByMember(int mbCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -163,8 +168,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 		return list;
 	}
-
-	
 	
 	
 	public int insertContact(PrivateQuestion pq) throws SQLException{
@@ -194,4 +197,51 @@ public class MemberDAOImpl implements MemberDAO {
 
 	}
 
+	@Override
+	public Map<String, List<?>> selectPqAll(int mbCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<PrivateQuestion> pqList = null;
+		List<OrderIndex> odList = null;
+		Map<String, List<?>> map = null;
+		
+		String sql = "SELECT OD_CODE, MB_CODE, GD_NAME, PAY, QTY, TO_CHAR(OD_DATE, 'YY/MM/DD HH24:MI'), TITLE, CONTENT, \r\n"
+				+ "TYPE, STATE, TO_CHAR(SUBMIT_DATE, 'YY/MM/DD HH24:MI') FROM TOTAL_ORDER\r\n"
+				+ "WHERE MB_CODE = ? ORDER BY (OD_CODE)ASC";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			
+			if (rs.next()) {
+				pqList = new ArrayList<PrivateQuestion>();
+				odList = new ArrayList<OrderIndex>();
+				map = new HashMap<String, List<?>>();
+				
+				while (rs.next()) {
+					int odCode = rs.getInt(1);
+					String gdName = rs.getString(3);
+					int pay = rs.getInt(4);
+					int qty = rs.getInt(5);
+					String obDate = rs.getString(6);
+					String title = rs.getString(7);
+					String content = rs.getString(8);
+					String type = rs.getString(9);
+					String state = rs.getString(10);
+					String qpDate = rs.getString(11);
+					
+					new OrderIndex(odCode, gdName, obDate, qty, pay);
+
+				}
+				
+			}
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return null;
+	
+	}
 }
