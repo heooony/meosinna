@@ -485,6 +485,7 @@ $(function() {
 			})
 		})
 	})
+	
   </script>
 </body>
 </html>
