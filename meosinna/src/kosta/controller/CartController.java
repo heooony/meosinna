@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import kosta.dto.CartDTO;
 import kosta.dto.Goods;
 import kosta.dto.Member;
+import kosta.exception.AuthenticationException;
 import kosta.service.CartServiceImpl;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
@@ -28,6 +29,7 @@ public class CartController implements Controller {
 	public ModelAndView viewCart(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("member");
+		if(member==null) throw new AuthenticationException("Oops ! 로그인 후 이용해주세요 :/");
 		int mbCode = member.getMbCode();
 		List<CartDTO> goodsList = service.viewCart(mbCode);
 		request.setAttribute("goodsList", goodsList);

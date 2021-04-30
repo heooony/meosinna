@@ -8,8 +8,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Aroma Shop - Cart</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
+  <title>MEOSINNA - Cart</title>
+	<link rel="icon" href="img/bannerLogo.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
@@ -115,7 +115,10 @@
                       </c:forEach>
                           <tr class="bottom_button">
                               <td>
-                                  <a class="button" href="front?key=cart&methodName=viewCart">Update Cart</a>
+                              
+                              </td>
+                              <td>
+                              
                               </td>
                               <td>
 
@@ -141,8 +144,12 @@
 
                               </td>
                               <td>
-                                  <h4 style="font-size:2rem">Subtotal</h4>
+                                  <h4 style="font-size:2rem">Total</h4>
                               </td>
+                              
+                              <td>
+                              </td>
+                              
                               <td>
                                   <h4><c:out value="${totalPrice}"/>&nbsp;₩</h4>
                               </td>
@@ -156,25 +163,15 @@
                               </td>
                               <td>
                                   <h5>Shipping</h5>
+
+                              </td>
+                              <td>
                               </td>
                               <td>
                                   <div class="shipping_box">
                                       <ul class="list">
-                                          <li class="active"><a href="#">배송비 : 2,500 ￦</a></li>
+                                          <li class="active"><a style="font-style:">FREE FOR <span style="color:#FFBBBB; font-style:italic;">MEMBERS ONLY</span></a></li>
                                       </ul>
-                                      <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                                      <select class="shipping_select">
-                                          <option value="1">대한민국(Republic of Korea)</option>
-                                         <!--   <option value="2">India</option>
-                                          <option value="4">Pakistan</option>-->
-                                      </select>
-                                      <select class="shipping_select">
-                                          <option value="1">Select a State</option>
-                                          <option value="2">Select a State</option>
-                                          <option value="4">Select a State</option>
-                                      </select>
-                                      <input type="text" placeholder="Postcode/Zipcode" id="zipcode">
-                                      <a class="gray_btn" href="#">Update Details</a>
                                   </div>
                               </td>
                           </tr>

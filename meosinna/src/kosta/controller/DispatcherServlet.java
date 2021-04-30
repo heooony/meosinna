@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kosta.exception.AuthenticationException;
+
 /**
  * Servlet implementation class DispatcherServlet
  */
@@ -47,7 +49,10 @@ public class DispatcherServlet extends HttpServlet {
 	} catch(NullPointerException e) {
 		request.setAttribute("errorMsg", e.getMessage());
 		request.getRequestDispatcher("errorPage.jsp").forward(request, response);
-	}catch(Exception e){
+	} catch(AuthenticationException ae) {
+		request.setAttribute("errorMsg", ae.getMessage());
+		request.getRequestDispatcher("errorPage.jsp").forward(request, response);
+	} catch(Exception e){
 		e.printStackTrace();
 	}
 	

@@ -11,6 +11,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import kosta.dto.Member;
 
 /**
  * Servlet Filter implementation class EncodingFilter
@@ -27,8 +30,16 @@ public class CheckoutFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		request.setAttribute("path", "checkout.jsp");
+		HttpServletRequest req = (HttpServletRequest)request;
+		HttpSession session = req.getSession();
+		Member member = (Member)session.getAttribute("member");
+		if(member==null) {
+			request.setAttribute("errorMsg", "Oops! 로그인 후 이용해주세요 :/");
+			request.getRequestDispatcher("errorPage.jsp").forward(request, response);
+		} else {
 		request.getRequestDispatcher("front?key=cart&methodName=viewCart").forward(request, response);
 		chain.doFilter(request, response);
+		}
 	}
 
 	/**

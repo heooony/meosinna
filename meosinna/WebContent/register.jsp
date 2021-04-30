@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Aroma Shop - Login</title>
-    <link rel="icon" href="img/Fevicon.png" type="image/png">
+    <title>MEOSINNA - SIGN UP</title>
+    <link rel="icon" href="img/bannerLogo.png" type="image/png">
     <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
     <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
-
+	<link rel="stylesheet" href="css/style.css">
 <!-- 	<link rel="stylesheet" href="css/style.css"> -->
 
 	<!-- 추가(정희) -->

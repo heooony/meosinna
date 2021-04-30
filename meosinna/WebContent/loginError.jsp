@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MEOSINNA LOGIN</title>
 	<script type="text/javascript">
 		alert("아이디 또는 패스워드를 확인하세요.")
 		history.back();
