@@ -433,7 +433,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 
 
 	@Override
-	public List<Goods> selectAllByPriceAsc() throws SQLException {
+	public List<Goods> selectAllByPriceAsc(int pageNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -486,7 +486,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 
 
 	@Override
-	public List<Goods> selectAllByPriceDesc() throws SQLException {
+	public List<Goods> selectAllByPriceDesc(int pageNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
