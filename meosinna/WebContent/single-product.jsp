@@ -21,26 +21,38 @@
 	href="vendors/owl-carousel/owl.theme.default.min.css">
 <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
 
-
 <link rel="stylesheet" href="css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		let curLike = '${requestScope.like}';
-		$("#like-button").click(function() {
+		let total = Number('${goods.gdLike}');
+		
+		let loading = "<img src='img/bean.gif' style='width: 40px'>";
+		
+		$(document).on('click', '#like-button',function() {
+			let str = '';
 			console.log(curLike);
+			$("#likey").html(loading);
 			$.ajax({
-				url : 'dbGet.jsp',
-				method : 'post',
+				url : '${pageContext.request.contextPath}/likeServlet',
+				method : 'get',
 				data : {
 					gdCode : '${goods.gdCode}',
-					isLike:  '0'
+					isLike: curLike
 				},
 				success : function(value) {
+					console.log(value);
 					if(value === "1") {
-						$("#like-total").html(  Number($("#like-total").html()) + 1  );
+						total += 1;
+						str += "<a class='icon_btn' id='like-button'><i class='fas fa-heart' style='color: red'></i></a>";
+						str += "<span id='like-total'>" + total + "<span>";
+						$("#likey").html(str);
 					} else {
-						$("#like-total").html(  Number($("#like-total").html()) - 1  );
+						total -= 1;
+						str += "<a class='icon_btn' id='like-button'><i class='lnr lnr lnr-heart'></i></a>";
+						str += "<span id='like-total'>" + total + "<span>";
+						$("#likey").html(str);
 					}
 					curLike = value;
 				},
@@ -126,7 +138,18 @@
 							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
 						</ul>
 						<p>${goods.gdContent}</p>
-
+						<div class="card_area d-flex align-items-center" id="likey">
+							<c:choose>
+								<c:when test="${requestScope.like eq '0'}">
+									<a class="icon_btn" id="like-button"><i class="lnr lnr lnr-heart"></i></a>
+									<span id="like-total">${goods.gdLike}</span>
+								</c:when>
+								<c:otherwise>
+									<a class="icon_btn" id="like-button"><i class="fas fa-heart" style="color: red"></i></a>
+									<span id="like-total">${goods.gdLike}</span>
+								</c:otherwise>
+							</c:choose>
+						</div>
 					  <form action=""  method="post" >
 						<fieldset style = "width:500" > 
 									<div>사이즈: </div><select name="size" size="8">

@@ -92,7 +92,7 @@
                 <td><c:out value="${order.odCode}"/></td>
                 <td><c:out value="${order.mbName}"/></td>
                 <td><c:out value="${order.pay}"/></td>
-                <td><c:out value="${order.state}"/></td>
+                <td><a href="front?key=order&methodName=viewOrderDetail&gdCode=${order.gdCode}&odCode=${order.odCode}"><c:out value="${order.state}"/></a></td>
                 <td><c:out value="${order.gdCode}"/></td>
                 <td><c:out value="${order.mbCode}"/></td>
               </tr>

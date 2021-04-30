@@ -349,23 +349,37 @@ public class GoodsDAOImpl implements GoodsDAO {
 
 
 	@Override
-	public int updateLikes(String gdCode) throws SQLException {
-		Connection con = null;
+	public void updateLikes(Connection con, int mbCode, String gdCode) throws SQLException {
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "update goods set GD_LIKE = (GD_LIKE + 1) where gd_code = ?";
-
+		String sql = "INSERT INTO LIKES VALUES(?, ?, SYSDATE)";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, gdCode);
-
+			ps.setInt(1, mbCode);
+			ps.setString(2, gdCode);
 			result = ps.executeUpdate();
 
 		} finally {
-			DbUtil.dbClose(ps, con);
+			DbUtil.dbClose(ps, null);
 		}
-		return result;
+	}
+	
+	@Override
+	public void deleteLikes(Connection con, int mbCode, String gdCode) throws SQLException {
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "DELETE FROM LIKES WHERE MB_CODE = ? AND GD_CODE = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			ps.setString(2, gdCode);
+			result = ps.executeUpdate();
+
+		} finally {
+			DbUtil.dbClose(ps, null);
+		}
 	}
 
 	/**
@@ -446,19 +460,18 @@ public class GoodsDAOImpl implements GoodsDAO {
 		
 		return list;
 	}
-	public int setGdLike(String gdCode, String isLike) throws SQLException {
+	public int setGdLike(int mbCode, String gdCode, String isLike) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = null;
-		switch(isLike) {
-			case "0":
-				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE + 1 WHERE GD_CODE = ?";
-				break;
-			case "1":
-				sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE - 1 WHERE GD_CODE = ?";
-				break;
+		System.out.println(isLike);
+		if(Integer.parseInt(isLike) == 0) {
+			this.updateLikes(con, mbCode, gdCode);
+			sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE + 1 WHERE GD_CODE = ?";
+		} else {
+			this.deleteLikes(con, mbCode, gdCode);
+			sql = "UPDATE GOODS SET GD_LIKE = GD_LIKE - 1 WHERE GD_CODE = ?";
 		}
-		
 		int result = 0;
 		try {
 			con = DbUtil.getConnection();

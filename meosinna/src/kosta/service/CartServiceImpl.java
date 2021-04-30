@@ -33,6 +33,11 @@ public class CartServiceImpl implements CartService{
 		int result = dao.clearCart(mbCode);
 		if(result==0) throw new SQLException("장바구니가 비워지지 않았습니다.");
 	}
-	
+
+	@Override
+	public int getCartQty(int mbCode) {
+		int result = dao.getCartQty(mbCode);
+		return result;
+	}
 	
 }

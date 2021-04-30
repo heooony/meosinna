@@ -130,5 +130,34 @@ public class CartDAOImpl implements CartDAO {
 		
 		return result;
 	}
+	
+	@Override
+	public int getCartQty(int mbCode) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT QTY FROM CART WHERE MB_CODE=?";
+		int result = 0;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result += rs.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return result;
+	}
 
 }
