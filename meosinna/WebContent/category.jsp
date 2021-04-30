@@ -100,20 +100,41 @@ h1 {
 }
 
 #min{
-  float:left
+float:left;
+margin:3px 2px;
+position: absolute;
+ left: 60px;
+        top: 380px;
 }
 
 #max{
-  float:left
+float:left;
+margin:3px 2px;
+position: absolute;
+left: 150px;
+top: 380px;
 }
 
 #search{
- float:left
+  float: none !important; display: inline-block; 
+ }
+ #search{
+ vertical-align: top !important;
+ text-align: center;
+ margin:3px 2px;
+ background-color: #B4B4FF;
+ position: absolute;
+ left: 110px;
+ top: 440px;
+ }
+
+ #space{
+ position: absolute;
+ left: 140px;
+ top: 390px;
  }
  
- #space{
- float:left
- }
+ 
  
 </style>
 
@@ -216,9 +237,9 @@ $(function() {
         <div class="col-xl-3 col-lg-4 col-md-5">
          
           <div class="sidebar-filter">
-            <div class="top-filter-head">Product Filters</div>
+            <div class="top-filter-head">Brands</div>
             <div class="common-filter">
-              <div class="head">Brands</div>
+              <div class="head"></div>
               
               <form action="${pageContext.request.contextPath}/front" id="brandForm" method="post"> 
                  <input type="hidden" name="brand" value="" id="brand">
@@ -228,14 +249,15 @@ $(function() {
                  
               </form>
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Sacai" name="brand"><label for="Nike X Sacai">Nike X Sacai<span>(5)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Peaceminusone" name="brand"><label for="Nike X Peaceminusone">Nike X Peaceminusone<span>(3)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Adidas X Yeezy Boos" name="brand"><label for="Adidas X Yeezy Boos">Adidas X Yeezy Boost<span>(5)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Off White The" name="brand"><label for="Nike X Off White The">Nike X Off White The<span>(2)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Travis Scott" name="brand"><label for="Nike X Travis Scott">Nike X Travis Scott<span>(2)</span></label></li>
+                  <br><li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Sacai" name="brand"><label for="Nike X Sacai">Nike X Sacai<span)></span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Peaceminusone" name="brand"><label for="Nike X Peaceminusone">Nike X Peaceminusone<span></span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Adidas X Yeezy Boos" name="brand"><label for="Adidas X Yeezy Boos">Adidas X Yeezy Boost<span></span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Off White The" name="brand"><label for="Nike X Off White The">Nike X Off White The<span></span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Travis Scott" name="brand"><label for="Nike X Travis Scott">Nike X Travis Scott<span></span></label></li><br>
                 </ul>
               
-              
+              <div class="top-filter-head">Price</div>
+              <br>
                    <form id="price-form"  method="post" >
 								<div id="min"> <select name="min" >
 									<option value="선택" selected="selected">선택</option>
@@ -257,9 +279,9 @@ $(function() {
 										<option value="2000000">2,000,000</option>
 									
 									</select>
-								
+						
 								</div>
-								<div id="search"><input type="button"  id="price-btn"value ="search"></div>
+								<br><br><div id="search"><input type="button"  id="price-btn"value ="search"></div>
 								
 								</form>
          							   <p><p><p><p><p><p><p><p><p><p><p><p><p><p><br>
