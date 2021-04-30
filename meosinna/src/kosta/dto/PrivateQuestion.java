@@ -11,7 +11,18 @@ public class PrivateQuestion {
 	private String state;
 	private String pqDate;
 	
+	public PrivateQuestion() {}
 	
+	public PrivateQuestion(int odCode, String title, String content, String type, String state, String pqDate) {
+		this.odCode = odCode;
+		this.title = title;
+		this.content = content;
+		this.type = type;
+		this.state = state;
+		this.pqDate = pqDate;
+	}
+
+
 	public PrivateQuestion(int odCode, String mbName, String tel, String email, String title, String content,
 			String type) {
 		this.odCode = odCode;
@@ -117,11 +128,7 @@ public class PrivateQuestion {
 		this.state = state;
 	}
 
-	@Override
-	public String toString() {
-		return "PrivateQuestion [odCode=" + odCode + ", mbName=" + mbName + ", tel=" + tel + ", email=" + email
-				+ ", title=" + title + ", content=" + content + ", type=" + type + ", state=" + state + "]";
-	}
+	
 
 	public String getPqDate() {
 		return pqDate;
@@ -130,10 +137,12 @@ public class PrivateQuestion {
 	public void setPqDate(String pqDate) {
 		this.pqDate = pqDate;
 	}
+	
+	
+	public String toString() {
+		return "PrivateQuestion [odCode=" + odCode + ", mbName=" + mbName + ", tel=" + tel + ", email=" + email
+				+ ", title=" + title + ", content=" + content + ", type=" + type + ", state=" + state + "]";
+	}
 
-	
-	
-	
-	
 	
 }

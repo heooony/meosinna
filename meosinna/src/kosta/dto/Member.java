@@ -41,9 +41,9 @@ public class Member {
 	}
 	
 	public Member(int mbCode, String mbName, String id, String pwd, String email, String addr, String jumin, String tel,
-			String signUpDate, List<OrderIndex> orderIndexes) {
+			String signUpDate, List<OrderIndex> orderIndex) {
 		this(mbCode, mbName, id, pwd, email, addr, jumin, tel, signUpDate);
-		this.orderIndex = orderIndexes;
+		this.orderIndex = orderIndex;
 	}
 
 	public int getMbCode() {
@@ -105,10 +105,19 @@ public class Member {
 		return orderIndex;
 	}
 
-	public void setOrderIndex(List<OrderIndex> orderIndexes) {
-		this.orderIndex = orderIndexes;
+	public void setOrderIndex(List<OrderIndex> orderIndex) {
+		this.orderIndex = orderIndex;
 	}
 
+	@Override
+	public String toString() {
+		return "Member [mbCode=" + mbCode + ", mbName=" + mbName + ", id=" + id + ", pwd=" + pwd + ", email=" + email
+				+ ", addr=" + addr + ", jumin=" + jumin + ", tel=" + tel + ", signUpDate=" + signUpDate
+				+ ", orderIndex=" + orderIndex + "]";
+	}
+
+	
+	
 	
 	
 }

@@ -131,8 +131,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return list;
 	}
 
-	
-	
 	public List<OrderIndex> getOrderListByMember(int mbCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -151,26 +149,28 @@ public class MemberDAOImpl implements MemberDAO {
 
 			if (rs.next()) {
 				list = new ArrayList<OrderIndex>();
+				
 				while (rs.next()) {
 					int odCode = rs.getInt(1);
 					String odDate = rs.getString(2);
 					int pay = rs.getInt(3);
 					String gdName = rs.getString(4);
 					int qty = rs.getInt(5);
-
-					list.add(new OrderIndex(odCode, gdName, odDate, qty, pay));
-
+					
+					OrderIndex orderIndex = new OrderIndex(odCode, gdName, odDate, qty, pay);
+					System.out.println(orderIndex);
+					list.add(orderIndex);
+					
 				}
 			}
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-
+		
 		return list;
 	}
-	
-	
-	public int insertContact(PrivateQuestion pq) throws SQLException{
+
+	public int insertContact(PrivateQuestion pq) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -198,28 +198,29 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public Map<String, List<?>> selectPqAll(int mbCode) throws SQLException {
+	public Map<String, Object> selectPqAll(int mbCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<PrivateQuestion> pqList = null;
 		List<OrderIndex> odList = null;
-		Map<String, List<?>> map = null;
-		
+		Map<String, Object> map = null;
+
 		String sql = "SELECT OD_CODE, MB_CODE, GD_NAME, PAY, QTY, TO_CHAR(OD_DATE, 'YY/MM/DD HH24:MI'), TITLE, CONTENT, \r\n"
 				+ "TYPE, STATE, TO_CHAR(SUBMIT_DATE, 'YY/MM/DD HH24:MI') FROM TOTAL_ORDER\r\n"
 				+ "WHERE MB_CODE = ? ORDER BY (OD_CODE)ASC";
-		
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, mbCode);
+			rs = ps.executeQuery();
 			
 			if (rs.next()) {
 				pqList = new ArrayList<PrivateQuestion>();
 				odList = new ArrayList<OrderIndex>();
-				map = new HashMap<String, List<?>>();
-				
+				map = new HashMap<String, Object>();
+
 				while (rs.next()) {
 					int odCode = rs.getInt(1);
 					String gdName = rs.getString(3);
@@ -230,18 +231,20 @@ public class MemberDAOImpl implements MemberDAO {
 					String content = rs.getString(8);
 					String type = rs.getString(9);
 					String state = rs.getString(10);
-					String qpDate = rs.getString(11);
-					
-					new OrderIndex(odCode, gdName, obDate, qty, pay);
+					String pqDate = rs.getString(11);
 
+					odList.add(new OrderIndex(odCode, gdName, obDate, qty, pay));
+					pqList.add(new PrivateQuestion(odCode, title, content, type, state, pqDate)); 
+					
 				}
-				
+				map.put("odList", odList);
+				map.put("pqList", pqList);
 			}
 		} finally {
-			DbUtil.dbClose(ps, con);
-		}
+			DbUtil.dbClose(rs, ps, con);
 		
-		return null;
-	
+		}
+		return map;
+
 	}
 }

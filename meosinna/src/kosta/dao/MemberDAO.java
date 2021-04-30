@@ -17,7 +17,7 @@ public interface MemberDAO {
 	public List<Member> selectPrivate() throws SQLException;
 	public List<OrderIndex> getOrderListByMember(int mbCode) throws SQLException;
 	public int insertContact(PrivateQuestion pq) throws SQLException;
-	public Map<String, List<?>> selectPqAll(int mbCode) throws SQLException;
+	public Map<String, Object> selectPqAll(int mbCode) throws SQLException;
 	
 
 }

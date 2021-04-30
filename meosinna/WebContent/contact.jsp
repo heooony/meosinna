@@ -138,9 +138,10 @@
 
 					<select name="orderIndexs" id="orderIndexs">
 						<option data-display="주문내역 조회">주문내역 없음</option>
-						<c:forEach items="${member.orderIndex}" var="orderIndex">
-							<option value="${orderIndex.odCode}">${orderIndex}</option>
+						<c:forEach items="${member.orderIndex}" var="orderIndexes">
+							<option value="${orderIndexes.odCode}">${orderIndexes}</option>
 						</c:forEach>
+						
 					</select> <select name="contactType" id="orderIndexs">
 						<option data-display="문의유형">문의유형</option>
 						<option value="교환">교환</option>
@@ -198,67 +199,6 @@
 	<script src="vendors/mail-script.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript"></script>
-	<!-- 	<script>
-  
- $(function () {
-
 	
-	$(document).on("load", 'select', function(){
-		.niceSelect();
-	})
-	
-	
-	
-	
-	
-	
-	
-
-
-  
-function getOrderList() {
-		
-  		$.ajax({
-			url : "${pageContext.request.contextPath}/orderList",
-			type : "post",
-			dataType : "json",
-			data : {
-				mbCode: "${member.mbCode}"
-			},
-			success : function(result) { //[값, 값,....]
-				var str = "";
-				
-				$.each(result, function (index, orderIndex) {
-					
-					 str += orderIndex.odCode + " | ";
-					 str += orderIndex.gdName + " | ";
-					 str += orderIndex.qty + " | ";
-					 str += orderIndex.pay + " | ";
-					 str += orderIndex.odDate + " | ";
-						
-				});
-				
-				console.log(str);
-	
-			},//성공 함수
-		
-			error : function (err) {
-				alert(err);
-			}
-			
-			
-		});
-  		
-  		}
-	 
-	
-		 
-  })
- 
-  
-}); 
-  
- </script>
- -->
 </body>
 </html>

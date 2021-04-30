@@ -57,7 +57,7 @@
                   <%} %>
 
 			</ul>
-              <li class="nav-item"><a class="nav-link" href="contact.jsp">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=member&methodName=getOrderIndex">Contact</a></li>
             </ul>
 
             <ul class="nav-shop">
