@@ -337,7 +337,7 @@
 										<h4>${gq.mbName}</h4>
 										<h5>${gq.rgDate}</h5>
 										<h6>${gq.reply}</h6>
-										<a class="reply_btn" href="#">Reply</a>
+										<a class="reply_btn" name="reply_btn" href="#">Reply</a>
 									</div>
 
 								</div>
@@ -640,6 +640,15 @@
 					alert(err + " :  오류 발생...");
 				}
 			})
+		})
+		
+		$(".reply_btn").click(function() {
+			var mbName = "<%=(String)session.getAttribute("mbName")%>";
+			if(mbName != "admin"){
+				alert("권한이 없습니다.");
+			}else{
+				alert("권한 있어요");
+			}
 		})
 	})
   </script>

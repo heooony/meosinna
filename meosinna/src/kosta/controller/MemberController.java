@@ -81,12 +81,13 @@ public class MemberController implements Controller {
 		
 		//orderIndex가져오기
 		int mbCode = dbMember.getMbCode();
+		String mbName = dbMember.getMbName();
 		dbMember.setOrderIndex(memberService.getOrderList(mbCode));
 		
 		//세션에정보저장
 		HttpSession session = request.getSession();
 		session.setAttribute("member", dbMember);
-
+		session.setAttribute("mbName", mbName);
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		
 		return mv;

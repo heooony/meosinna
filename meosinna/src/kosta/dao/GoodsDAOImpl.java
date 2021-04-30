@@ -136,7 +136,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		List<Goods> list = new ArrayList<Goods>();
 		Goods goods = null;
 		
-		String sql = "select * from goods where price between ? AND ? ";
+		String sql = "select * from goods where price between ? AND ? order by price asc";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
