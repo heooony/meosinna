@@ -9,6 +9,7 @@ public class PrivateQuestion {
 	private String content;
 	private String type;
 	private String state;
+	private String pqDate;
 	
 	
 	public PrivateQuestion(int odCode, String mbName, String tel, String email, String title, String content,
@@ -27,6 +28,15 @@ public class PrivateQuestion {
 		this(odCode, mbName, tel, email, title, content, type);
 		this.state = state;
 	}
+	
+	
+
+	public PrivateQuestion(int odCode, String mbName, String tel, String email, String title, String content,
+			String type, String state, String pqDate) {
+		this(odCode, mbName, tel, email, title, content, type, state);
+		this.pqDate = pqDate;
+	}
+	
 
 	public int getOdCode() {
 		return odCode;
@@ -111,6 +121,14 @@ public class PrivateQuestion {
 	public String toString() {
 		return "PrivateQuestion [odCode=" + odCode + ", mbName=" + mbName + ", tel=" + tel + ", email=" + email
 				+ ", title=" + title + ", content=" + content + ", type=" + type + ", state=" + state + "]";
+	}
+
+	public String getPqDate() {
+		return pqDate;
+	}
+
+	public void setPqDate(String pqDate) {
+		this.pqDate = pqDate;
 	}
 
 	

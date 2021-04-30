@@ -11,7 +11,7 @@ public class Order {
 	private String state;
 	private String gdCode;
 	private int mbCode;
-	
+	private List<OrderIndex> orderIndex;
 	
 	public Order() {}
 	
@@ -100,6 +100,14 @@ public class Order {
 
 	public void setMbCode(int mbCode) {
 		this.mbCode = mbCode;
+	}
+
+	public List<OrderIndex> getOrderIndex() {
+		return orderIndex;
+	}
+
+	public void setOrderIndex(List<OrderIndex> orderIndex) {
+		this.orderIndex = orderIndex;
 	}
 	
 	
