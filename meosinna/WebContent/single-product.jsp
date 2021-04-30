@@ -323,85 +323,37 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="comment_list">
+							<c:forEach items="${gqList}" var="gq">
 							<div class="review_item">
 								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/review-1.png" alt="">
-									</div>
+									
 									<div class="media-body">
-										<h4>Blake Ruiz</h4>
-										<h5>12th Feb, 2018 at 05:56 pm</h5>
+										<h4>${gq.mbName}</h4>
+										<h5>${gq.rgDate}</h5>
+										<h6>${gq.reply}</h6>
 										<a class="reply_btn" href="#">Reply</a>
 									</div>
 
 								</div>
-								<p>디자인이 깔끔하고 예뻐서 구매했습니다. 어떤 룩에도 잘어울려서 활용성도 좋고 착화감도 너무 좋아서
-									만족하고 착용 중입니다! 좋은 상품을 합리적인 가격에 구매할 수 있어서 만족합니다~~ 다음번에도 콜라보 신발은
-									머신나로 구매하러 올게요 !!!</p>
+								<p>${gq.gqContent}</p>
 							</div>
-							<div class="review_item reply">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/review-2.png" alt="">
-									</div>
-									<div class="media-body">
-										<h4>Blake Ruiz</h4>
-										<h5>12th Feb, 2018 at 05:56 pm</h5>
-										<a class="reply_btn" href="#">Reply</a>
-									</div>
-								</div>
-								<p>친구들이 신발 보고 다들 잘샀다고 하네요. 저희 아버지께서 머신나라는 이름 들으시고 계속 아재개그를
-									하시네요 하하 덕분에 즐거운 시간도 생겼고 머시나는 신발도 생겼네요~</p>
-							</div>
-							<div class="review_item">
-								<div class="media">
-									<div class="d-flex">
-										<img src="img/product/review-3.png" alt="">
-									</div>
-									<div class="media-body">
-										<h4>王大陆</h4>
-										<h5>12th Feb, 2021 at 05:56 pm</h5>
-										<a class="reply_btn" href="#">Reply</a>
-
-									</div>
-								</div>
-								<p>天啊！ 这一双鞋怎么这么让我满意呀～！ 我所有的朋友都称我的漂亮鞋子。 所以我建议他们在这儿上购买它～
-									希望您的生意蒸蒸日上!</p>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="review_box">
-							<h4>Post a comment</h4>
+							<h4>Post a Question</h4>
 							<form class="row contact_form" action="contact_process.php"
-								method="post" id="contactForm" novalidate="novalidate">
-								<div class="col-md-12">
-									<div class="form-group">
-										<input type="text" class="form-control" id="name" name="name"
-											placeholder="Your Full name">
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<input type="email" class="form-control" id="email"
-											name="email" placeholder="Email Address">
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<input type="text" class="form-control" id="number"
-											name="number" placeholder="Phone Number">
-									</div>
-								</div>
+								method="post" id="gq-form" novalidate="novalidate">
+								<input type="hidden" name="gdCode" value="${param.gdCode}"/>
 								<div class="col-md-12">
 									<div class="form-group">
 										<textarea class="form-control" name="message" id="message"
 											rows="1" placeholder="Message"></textarea>
 									</div>
-
 								</div>
 								<div class="col-md-12 text-right">
-									<button type="submit" value="submit" class="btn primary-btn">Submit
+									<button type="button" id="gq-submit" value="submit" class="btn primary-btn">Submit
 										Now</button>
 								</div>
 							</form>
@@ -658,6 +610,22 @@
 				type: "post",
 				dataType: "text",
 				data: $("#review-form").serialize(),
+				success: function(result) {
+					alert(result);
+					location.reload();
+				},
+				error: function(err) {
+					alert(err + " :  오류 발생...");
+				}
+			})
+		})
+		
+		$("#gq-submit").click(function() {
+			$.ajax({
+				url: "${pageContext.request.contextPath}/insertGQ",
+				type: "post",
+				dataType: "text",
+				data: $("#gq-form").serialize(),
 				success: function(result) {
 					alert(result);
 					location.reload();

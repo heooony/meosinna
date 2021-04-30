@@ -6,5 +6,6 @@ import java.util.List;
 import kosta.dto.GoodsQuestion;
 
 public interface GoodsQuestionDAO {
-	List<GoodsQuestion> selectGQAll(int mbCode) throws SQLException;
+	int insertGQbyMbCode(GoodsQuestion gq) throws SQLException;
+	List<GoodsQuestion> selectByGdCode(String gdCode) throws SQLException;
 }

@@ -258,7 +258,7 @@ $(function() {
               
               <div class="top-filter-head">Price</div>
               <br>
-                   <form id="price-form"  method="post" >
+                   <form id="price-form"  method="get" >
 								<div id="min"> <select name="min" >
 									<option value="선택" selected="selected">선택</option>
 									<option value="100000">100,000</option>
@@ -544,51 +544,42 @@ $(function() {
   	$(function () {
 		$("#price-btn").click(function () {
 		    	$.ajax({
-				url: "${pageContext.request.contextPath}/front?key=goods&methodName=selectByPrice",
-				type: "post",
-				dataType: "text",
+				url: "${pageContext.request.contextPath}/selectByPrice",
+				type: "get",
+				dataType: "json",
 				data: $("#price-form").serialize(),
-				success: function(result) {
-					$("#categoryList").html(
-					          <c:forEach items="${requestScope.range}" var="goods">
-					          
-					              <div class="col-md-6 col-lg-4">
-					                <div class="card text-center card-product">
-					                  <div class="card-product__img">
-					                  	
-					                      <c:choose>
-					    					<c:when test="${goods.price eq '799000'}">
-					                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px; opacity:  0.2">
-					                    	</c:when>
-					                    	<c:otherwise>
-					                    		<img class="card-img" src="${goods.img}" alt="" style="width: 240px; height: 200px;">
-					                    		<ul class="card-product__imgOverlay">
-					                      		<li><button><i class="ti-search"></i></button></li>
-					                    		<li><button><i class="ti-shopping-cart"></i></button></li>
-					  							<a class="icon_btn" id="like-button"><i class="lnr lnr lnr-heart"></i></a>
-												<span id="like-total">${goods.gdLike}</span>                    		
-												</ul>
-					  						  </c:otherwise>
-										</c:choose>
-					                  </div>
-					                  <div class="card-body">
-					                    <p>Accessories</p>
-					                    <c:choose>
-					    					<c:when test="${goods.price eq '799000'}">
-					    					      <h4 class="card-product__title">${goods.gdName}</h4>
-					                    	</c:when>
-					                    	<c:otherwise>
-					                    		<h4 class="card-product__title"><a href="${pageContext.request.contextPath}/single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
-					  						  </c:otherwise>
-										</c:choose>
-					                    <p class="card-product__price">${goods.price}</p>
-					                  </div>
-					                </div>
-					              </div>
-					          </c:forEach>
-							)
-					location.reload();
-				},
+				success: function(arr) {
+						var str ="";
+		               str+="<div class='row'>";
+		               $.each(arr, function(index, obj) {
+		                  
+		                  str+="<div class='col-md-6 col-lg-4'>";
+		                  str+="<div class='card text-center card-product'>";
+		                  
+		                  str+="<div class='card-product__img'>";
+		                  str+="<img class='card-img' src='"+obj.img+"' alt='' style='width: 240px; height: 200px;'>";
+		                  str+="<ul class='card-product__imgOverlay'>";
+		                  str+="<li><button><i class='ti-search'></i></button></li>";
+		                  str+="<li><button><i class='ti-shopping-cart'></i></button></li>";
+		                  str+="<a class='icon_btn' id='like-button'><i class='lnr lnr lnr-heart'></i></a>";
+		                  str+="<span id='like-total'>"+obj.gdLike+"</span>";                          
+		                  str+="</ul>";
+		                  str+="</div>";
+		                  
+		                  str+="<div class='card-body'>";
+		                  str+="<p>Accessories</p>";
+		                  str+="<h4 class='card-product__title'><a href='${pageContext.request.contextPath}/single-product.jsp?gdCode="+obj.gdCode+"'>"+obj.gdName+"</a></h4>";
+		                  str+="<p class='card-product__price'>"+obj.price+"</p>";
+		                  str+="</div>";
+		                       
+		                  str+="</div>";
+		                  str+="</div>";
+		                      
+		                  
+		               })
+		               str+="</div>";
+		               $("#categoryList").html(str);
+		            },
 				error: function(err) {
 					alert(err + " :  오류 발생...");
 				}

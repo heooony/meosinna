@@ -9,30 +9,48 @@ import java.util.List;
 
 import kosta.dto.Goods;
 import kosta.dto.GoodsQuestion;
+import kosta.dto.Member;
 import kosta.util.DbUtil;
 
 public class GoodsQuestionDAOImpl implements GoodsQuestionDAO {
 
 	@Override
-	public List<GoodsQuestion> selectGQAll(int mbCode) throws SQLException {
+	public int insertGQbyMbCode(GoodsQuestion gq) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
-		String sql = "select q.gq_content, g.gd_name, q.rg_date\r\n"
-				+ "from goods_question q join goods g\r\n"
-				+ "on(q.gd_code = g.gd_code)\r\n"
-				+ "where mb_code = ?";
-		List<GoodsQuestion> list = new ArrayList<GoodsQuestion>();
+		int result = 0;
+		String sql = "insert into goods_question values(gq_code.nextval, ?,sysdate, '답변대기', ?, ?)";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, mbCode);
+			ps.setString(1, gq.getGqContent());
+			ps.setString(2, gq.getGdCode());
+			ps.setString(3, gq.getMbName());
+			result = ps.executeUpdate();
+		}finally {
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
+
+	@Override
+	public List<GoodsQuestion> selectByGdCode(String gdCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<GoodsQuestion> list = new ArrayList<GoodsQuestion>();
+		String sql = "select mb_name, rg_date, gq_content, reply\r\n"
+				+ "from goods_question\r\n"
+				+ "where gd_code = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, gdCode);
 			rs = ps.executeQuery();
+			
 			while(rs.next()) {
-				Goods goods = new Goods(null, rs.getString(2), 0, null, 0, null, null, null);
-				GoodsQuestion goodsQuestion = new GoodsQuestion(0, rs.getString(1), rs.getString(3), null, mbCode, null, goods);
-				
-				list.add(goodsQuestion);
+				GoodsQuestion gq = new GoodsQuestion(0, rs.getString(3), rs.getString(2), rs.getString(4), rs.getString(1), gdCode, null);
+				list.add(gq);
 			}
 		}finally {
 			DbUtil.dbClose(rs, ps, con);

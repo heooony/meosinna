@@ -5,20 +5,19 @@ public class GoodsQuestion {
 	private String gqContent;
 	private String rgDate;
 	private String reply;
-	private int mbCode;
+	private String mbName;
 	private String gdCode;
 	private Goods goods;
-	
-	
 
-	public GoodsQuestion(int gqCode, String gqContent, String rgDate, String reply, int mbCode, String gdCode,
+
+	public GoodsQuestion(int gqCode, String gqContent, String rgDate, String reply, String mbName, String gdCode,
 			Goods goods) {
 		super();
 		this.gqCode = gqCode;
 		this.gqContent = gqContent;
 		this.rgDate = rgDate;
 		this.reply = reply;
-		this.mbCode = mbCode;
+		this.mbName = mbName;
 		this.gdCode = gdCode;
 		this.goods = goods;
 	}
@@ -55,14 +54,6 @@ public class GoodsQuestion {
 		this.reply = reply;
 	}
 
-	public int getMbCode() {
-		return mbCode;
-	}
-
-	public void setMbCode(int mbCode) {
-		this.mbCode = mbCode;
-	}
-
 	public String getGdCode() {
 		return gdCode;
 	}
@@ -78,6 +69,16 @@ public class GoodsQuestion {
 	public void setGoods(Goods goods) {
 		this.goods = goods;
 	}
+
+	public String getMbName() {
+		return mbName;
+	}
+
+	public void setMbName(String mbName) {
+		this.mbName = mbName;
+	}
+
+
 	
 	
 }

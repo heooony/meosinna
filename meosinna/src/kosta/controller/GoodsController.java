@@ -14,8 +14,10 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kosta.dto.Goods;
+import kosta.dto.GoodsQuestion;
 import kosta.dto.Member;
 import kosta.dto.Review;
+import kosta.service.GoodsQuestionService;
 import kosta.service.GoodsService;
 import kosta.service.GoodsServiceImpl;
 import kosta.service.ReviewService;
@@ -23,6 +25,7 @@ import kosta.service.ReviewService;
 public class GoodsController implements Controller {
 	GoodsService goodsService = new GoodsServiceImpl();
 	ReviewService reviewService = new ReviewService();
+	GoodsQuestionService gqService = new GoodsQuestionService();
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -43,8 +46,14 @@ public class GoodsController implements Controller {
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("member");
 		if(member == null) throw new NullPointerException("로그인 후 이용 가능합니다.");
+		
+		//좋아요체크
 		int isLike = goodsService.checkLike(member.getMbCode(), gdCode);
 		request.setAttribute("like", isLike);
+		
+		//상품문의리스트출력
+		List<GoodsQuestion> gqList = gqService.selectByGdCode(gdCode);
+		request.setAttribute("gqList", gqList);
 		
 		//사이즈수량출력
 		Map<Integer, Integer> map = goodsService.getSizeQty(gdCode);

@@ -19,7 +19,7 @@ private GoodsQuestionService goodsQuestionService = new GoodsQuestionService();
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/*
 	public ModelAndView selectGQAll(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		int mbCode = Integer.parseInt(request.getParameter("mbCode"));
@@ -29,6 +29,7 @@ private GoodsQuestionService goodsQuestionService = new GoodsQuestionService();
 		mv.setViewName("/goodsQA.jsp");
 		return mv;
 	}
+	*/
 	
 
 }
