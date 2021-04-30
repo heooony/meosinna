@@ -64,7 +64,7 @@ public class MemberService {
 		List<OrderIndex> orderIndexs = dao.getOrderListByMember(mbCode);
 		
 		if(orderIndexs == null) {
-			throw new SQLException("주문정보 조회에 실패하였습니다.");
+			//throw new SQLException("주문정보 조회에 실패하였습니다.");
 		}
 		
 		return orderIndexs;

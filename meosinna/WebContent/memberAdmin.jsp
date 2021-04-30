@@ -55,7 +55,6 @@
               <form action="#">
                 <ul>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><a href="${pageContext.request.contextPath}/front?key=member&methodName=selectPrivate">회원목록</a></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">회원제명</label></li>
                 </ul>
               </form>
             </div>
@@ -63,8 +62,7 @@
               <div class="head">주문관리</div>
               <form action="personalInfo.jsp">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo"><a href="${pageContext.request.contextPath}/personalInfo.jsp">개인정보변경</a></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="myInfo"><a href="${pageContext.request.contextPath}/withdrawl.jsp">회원탈퇴</a></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo"><a href="viewAllOrders.jsp">전체주문조회</a></li>
                 </ul>
               </form>
             </div>
