@@ -229,6 +229,26 @@ $(function() {
 	   			    str+="</div>";
 	   			    $("#categoryList").html(str);
 	   			    
+	   			    //페이징처리
+	   			    $(".pagination-container").html("")
+	   			    
+	   			    let paging="<div class='pagination'>";
+	   				
+	   				paging+="<div class='pagination'>";
+		   			paging+="<a class='pagination-newer' href='${path}/front?key=goods&methodName=selectAll&pageNo=${pageNo>1?pageNo-1:1}'>"+PREV+"</a>" ;
+		   			paging+="<span class='pagination-inner'>" 
+	   			    
+		   			<% for(int i=1; i< 9;i++){%>
+		   			paging+="<a class='${i==pageNo?'pagination-active':page}' href='${path}/meosinna/front?key=goods&methodName=selectAll&pageNo=${i}'>"+${i}+"</a>";		   			
+	   			    
+		   			<%}%>
+		   			
+		   			paging+="</span>";
+		   			paging+="<a class='pagination-older' href='${path}/meosinna/front?key=goods&methodName=selectAll&pageNo=${pageNo<pageCnt?pageNo+1:pageCnt}'>"+NEXT+"</a>";
+		   			paging+="</div>"; 
+		   			
+		   			paging+="</div>"; 
+	   			    
 	   			 } , //성공했을때 함수
 	   			 error: function(err){
 	   				 alert(err+"발생했어요^^")
@@ -485,6 +505,7 @@ $(function() {
 			})
 		})
 	})
+	
   </script>
 </body>
 </html>
