@@ -43,7 +43,7 @@ public class OrderController implements Controller {
 		
 		for(CartDTO cart : goodsList) {
 			Order order = new Order(1, member.getMbName(), member.getTel(), member.getAddr(), cart.getPrice(), "주문 대기", cart.getGdCode(), member.getMbCode());
-			OrderLine orderLine = new OrderLine(1, cart.getName(), null, 1, 0, req, 240);
+			OrderLine orderLine = new OrderLine(1, cart.getName(), null, cart.getQty(), 0, req, cart.getSize());
 			Payment payment = new Payment(1,0, null, cart.getPrice(), "paypal", "결제완료");
 			service.order(order, orderLine, payment);
 		}

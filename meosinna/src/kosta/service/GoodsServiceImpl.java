@@ -80,16 +80,6 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	
-	@Override
-	public void updateLikes(String gdCode) throws SQLException {
-	  int result = goodsDAO.updateLikes(gdCode);   //updateLikes를 호출했다. 그리고 변수에 담아줄 거에요 
-
-	if(result == 0) {
-		throw new SQLException("ERROR : 좋아요 수가 증가하지 않았습니다.");
-		
-	 }
-	
-	}
 
 	public Goods selectByGdCode(String gdCode) throws SQLException {
 		Goods goods = goodsDAO.selectByGdCode(gdCode);

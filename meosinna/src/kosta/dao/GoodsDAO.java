@@ -1,5 +1,6 @@
 package kosta.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -74,7 +75,7 @@ public interface GoodsDAO {
 	 * 
 	 * */
 	
-	int updateLikes(String gdCode) throws SQLException; 
+	void updateLikes(Connection con, int mbCode, String gdCode) throws SQLException; 
 	
 	  /**
 	   * 상품 상세페이지 
@@ -105,5 +106,5 @@ public interface GoodsDAO {
 
 	Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException;
 	
-	  
+	void deleteLikes(Connection con, int mbCode, String gdCode) throws SQLException; 
 }

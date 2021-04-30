@@ -188,19 +188,6 @@ public class GoodsController implements Controller {
     	       return mv;
           
  }
-      
-	 /**
-	  * 좋아요 기능
-	  *  - 메인페이지, 상세페이지에서 좋아요 버튼 누르면 회원에 연결. 
-	  * */
-      
-      public  ModelAndView updateLikes(HttpServletRequest request, HttpServletResponse response) throws Exception{
-    	  String gdCode = request.getParameter("gdCode");
-    	  goodsService.updateLikes(gdCode);
-    	  ModelAndView mv = new ModelAndView("index.jsp", true);
-  		
-  		return mv;
- }
       /**
        * 상세페이지 이동
        * */
