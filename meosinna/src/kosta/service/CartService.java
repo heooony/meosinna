@@ -16,4 +16,5 @@ public interface CartService {
 	
 	public void clearCart(int mbCode) throws SQLException;
 	
+	public int getCartQty(int mbCode) ;
 }

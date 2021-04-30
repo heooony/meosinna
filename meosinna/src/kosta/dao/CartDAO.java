@@ -28,6 +28,11 @@ public interface CartDAO {
 	 */
 	public int clearCart(int mbCode) throws SQLException;
 	
+	/**
+	 * Header에 cart에 담긴 상품 갯수 가져오는 메소드 
+	 */
+	public int getCartQty(int mbCode);
+	
 	
 	
 }

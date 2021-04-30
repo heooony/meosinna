@@ -61,8 +61,8 @@
             </ul>
 
             <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+              <li class="nav-item"><button onclick="location.href='category.jsp'"><i class="ti-search"></i></button></li>
+              <li class="nav-item"><button onclick="location.href='cart.jsp' "><i class="ti-shopping-cart"></i><span class="nav-shop__circle">${sessionScope.cartQty}</span></button> </li>
               <%if(session.getAttribute("member") == null) {%>
               
               <li class="nav-item"><a class="button button-header" href="${pageContext.request.contextPath}/login.jsp">Login</a></li>
