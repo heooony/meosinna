@@ -140,7 +140,7 @@ top: 380px;
   border:none;
   position:relative;
   height:40px;
-  font-size:0.8em;
+  font-size:0.6em;
   padding:0 1em;
   cursor:pointer;
   transition:800ms ease all;
@@ -166,12 +166,13 @@ button:after{
   left:0;
   bottom:0;
 }
+
 button:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
  
- 
+
 </style>
 
 
@@ -317,8 +318,9 @@ $(function() {
 									</select>
 						
 								</div>
-								<br><br><div id="search"><button class="btn-1" form="price-form" id="price-btn"><i class="fas fa-search"></i> search</button></div>
-								
+
+<br><br><div id="search"><button class="btn-1" form="price-form" id="price-btn"><i class="fas fa-search"></i> search</button></div>								
+
 								</form>
          							   <p><p><p><p><p><p><p><p><p><p><p><p><p><p><br>
             </div>

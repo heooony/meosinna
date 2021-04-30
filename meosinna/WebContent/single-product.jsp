@@ -22,11 +22,35 @@
 <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
 
 <link rel="stylesheet" href="css/style.css">
+
+
+
 <style>
-	.review_box {
-		position: relative;
-		left: 100%;
-	}
+#rate{
+float:left;
+margin:3px 2px;
+position: absolute;
+ left: 600px;
+top: 230px;
+}
+
+#overall{
+float:left;
+margin:3px 2px;
+position: absolute;
+ left: 580px;
+top: 50px;
+}
+
+#addreview{
+float:left;
+margin: 3px 2px;
+position: relative;
+left: 220px;
+top: 40px;
+
+}
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -372,14 +396,14 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="row total_rate">
-							<div class="col-6">
+							<div class="col-6" id=overall>
 								<div class="box_total">
 									<h5>Overall</h5>
 									<h4>4.0</h4>
 									<h6>(03 Reviews)</h6>
 								</div>
 							</div>
-							<div class="col-6">
+							<div class="col-6" id="rate">
 								<div class="rating_list">
 									<h3>Based on 3 Reviews</h3>
 									<ul class="list">
@@ -429,8 +453,8 @@
 							
 							</div>
 						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
+						<div class="col-lg-6" >
+							<div class="review_box" id=addreview>
 								<h4>Add a Review</h4>
 								<p>Your Rating:</p>
 								<ul class="list">
