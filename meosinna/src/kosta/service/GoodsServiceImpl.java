@@ -100,15 +100,15 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public List<Goods> selectAllByPriceAsc() throws SQLException {
-		List<Goods> list = goodsDAO.selectAllByPriceAsc();
+	public List<Goods> selectAllByPriceAsc(int pageNo) throws SQLException {
+		List<Goods> list = goodsDAO.selectAllByPriceAsc(pageNo);
 		if(list.size()==0)throw new SQLException("ERROR : 등록된 상품정보가 없습니다.");
 		return list;
 	}
 
 	@Override
-	public List<Goods> selectAllByPriceDesc() throws SQLException {
-		List<Goods> list = goodsDAO.selectAllByPriceDesc();
+	public List<Goods> selectAllByPriceDesc(int pageNo) throws SQLException {
+		List<Goods> list = goodsDAO.selectAllByPriceDesc(pageNo);
 		if(list.size()==0)throw new SQLException("ERROR : 등록된 상품정보가 없습니다.");
 		return list;
 	}

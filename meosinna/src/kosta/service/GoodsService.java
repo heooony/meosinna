@@ -81,12 +81,12 @@ public interface GoodsService {
      /**
  	 * 낮은 가격순 정렬
  	 * */
- 	List<Goods> selectAllByPriceAsc() throws SQLException;
+ 	List<Goods> selectAllByPriceAsc(int pageNo) throws SQLException;
  	
  	/**
  	 * 높은 가격순 정렬
  	 * */
- 	List<Goods> selectAllByPriceDesc() throws SQLException;
+ 	List<Goods> selectAllByPriceDesc(int pageNo) throws SQLException;
      
 
 

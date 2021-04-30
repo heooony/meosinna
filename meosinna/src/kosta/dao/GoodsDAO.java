@@ -95,16 +95,18 @@ public interface GoodsDAO {
 	/**
 	 * 낮은 가격순 정렬
 	 * */
-	List<Goods> selectAllByPriceAsc() throws SQLException;
+	List<Goods> selectAllByPriceAsc(int pageNo) throws SQLException;
 	
 	/**
 	 * 높은 가격순 정렬
 	 * */
-	List<Goods> selectAllByPriceDesc() throws SQLException;
+	List<Goods> selectAllByPriceDesc(int pageNo) throws SQLException;
 
 	List<Goods> selectOrderByLike() throws SQLException;
 
 	Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException;
 	
 	void deleteLikes(Connection con, int mbCode, String gdCode) throws SQLException; 
+	
+	public int getSelectTotalCount() throws SQLException;
 }
