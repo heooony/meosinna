@@ -2,11 +2,11 @@ package kosta.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import kosta.dao.MemberDAO;
 import kosta.dao.MemberDAOImpl;
 import kosta.dto.Member;
-import kosta.dto.Order;
 import kosta.dto.OrderIndex;
 import kosta.dto.PrivateQuestion;
 
@@ -64,9 +64,9 @@ public class MemberService {
 		List<OrderIndex> orderIndexs = dao.getOrderListByMember(mbCode);
 		
 		if(orderIndexs == null) {
-			//throw new SQLException("주문정보 조회에 실패하였습니다.");
+			throw new SQLException("주문정보 조회에 실패하였습니다.");
 		}
-		
+	
 		return orderIndexs;
 	
 	}
@@ -81,6 +81,31 @@ public class MemberService {
 	}
 	
 
+	public List<PrivateQuestion> getPqList(int mbCode) throws SQLException{
+		
+		List<PrivateQuestion> list = dao.selectPqAll(mbCode);
+	
+		
+		if(list.size() == 0) {
+			throw new SQLException("일대일 문의 내역이 없습니다.");
+		}
+		return list;
+	}
+	
+	
+	public void deletePq(int odCode) throws SQLException{
+		
+		int result = dao.deletePq(odCode);
+		
+		if(result == 0) {
+		
+			throw new SQLException("문의내역 삭제에 실패하였습니다.");
+			
+		}
+		
+	}
+
+	
 }
 
 

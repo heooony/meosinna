@@ -2,7 +2,9 @@ package kosta.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -75,7 +77,7 @@ public class MemberController implements Controller {
 
 		Member dbMember = memberService.loginCheck(member);
 		String mbName = dbMember.getMbName();
-
+		System.out.println(dbMember);
 		// 세션에정보저장
 		HttpSession session = request.getSession();
 		session.setAttribute("member", dbMember);
@@ -170,17 +172,49 @@ public class MemberController implements Controller {
 
 		HttpSession session = request.getSession();
 		Member member = (Member) (session.getAttribute("member"));
-		System.out.println(member);
+
 		// orderIndex가져오기
 		int mbCode = member.getMbCode();
 		member.setOrderIndex(memberService.getOrderList(mbCode));
 
 		// 세션에 저장하기
 		session.setAttribute("member", member);
-		Member member2 = (Member) (session.getAttribute("member"));
-		System.out.println(member2);
 		return new ModelAndView("contact.jsp", true);
 
 	}
+
+	public ModelAndView getPqList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		HttpSession session = request.getSession();
+		Member member = (Member) (session.getAttribute("member"));
+		System.out.println(member);
+
+		int mbCode = member.getMbCode();
+		List<PrivateQuestion> pqList = (List<PrivateQuestion>)(memberService.getPqList(mbCode));
+
+		
+		// 리퀘스트에 저장하기
+		  
+		request.setAttribute("pqList", pqList);	
+		 
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("myPrivateQA.jsp");
+		
+		return mv;
+	}
+
+
+
+	public ModelAndView deletePq(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		int odCode = Integer.parseInt(request.getParameter("odCode"));
+
+		memberService.deletePq(odCode);
+		ModelAndView mv = this.getPqList(request, response);
+		return mv;
+
+	}
+
 
 }
