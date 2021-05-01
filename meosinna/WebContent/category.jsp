@@ -252,7 +252,7 @@ $(function() {
                   <br><li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Sacai" name="brand"><label for="Nike X Sacai">Nike X Sacai<span)></span></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Peaceminusone" name="brand"><label for="Nike X Peaceminusone">Nike X Peaceminusone<span></span></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="Adidas X Yeezy Boos" name="brand"><label for="Adidas X Yeezy Boos">Adidas X Yeezy Boost<span></span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Off White The" name="brand"><label for="Nike X Off White The">Nike X Off White The<span></span></label></li>
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Off White The" name="brand"><label for="Nike X Off WhiteThe">Nike X Off WhiteThe<span></span></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Travis Scott" name="brand"><label for="Nike X Travis Scott">Nike X Travis Scott<span></span></label></li><br>
                 </ul>
               
