@@ -2,7 +2,7 @@ package kosta.dto;
 
 import java.util.List;
 
-public class Order {
+public class Order implements Comparable<Order>{
 	private int odCode;
 	private String mbName;
 	private String tel;
@@ -108,6 +108,17 @@ public class Order {
 
 	public void setOrderIndex(List<OrderIndex> orderIndex) {
 		this.orderIndex = orderIndex;
+	}
+
+	@Override
+	public int compareTo(Order o) {
+		if(this.odCode>o.odCode) {
+			return -1;
+		} else if(this.odCode==o.odCode) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 	
 	

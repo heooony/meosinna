@@ -49,7 +49,7 @@ public class CartController implements Controller {
 		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("member");
-		service.addToCart(goods, qty, member.getMbCode(), size);
+		service.addToCart(goods, qty, member, size);
 		ModelAndView mv = new ModelAndView("success.jsp", true);
 
 		return mv;

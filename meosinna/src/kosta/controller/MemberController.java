@@ -52,6 +52,7 @@ public class MemberController implements Controller {
 		Member member = new Member(mbName, id, pwd, email, address, jumin, tel);
 
 		memberService.register(member);
+		member = memberService.loginCheck(member);
 		session.setAttribute("member", member);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index.jsp");

@@ -5,8 +5,11 @@ import java.util.List;
 
 import kosta.dao.CartDAO;
 import kosta.dao.CartDAOImpl;
+import kosta.dao.MemberDAO;
+import kosta.dao.MemberDAOImpl;
 import kosta.dto.CartDTO;
 import kosta.dto.Goods;
+import kosta.dto.Member;
 
 public class CartServiceImpl implements CartService{
 	CartDAO dao = new CartDAOImpl();
@@ -19,9 +22,11 @@ public class CartServiceImpl implements CartService{
 	}
 	
 	
-	public void addToCart(Goods goods, int qty, int mbCode, int size) throws SQLException {
+	public void addToCart(Goods goods, int qty, Member member, int size) throws SQLException {
+		MemberDAO mDao = new MemberDAOImpl();
+		int mbCode = mDao.loginCheck(member).getMbCode();
 		int result = dao.addToCart(goods, qty, mbCode, size);
-		if(result == 0) throw new SQLException("장바구니에 추가되지 않았습니다.");
+		//if(result == 0) throw new SQLException("장바구니에 추가되지 않았습니다.");
 	}
 	
 	public void deleteCart(int mbCode, String gdCode) throws SQLException {
