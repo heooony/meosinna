@@ -133,44 +133,7 @@ top: 380px;
  left: 140px;
  top: 390px;
  }
- 
- button{
-  background:#BBBBFF;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:40px;
-  font-size:0.6em;
-  padding:0 1em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button:hover{
-  background:#fff;
-  color:#BBBBFF;
-}
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #BBBBFF;
-  transition:400ms ease all;
-}
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
 
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
  
 
 </style>
@@ -278,13 +241,7 @@ $(function() {
             <div class="common-filter">
               <div class="head"></div>
               
-              <form action="${pageContext.request.contextPath}/front" id="brandForm" method="post"> 
-                 <input type="hidden" name="brand" value="" id="brand">
-                 <input type="hidden" name="key" value="goods">
-                 <input type="hidden" name="methodName" value="selectByBrand">
-                 
-                 
-              </form>
+              
                 <ul>
                   <br><li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Sacai" name="brand"><label for="Nike X Sacai">Nike X Sacai<span)></span></label></li>
                   <li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Peaceminusone" name="brand"><label for="Nike X Peaceminusone">Nike X Peaceminusone<span></span></label></li>
@@ -295,7 +252,7 @@ $(function() {
               
               <div class="top-filter-head">Price</div>
               <br>
-                   <form id="price-form" method="post" >
+                   <form id="price-form" method="get" >
 								<div id="min"> <select name="min" >
 									<option value="선택" selected="selected">선택</option>
 									<option value="100000">100,000</option>
@@ -319,7 +276,7 @@ $(function() {
 						
 								</div>
 
-<br><br><div id="search"><button class="btn-1" form="price-form" id="price-btn"><i class="fas fa-search"></i> search</button></div>								
+<br><br><div id="search"><a id="price-btn"><i class="fas fa-search"></i> search</a></div>								
 
 								</form>
          							   <p><p><p><p><p><p><p><p><p><p><p><p><p><p><br>

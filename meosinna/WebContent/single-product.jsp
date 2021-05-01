@@ -30,26 +30,38 @@
 float:left;
 margin:3px 2px;
 position: absolute;
- left: 600px;
+ left: 650px;
 top: 230px;
 }
 
-#overall{
-float:left;
-margin:3px 2px;
-position: absolute;
- left: 580px;
-top: 50px;
+#addreview{
+width: 300px;
+float: left;
+margin: 3px 2px;
+position: relative;
+left: 170px;
+top: 30px;
+
 }
 
-#addreview{
+.review_list{
 float:left;
 margin: 3px 2px;
 position: relative;
-left: 220px;
+left: 120px;
 top: 40px;
-
 }
+
+.review_item{
+float:left;
+margin: 3px 2px;
+position: relative;
+left: 10px;
+top: 40px;
+border:1px solid rgba(100, 100, 100, .6);
+width: 600px
+}
+
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -232,7 +244,7 @@ top: 40px;
 
 <!--================Product Description Area =================-->
 <section class="product_description_area">
-	<div class="container">
+	<div class="container" id="review_container">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item"><a class="nav-link" id="home-tab"
 				data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -394,42 +406,7 @@ top: 40px;
 			<div class="tab-pane fade show active" id="review" role="tabpanel"
 				aria-labelledby="review-tab">
 				<div class="row">
-					<div class="col-lg-6">
 						<div class="row total_rate">
-							<div class="col-6" id=overall>
-								<div class="box_total">
-									<h5>Overall</h5>
-									<h4>4.0</h4>
-									<h6>(03 Reviews)</h6>
-								</div>
-							</div>
-							<div class="col-6" id="rate">
-								<div class="rating_list">
-									<h3>Based on 3 Reviews</h3>
-									<ul class="list">
-										<li><a href="#">5 Star <i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i> 01
-										</a></li>
-										<li><a href="#">4 Star <i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i> 01
-										</a></li>
-										<li><a href="#">3 Star <i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i> 01
-										</a></li>
-										<li><a href="#">2 Star <i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i> 01
-										</a></li>
-										<li><a href="#">1 Star <i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i><i
-												class="fa fa-star"></i><i class="fa fa-star"></i> 01
-										</a></li>
-									</ul>
-								</div>
-							</div>
 							<div class="review_list" id="review_list">
 								<c:forEach items="${reviewList}" var="review">
 								<div class="review_item">
@@ -438,22 +415,26 @@ top: 40px;
 											<img src="${review.img}" alt="">
 										</div>
 										<div class="media-body">
-											<h4>${review.mbName}</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											<h4 style="padding: 5px">제목 : ${review.title}</h4>
+											<h4 style="padding: 5px">작성자 : ${review.mbName}</h4>
+											<p style="color: gray">${review.gdName}</p>
+											<c:forEach var="i" begin="1" end="${review.grade}">
+												<i class="fa fa-star"></i>
+											</c:forEach>
+											<c:forEach var="i" begin="${review.grade}" end="4">
+												<i class="far fa-star"></i>
+											</c:forEach>
+											
 										</div>
 									</div>
-									<p>${review.content}</p>
+									<p style="padding: 10px 20px">${review.content}</p>
 
 								</div>
+								<p><p><p>
 								</c:forEach>
 							
-							</div>
-						</div>
-						<div class="col-lg-6" >
+						</div><br><p>
+						<div class="row-lg-9" >
 							<div class="review_box" id=addreview>
 								<h4>Add a Review</h4>
 								<p>Your Rating:</p>
