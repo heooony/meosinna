@@ -240,7 +240,13 @@ $(function() {
             <div class="top-filter-head">Brands</div>
             <div class="common-filter">
               <div class="head"></div>
-              
+               <form action="${pageContext.request.contextPath}/front" id="brandForm" method="post"> 
+                 <input type="hidden" name="brand" value="" id="brand">
+                 <input type="hidden" name="key" value="goods">
+                 <input type="hidden" name="methodName" value="selectByBrand">
+
+
+              </form>
               
                 <ul>
                   <br><li class="filter-list"><input class="pixel-radio" type="radio" id="Nike X Sacai" name="brand"><label for="Nike X Sacai">Nike X Sacai<span)></span></label></li>
