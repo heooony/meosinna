@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
-
 import kosta.dto.Member;
 import kosta.dto.OrderIndex;
 import kosta.dto.PrivateQuestion;
@@ -137,36 +135,33 @@ public class MemberDAOImpl implements MemberDAO {
 		ResultSet rs = null;
 		List<OrderIndex> list = null;
 
-		String sql = "SELECT OD_CODE, TO_CHAR(OD_DATE, 'YY/MM/DD HH24:MI'), PAY, GOODS.GD_NAME, ORDERLINE.QTY\r\n"
+		String sql = "SELECT OD_CODE, TO_CHAR(OD_DATE, 'YY/MM/DD AMHH24:MI'), PAY, GOODS.GD_NAME, ORDERLINE.QTY\r\n"
 				+ "FROM ORDERLINE JOIN G_ORDER\r\n" + "USING (OD_CODE) JOIN GOODS\r\n" + "USING (GD_CODE)\r\n"
 				+ "WHERE MB_CODE = ?" + "ORDER BY (OD_CODE)ASC";
 
 		try {
+			list = new ArrayList<OrderIndex>();
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, mbCode);
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
-				list = new ArrayList<OrderIndex>();
-				
-				while (rs.next()) {
-					int odCode = rs.getInt(1);
-					String odDate = rs.getString(2);
-					int pay = rs.getInt(3);
-					String gdName = rs.getString(4);
-					int qty = rs.getInt(5);
-					
-					OrderIndex orderIndex = new OrderIndex(odCode, gdName, odDate, qty, pay);
-					System.out.println(orderIndex);
-					list.add(orderIndex);
-					
-				}
+			while (rs.next()) {
+				int odCode = rs.getInt(1);
+				String odDate = rs.getString(2);
+				int pay = rs.getInt(3);
+				String gdName = rs.getString(4);
+				int qty = rs.getInt(5);
+
+				OrderIndex orderIndex = new OrderIndex(odCode, gdName, odDate, qty, pay);
+				list.add(orderIndex);
+
 			}
+
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}
-		
+
 		return list;
 	}
 
@@ -197,54 +192,70 @@ public class MemberDAOImpl implements MemberDAO {
 
 	}
 
-	@Override
-	public Map<String, Object> selectPqAll(int mbCode) throws SQLException {
+	public List<PrivateQuestion> selectPqAll(int mbCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<PrivateQuestion> pqList = null;
-		List<OrderIndex> odList = null;
-		Map<String, Object> map = null;
+		List<PrivateQuestion> pqList = new ArrayList<PrivateQuestion>();
+		/* List<OrderIndex> odList = new ArrayList<OrderIndex>(); */
+		/* Map<String, List<?>> map = new HashMap<String, List<?>>(); */
+		
 
-		String sql = "SELECT OD_CODE, MB_CODE, GD_NAME, PAY, QTY, TO_CHAR(OD_DATE, 'YY/MM/DD HH24:MI'), TITLE, CONTENT, \r\n"
-				+ "TYPE, STATE, TO_CHAR(SUBMIT_DATE, 'YY/MM/DD HH24:MI') FROM TOTAL_ORDER\r\n"
-				+ "WHERE MB_CODE = ? ORDER BY (OD_CODE)ASC";
+		String sql = "SELECT OD_CODE, G_ORDER.MB_CODE, PRIVATE_QUESTION.TITLE, PRIVATE_QUESTION.CONTENT, PRIVATE_QUESTION.TYPE, PRIVATE_QUESTION.STATE, TO_CHAR(PRIVATE_QUESTION.SUBMIT_DATE, 'YYYY/MM/DD AMHH24:MI:SS')\r\n"
+				+ "FROM G_ORDER JOIN PRIVATE_QUESTION\r\n"
+				+ "USING (OD_CODE) WHERE MB_CODE = ? ORDER BY (OD_CODE)ASC";
 
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, mbCode);
 			rs = ps.executeQuery();
-			
-			if (rs.next()) {
-				pqList = new ArrayList<PrivateQuestion>();
-				odList = new ArrayList<OrderIndex>();
-				map = new HashMap<String, Object>();
 
-				while (rs.next()) {
-					int odCode = rs.getInt(1);
-					String gdName = rs.getString(3);
-					int pay = rs.getInt(4);
-					int qty = rs.getInt(5);
-					String obDate = rs.getString(6);
-					String title = rs.getString(7);
-					String content = rs.getString(8);
-					String type = rs.getString(9);
-					String state = rs.getString(10);
-					String pqDate = rs.getString(11);
+			while (rs.next()) {
 
-					odList.add(new OrderIndex(odCode, gdName, obDate, qty, pay));
-					pqList.add(new PrivateQuestion(odCode, title, content, type, state, pqDate)); 
-					
-				}
-				map.put("odList", odList);
-				map.put("pqList", pqList);
+				int odCode = rs.getInt(1);
+				String title = rs.getString(3);
+				String content = rs.getString(4);
+				String type = rs.getString(5);
+				String state = rs.getString(6);
+				String pqDate = rs.getString(7);
+
+				/* odList.add(new OrderIndex(odCode, gdName, odDate, qty, pay)); */
+				pqList.add(new PrivateQuestion(odCode, title, content, type, state, pqDate));
+
 			}
+
+			/* map.put("odList", odList); */
+			/* map.put("pqList", pqList); */
+
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
-		
+
 		}
-		return map;
+		return pqList;
+	}
+
+	
+	
+	
+	
+	public int deletePq(int odCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "DELETE FROM PRIVATE_QUESTION WHERE OD_CODE = ?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, odCode);
+
+			result = ps.executeUpdate();
+
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+
+		return result;
 
 	}
 }
