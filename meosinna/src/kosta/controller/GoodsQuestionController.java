@@ -7,11 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kosta.dao.GoodsQuestionDAO;
+import kosta.dao.GoodsQuestionDAOImpl;
 import kosta.dto.GoodsQuestion;
 import kosta.service.GoodsQuestionService;
 
 public class GoodsQuestionController implements Controller {
-private GoodsQuestionService goodsQuestionService = new GoodsQuestionService();
+private GoodsQuestionDAO dao = new GoodsQuestionDAOImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -19,17 +21,17 @@ private GoodsQuestionService goodsQuestionService = new GoodsQuestionService();
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/*
+	
 	public ModelAndView selectGQAll(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		int mbCode = Integer.parseInt(request.getParameter("mbCode"));
-		List<GoodsQuestion> gqList = goodsQuestionService.selectGQAll(mbCode);
+		List<GoodsQuestion> gqList = dao.selectGQAll(mbCode);
 		request.setAttribute("gqList", gqList);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/goodsQA.jsp");
 		return mv;
 	}
-	*/
+	
 	
 
 }
