@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kosta.dto.Goods;
 import kosta.dto.Member;
 import kosta.dto.PrivateQuestion;
+import kosta.service.GoodsService;
+import kosta.service.GoodsServiceImpl;
 import kosta.service.MemberService;
 
 public class MemberController implements Controller {
@@ -217,6 +220,17 @@ public class MemberController implements Controller {
 		return mv;
 
 	}
-
+	
+	  public ModelAndView selectOrderByLike(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		  GoodsService goodsService = new GoodsServiceImpl();
+		  	HttpSession session = request.getSession();
+		  	Member member = (Member)session.getAttribute("member");
+			List<Goods> recGoodsList = goodsService.getRecommended(member.getMbCode());
+			request.setAttribute("recGoodsList", recGoodsList);
+	 		ModelAndView mv = new ModelAndView();
+	 		mv.setViewName("myPage.jsp");
+	 		
+	 		return mv;
+	 	} 
 
 }
