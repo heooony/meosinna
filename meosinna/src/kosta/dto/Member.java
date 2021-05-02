@@ -32,6 +32,17 @@ public class Member {
 		this.tel = tel;
 	}
 	
+	public Member(String mbName, String id, String pwd, String email, String addr, String jumin, String tel, String signUpDate) {
+		this.mbName = mbName;
+		this.id = id;
+		this.pwd = pwd;
+		this.email = email;
+		this.addr = addr;
+		this.jumin = jumin;
+		this.tel = tel;
+		this.signUpDate = signUpDate;
+	}
+	
 	public Member(int mbCode, String mbName, String id, String pwd, String email, String addr, String jumin, String tel,
 			String signUpDate) {
 		this(mbName, id, pwd, email, addr, jumin, tel);

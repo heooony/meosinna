@@ -54,7 +54,6 @@ th {
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
-	<%@ include file="header.jsp"%>
 	<!--================ End Header Menu Area =================-->
 
 	<!-- ================ start banner area ================= -->
@@ -122,7 +121,10 @@ th {
 								</tr>
 								<tr>
 									<th scope="row">이름</th>
-									<td colspan="2"><span id="ps-info-name">${member.mbName}</span></td>
+									<td colspan="2"><span id="ps-info-name">${member.mbName}</span>&nbsp;<input
+										type="text" class="ps-info-pwd" name="ps-info-name"
+										id="ps-info-name" style="display: none" value="${member.mbName}"></td>
+									
 								</tr>
 								<tr>
 									<th scope="row">이메일</th>
@@ -141,7 +143,9 @@ th {
 								</tr>
 								<tr>
 									<th scope="row">주민등록번호</th>
-									<td colspan="2"><span id="ps-info-jumin">${member.jumin}</span></td>
+									<td colspan="2"><span id="ps-info-jumin">${member.jumin}</span>&nbsp;<input
+										type="text" class="ps-info-jumin" name="ps-info-jumin"
+										id="kosta" style="display: none" value="${member.jumin}"></td>
 								</tr>
 								<tr>
 									<th scope="row">전화번호</th>
@@ -152,7 +156,9 @@ th {
 								</tr>
 								<tr>
 									<th scope="row">가입일</th>
-									<td colspan="2"><span>${member.signUpDate}</span></td>
+									<td colspan="2"><span>${member.signUpDate}</span>&nbsp;<input
+										type="text" class="ps-info-signUpDate" name="ps-info-signUpDate"
+										id="kosta" style="display: none" value="${member.signUpDate}"></td>
 
 								</tr>
 
