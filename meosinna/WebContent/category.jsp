@@ -1,4 +1,7 @@
 <%@page import="kosta.dto.Member"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
+<%@page import="javax.servlet.http.HttpServletResponse"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -142,6 +145,9 @@ top: 380px;
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
+	<%
+		String str = request.getParameter("methodName");
+	%>
 	$(".pixel-radio").click(function(){
  	   let ra = $(this).attr("id")
  	   $("#brand").val(ra)
@@ -149,6 +155,7 @@ $(function() {
   })
   
 	$("[name=choice]").change(function(){
+		var chDate = '<c:out value="${str}"/>'
 		console.log($(this).val)
 		if($(this).val()== 1) {
 			location.href="front?key=goods&methodName=selectAllByPriceAsc&pageNo=1";
@@ -262,12 +269,7 @@ $(function() {
               </select>
             </div>
             <div>
-              <div class="input-group filter-bar-search">
-                <input type="text" placeholder="Search">
-                <div class="input-group-append">
-                  <button type="button"><i class="ti-search"></i></button>
-                </div>
-              </div>
+              
             </div>
           </div>
           <!-- End Filter Bar -->
@@ -322,16 +324,15 @@ $(function() {
   
   <!-- ================ paging start ================= -->
   <jsp:useBean class="kosta.dto.PageCnt" id="p"/>
-
 	<nav class="pagination-container">
 		<div class="pagination">
-			<a class="pagination-newer" href="${path}/front?key=goods&methodName=selectAll&pageNo=${pageNo>1?pageNo-1:1}">PREV</a> 
+			<a class="pagination-newer" href="${path}/front?key=goods&methodName=<%=str%>&pageNo=${pageNo>1?pageNo-1:1}">PREV</a> 
 				<span class="pagination-inner"> 
 				<c:forEach var='i' begin='1' end='${p.pageCnt}'>
-				  <a class="${i==pageNo?'pagination-active':page}" href="${path}/meosinna/front?key=goods&methodName=selectAll&pageNo=${i}">${i}</a> 
+				  <a class="${i==pageNo?'pagination-active':page}" id="page-num" href="${path}/meosinna/front?key=goods&methodName=<%=str%>&pageNo=${i}">${i}</a> 
 				</c:forEach>
 				</span> 
-			<a class="pagination-older" href="${path}/meosinna/front?key=goods&methodName=selectAll&pageNo=${pageNo<pageCnt?pageNo+1:pageCnt}">NEXT</a>
+			<a class="pagination-older" href="${path}/meosinna/front?key=goods&methodName=<%=str%>&pageNo=${pageNo<pageCnt?pageNo+1:pageCnt}">NEXT</a>
 		</div>
 	</nav> 
 	

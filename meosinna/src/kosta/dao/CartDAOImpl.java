@@ -52,7 +52,7 @@ public class CartDAOImpl implements CartDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String selectSql="SELECT * FROM CART WHERE GD_CODE=? AND S_SIZE=? AND MB_CODE=?";
-		String updateSql="UPDATE CART SET QTY=QTY+? WHERE GD_CODE=?";
+		String updateSql="UPDATE CART SET QTY=QTY+? WHERE GD_CODE=? AND SIZE=? AND MB_CODE=?";
 		String insertSql="INSERT INTO CART VALUES(?,?,?,?,?,?,?)";
 		ResultSet rs = null;
 		int result = 0;
@@ -71,6 +71,8 @@ public class CartDAOImpl implements CartDAO {
 				
 				ps.setInt(1, qty);		
 				ps.setString(2, goods.getGdCode());
+				ps.setInt(3, size);
+				ps.setInt(4, mbCode);
 				
 				result = ps.executeUpdate();
 						
