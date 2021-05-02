@@ -63,14 +63,18 @@ public class GoodsQuestionDAOImpl implements GoodsQuestionDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<GoodsQuestion> list = new ArrayList<GoodsQuestion>();
-		String sql = "select gq_content, rg_date, reply, gd_code from goods_question where mb_name=?";
+		String sql = "select g.gd_name, q.gq_content, q.rg_date, q.reply, q.gd_code\r\n"
+				+ "from goods_question q join goods g\r\n"
+				+ "on(q.gd_code = g.gd_code)\r\n"
+				+ "where q.mb_name=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, mbName);
 			rs = ps.executeQuery();
 			while(rs.next()){
-				GoodsQuestion gq = new GoodsQuestion(0, rs.getString(1), rs.getString(2), rs.getString(3), mbName, rs.getString(4), null);
+				Goods goods = new Goods(rs.getString(5), rs.getString(1), 0, null, 0, null, null, null);
+				GoodsQuestion gq = new GoodsQuestion(0, rs.getString(2), rs.getString(3), rs.getString(4), mbName, rs.getString(5), goods);
 				list.add(gq);
 			}
 		}finally {
