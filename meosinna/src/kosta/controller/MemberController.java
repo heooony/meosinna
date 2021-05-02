@@ -58,6 +58,7 @@ public class MemberController implements Controller {
 		session.setAttribute("member", member);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index.jsp");
+		mv.setRedirect(true);
 		return mv;
 	}
 

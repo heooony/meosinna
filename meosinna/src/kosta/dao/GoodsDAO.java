@@ -109,4 +109,6 @@ public interface GoodsDAO {
 	void deleteLikes(Connection con, int mbCode, String gdCode) throws SQLException; 
 	
 	public int getSelectTotalCount() throws SQLException;
+
+	List<Goods> getRecommended(int mbCode) throws SQLException;
 }

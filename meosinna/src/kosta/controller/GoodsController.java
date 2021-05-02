@@ -231,9 +231,13 @@ public class GoodsController implements Controller {
       }
       
       public ModelAndView selectOrderByLike(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			
- 		 List<Goods> goodsList = goodsService.selectOrderByLike();
-
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("member");
+ 		List<Goods> goodsList = goodsService.selectOrderByLike();
+ 		if(member != null) {
+			List<Goods> recGoodsList = goodsService.getRecommended(member.getMbCode());
+			request.setAttribute("recGoodsList", recGoodsList);
+		}
  		request.setAttribute("goodsList", goodsList);
  		ModelAndView mv = new ModelAndView();
  		mv.setViewName("index.jsp");

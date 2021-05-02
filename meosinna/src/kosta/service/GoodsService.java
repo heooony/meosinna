@@ -96,6 +96,9 @@ public interface GoodsService {
 	List<Goods> selectOrderByLike() throws SQLException;
 
 
-	Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException; 
+	Map<Integer, Integer> getSizeQty(String gdCode) throws SQLException;
+
+
+	List<Goods> getRecommended(int mbCode) throws SQLException; 
 	
 }

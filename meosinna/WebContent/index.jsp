@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +85,47 @@
         </div>
     </section>
     <!-- ================ trending product section end ================= --> 
+    <c:if test="${sessionScope.member ne null}">
+    <hr style="margin: 0 100px; background-color: #BBBBFF;">
+    <section class="section-margin calc-60px">
+      <div class="container">
+        <div class="section-intro pb-60px">
+          <p>고객님에게 어울리는 상품</p>
+          <h2>RECOMMENDED
+            <span class="section-intro__style">PRODUCT</span>
+          </h2>
+        </div>
+        <div class="row">
+        <c:choose>
+	        <c:when test="${fn:length(recGoodsList) ne 0}">
+		        <c:forEach items="${requestScope.recGoodsList}" var="goods" begin="1" end="8">
+		          <div class="col-md-6 col-lg-4 col-xl-3">
+		            <div class="card text-center card-product">
+		              <div class="card-product__img">
+		                <img class="card-img img-size" src="${goods.img}" alt="" style="width: 250px; height: 200px">
+		                <ul class="card-product__imgOverlay">
+		                  <li><button onclick="location.href='single-product.jsp?gdCode=${goods.gdCode}'"><i class="ti-search"></i></button></li>
+		                  <li><button><i class="ti-shopping-cart"></i></button></li>
+		                  <a class="icon_btn" id="like-button"><i class="lnr lnr lnr-heart"></i></a>
+									<span id="like-total">${goods.gdLike}</span>         
+		                </ul>
+		              </div>
+		              <div class="card-body">
+		                <p>${goods.brand}</p>
+		                <h4 class="card-product__title"><a href="single-product.jsp?gdCode=${goods.gdCode}">${goods.gdName}</a></h4>
+		                <p class="card-product__price">₩${goods.price}</p>
+		              </div>
+		            </div>
+		          </div>
+		          </c:forEach>
+		       </c:when>
+			       <c:otherwise>
+			       	<h2 style="margin: 150px auto;">좋아요 목록을 만들어주시면 추천해드립니다!</h2>
+			       </c:otherwise>
+	       </c:choose>
+        </div>
+    </section>
+    </c:if>
     <!--================ Hero banner start =================-->
     <!--================ Hero Carousel start =================-->
     <section class="section-margin mt-0" style="padding-top: 100px">
@@ -116,20 +158,7 @@
     </section>
     <!--================ Hero Carousel end =================--> 
     <!-- ================ offer section start ================= --> 
-    <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-5">
-            <div class="offer__content text-center">
-              <h3>Up To 50% Off</h3>
-              <h4>시간 한정 상품</h4>
-              <p>고객님들과 함께 어울리기 위한 상품들이 기다리고 있습니다. 시간 한정으로 나온 특가 상품을 알아보세요!</p>
-              <a class="button button--active mt-3 mt-xl-4" href="#" style="background-color: palevioletred; border: none">특가 상품 알아보기</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
     <!-- ================ offer section end ================= --> 
     <!-- ================ Best Selling item  carousel ================= -->
     <!-- ================ Best Selling item  carousel end ================= -->

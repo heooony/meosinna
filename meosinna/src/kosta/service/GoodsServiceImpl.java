@@ -130,6 +130,12 @@ public class GoodsServiceImpl implements GoodsService {
 		return map;
 	}
 
+	@Override
+	public List<Goods> getRecommended(int mbCode) throws SQLException {
+		List<Goods> list = goodsDAO.getRecommended(mbCode);
+		return list;
+	}
+
 
 	
 

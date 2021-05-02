@@ -600,4 +600,36 @@ public class GoodsDAOImpl implements GoodsDAO {
 		
 		return map;
 	}
+
+
+
+	@Override
+	public List<Goods> getRecommended(int mbCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Goods> list = new ArrayList<Goods>();
+		
+		String sql = "SELECT GD_CODE, GD_NAME, PRICE, BRAND, GD_LIKE, ST_CODE, GD_CONTENT, IMG FROM GOODS JOIN (SELECT ST_CODE, COUNT(ST_CODE) AS C FROM GOODS JOIN LIKES USING(GD_CODE) WHERE MB_CODE=? GROUP BY ST_CODE) USING(ST_CODE) ORDER BY(C) DESC";
+		
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mbCode);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Goods dto = new Goods(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
+				
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
 }

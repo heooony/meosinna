@@ -111,7 +111,7 @@ width: 600px
 			for(let i = 0; i < $(this).val() && i < 5; i++) {
 				str += '<option class="option" value=' + (i+1) + '>' + (i+1) + '</option>';
 			}
-			$(".list:eq(0)").html(str);
+			$(".list:eq(2)").html(str);
 		});
 		
 		$("input[type=submit]").on('click', function() {
