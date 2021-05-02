@@ -23,9 +23,6 @@
 <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
-<script
-    src="https://www.paypal.com/sdk/js?client-id=AYoPmMvSovbe_uF8pLv2Lcehowq9efFnGhMNjW_8BPh8LvxgsaVDIp9zXghQNKsY9NzOgxQUmht0-JZk"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
-  </script>
 <script>
 	paypal.Buttons().render('#paypal-button-container');
 	$(function() {
@@ -180,36 +177,12 @@
 								
 							</ul>
 							<ul class="list list_2">
-								<li><a href="#">Total <span>$<c:out value="${total}"/></span></a></li>
+								<li><a href="#">Total <span>₩<c:out value="${total}"/></span></a></li>
 							</ul>
 							<div class="payment_item">
-								<div class="radion_btn">
-									<input type="radio" id="f-option5" name="selector"> <label
-										for="f-option5">Check payments</label>
-									<div class="check"></div>
-								</div>
-								<p>Please send a check to Store Name, Store Street, Store
-									Town, Store State / County, Store Postcode.</p>
-							</div>
-							<div class="payment_item active">
-								<div class="radion_btn">
-									<input type="radio" id="f-option6" name="selector"> <label
-										for="f-option6">Paypal </label> <img
-										src="img/product/card.jpg" alt="">
-									<div class="check"></div>
-								</div>
-								<p>Pay via PayPal; you can pay with your credit card if you
-									don’t have a PayPal account.</p>
-							</div>
-							<div class="creat_account">
-								<input type="checkbox" id="f-option4" name="selector"> <label
-									for="f-option4">I’ve read and accept the </label> <a href="#">terms
-									& conditions*</a>
-							</div>
 							<div class="text-center">
 
-								<a class="button button-paypal" id="payment">결제하기</a>
-								<div id="paypal-button-container"></div>
+								<a class="button button-paypal" id="payment" style="color:white;">결제하기</a>
 							</div>
 						</div>
 					</div>
