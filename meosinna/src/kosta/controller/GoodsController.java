@@ -244,5 +244,41 @@ public class GoodsController implements Controller {
  		
  		return mv;
  	} 
+      
+      public ModelAndView selectAllByPriceDesc(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			
+ 		 String pageNo = request.getParameter("pageNo");
+ 		  
+ 	        if(pageNo==null || pageNo.equals("")) { 
+ 		 	  pageNo="1"; 
+ 		  }
+
+ 		 List<Goods> list = goodsService.selectAllByPriceDesc(Integer.parseInt(pageNo));
+
+ 		request.setAttribute("list", list);
+ 		request.setAttribute("pageNo", pageNo);
+ 		ModelAndView mv = new ModelAndView();
+ 		mv.setViewName("category.jsp");
+ 		
+ 		return mv;
+ 	} 
+      
+      public ModelAndView selectAllByPriceAsc(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			
+  		 String pageNo = request.getParameter("pageNo");
+  		  
+  	        if(pageNo==null || pageNo.equals("")) { 
+  		 	  pageNo="1"; 
+  		  }
+
+  		 List<Goods> list = goodsService.selectAllByPriceAsc(Integer.parseInt(pageNo));
+
+  		request.setAttribute("list", list);
+  		request.setAttribute("pageNo", pageNo);
+  		ModelAndView mv = new ModelAndView();
+  		mv.setViewName("category.jsp");
+  		
+  		return mv;
+  	} 
 }
 

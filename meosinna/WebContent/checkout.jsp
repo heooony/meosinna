@@ -59,13 +59,12 @@
 						$(this).css("border-color","red");
 						state = false;
 						return false;
-					} 
+					}
 				});
-				$(this).attr('href', 'front?key=order&methodName=order&req=' + $("#req").val());
-	
-				
+				if(state) {
+					$(this).attr('href', 'front?key=order&methodName=order&req=' + $("#req").val());				
+				}
 			})
-
 	});
 </script>
 </head>

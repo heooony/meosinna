@@ -46,9 +46,9 @@ public class PriceAlignServlet extends HttpServlet {
 		try {
 			
 			if(align.equals("1")) {
-				list = goodsDAO.selectAllByPriceAsc(Integer.parseInt("pageNo"));
+				list = goodsDAO.selectAllByPriceAsc(Integer.parseInt(pageNo));
 			}else {
-				list = goodsDAO.selectAllByPriceDesc(Integer.parseInt("pageNo"));
+				list = goodsDAO.selectAllByPriceDesc(Integer.parseInt(pageNo));
 			}
 			
 			//정렬에 해당 하는ㄹ레코드 수를 구한다.
