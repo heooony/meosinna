@@ -114,10 +114,9 @@ public class MemberController implements Controller {
 		String tel = request.getParameter("ps-info-tel");
 		String jumin = request.getParameter("ps-info-jumin");
 
+	
 		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
 		memberService.update(dbMember);
-
-		request.setAttribute("member", dbMember);
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("personalInfo.jsp");
@@ -125,6 +124,7 @@ public class MemberController implements Controller {
 		return mv;
 	}
 
+	
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		int mbCodeid = Integer.parseInt(request.getParameter("ps-info-mbCode"));

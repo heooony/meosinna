@@ -249,38 +249,37 @@ th {
 
 			});
 
-			$("#ps-info-form").submit(
-					function() {
-
+			$("#ps-info-form").submit(function() {
+						
 						var str = "";
-
-						if ("${member.pwd}" != $("#ps-info-pwd").val()) {
+			
+						if ($("#ps-info-pwd").val() != "${member.pwd}") {
 							str += "비밀번호, ";
 						}
-						if ("${member.email}" != $("#ps-info-email").val()) {
+						if ($("#ps-info-email").val() != "${member.email}") {
 							str += "이메일, ";
 						}
-						if ("${member.addr}" != $("#ps-info-addr").val()) {
+						if ($("#ps-info-addr").val() != "${member.addr}") {
 							str += "주소, ";
 						}
-						if ("${member.tel}" != $("#ps-info-tel").val()) {
+						if ($("#ps-info-tel").val() != "${member.tel}") {
 							str += "핸드폰 번호, ";
 						}
 
+						
+						
 						////////////////////////////////////////////////////////
 						
-						if (str.lenth > 1) {
+						if (str.length != 0) {
 							str = str.substring(0, str.length - 2);
 
-							if (!confirm(str + "가 변경됩니다./n변경하시겠습니까?")) {
+							if (!confirm(str + "가 변경됩니다.\n변경하시겠습니까?")) {
 								return false;
 							}
 
-						}else if{
+						}else{
 							
-							if (confirm("변경사항이 없습니다.")) {
-								return false;
-							}
+							alert("변경사항이 없습니다.");
 							
 						}
 
@@ -289,13 +288,11 @@ th {
 
 			$("#ps-withdrawl-form").submit(function() {
 
-				if (confirm("탈퇴하면 모든 내역이 삭제됩니다./n탈퇴하시겠습니까?")) {
-
-				} else {
+				if (!confirm("탈퇴하면 모든 내역이 삭제됩니다.\n탈퇴하시겠습니까?")) {
+					
 
 					return false;
-
-				}
+				}	
 
 			});
 
