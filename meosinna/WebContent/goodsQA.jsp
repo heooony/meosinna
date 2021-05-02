@@ -63,73 +63,27 @@
   <section class="section-margin--small mb-5">
     <div class="container">
 
-      <p class="text-center billing-alert">Thank you ${sessionScope.member.mbName}. Your order has been received.</p>
+      <p class="text-center billing-alert">Thank you ${sessionScope.member.mbName}.상품문의 리스트입니다.</p>
       <div class="row mb-5">
         <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
           <div class="confirmation-card">
             <h3 class="billing-title">Order Info</h3>
             <table class="order-rable">
               <tr>
-                <td>Order number</td>
-                <td> ${requestScope.orderDetail.odCode} </td>
+                <td>상품명</td>
+                <td>  </td>
               </tr>
               <tr>
-                <td>Date</td>
-                <td style="font-size: 0.83rem; font-weight: none;">${requestScope.orderDetail.odDate} </td>
+                <td>작성내용</td>
+                <td style="font-size: 0.83rem; font-weight: none;">${requestScope.gqList.gqContent} </td>
               </tr>
               <tr>
-                <td>Total</td>
-                <td> ${requestScope.orderDetail.pay}￦</td>
+                <td>작성일</td>
+                <td style="font-size: 0.83rem; font-weight: none;">${requestScope.gqList.rgDate} </td>
               </tr>
               <tr>
-                <td>State</td>
-                <td> ${requestScope.orderDetail.state}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-          <div class="confirmation-card">
-            <h3 class="billing-title">Product Info</h3>
-            <table class="order-rable">
-              <tr>
-                <td>Code</td>
-                <td> ${requestScope.orderDetail.gdCode}</td>
-              </tr>
-              <tr>
-                <td>Name</td>
-                <td>${requestScope.orderDetail.gdName}</td>
-              </tr>
-              <tr>
-                <td>Size</td>
-                <td style="color:#384AEB"> ${requestScope.orderDetail.size}</td>
-              </tr>
-              <tr>
-                <td>Amount</td>
-                <td> ${requestScope.orderDetail.qty}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-          <div class="confirmation-card">
-            <h3 class="billing-title">Shipping Address</h3>
-            <table class="order-rable">
-              <tr>
-                <td>Address</td>
-                <td>${requestScope.orderDetail.addr}</td>
-              </tr>
-              <tr>
-                <td>Name</td>
-                <td> ${requestScope.orderDetail.mbName}</td>
-              </tr>
-              <tr>
-                <td>Phone</td>
-                <td> ${requestScope.orderDetail.tel}</td>
-              </tr>
-              <tr>
-                <td>Request</td>
-                <td>${requestScope.orderDetail.req}</td>
+                <td>답변상태</td>
+                <td> ${requestScope.gqList.reply}</td>
               </tr>
             </table>
           </div>

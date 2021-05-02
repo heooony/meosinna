@@ -24,4 +24,12 @@ public class GoodsQuestionService {
 		}
 		return list;
 	}
+	
+	public List<GoodsQuestion> selectGQAll(String mbName) throws SQLException{
+		List<GoodsQuestion> list = dao.selectGQAll(mbName);
+		if(list == null) {
+			throw new SQLException("~");
+		}
+		return list;
+	}
 }

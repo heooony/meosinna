@@ -58,4 +58,24 @@ public class GoodsQuestionDAOImpl implements GoodsQuestionDAO {
 		return list;
 	}
 
+	public List<GoodsQuestion> selectGQAll(String mbName) throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<GoodsQuestion> list = new ArrayList<GoodsQuestion>();
+		String sql = "select gq_content, rg_date, reply, gd_code from goods_question where mb_name=?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, mbName);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				GoodsQuestion gq = new GoodsQuestion(0, rs.getString(1), rs.getString(2), rs.getString(3), mbName, rs.getString(4), null);
+				list.add(gq);
+			}
+		}finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		return list;
+	}
 }

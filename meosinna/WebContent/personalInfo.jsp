@@ -75,54 +75,14 @@ th {
 		</div>
 	</section>
 	<!-- ================ end banner area ================= -->
-
-
-	<!-- ================ category section start ================= -->
 	<section class="section-margin--small mb-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-3 col-lg-4 col-md-5">
+    <div class="container">
+      <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-5">
 
-					<div class="sidebar-filter">
-						<div class="top-filter-head">My page</div>
-						<div class="common-filter">
-							<div class="head">쇼핑활동</div>
-							<form action="#">
-								<ul>
-									<li class="filter-list"><input class="pixel-radio"
-										type="radio" id="apple" name="brand"><label
-										for="apple">주문 내역 조회</label></li>
-									<li class="filter-list"><input class="pixel-radio"
-										type="radio" id="asus" name="brand"><label for="asus">구매후기</label></li>
-									<li class="filter-list"><input class="pixel-radio"
-										type="radio" id="gionee" name="brand"><label
-										for="gionee">장바구니</label></li>
-									<li class="filter-list"><input class="pixel-radio"
-										type="radio" id="micromax" name="brand"><label
-										for="micromax">적립금</label></li>
-									<li class="filter-list"><input class="pixel-radio"
-										type="radio" id="samsung" name="brand"><label
-										for="samsung">좋아요</label></li>
-								</ul>
-							</form>
-						</div>
-						<div class="common-filter">
-							<div class="head">나의정보</div>
-							<form action="#">
-								<ul>
-									<li class="filter-list"><input class="pixel-radio"
-										type="radio" id="black" name="color"><label
-										for="black">개인정보변경</label></li>
-									<li class="filter-list"><input class="pixel-radio"
-										type="radio" id="balckleather" name="color"><label
-										for="balckleather">회원탈퇴</label></li>
-								</ul>
-							</form>
-						</div>
-
-					</div>
-				</div>
-				<div class="col-xl-9 col-lg-8 col-md-7">
+	<!-- ================ category section start ================= -->		  
+  <%@ include file="myPageMenuBar.jsp" %>
+	
 
 					<!-- End Filter Bar -->
 
@@ -219,8 +179,6 @@ th {
 		</div>
 	</section>
 	<!-- ================ category section end ================= -->
-
-
 
 	<!--================ Start footer Area  =================-->
 	<%@ include file="footer.jsp"%>

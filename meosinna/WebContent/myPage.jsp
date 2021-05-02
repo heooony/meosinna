@@ -48,39 +48,13 @@ a { text-decoration:none }
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
-
-
-	<!-- ================ category section start ================= -->		  
-  <section class="section-margin--small mb-5">
+	<section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-5">
-          
-          <div class="sidebar-filter">
-            <div class="">My page</div>
-            <div class="">
-              <div class="head">쇼핑활동</div>
-                <ul class = "list-group list-group-flush">
-                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/myOrder.jsp">주문 내역 조회</a></li>
-                  <li class="list-group-item">구매후기</li>
-                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/cart.jsp">장바구니</a></li>
-                  <li class="list-group-item">적립금</li>
-                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
-                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></li>
-                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/front?key=member&methodName=getPqList">일대일문의</a></li>
+      <div class="col-xl-3 col-lg-4 col-md-5">
 
-                </ul>
-            </div>
-            <div class="">
-              <div class="">나의정보</div>
-                <ul class = "list-group list-group-flush">
-                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/personalInfo.jsp">개인정보변경</a></li>
-                </ul>
-            </div>
-           
-          </div>
-        </div>
-        <div class="col-xl-9 col-lg-8 col-md-7">
+	<!-- ================ category section start ================= -->		  
+  <%@ include file="myPageMenuBar.jsp" %>
         
           <!-- End Filter Bar -->
           

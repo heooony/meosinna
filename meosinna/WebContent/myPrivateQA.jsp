@@ -92,8 +92,11 @@ svg:hover {
 		</div>
 	</section>
 	<!-- ================ end banner area ================= -->
-
-
+<section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-5">
+<%@ include file="myPageMenuBar.jsp" %>
 	<!-- ================ category section start ================= -->
 	<section class="section-margin--small mb-5">
 		<div class="container-fluid">
@@ -171,7 +174,10 @@ svg:hover {
 	</section>
 	<!-- ================ category section end ================= -->
 
-
+ </div>
+      </div>
+    </div>
+  </section>
 
 
 	<!--================ End footer Area  =================-->
