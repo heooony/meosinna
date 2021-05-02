@@ -90,7 +90,7 @@
                               <td>
                                   <div class="media">
                                       <div class="d-flex">
-                                          <img src="${sessionScope.str}" alt="" style="width:65px;"> <!-- img/cart/cart1.png -->
+                                          <img src="${cart.img}" alt="" style="width:65px;"> <!-- img/cart/cart1.png -->
                                       </div>
                                       <div class="media-body">
                                           <p>${cart.name}</p>
@@ -127,13 +127,12 @@
 
                               </td>
                               <td>
-                                  <div class="cupon_text d-flex align-items-center">
 
                                     <!--   <input type="text" placeholder="Coupon Code">
                                     <a class="primary-btn" href="#">Apply</a>
                                       <a class="button" href="#">Have a Coupon?</a> -->
-                                      <div style="float:right;"><a class="button" href="front?key=cart&methodName=clearCart">장바구니 비우기</a></div>
-                                  </div>
+                                     <!--  <div class="checkout_btn_inner d-flex align-items-center" style="float: right"> -->
+                                      <div><a class="gray_btn" href="front?key=cart&methodName=clearCart">Delete&nbsp;All</a></div>
                               </td>
                           </tr>
                           <tr>
@@ -186,7 +185,10 @@
 
                               </td>
                               <td>
-                                  <div class="checkout_btn_inner d-flex align-items-center">
+
+                              </td>
+                              <td>
+                                  <div class="checkout_btn_inner d-flex align-items-center" style="float: right">
                                       <a class="gray_btn" href="category.jsp">Continue Shopping</a>
                                       <a class="primary-btn ml-2" href="checkout.jsp">Proceed to checkout</a>
                                   </div>
