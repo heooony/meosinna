@@ -159,6 +159,10 @@ th {
 
 							</table>
 						</form>
+						
+					<a href="${pageContext.request.contextPath}/front?key=member&delete&mbCode=${member.mbCode}">회원탈퇴</a>
+						
+						
 
 						<form class="ps-info-form" id="ps-withdrawl-form"
 							action="${pageContext.request.contextPath}/front">
@@ -172,6 +176,16 @@ th {
 						</form>
 
 
+					  <form class="ps-info-form" id="ps-withdrawl-form" action="${pageContext.request.contextPath}/front">
+          &nbsp;<input type="submit" class="ps-info-id" name="ps-withdrawl" id="ps-withdrawl" value="회원 탈퇴하기"> 
+          &nbsp;<input type="text" class="ps-info-id" name="ps-info-mbCode" id="ps-info-mbCode" style="display: none" value="${member.mbCode}">          		
+          <input type="hidden" name="key" value = "member" />
+          <input type="hidden" name="methodName" value = "delete" />
+          </form>
+				
+				
+				
+					
 					</section>
 				</div>
 
@@ -207,7 +221,7 @@ th {
 
 			});
 
-			$("#ps-info-form").submit(function() {
+			$("#ps-withdrawl").click(function() {
 						
 						var str = "";
 			
@@ -247,8 +261,7 @@ th {
 			$("#ps-withdrawl-form").submit(function() {
 
 				if (!confirm("탈퇴하면 모든 내역이 삭제됩니다.\n탈퇴하시겠습니까?")) {
-					
-
+				
 					return false;
 				}	
 

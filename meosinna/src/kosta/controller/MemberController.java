@@ -127,12 +127,13 @@ public class MemberController implements Controller {
 	
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		int mbCodeid = Integer.parseInt(request.getParameter("ps-info-mbCode"));
+		int mbCode = Integer.parseInt(request.getParameter("mbCode"));
 		
-		memberService.delete(mbCodeid);
+		memberService.delete(mbCode);
 		this.logout(request, response);
 		ModelAndView mv = new ModelAndView("index.jsp", true);
 		return mv;
+	
 	}
 
 	public ModelAndView selectPrivate(HttpServletRequest request, HttpServletResponse response) throws Exception {
