@@ -54,6 +54,7 @@ th {
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
+	<%@ include file="header.jsp" %>
 	<!--================ End Header Menu Area =================-->
 
 	<!-- ================ start banner area ================= -->
