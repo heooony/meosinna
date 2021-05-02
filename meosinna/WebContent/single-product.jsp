@@ -57,8 +57,8 @@ float:left;
 margin: 3px 2px;
 position: relative;
 left: 10px;
-top: 40px;
-border:1px solid rgba(100, 100, 100, .6);
+top: 60px;
+border:1px solid rgba(220, 220, 220, .6);
 width: 600px
 }
 
@@ -262,30 +262,25 @@ width: 600px
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
-				<p>Beryl Cook is one of Britain’s most talented and amusing
-					artists .Beryl’s pictures feature women of all shapes and sizes
-					enjoying themselves .Born between the two world wars, Beryl Cook
-					eventually left Kendrick School in Reading at the age of 15, where
-					she went to secretarial school and then into an insurance office.
-					After moving to London and then Hampton, she eventually married her
-					next door neighbour from Reading, John Cook. He was an officer in
-					the Merchant Navy and after he left the sea in 1956, they bought a
-					pub for a year before John took a job in Southern Rhodesia with a
-					motor company. Beryl bought their young son a box of watercolours,
-					and when showing him how to use it, she decided that she herself
-					quite enjoyed painting. John subsequently bought her a child’s
-					painting set for her birthday and it was with this that she
-					produced her first significant work, a half-length portrait of a
-					dark-skinned lady with a vacant expression and large drooping
-					breasts. It was aptly named ‘Hangover’ by Beryl’s husband and</p>
-				<p>It is often frustrating to attempt to plan meals that are
-					designed for one. Despite this fact, we are seeing more and more
-					recipe books and Internet websites that are dedicated to the act of
-					cooking for one. Divorce and the death of spouses or grown children
-					leaving for college are all reasons that someone accustomed to
-					cooking for more than one would suddenly need to learn how to
-					adjust all the cooking practices utilized before into a streamlined
-					plan of cooking that is more efficient for one person creating less</p>
+		안녕하세요, 머신나에요! <br> 
+만나뵙게 되어 정말 반갑습니다.  저희 머신나는 여러분들께 선물같은 존재가 되기 위해 탄생했습니다. <br> 
+상품을 고르는 순간, 배송을 기다리는 순간 모두 선물을 고르는 시간과 같지 않나요?  <br> 
+고객님의 이 소중한 시간들을 위해 저희는 멋있는, 인기있는 상품을 많은 고객님께 보이도록 노력하고 있습니다. <br> 
+ 또한 합리적인 가격, 빠른 배송에 힘쓰고 있습니다. 앞으로도 오래 만나요 우리! <br> 
+<p><p>
+Hello, this is MEOSINNA!<br> 
+It's so nice to meet you.We were created to be like gifts to you. <br> 
+Isn't it the same moment to choose a gift when you choose a product and wait for delivery? <br> 
+For your precious time, we are trying to make our best to recommend popular and nice products to our customers.  <br> 
+Also, we are trying to recommend reasonably priced products and deliver them quickly. <br> 
+Thanks for your all support and love. 
+<p>
+
+您好。 我们是 MEOSINNA!<br> 
+很高兴见到您们。我们生来就是给你感觉送好像礼物的。选择商品等待配送，不正是选择礼物的时候吗？<br> 
+为了您的宝贵时间，我们竭尽所能向客户推荐受欢迎、好的产品。同时，我们也在努力推荐价格合理的产品，并尽快交货。<br> 
+希望我们能在一起很久。谢谢。
+<p>
 			</div>
 			<div class="tab-pane fade" id="profile" role="tabpanel"
 				aria-labelledby="profile-tab">
