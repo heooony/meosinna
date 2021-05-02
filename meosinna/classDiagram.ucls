@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="kosta.dao.CartDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/CartDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="173" width="189" x="9050" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="kosta.dto.CartDTO" project="meosinna" file="/meosinna/src/kosta/dto/CartDTO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="497" width="247" x="-4" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="kosta.dao.ReviewDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/ReviewDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="231" x="10996" y="1094"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="4" language="java" name="kosta.servlet.OrderIndexServlet" project="meosinna" 
+    file="/meosinna/src/kosta/servlet/OrderIndexServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="318" x="8421" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="kosta.servlet.InsertReviewServlet" project="meosinna" 
+    file="/meosinna/src/kosta/servlet/InsertReviewServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="318" x="12978" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="kosta.service.GoodsQuestionService" project="meosinna" 
+    file="/meosinna/src/kosta/service/GoodsQuestionService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="275" x="11205" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="kosta.filter.SingleProductFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/SingleProductFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="283" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="kosta.controller.OrderController" project="meosinna" 
+    file="/meosinna/src/kosta/controller/OrderController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="191" width="424" x="11563" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="kosta.controller.LikesController" project="meosinna" 
+    file="/meosinna/src/kosta/controller/LikesController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="419" x="10387" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="kosta.controller.ReviewController" project="meosinna" 
+    file="/meosinna/src/kosta/controller/ReviewController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="419" x="12519" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="kosta.controller.DispatcherServlet" project="meosinna" 
+    file="/meosinna/src/kosta/controller/DispatcherServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="319" x="10846" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="kosta.filter.JspFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/JspFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="661" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="kosta.servlet.InsertGQServlet" project="meosinna" 
+    file="/meosinna/src/kosta/servlet/InsertGQServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="318" x="11205" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="kosta.util.DbUtil" project="meosinna" file="/meosinna/src/kosta/util/DbUtil.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="278" x="1039" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="kosta.controller.CartController" project="meosinna" 
+    file="/meosinna/src/kosta/controller/CartController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="173" width="419" x="9469" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="kosta.controller.MemberController" project="meosinna" 
+    file="/meosinna/src/kosta/controller/MemberController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="281" width="419" x="9010" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="kosta.listener.HandlerMappingListener" project="meosinna" 
+    file="/meosinna/src/kosta/listener/HandlerMappingListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="258" x="1357" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="18" language="java" name="kosta.dao.CartDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/CartDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="189" x="9050" y="1094"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="19" language="java" name="kosta.dao.ReviewDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/ReviewDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="231" x="9863" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="kosta.dto.Payment" project="meosinna" file="/meosinna/src/kosta/dto/Payment.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="425" width="231" x="1655" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="kosta.dao.MemberDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/MemberDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="245" width="267" x="8410" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="kosta.dao.rsv.RsvDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/rsv/RsvDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="191" x="8779" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="kosta.dto.Member" project="meosinna" file="/meosinna/src/kosta/dto/Member.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="695" width="465" x="15180" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="kosta.dto.Goods" project="meosinna" file="/meosinna/src/kosta/dto/Goods.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="533" width="307" x="14482" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="25" language="java" name="kosta.dao.GoodsDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/GoodsDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="443" width="243" x="16104" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="26" language="java" name="kosta.exception.AuthenticationException" project="meosinna" 
+    file="/meosinna/src/kosta/exception/AuthenticationException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="195" x="1926" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="27" language="java" name="kosta.dao.OrderDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/OrderDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="227" width="267" x="13660" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="28" language="java" name="kosta.dao.GoodsQuestionDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/GoodsQuestionDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="275" x="9548" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="29" language="java" name="kosta.dao.MemberDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/MemberDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="227" width="267" x="8564" y="1094"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="30" language="java" name="kosta.dto.GoodsQuestion" project="meosinna" 
+    file="/meosinna/src/kosta/dto/GoodsQuestion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="443" width="343" x="14291" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="kosta.down.DownLoadServlet" project="meosinna" 
+    file="/meosinna/src/kosta/down/DownLoadServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="319" x="2161" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="kosta.filter.CartFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/CartFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="2520" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="kosta.servlet.PriceAlignServlet" project="meosinna" 
+    file="/meosinna/src/kosta/servlet/PriceAlignServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="313" x="2898" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="kosta.filter.ViewOrderFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/ViewOrderFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="3251" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="kosta.controller.GoodsController" project="meosinna" 
+    file="/meosinna/src/kosta/controller/GoodsController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="335" width="452" x="12027" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="36" language="java" name="kosta.service.CartService" project="meosinna" 
+    file="/meosinna/src/kosta/service/CartService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="229" x="9279" y="1094"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="37" language="java" name="kosta.dto.PrivateQuestion" project="meosinna" 
+    file="/meosinna/src/kosta/dto/PrivateQuestion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="659" width="410" x="3629" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="kosta.filter.CheckoutFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/CheckoutFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="4079" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="kosta.dao.GoodsDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/GoodsDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="497" width="243" x="16315" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="kosta.filter.IndexFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/IndexFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="4457" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="kosta.dao.OrderDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/OrderDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="263" width="267" x="13984" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="kosta.service.GoodsServiceImpl" project="meosinna" 
+    file="/meosinna/src/kosta/service/GoodsServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="371" width="243" x="14897" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="kosta.service.MemberService" project="meosinna" 
+    file="/meosinna/src/kosta/service/MemberService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="245" width="219" x="8717" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="kosta.service.ReviewService" project="meosinna" 
+    file="/meosinna/src/kosta/service/ReviewService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="231" x="12130" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="kosta.controller.GoodsQuestionController" project="meosinna" 
+    file="/meosinna/src/kosta/controller/GoodsQuestionController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="419" x="9928" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="kosta.service.CartServiceImpl" project="meosinna" 
+    file="/meosinna/src/kosta/service/CartServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="173" width="229" x="9279" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="kosta.dto.Likes" project="meosinna" file="/meosinna/src/kosta/dto/Likes.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="281" width="183" x="14674" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="kosta.service.OrderServiceImpl" project="meosinna" 
+    file="/meosinna/src/kosta/service/OrderServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="173" width="255" x="13336" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="kosta.service.LikesService" project="meosinna" 
+    file="/meosinna/src/kosta/service/LikesService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="171" x="10535" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="kosta.dto.OrderIndex" project="meosinna" 
+    file="/meosinna/src/kosta/dto/OrderIndex.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="389" width="209" x="15432" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="kosta.filter.CategoryFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/CategoryFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="4835" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="kosta.dto.PageCnt" project="meosinna" file="/meosinna/src/kosta/dto/PageCnt.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="263" width="140" x="5213" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="53" language="java" name="kosta.dao.GoodsQuestionDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/GoodsQuestionDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="275" x="10346" y="1094"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="54" language="java" name="kosta.dto.Order" project="meosinna" file="/meosinna/src/kosta/dto/Order.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="623" width="379" x="15685" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="55" language="java" name="kosta.dao.rsv.RsvDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/rsv/RsvDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="83" width="191" x="10134" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="56" language="java" name="kosta.filter.EncodingFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/EncodingFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="5393" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="kosta.dao.likes.LikesDAOImpl" project="meosinna" 
+    file="/meosinna/src/kosta/dao/likes/LikesDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="101" width="171" x="16104" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="kosta.controller.ModelAndView" project="meosinna" 
+    file="/meosinna/src/kosta/controller/ModelAndView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="209" width="192" x="5771" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="kosta.dto.OrderLine" project="meosinna" 
+    file="/meosinna/src/kosta/dto/OrderLine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="479" width="253" x="6003" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="kosta.dto.RSV" project="meosinna" file="/meosinna/src/kosta/dto/RSV.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="299" width="135" x="6296" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="kosta.filter.MyOrderFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/MyOrderFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="137" width="338" x="6471" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="kosta.servlet.SelectByPriceServlet" project="meosinna" 
+    file="/meosinna/src/kosta/servlet/SelectByPriceServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="313" x="13631" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="kosta.filter.CartCountFilter" project="meosinna" 
+    file="/meosinna/src/kosta/filter/CartCountFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="338" x="6849" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="kosta.servlet.LikeServlet" project="meosinna" 
+    file="/meosinna/src/kosta/servlet/LikeServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="119" width="313" x="7227" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="65" language="java" name="kosta.controller.Controller" project="meosinna" 
+    file="/meosinna/src/kosta/controller/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="83" width="419" x="10746" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="66" language="java" name="kosta.dto.Review" project="meosinna" file="/meosinna/src/kosta/dto/Review.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="569" width="327" x="7580" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="67" language="java" name="kosta.dao.likes.LikesDAO" project="meosinna" 
+    file="/meosinna/src/kosta/dao/likes/LikesDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="83" width="171" x="16064" y="1094"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="68" language="java" name="kosta.service.GoodsService" project="meosinna" 
+    file="/meosinna/src/kosta/service/GoodsService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="353" width="243" x="12978" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="69" language="java" name="kosta.service.OrderService" project="meosinna" 
+    file="/meosinna/src/kosta/service/OrderService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="155" width="255" x="12449" y="521"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="70" language="java" name="kosta.dto.OrderDetail" project="meosinna" 
+    file="/meosinna/src/kosta/dto/OrderDetail.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="731" width="434" x="7947" y="-250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="71">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <association id="72">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="73" name="map"/>      
+      <multiplicity id="74" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="65" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="76" name="goods"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="79" name="memberService"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="82" name="reviewService"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="84">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="65"/>  
+  </realization>  
+  <realization id="85">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <realization id="86">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="53"/>  
+  </realization>  
+  <association id="87">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="88" name="reviewService"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="91" name="gqService"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="94" name="gqService"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="97" name="dao"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="67" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="99">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="25"/>  
+  </realization>  
+  <realization id="100">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="65"/>  
+  </realization>  
+  <association id="101">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="102" name="dao"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="105" name="service"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="108" name="orderIndex"/>      
+      <multiplicity id="109" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="110">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="111" name="goods"/>      
+      <multiplicity id="112" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="113">    
+    <bendpoint x="10355" y="521"/>    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="114" name="dao"/>      
+      <multiplicity id="115" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="116">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="117" name="dao"/>      
+      <multiplicity id="118" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="119">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <realization id="120">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="68"/>  
+  </realization>  
+  <association id="121">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="122" name="goodsService"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="125" name="goodsDAO"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="127">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="65"/>  
+  </realization>  
+  <association id="128">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="129" name="likesService"/>      
+      <multiplicity id="130" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="131">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="132" name="dao"/>      
+      <multiplicity id="133" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="134">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="135" name="dao"/>      
+      <multiplicity id="136" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="137">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="55"/>  
+  </realization>  
+  <association id="138">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="139" name="reviewService"/>      
+      <multiplicity id="140" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="141">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="29"/>  
+  </realization>  
+  <association id="142">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="143" name="service"/>      
+      <multiplicity id="144" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="145">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="65"/>  
+  </realization>  
+  <association id="146">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="147" name="goodsService"/>      
+      <multiplicity id="148" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="149">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="69"/>  
+  </realization>  
+  <association id="150">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="151" name="orderIndex"/>      
+      <multiplicity id="152" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="154" name="goodsDAO"/>      
+      <multiplicity id="155" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="156">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <realization id="157">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="65"/>  
+  </realization>  
+  <realization id="158">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="65"/>  
+  </realization>  
+  <association id="159">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="160" name="dao"/>      
+      <multiplicity id="161" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <end type="SOURCE" refId="62" navigable="false">      
+      <attribute id="163" name="goodsService"/>      
+      <multiplicity id="164" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="165">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="166" name="memberService"/>      
+      <multiplicity id="167" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="168">    
+    <bendpoint x="16073" y="521"/>    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <association id="169">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="170" name="goodsService"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="172">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="65"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
