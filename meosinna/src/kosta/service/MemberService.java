@@ -86,9 +86,9 @@ public class MemberService {
 		List<PrivateQuestion> list = dao.selectPqAll(mbCode);
 	
 		
-		if(list.size() == 0) {
-			throw new SQLException("일대일 문의 내역이 없습니다.");
-		}
+		/*
+		 * if(list.size() == 0) { throw new SQLException("일대일 문의 내역이 없습니다."); }
+		 */
 		return list;
 	}
 	

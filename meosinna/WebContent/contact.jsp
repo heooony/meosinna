@@ -144,10 +144,14 @@
 							<button type="submit"
 								class="button button--active button-contactForm">문의하기</button>
 						</div>
+					
+					
+					</form>
 					</div>
-				</form>
+					
+				
 			</div>
-		</div>
+		
 	</section>
 	<!-- ================ contact section end ================= -->
 
@@ -176,7 +180,14 @@
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
-		$("#contactForm").validate();
+		$("#contactForm").validate({
+			
+			
+			
+			
+			
+			
+		});
 	
 	
 	</script>

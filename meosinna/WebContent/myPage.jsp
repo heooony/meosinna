@@ -19,6 +19,13 @@
 
   <link rel="stylesheet" href="css/style.css">
 </head>
+<style>
+
+a { text-decoration:none }
+
+
+</style>
+
 <body>
   <!--================ Start Header Menu Area =================-->
 	<%@ include file="header.jsp" %>
@@ -50,30 +57,25 @@
         <div class="col-xl-3 col-lg-4 col-md-5">
           
           <div class="sidebar-filter">
-            <div class="top-filter-head">My page</div>
-            <div class="common-filter">
+            <div class="">My page</div>
+            <div class="">
               <div class="head">쇼핑활동</div>
-              <form action="#">
-                <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="myInfo"><label for="apple"><a href="myOrder.jsp">주문 내역 조회</a></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="myInfo"><label for="asus">구매후기</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="myInfo"><label for="gionee"><a href="cart.jsp">장바구니</a></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="myInfo"><label for="micromax">적립금</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung">좋아요</label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="samsung"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="myInfo"><label for="contact"><a href="${pageContext.request.contextPath}/front?key=member&methodName=getPqList">일대일문의</a></label></li>
+                <ul class = "list-group list-group-flush">
+                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/myOrder.jsp">주문 내역 조회</a></li>
+                  <li class="list-group-item">구매후기</li>
+                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/cart.jsp">장바구니</a></li>
+                  <li class="list-group-item">적립금</li>
+                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">좋아요</a></li>
+                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/front?key=goodsQuestion&methodName=selectGQAll&mbCode=${member.mbCode}">상품문의</a></li>
+                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/front?key=member&methodName=getPqList">일대일문의</a></li>
 
                 </ul>
-              </form>
             </div>
-            <div class="common-filter">
-              <div class="head">나의정보</div>
-              <form action="personalInfo.jsp">
-                <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="myInfo"><a href="${pageContext.request.contextPath}/personalInfo.jsp">개인정보변경</a></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="myInfo"><a href="${pageContext.request.contextPath}/withdrawl.jsp">회원탈퇴</a></li>
+            <div class="">
+              <div class="">나의정보</div>
+                <ul class = "list-group list-group-flush">
+                  <li class="list-group-item"><a href="${pageContext.request.contextPath}/personalInfo.jsp">개인정보변경</a></li>
                 </ul>
-              </form>
             </div>
            
           </div>
