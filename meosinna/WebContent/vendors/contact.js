@@ -20,7 +20,7 @@ $(document).ready(function(){
                     required: true,
                     minlength: 4
                 },
-                number: {
+                phone: {
                     required: true,
                     minlength: 5
                 },
@@ -31,6 +31,10 @@ $(document).ready(function(){
                 message: {
                     required: true,
                     minlength: 20
+                },
+                orderIndexs: {
+                	required: true,
+
                 }
             },
             messages: {
@@ -39,19 +43,22 @@ $(document).ready(function(){
                     minlength: "your name must consist of at least 2 characters"
                 },
                 subject: {
-                    required: "come on, you have a subject, don't you?",
-                    minlength: "your subject must consist of at least 4 characters"
+                    required: "문의 내용을 입력해주세요.",
+                    minlength: "최소 4자 이상 입력해주세요.",
                 },
-                number: {
+                phone: {
                     required: "come on, you have a number, don't you?",
                     minlength: "your Number must consist of at least 5 characters"
                 },
                 email: {
                     required: "no email, no message"
                 },
+                orderIndexs: {
+                    required: "문의하실 주문 내역을 선택해주세요."
+                },
                 message: {
-                    required: "um...yea, you have to write something to send this form.",
-                    minlength: "thats all? really?"
+                    required: "문의 내용을 입력해주세요.",
+                    minlength: "최소 20자 이상 입력해주세요."
                 }
             },
             submitHandler: function(form) {

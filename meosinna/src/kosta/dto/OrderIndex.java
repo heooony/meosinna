@@ -60,7 +60,7 @@ public class OrderIndex {
 
 	
 	public String toString() {
-		return "odCode:" + odCode + ", gdName: " + gdName + ", odDate: " + odDate + ", qty: " + qty + ", pay: "
+		return "주문번호:" + odCode + ", 주문상품: " + gdName + ", 주문일: " + odDate + ", 수량: " + ", 결제금액: "
 				+ pay;
 	}
 

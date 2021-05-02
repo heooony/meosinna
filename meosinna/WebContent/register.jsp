@@ -118,11 +118,18 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail, roadAddrPart2, ji
                						placeholder="Address Detail" onfocus="this.placeholder = ''"
                						onblur="this.placeholder = 'Address Detail'">
                         </div>
-                        <div class="col-md-12 form-group">
+                        <div class="col-md-5 form-group">
 							 <input type="text" class="form-control" id="jumin" name="jumin"
                						placeholder="Jumin" onfocus="this.placeholder = ''"
                						onblur="this.placeholder = 'Jumin'">
                         </div>
+
+						<div class="col-md-5 form-group">
+							 <input type="text" class="form-control" id="jumin" name="jumin"
+               						placeholder="Jumin" onfocus="this.placeholder = ''"
+               						onblur="this.placeholder = 'Jumin'">
+                        </div>
+						
 
                         <div class="col-md-12 form-group">
                             <div class="creat_account">
@@ -155,5 +162,6 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail, roadAddrPart2, ji
 <script src="vendors/jquery.ajaxchimp.min.js"></script>
 <script src="vendors/mail-script.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 </html>
