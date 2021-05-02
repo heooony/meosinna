@@ -57,44 +57,47 @@
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
-
-
+<section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-5">
+ <%@ include file="myPageMenuBar.jsp" %>
 	<!-- ================ category section start ================= -->		  
   <section class="section-margin--small mb-5">
     <div class="container">
 
       <p class="text-center billing-alert">Thank you ${sessionScope.member.mbName}.상품문의 리스트입니다.</p>
       <div class="row mb-5">
-        <div class="col-md-6 col-xl-4 mb-4 mb-xl-0">
-          <div class="confirmation-card">
-            <h3 class="billing-title">Order Info</h3>
-            <table class="order-rable">
+        
+            <h3 class="billing-title">상품문의내역</h3>
+            <hr>
+            <table class="gq-list" border="1">
               <tr>
                 <td>상품명</td>
-                <td>  </td>
-              </tr>
-              <tr>
                 <td>작성내용</td>
-                <td style="font-size: 0.83rem; font-weight: none;">${requestScope.gqList.gqContent} </td>
+                 <td>작성일</td>
+                 <td>답변상태</td>
               </tr>
+               <c:forEach items="${gqList}" var="gq">
               <tr>
-                <td>작성일</td>
-                <td style="font-size: 0.83rem; font-weight: none;">${requestScope.gqList.rgDate} </td>
+                <td> ${gq.goods.gdName} </td>
+                <td> ${gq.gqContent} </td>
+                <td>${gq.rgDate} </td>
+                <td> ${gq.reply}</td>
               </tr>
-              <tr>
-                <td>답변상태</td>
-                <td> ${requestScope.gqList.reply}</td>
-              </tr>
+              </c:forEach>
             </table>
-          </div>
-        </div>
+         
       </div>
     </div>
   </section>
 	<!-- ================ category section end ================= -->		  
 
 	
-
+</div>
+      </div>
+    </div>
+  </section>
 
 	<!--================ End footer Area  =================-->
 
