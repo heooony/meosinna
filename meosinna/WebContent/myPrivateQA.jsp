@@ -51,11 +51,16 @@ th.head {
 svg {
 	position: absolute;
 	right: 10%;
-	top: 5%;
+	top: 10%;
 }
 
 svg:hover {
 	fill: #f5543d;
+}
+
+.row{
+flex-wrap: nowrap;
+
 }
 
 /* 
@@ -98,15 +103,15 @@ svg:hover {
       <div class="col-xl-3 col-lg-4 col-md-5">
 <%@ include file="myPageMenuBar.jsp" %>
 	<!-- ================ category section start ================= -->
-	<section class="section-margin--small mb-5">
+	<section class="section-margin--small mb-3">
 		<div class="container-fluid">
 
 			<p class="text-center billing-alert">${sessionScope.member.mbName}님의
 				주문에 대한 일대일 문의 내역입니다.</p>
-			<div class="row justify-content-evenly">
+			<div class="row">
 
 				<c:forEach items="${pqList}" var="pqList">
-					<div class="col-4 p-3">
+					<div class="col-6 m-3">
 						<div class="confirmation-card">
 							<!-- <img src="img/svg/x-square-fill.svg" alt="delete" class="x"> -->
 							<%-- <a href="${pageContext.request.contextPath}/front?key=member&methodName=deletePq&odCode=${pqList.odCode}"> --%>
