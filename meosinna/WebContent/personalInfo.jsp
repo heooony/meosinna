@@ -54,15 +54,9 @@ th {
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<%@ include file="header.jsp" %>
-=======
+
 	<%@ include file="header.jsp"%>
->>>>>>> parent of cf8017d ([IMPROVE] : myPage.jsp 개인정보 수정 뿌려주기 완료)
-=======
-	<%@ include file="header.jsp"%>
->>>>>>> parent of cf8017d ([IMPROVE] : myPage.jsp 개인정보 수정 뿌려주기 완료)
+
 	<!--================ End Header Menu Area =================-->
 
 	<!-- ================ start banner area ================= -->
