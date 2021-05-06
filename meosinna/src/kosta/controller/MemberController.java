@@ -108,7 +108,6 @@ public class MemberController implements Controller {
 	}
 
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
 
 		String name = request.getParameter("ps-info-name");
 		String id = request.getParameter("ps-info-id");
@@ -117,13 +116,11 @@ public class MemberController implements Controller {
 		String addr = request.getParameter("ps-info-addr");
 		String tel = request.getParameter("ps-info-tel");
 		String jumin = request.getParameter("ps-info-jumin");
-		String signUpDate = request.getParameter("ps-info-signUpDate");
+
 	
-		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel, signUpDate);
+		Member dbMember = new Member(name, id, pwd, email, addr, jumin, tel);
 		memberService.update(dbMember);
-		
-		session.setAttribute("member", dbMember);
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("personalInfo.jsp");
 
