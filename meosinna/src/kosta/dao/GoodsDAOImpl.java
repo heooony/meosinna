@@ -572,7 +572,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 		ResultSet rs = null;
 		List<Goods> list = new ArrayList<Goods>();
 		
-		String sql = "SELECT * FROM GOODS JOIN S_SIZE USING(GD_CODE) WHERE QTY > 0 AND S_SIZE = 260 ORDER BY GD_LIKE DESC";
+		String sql = "SELECT DISTINCT * FROM GOODS JOIN S_SIZE USING(GD_CODE) WHERE QTY > 0 AND S_SIZE = 260 ORDER BY GD_LIKE DESC";
 		
 
 		try {
