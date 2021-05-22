@@ -80,8 +80,8 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">회원이름</th>
-                <th scope="col">회원아이디</th>
+                <th scope="col" width="80">회원<br>이름</th>
+                <th scope="col">회원<br>아이디</th>
                 <th scope="col">이메일</th>
                 <th scope="col">주소</th>
                 <th scope="col">주민등록번호</th>
