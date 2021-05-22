@@ -54,8 +54,8 @@
 					<div class="login_box_img">
 						<div class="hover">
 							<h4>New to our website?</h4>
-							<p>There are advances being made in science and technology
-								everyday, and a good example of this is the</p>
+							<p>We create values, we care our customers.</p>
+							<p style="font-size: 1.25em">WE ARE MEOSINNA</p>
 							<a class="button button-account" href="register.jsp">Create
 								an Account</a>
 						</div>
@@ -85,14 +85,11 @@
 									</div>
 									<div class="col-md-12 form-group">
 										<div class="creat_account">
-											<input type="checkbox" id="f-option2" name="selector">
-											<label for="f-option2">Keep me logged in</label>
 										</div>
 									</div>
 									<div class="col-md-12 form-group">
 										<button type="submit" value="submit"
 											class="button button-login w-100">Log In</button>
-										<a href="#">Forgot Password?</a>
 									</div>
 								</form>
 							</div>
