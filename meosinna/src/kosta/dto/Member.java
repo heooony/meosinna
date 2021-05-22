@@ -115,9 +115,5 @@ public class Member {
 				+ ", addr=" + addr + ", jumin=" + jumin + ", tel=" + tel + ", signUpDate=" + signUpDate
 				+ ", orderIndex=" + orderIndex + "]";
 	}
-
-	
-	
-	
 	
 }

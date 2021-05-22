@@ -112,7 +112,7 @@ public class MemberDAOImpl implements MemberDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Member> list = new ArrayList<Member>();
-		String sql = "select mb_name, id, email, addr, regexp_replace(jumin, '\\d','*','7')as p_jumin, tel, sign_up_date from member where NOT id IN ('admin')";
+		String sql = "select mb_name, id, email, addr, regexp_replace(jumin, '\\d','*','7')as p_jumin, tel, sign_up_date from member where NOT id IN ('admin') order by sign_up_date desc";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
