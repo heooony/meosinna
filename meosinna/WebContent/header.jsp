@@ -46,12 +46,10 @@
                   <%if(session.getAttribute("member") == null){ %>
                   <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.jsp">Register</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Service</a></li>
                   <%}else{ %>
                   <li class="nav-item"><a class="nav-link" href="myPage.jsp">My Page</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.jsp">Shopping Cart</a></li>
                   <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/front?key=likes&methodName=selectLikes">Likes</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Service</a></li>
                   <li class="nav-item"><a class="nav-link" href="checkout.jsp">Product Checkout</a></li>
                   <li class="nav-item"><a class="nav-link" href="confirmation.jsp">Confirmation</a></li>
                   <%} %>
