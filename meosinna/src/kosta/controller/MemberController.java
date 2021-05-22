@@ -80,15 +80,23 @@ public class MemberController implements Controller {
 		Member member = new Member(userId, pwd);
 
 		Member dbMember = memberService.loginCheck(member);
-		String mbName = dbMember.getMbName();
-		System.out.println(dbMember);
-		// 세션에정보저장
-		HttpSession session = request.getSession();
-		session.setAttribute("member", dbMember);
-		session.setAttribute("mbName", mbName);
-		ModelAndView mv = new ModelAndView("index.jsp", true);
-
-		return mv;
+		if(dbMember==null) {
+			ModelAndView mv = new ModelAndView();
+			request.setAttribute("loginErrorMsg", "아이디와 비밀번호를 확인해주세요. :)");
+			mv.setViewName("loginErrorPage.jsp");
+			mv.setRedirect(false);
+			return mv;
+		} else {
+			String mbName = dbMember.getMbName();
+			// 세션에정보저장
+			HttpSession session = request.getSession();
+			session.setAttribute("member", dbMember);
+			session.setAttribute("mbName", mbName);
+			ModelAndView mv = new ModelAndView("index.jsp", true);
+			
+			return mv;
+			
+		}
 	}
 
 	/**

@@ -33,9 +33,9 @@
     		  auth="Container"
               type="javax.sql.DataSource" 
               driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@meosinna.cud4xir5ogun.ap-northeast-2.rds.amazonaws.com:1521:ORCL"
-              username="admin" 
-              password="mypassword" 
+              url="jdbc:oracle:thin:@localhost:1521:xe"
+              username="mymeosinna" 
+              password="order" 
               maxTotal="20" 
               maxIdle="10"
               maxWaitMillis="-1"/>
